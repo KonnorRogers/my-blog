@@ -7,6 +7,7 @@ description: "What I've learned from watching PHP for Beginners from Laracasts"
 # Purpose
 
 To document my trials & tribulations with learning PHP through laracasts.
+This is the article will cover the 1st step from Laracasts.
 
 What I will be using:<br>
 [Laracasts main site](https://laracasts.com)<br>
