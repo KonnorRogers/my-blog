@@ -1,33 +1,73 @@
-<?xml version="1.0" encoding="UTF-8"?><rss xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:content="http://purl.org/rss/1.0/modules/content/" xmlns:atom="http://www.w3.org/2005/Atom" version="2.0"><channel><title><![CDATA[Konnor's Blog]]></title><description><![CDATA[A starter blog demonstrating what Gatsby can do.]]></description><link>https://gatsby-starter-blog-demo.netlify.com</link><generator>RSS for Node</generator><lastBuildDate>Sun, 18 Aug 2019 14:54:33 GMT</lastBuildDate><item><title><![CDATA[Learning PHP - Part 2]]></title><description><![CDATA[Purpose Does this show up?]]></description><link>https://gatsby-starter-blog-demo.netlify.com/learning-php/learning-php-part2/</link><guid isPermaLink="false">https://gatsby-starter-blog-demo.netlify.com/learning-php/learning-php-part2/</guid><pubDate>Sun, 18 Aug 2019 08:03:54 GMT</pubDate><content:encoded>&lt;h1&gt;Purpose&lt;/h1&gt;
-&lt;p&gt;Does this show up?&lt;/p&gt;</content:encoded></item><item><title><![CDATA[Learning PHP Part 1 - Lets Compile PHP!]]></title><description><![CDATA[Purpose To document my trials & tribulations with PHP Installing PHP Originally, I installed PHP the usual way.  Okay sweet its installed…]]></description><link>https://gatsby-starter-blog-demo.netlify.com/learning-php/learning-php-part1/</link><guid isPermaLink="false">https://gatsby-starter-blog-demo.netlify.com/learning-php/learning-php-part1/</guid><pubDate>Sun, 18 Aug 2019 00:00:00 GMT</pubDate><content:encoded>&lt;h1&gt;Purpose&lt;/h1&gt;
-&lt;p&gt;To document my trials &amp;#x26; tribulations with PHP&lt;/p&gt;
+<?xml version="1.0" encoding="UTF-8"?><rss xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:content="http://purl.org/rss/1.0/modules/content/" xmlns:atom="http://www.w3.org/2005/Atom" version="2.0"><channel><title><![CDATA[Konnor's Blog]]></title><description><![CDATA[A starter blog demonstrating what Gatsby can do.]]></description><link>https://gatsby-starter-blog-demo.netlify.com</link><generator>RSS for Node</generator><lastBuildDate>Sun, 18 Aug 2019 16:27:29 GMT</lastBuildDate><item><title><![CDATA[Learning PHP - Part 2]]></title><description><![CDATA[Purpose Does this show up?]]></description><link>https://gatsby-starter-blog-demo.netlify.com/learning-php/part2/</link><guid isPermaLink="false">https://gatsby-starter-blog-demo.netlify.com/learning-php/part2/</guid><pubDate>Sun, 18 Aug 2019 08:03:54 GMT</pubDate><content:encoded>&lt;h1&gt;Purpose&lt;/h1&gt;
+&lt;p&gt;Does this show up?&lt;/p&gt;</content:encoded></item><item><title><![CDATA[Learning PHP Part 1 - Lets Compile PHP!]]></title><description><![CDATA[Purpose To document my trials & tribulations with learning PHP through laracasts. What I will be using:
+Laracasts main site
+Laracasts - PHP…]]></description><link>https://gatsby-starter-blog-demo.netlify.com/learning-php/part1/</link><guid isPermaLink="false">https://gatsby-starter-blog-demo.netlify.com/learning-php/part1/</guid><pubDate>Sun, 18 Aug 2019 00:00:00 GMT</pubDate><content:encoded>&lt;h1&gt;Purpose&lt;/h1&gt;
+&lt;p&gt;To document my trials &amp;#x26; tribulations with learning PHP through laracasts.&lt;/p&gt;
+&lt;p&gt;What I will be using:&lt;br&gt;
+&lt;a href=&quot;https://laracasts.com&quot;&gt;Laracasts main site&lt;/a&gt;&lt;br&gt;
+&lt;a href=&quot;https://laracasts.com/series/php-for-beginners&quot;&gt;Laracasts - PHP for beginners&lt;/a&gt;&lt;/p&gt;
 &lt;h2&gt;Installing PHP&lt;/h2&gt;
 &lt;p&gt;Originally, I installed PHP the usual way. &lt;/p&gt;
-&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;bash&quot;&gt;&lt;pre class=&quot;language-bash&quot;&gt;&lt;code class=&quot;language-bash&quot;&gt;&lt;span class=&quot;token function&quot;&gt;sudo&lt;/span&gt; &lt;span class=&quot;token function&quot;&gt;apt&lt;/span&gt; &lt;span class=&quot;token function&quot;&gt;install&lt;/span&gt; -y php
+&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;shell&quot;&gt;&lt;pre class=&quot;language-shell&quot;&gt;&lt;code class=&quot;language-shell&quot;&gt;&lt;span class=&quot;token function&quot;&gt;sudo&lt;/span&gt; &lt;span class=&quot;token function&quot;&gt;apt&lt;/span&gt; &lt;span class=&quot;token function&quot;&gt;install&lt;/span&gt; -y php
 php -v
-&lt;span class=&quot;token comment&quot;&gt;# blah blah blah php-7.2.x&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;span class=&quot;token comment&quot;&gt;# PHP php-7.2.x ...&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 &lt;p&gt;Okay sweet its installed…hmmm I wonder if anyone else uses an environment manager
-like I do so Ruby.&lt;/p&gt;
-&lt;p&gt;So with very little effort I found phpenv! Aha! Awesome good stuff. I have a ton
-of packages from when I compiled Ruby. Piece of cake. I have my handy dandy
-VpsCli packages I’m good to go! Okay, here we go:&lt;/p&gt;
+like I do Ruby.&lt;/p&gt;
+&lt;p&gt;So with very little effort I found &lt;a href=&quot;https://github.com/phpenv/phpenv&quot;&gt;phpenv&lt;/a&gt;! Aha! Awesome good stuff. &lt;br&gt;
+The documentation linked to an easier to use &lt;a href=&quot;https://github.com/phpenv/phpenv-installer&quot;&gt;phpenv-installer&lt;/a&gt;.
+Ok cool. I have a ton of packages from when I compiled Ruby. Piece of cake.
+I have my handy dandy vps-cli gem packages I’m good to go! Okay, here we go:&lt;/p&gt;
 &lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;bash&quot;&gt;&lt;pre class=&quot;language-bash&quot;&gt;&lt;code class=&quot;language-bash&quot;&gt;&lt;span class=&quot;token function&quot;&gt;curl&lt;/span&gt; -L https://raw.githubusercontent.com/phpenv/phpenv-installer/master/bin/phpenv-installer &lt;span class=&quot;token punctuation&quot;&gt;\&lt;/span&gt;
     &lt;span class=&quot;token operator&quot;&gt;|&lt;/span&gt; &lt;span class=&quot;token function&quot;&gt;bash&lt;/span&gt;
-&lt;span class=&quot;token comment&quot;&gt;# xyz happens you know how it goes, add XYZ to your .zshrc, cool whatever&lt;/span&gt;
+&lt;span class=&quot;token comment&quot;&gt;# phpenv does its thing. Tells me to add it to my .zshrc.&lt;/span&gt;
+&lt;span class=&quot;token comment&quot;&gt;# Being the compliant monkey I am, I do it.&lt;/span&gt;
 
-phpenv &lt;span class=&quot;token function&quot;&gt;install&lt;/span&gt; &lt;span class=&quot;token number&quot;&gt;7.3&lt;/span&gt;.8
+phpenv &lt;span class=&quot;token function&quot;&gt;install&lt;/span&gt; &lt;span class=&quot;token string&quot;&gt;&quot;7.3.8&quot;&lt;/span&gt;
 &lt;span class=&quot;token comment&quot;&gt;# configure: error reinstall BZip2&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-&lt;p&gt;Yea sure, no problem whatever, I’ll google, find the package easy peezy.
-About 10 compilation errors later and adding multiple packages to my VpsCli gem.
-(Which I really need to fix. I plan to have it take in a YAML file of packages
-rather than manual installs, but different problem for a different day)&lt;/p&gt;
-&lt;h2&gt;What I learned&lt;/h2&gt;
-&lt;p&gt;Maybe next time I should stick to simple sudo apt install -y php…
-BUT! On the off chance I need a different PHP version I’m all set!&lt;/p&gt;
-&lt;p&gt;After a lot of blood sweat and tears, I finally managed to compile php.
-&lt;a href=&quot;https://github.com/ParamagicDev/vps_cli/blob/master/lib/vps_cli/packages.rb&quot;&gt;VpsCli - packages&lt;/a&gt;
-If you look under Packages::LIBS it contains all the “sudo apt install -y #{pkg}”
-I used in the process.
+&lt;br&gt;
+&lt;p&gt;Yea sure, no problem whatever, I’ll google, find the package easy peezy.&lt;br&gt;&lt;/p&gt;
+&lt;p&gt;I was dead wrong. I struggled with multiple compilation errors for about ~1hour.
+About 10 compilation errors later and adding multiple packages to my VpsCli gem,
+(Which I really need to fix. I plan to, but different problem for a different day),
+I was finally able to compile using phpenv.&lt;/p&gt;
+&lt;p&gt;After a lot of blood sweat and tears, I finally managed to compile php.&lt;br&gt;
+Here are all the .deb packages I used on Ubuntu 18.10&lt;/p&gt;
+&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;ruby&quot;&gt;&lt;pre class=&quot;language-ruby&quot;&gt;&lt;code class=&quot;language-ruby&quot;&gt;&lt;span class=&quot;token keyword&quot;&gt;module&lt;/span&gt; &lt;span class=&quot;token constant&quot;&gt;VpsCli&lt;/span&gt;
+  &lt;span class=&quot;token keyword&quot;&gt;class&lt;/span&gt; &lt;span class=&quot;token class-name&quot;&gt;Packages&lt;/span&gt;
+    &lt;span class=&quot;token comment&quot;&gt;# ...above code omitted for brevity&lt;/span&gt;
+    &lt;span class=&quot;token constant&quot;&gt;LIBS&lt;/span&gt; &lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;token string&quot;&gt;%w[libssl-dev libcurl4-openssl-dev libxml2-dev
+              re2c libbz2-dev libjpeg-turbo8-dev libpng-dev
+              libzip-dev libtidy-dev libxslt-dev automake libtool autoconf
+              flex bison libkrb5-dev libonig-dev]&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;freeze
+    &lt;span class=&quot;token comment&quot;&gt;# ...below code omitted for brevity&lt;/span&gt;
+  &lt;span class=&quot;token keyword&quot;&gt;end&lt;/span&gt;
+&lt;span class=&quot;token keyword&quot;&gt;end&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;&lt;br&gt;&lt;strong&gt; In ruby land heres how I would handle it with a quick pry session: &lt;/strong&gt;&lt;br&gt;&lt;/p&gt;
+&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;bash&quot;&gt;&lt;pre class=&quot;language-bash&quot;&gt;&lt;code class=&quot;language-bash&quot;&gt;  gem &lt;span class=&quot;token function&quot;&gt;install&lt;/span&gt; vps_cli
+  gem &lt;span class=&quot;token function&quot;&gt;install&lt;/span&gt; pry
+
+  pry
+  &lt;span class=&quot;token operator&quot;&gt;&gt;&lt;/span&gt; require &lt;span class=&quot;token string&quot;&gt;&apos;vps_cli&apos;&lt;/span&gt;
+  &lt;span class=&quot;token operator&quot;&gt;&gt;&lt;/span&gt; require &lt;span class=&quot;token string&quot;&gt;&apos;rake&apos;&lt;/span&gt;
+  &lt;span class=&quot;token operator&quot;&gt;&gt;&lt;/span&gt; pkgs &lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt; VpsCli::Packages::LIBS.join&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;token string&quot;&gt;&apos; &apos;&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;
+  &lt;span class=&quot;token operator&quot;&gt;&gt;&lt;/span&gt; Rake.sh&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;token string&quot;&gt;&quot;sudo apt install -y #{pkgs}&quot;&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;
+  &lt;span class=&quot;token operator&quot;&gt;&gt;&lt;/span&gt; &lt;span class=&quot;token builtin class-name&quot;&gt;exit&lt;/span&gt;
+
+  phpenv &lt;span class=&quot;token function&quot;&gt;install&lt;/span&gt; &lt;span class=&quot;token string&quot;&gt;&quot;7.3.8&quot;&lt;/span&gt; &lt;span class=&quot;token comment&quot;&gt;# SUCCESS!&lt;/span&gt;
+  phpenv global &lt;span class=&quot;token string&quot;&gt;&quot;7.3.8&quot;&lt;/span&gt;
+  php -v
+  &lt;span class=&quot;token comment&quot;&gt;# PHP 7.3.8 ...&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;br&gt;
+&lt;p&gt;&lt;a href=&quot;https://github.com/ParamagicDev/vps_cli/blob/master/lib/vps_cli/packages.rb&quot;&gt;Link to VpsCli repository - lib/vps_cli/packages.rb&lt;/a&gt;&lt;br&gt;&lt;br&gt;
 Yes, I know the codebase needs some TLC to get it to where I want it to be.
 I wrote it ~6-8months ago. Maybe I’ll rewrite it in PHP?! Who knows! But continue
-on this Laracasts PHP journey with me!&lt;/p&gt;</content:encoded></item></channel></rss>
+on this Laracasts PHP journey with me!&lt;/p&gt;
+&lt;h2&gt;What I learned&lt;/h2&gt;
+&lt;p&gt;Maybe next time I should stick to a simple &lt;code class=&quot;language-text&quot;&gt;sudo apt install -y php&lt;/code&gt;…&lt;br&gt;
+BUT! On the off chance I need a different PHP version I’m all set!
+Now, let’s start building!&lt;/p&gt;
+&lt;h2&gt;Links&lt;/h2&gt;
+&lt;p&gt;&lt;a href=&quot;https://laracasts.com&quot;&gt;Laracasts main site&lt;/a&gt;&lt;br&gt;
+&lt;a href=&quot;https://laracasts.com/series/php-for-beginners&quot;&gt;https://github.com/phpenv/phpenvLaracasts - PHP for beginners&lt;/a&gt;&lt;br&gt;
+&lt;a href=&quot;https://github.com/phpenv/phpenv&quot;&gt;PHPENV github&lt;/a&gt;&lt;br&gt;
+&lt;a href=&quot;https://github.com/phpenv/phpenv-installer&quot;&gt;PHPENV-INSTALLER - github&lt;/a&gt;&lt;/p&gt;</content:encoded></item></channel></rss>
