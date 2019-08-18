@@ -1,6 +1,6 @@
 ---
 title: Konnor's Post
-date: 18 Aug 2019
+date: "2019-08-18T03:03:39"
 description: "First post by me"
 ---
 
