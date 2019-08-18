@@ -96,6 +96,7 @@ Now, let's start building!
 
 ## Links
 
+[Follow along with my repo](https://github.com/ParamagicDev/php-for-beginners)<br>
 [Laracasts main site](https://laracasts.com)<br>
 [https://github.com/phpenv/phpenvLaracasts - PHP for beginners](https://laracasts.com/series/php-for-beginners)<br>
 [PHPENV github](https://github.com/phpenv/phpenv)<br>
