@@ -27,7 +27,7 @@ VpsCli packages I'm good to go! Okay, here we go:
 ```bash
 curl -L https://raw.githubusercontent.com/phpenv/phpenv-installer/master/bin/phpenv-installer \
     | bash
-# xyz happens you know how it goes
+# xyz happens you know how it goes, add XYZ to your .zshrc, cool whatever
 
 phpenv install 7.3.8
 # configure: error reinstall BZip2
@@ -38,9 +38,14 @@ About 10 compilation errors later and adding multiple packages to my VpsCli gem.
 (Which I really need to fix. I plan to have it take in a YAML file of packages
 rather than manual installs, but different problem for a different day)
 
+## What I learned
+
+Maybe next time I should stick to simple sudo apt install -y php...
+BUT! On the off chance I need a different PHP version I'm all set!
+
 After a lot of blood sweat and tears, I finally managed to compile php.
 [VpsCli - packages](https://github.com/ParamagicDev/vps_cli/blob/master/lib/vps_cli/packages.rb)
-If you look under Packages::LIBS it continued all the "sudo apt install -y #{pkg}"
+If you look under Packages::LIBS it contains all the "sudo apt install -y #{pkg}"
 I used in the process.
 Yes, I know the codebase needs some TLC to get it to where I want it to be. 
 I wrote it ~6-8months ago. Maybe I'll rewrite it in PHP?! Who knows! But continue
