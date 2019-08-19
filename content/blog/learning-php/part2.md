@@ -1,5 +1,5 @@
 ---
-title: Learning PHP - Part 2 Lets get coding!
+title: Learning PHP - Part 2 - Lets get coding!
 date: "2019-08-18T04:03:54"
 description: "Learn php with me! Part 2"
 ---
@@ -68,7 +68,7 @@ Pulling in parameters
 <?php
 
 // pulls in the 'name' parameter
-$name = htmlspecialchars($_GET['name']); 
+$name = htmlspecialchars($_GET['name']);
 
 echo "Hello, " . $name;
 // localhost:8888/?name=konnor #=> Hello, Konnor
@@ -117,7 +117,7 @@ or is unreadable. It will only send a compilation warning.<br>
     header {
       background: #e3e3e3;
       padding: 2rem;
-      text-align: center; 
+      text-align: center;
     }
   </style>
   </head>
