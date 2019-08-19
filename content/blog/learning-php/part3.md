@@ -1,7 +1,7 @@
 ---
 title: Learning PHP - Part 3 - Arrays, Arrays, and more Arrays
 date: "2019-08-18T19:27:44"
-description: "Lets dive deep into arrays and associative arrays"
+description: Lets dive deep into arrays and associative arrays
 ---
 
 # Part 3

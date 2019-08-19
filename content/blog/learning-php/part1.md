@@ -1,7 +1,8 @@
 ---
 title: Learning PHP - Part 1 - Lets Compile PHP!
 date: "2019-08-18"
-description: "What I've learned from watching PHP for Beginners from Laracasts"
+description: Compiling PHP with PHPENV is not easy, come enjoy
+             my frustrations in this task.
 ---
 
 # Purpose

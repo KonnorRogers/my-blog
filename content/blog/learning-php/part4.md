@@ -1,7 +1,7 @@
 ---
 title: Learning PHP - Part 4 - Lets get conditional
 date: "2019-08-19T00:28:06"
-description: "Dealing with conditionals and booleans"
+description: Dealing with conditionals and booleans
 ---
 
 # Part 3
