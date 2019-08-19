@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="UTF-8"?><rss xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:content="http://purl.org/rss/1.0/modules/content/" xmlns:atom="http://www.w3.org/2005/Atom" version="2.0"><channel><title><![CDATA[Konnor's Blog]]></title><description><![CDATA[A starter blog demonstrating what Gatsby can do.]]></description><link>https://gatsby-starter-blog-demo.netlify.com</link><generator>RSS for Node</generator><lastBuildDate>Mon, 19 Aug 2019 04:30:03 GMT</lastBuildDate><item><title><![CDATA[Part 4 - Lets get conditional]]></title><description><![CDATA[Part 3 Laracasts main site
+<?xml version="1.0" encoding="UTF-8"?><rss xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:content="http://purl.org/rss/1.0/modules/content/" xmlns:atom="http://www.w3.org/2005/Atom" version="2.0"><channel><title><![CDATA[Konnor's Blog]]></title><description><![CDATA[A starter blog demonstrating what Gatsby can do.]]></description><link>https://gatsby-starter-blog-demo.netlify.com</link><generator>RSS for Node</generator><lastBuildDate>Mon, 19 Aug 2019 04:32:32 GMT</lastBuildDate><item><title><![CDATA[Learning PHP - Part 4 - Lets get conditional]]></title><description><![CDATA[Part 3 Laracasts main site
 Laracasts - PHP for beginners Chapters covered: Step 8 - Booleans
 Step 9 - Conditionals Step 8 - Booleans I…]]></description><link>https://gatsby-starter-blog-demo.netlify.com/learning-php/part4/</link><guid isPermaLink="false">https://gatsby-starter-blog-demo.netlify.com/learning-php/part4/</guid><pubDate>Mon, 19 Aug 2019 04:28:06 GMT</pubDate><content:encoded>&lt;h1&gt;Part 3&lt;/h1&gt;
 &lt;p&gt;&lt;a href=&quot;https://laracasts.com&quot;&gt;Laracasts main site&lt;/a&gt;&lt;br&gt;
@@ -82,7 +82,7 @@ All of the above are booleans.&lt;/p&gt;
 &lt;p&gt;&lt;strong&gt;&lt;a href=&quot;https://github.com/ParamagicDev/php-for-beginners&quot;&gt;Follow along with my repo&lt;/a&gt;&lt;br&gt;&lt;/strong&gt;
 &lt;a href=&quot;https://laracasts.com&quot;&gt;Laracasts main site&lt;/a&gt;&lt;br&gt;
 &lt;a href=&quot;https://laracasts.com/series/php-for-beginners&quot;&gt;PHP for beginners&lt;/a&gt;&lt;br&gt;
-&lt;a href=&quot;https://phptherightway.com&quot;&gt;PHP The Right Way&lt;/a&gt;&lt;/p&gt;</content:encoded></item><item><title><![CDATA[Part 3 - Arrays, Booleans, Conditionals]]></title><description><![CDATA[Part 3 Laracasts main site
+&lt;a href=&quot;https://phptherightway.com&quot;&gt;PHP The Right Way&lt;/a&gt;&lt;/p&gt;</content:encoded></item><item><title><![CDATA[Learning PHP - Part 3 - Arrays, Arrays, and more Arrays]]></title><description><![CDATA[Part 3 Laracasts main site
 Laracasts - PHP for beginners Chapters covered: Step 6 - Understanding Arrays
 Step 7 - Associative Arrays Step…]]></description><link>https://gatsby-starter-blog-demo.netlify.com/learning-php/part3/</link><guid isPermaLink="false">https://gatsby-starter-blog-demo.netlify.com/learning-php/part3/</guid><pubDate>Sun, 18 Aug 2019 23:27:44 GMT</pubDate><content:encoded>&lt;h1&gt;Part 3&lt;/h1&gt;
 &lt;p&gt;&lt;a href=&quot;https://laracasts.com&quot;&gt;Laracasts main site&lt;/a&gt;&lt;br&gt;
@@ -340,7 +340,7 @@ or is unreadable. It will only send a compilation warning.&lt;br&gt;
 &lt;h2&gt;Links&lt;/h2&gt;
 &lt;p&gt;&lt;strong&gt;&lt;a href=&quot;https://github.com/ParamagicDev/php-for-beginners&quot;&gt;Follow along with my repo&lt;/a&gt;&lt;/strong&gt;&lt;br&gt;
 &lt;a href=&quot;https://laracasts.com&quot;&gt;Laracasts main site&lt;/a&gt;&lt;br&gt;
-&lt;a href=&quot;https://laracasts.com/series/php-for-beginners&quot;&gt;PHP for beginners&lt;/a&gt;&lt;br&gt;&lt;/p&gt;</content:encoded></item><item><title><![CDATA[Learning PHP Part 1 - Lets Compile PHP!]]></title><description><![CDATA[Purpose To document my trials & tribulations with learning PHP through laracasts.
+&lt;a href=&quot;https://laracasts.com/series/php-for-beginners&quot;&gt;PHP for beginners&lt;/a&gt;&lt;br&gt;&lt;/p&gt;</content:encoded></item><item><title><![CDATA[Learning PHP - Part 1 - Lets Compile PHP!]]></title><description><![CDATA[Purpose To document my trials & tribulations with learning PHP through laracasts.
 This is the article will cover the 1st step from Laracasts…]]></description><link>https://gatsby-starter-blog-demo.netlify.com/learning-php/part1/</link><guid isPermaLink="false">https://gatsby-starter-blog-demo.netlify.com/learning-php/part1/</guid><pubDate>Sun, 18 Aug 2019 00:00:00 GMT</pubDate><content:encoded>&lt;h1&gt;Purpose&lt;/h1&gt;
 &lt;p&gt;To document my trials &amp;#x26; tribulations with learning PHP through laracasts.
 This is the article will cover the 1st step from Laracasts.&lt;/p&gt;
