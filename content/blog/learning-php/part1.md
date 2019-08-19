@@ -9,13 +9,18 @@ description: "What I've learned from watching PHP for Beginners from Laracasts"
 To document my trials & tribulations with learning PHP through laracasts.
 This is the article will cover the 1st step from Laracasts.
 
-What I will be using:<br>
+## Part 1
+
 [Laracasts main site](https://laracasts.com)<br>
-[Laracasts - PHP for beginners](https://laracasts.com/series/php-for-beginners)
+[Laracasts - PHP for beginners](https://laracasts.com/series/php-for-beginners)<br>
+
+## Chapters
+
+[Step 1 - Installing PHP](https://laracasts.com/series/php-for-beginners/episodes/1)
 
 ## Installing PHP
 
-Originally, I installed PHP the usual way. 
+Originally, I installed PHP the usual way.
 
 ```shell
 sudo apt install -y php
@@ -26,8 +31,8 @@ Okay sweet its installed...hmmm I wonder if anyone else uses an environment mana
 like I do Ruby.
 
 So with very little effort I found [phpenv](https://github.com/phpenv/phpenv)! Aha! Awesome good stuff. <br>
-The documentation linked to an easier to use [phpenv-installer](https://github.com/phpenv/phpenv-installer). 
-Ok cool. I have a ton of packages from when I compiled Ruby. Piece of cake. 
+The documentation linked to an easier to use [phpenv-installer](https://github.com/phpenv/phpenv-installer).
+Ok cool. I have a ton of packages from when I compiled Ruby. Piece of cake.
 I have my handy dandy vps-cli gem packages I'm good to go! Okay, here we go:
 
 ```bash
@@ -85,7 +90,7 @@ end
 <br>
 
 [Link to VpsCli repository - lib/vps_cli/packages.rb](https://github.com/ParamagicDev/vps_cli/blob/master/lib/vps_cli/packages.rb)<br><br>
-Yes, I know the codebase needs some TLC to get it to where I want it to be. 
+Yes, I know the codebase needs some TLC to get it to where I want it to be.
 I wrote it ~6-8months ago. Maybe I'll rewrite it in PHP?! Who knows! But continue
 on this Laracasts PHP journey with me!
 
@@ -97,8 +102,8 @@ Now, let's start building!
 
 ## Links
 
-[Follow along with my repo](https://github.com/ParamagicDev/php-for-beginners)<br>
+<strong>[Follow along with my repo](https://github.com/ParamagicDev/php-for-beginners)</strong><br>
 [Laracasts main site](https://laracasts.com)<br>
-[https://github.com/phpenv/phpenvLaracasts - PHP for beginners](https://laracasts.com/series/php-for-beginners)<br>
+[PHP for beginners](https://laracasts.com/series/php-for-beginners)<br>
 [PHPENV github](https://github.com/phpenv/phpenv)<br>
 [PHPENV-INSTALLER - github](https://github.com/phpenv/phpenv-installer)

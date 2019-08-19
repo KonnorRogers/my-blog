@@ -1,15 +1,20 @@
 ---
-title: Learning PHP - Part 2
+title: Learning PHP - Part 2 Lets get coding!
 date: "2019-08-18T04:03:54"
 description: "Learn php with me! Part 2"
 ---
 
-# Chapters
+# Part 2
+
+[Laracasts main site](https://laracasts.com)<br>
+[Laracasts - PHP for beginners](https://laracasts.com/series/php-for-beginners)
+
+## Chapters
 
 [Step 2 - Install a code editor](https://laracasts.com/series/php-for-beginners/episodes/2)<br>
 [Step 3 - Variables](https://laracasts.com/series/php-for-beginners/episodes/3)<br>
 [Step 4 - PHP and HTML](https://laracasts.com/series/php-for-beginners/episodes/4)<br>
-[Step 5 - Seperation of PHP logic](https://laracasts.com/series/php-for-beginners/episodes/5)<br>
+[Step 5 - Seperation of PHP logic](https://laracasts.com/series/php-for-beginners/episodes/5)
 
 
 ## Hello World
@@ -129,6 +134,6 @@ or is unreadable. It will only send a compilation warning.<br>
 
 ## Links
 
-[Follow along with my repo](https://github.com/ParamagicDev/php-for-beginners)<br>
+<strong>[Follow along with my repo](https://github.com/ParamagicDev/php-for-beginners)</strong><br>
 [Laracasts main site](https://laracasts.com)<br>
-[https://github.com/phpenv/phpenvLaracasts - PHP for beginners](https://laracasts.com/series/php-for-beginners)<br>
+[PHP for beginners](https://laracasts.com/series/php-for-beginners)<br>
