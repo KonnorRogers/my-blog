@@ -1,6 +1,87 @@
-<?xml version="1.0" encoding="UTF-8"?><rss xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:content="http://purl.org/rss/1.0/modules/content/" xmlns:atom="http://www.w3.org/2005/Atom" version="2.0"><channel><title><![CDATA[Konnor's Blog]]></title><description><![CDATA[A starter blog demonstrating what Gatsby can do.]]></description><link>https://gatsby-starter-blog-demo.netlify.com</link><generator>RSS for Node</generator><lastBuildDate>Mon, 19 Aug 2019 04:41:06 GMT</lastBuildDate><item><title><![CDATA[Learning PHP - Part 4 - Lets get conditional]]></title><description><![CDATA[Part 3 Laracasts main site
+<?xml version="1.0" encoding="UTF-8"?><rss xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:content="http://purl.org/rss/1.0/modules/content/" xmlns:atom="http://www.w3.org/2005/Atom" version="2.0"><channel><title><![CDATA[Konnor's Blog]]></title><description><![CDATA[A starter blog demonstrating what Gatsby can do.]]></description><link>https://gatsby-starter-blog-demo.netlify.com</link><generator>RSS for Node</generator><lastBuildDate>Sun, 25 Aug 2019 16:18:50 GMT</lastBuildDate><item><title><![CDATA[No title]]></title><description><![CDATA[Part 5 Laracasts main site
+Laracasts - PHP for beginners Chapters covered: Step 10 - Functions Step 10 - Functions Functions are simple, but…]]></description><link>https://gatsby-starter-blog-demo.netlify.com/learning-php/part5/</link><guid isPermaLink="false">https://gatsby-starter-blog-demo.netlify.com/learning-php/part5/</guid><content:encoded>&lt;h1&gt;Part 5&lt;/h1&gt;
+&lt;p&gt;&lt;a href=&quot;https://laracasts.com&quot;&gt;Laracasts main site&lt;/a&gt;&lt;br&gt;
+&lt;a href=&quot;https://laracasts.com/series/php-for-beginners&quot;&gt;Laracasts - PHP for beginners&lt;/a&gt;&lt;/p&gt;
+&lt;h2&gt;Chapters covered:&lt;/h2&gt;
+&lt;p&gt;&lt;a href=&quot;https://laracasts.com/series/php-for-beginners/episodes/10&quot;&gt;Step 10 - Functions&lt;/a&gt;&lt;/p&gt;
+&lt;h3&gt;Step 10 - Functions&lt;/h3&gt;
+&lt;p&gt;Functions are simple, but very powerful reusable pieces of code. They are the
+building blocks of any language. Lets see how they help shape PHP.&lt;/p&gt;
+&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;php&quot;&gt;&lt;pre class=&quot;language-php&quot;&gt;&lt;code class=&quot;language-php&quot;&gt;// index.php
+&lt;span class=&quot;token php language-php&quot;&gt;&lt;span class=&quot;token delimiter important&quot;&gt;&amp;lt;?php&lt;/span&gt;
+
+&lt;span class=&quot;token comment&quot;&gt;// Will echo the values of $one, $two, and $three onto your web page&lt;/span&gt;
+&lt;span class=&quot;token keyword&quot;&gt;function&lt;/span&gt; &lt;span class=&quot;token function&quot;&gt;dumper&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;token variable&quot;&gt;$one&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;token variable&quot;&gt;$two&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;token variable&quot;&gt;$three&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;{&lt;/span&gt;
+  &lt;span class=&quot;token function&quot;&gt;var_dump&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;token variable&quot;&gt;$one&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;token variable&quot;&gt;$two&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;token variable&quot;&gt;$three&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;;&lt;/span&gt;
+&lt;span class=&quot;token punctuation&quot;&gt;}&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;Lets break it down.&lt;/p&gt;
+&lt;p&gt;&lt;code class=&quot;language-text&quot;&gt;function&lt;/code&gt; : This tells the PHP interpreter youre defining a function&lt;br&gt;
+&lt;code class=&quot;language-text&quot;&gt;dumper()&lt;/code&gt; : ‘dumper’ is the name of the function when you call it&lt;br&gt;
+&lt;code class=&quot;language-text&quot;&gt;($one, $two, $three)&lt;/code&gt; : These are whats called “arguments” or
+“parameters”. These are what are passed into the function, this can be blank.&lt;br&gt;&lt;/p&gt;
+&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;php&quot;&gt;&lt;pre class=&quot;language-php&quot;&gt;&lt;code class=&quot;language-php&quot;&gt;&lt;span class=&quot;token punctuation&quot;&gt;{&lt;/span&gt;
+  &lt;span class=&quot;token function&quot;&gt;var_dump&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;token variable&quot;&gt;$one&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;token variable&quot;&gt;$two&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;token variable&quot;&gt;$three&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;;&lt;/span&gt;
+&lt;span class=&quot;token punctuation&quot;&gt;}&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;br&gt;
+&lt;p&gt;This calls the function:
+&lt;a href=&quot;https://www.php.net/manual/en/function.var-dump.php&quot;&gt;var_dump()&lt;/a&gt;&lt;br&gt;
+This will output your variables onto the page.&lt;br&gt;&lt;/p&gt;
+&lt;p&gt;Lets get a little bit more advanced. Lets create a dd() function.&lt;/p&gt;
+&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;php&quot;&gt;&lt;pre class=&quot;language-php&quot;&gt;&lt;code class=&quot;language-php&quot;&gt;// index.php
+&lt;span class=&quot;token php language-php&quot;&gt;&lt;span class=&quot;token delimiter important&quot;&gt;&amp;lt;?php&lt;/span&gt;
+
+&lt;span class=&quot;token comment&quot;&gt;// Die and dump&lt;/span&gt;
+&lt;span class=&quot;token keyword&quot;&gt;function&lt;/span&gt; &lt;span class=&quot;token function&quot;&gt;dd&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;token variable&quot;&gt;$val&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;{&lt;/span&gt;
+  &lt;span class=&quot;token keyword&quot;&gt;echo&lt;/span&gt; &lt;span class=&quot;token single-quoted-string string&quot;&gt;&apos;&amp;lt;pre&gt;&apos;&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;;&lt;/span&gt;
+  &lt;span class=&quot;token keyword&quot;&gt;die&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;token function&quot;&gt;var_dump&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;token variable&quot;&gt;$val&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;;&lt;/span&gt;
+  &lt;span class=&quot;token keyword&quot;&gt;echo&lt;/span&gt; &lt;span class=&quot;token single-quoted-string string&quot;&gt;&apos;&amp;lt;/pre&gt;&apos;&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;;&lt;/span&gt;
+&lt;span class=&quot;token punctuation&quot;&gt;}&lt;/span&gt;
+
+&lt;span class=&quot;token comment&quot;&gt;// Will stop anything after this function&lt;/span&gt;
+&lt;span class=&quot;token function&quot;&gt;dd&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;token single-quoted-string string&quot;&gt;&apos;hello world&apos;&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;;&lt;/span&gt;
+
+&lt;span class=&quot;token comment&quot;&gt;// Will not run&lt;/span&gt;
+&lt;span class=&quot;token function&quot;&gt;dd&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;token single-quoted-string string&quot;&gt;&apos;hi there&apos;&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;;&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;Lets look at what &lt;code class=&quot;language-text&quot;&gt;dd($val)&lt;/code&gt; is doing.&lt;br&gt;&lt;/p&gt;
+&lt;p&gt;So first, it defines the function dd, then it will take in a 1 variable argument.&lt;br&gt;
+Next, it will wrap the value of &lt;code class=&quot;language-text&quot;&gt;die(var_dump($val)&lt;/code&gt; inside of &amp;#x3C;pre&gt;&amp;#x3C;/pre&gt; tags.
+Finally, it will kill the execution of the php program. Equivalent to &lt;code class=&quot;language-text&quot;&gt;exit&lt;/code&gt;.&lt;/p&gt;
+&lt;h4&gt;Homework&lt;/h4&gt;
+&lt;p&gt;Assume you own a night club. Only allow people 21 or older inside and print a message
+telling them if they’re allowed to come in.&lt;br&gt;&lt;/p&gt;
+&lt;p&gt;My solution:&lt;/p&gt;
+&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;php&quot;&gt;&lt;pre class=&quot;language-php&quot;&gt;&lt;code class=&quot;language-php&quot;&gt;// functions.php
+&lt;span class=&quot;token php language-php&quot;&gt;&lt;span class=&quot;token delimiter important&quot;&gt;&amp;lt;?php&lt;/span&gt;
+
+&lt;span class=&quot;token keyword&quot;&gt;function&lt;/span&gt; &lt;span class=&quot;token function&quot;&gt;isOldEnough&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;token variable&quot;&gt;$age&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;{&lt;/span&gt;
+  &lt;span class=&quot;token keyword&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;token variable&quot;&gt;$age&lt;/span&gt; &lt;span class=&quot;token operator&quot;&gt;&gt;=&lt;/span&gt; &lt;span class=&quot;token number&quot;&gt;21&lt;/span&gt; &lt;span class=&quot;token operator&quot;&gt;?&lt;/span&gt; &lt;span class=&quot;token boolean constant&quot;&gt;true&lt;/span&gt; &lt;span class=&quot;token punctuation&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;token boolean constant&quot;&gt;false&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;;&lt;/span&gt;
+&lt;span class=&quot;token punctuation&quot;&gt;}&lt;/span&gt;
+
+&lt;span class=&quot;token keyword&quot;&gt;function&lt;/span&gt; &lt;span class=&quot;token function&quot;&gt;echoOldEnough&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;token variable&quot;&gt;$age&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;{&lt;/span&gt;
+  &lt;span class=&quot;token keyword&quot;&gt;echo&lt;/span&gt; &lt;span class=&quot;token single-quoted-string string&quot;&gt;&apos;&amp;lt;p&gt;&apos;&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;;&lt;/span&gt;
+  &lt;span class=&quot;token keyword&quot;&gt;echo&lt;/span&gt; &lt;span class=&quot;token single-quoted-string string&quot;&gt;&apos;You are, &apos;&lt;/span&gt; &lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt; &lt;span class=&quot;token variable&quot;&gt;$age&lt;/span&gt; &lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt; &lt;span class=&quot;token double-quoted-string string&quot;&gt;&quot;. &quot;&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;;&lt;/span&gt;
+  &lt;span class=&quot;token keyword&quot;&gt;echo&lt;/span&gt; &lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;token function&quot;&gt;isOldEnough&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;token variable&quot;&gt;$age&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;token operator&quot;&gt;?&lt;/span&gt; &lt;span class=&quot;token double-quoted-string string&quot;&gt;&quot;You can enter the club.&quot;&lt;/span&gt; &lt;span class=&quot;token punctuation&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;token double-quoted-string string&quot;&gt;&quot;You cannot enter.&quot;&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;;&lt;/span&gt;
+  &lt;span class=&quot;token keyword&quot;&gt;echo&lt;/span&gt; &lt;span class=&quot;token single-quoted-string string&quot;&gt;&apos;&amp;lt;/p&gt;&apos;&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;;&lt;/span&gt;
+&lt;span class=&quot;token punctuation&quot;&gt;}&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;php&quot;&gt;&lt;pre class=&quot;language-php&quot;&gt;&lt;code class=&quot;language-php&quot;&gt;// index.php
+&lt;span class=&quot;token php language-php&quot;&gt;&lt;span class=&quot;token delimiter important&quot;&gt;&amp;lt;?php&lt;/span&gt;
+
+&lt;span class=&quot;token keyword&quot;&gt;require&lt;/span&gt; &lt;span class=&quot;token single-quoted-string string&quot;&gt;&apos;functions.php&apos;&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;;&lt;/span&gt;
+
+&lt;span class=&quot;token function&quot;&gt;echoOldEnough&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;token number&quot;&gt;21&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;;&lt;/span&gt; &lt;span class=&quot;token comment&quot;&gt;// is allowed inside&lt;/span&gt;
+&lt;span class=&quot;token function&quot;&gt;echoOldEnough&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;token number&quot;&gt;20&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;;&lt;/span&gt; &lt;span class=&quot;token comment&quot;&gt;// is not allowed inside&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;I’m not going to go too in depth, but basically &lt;code class=&quot;language-text&quot;&gt;echoOldEnough()&lt;/code&gt; is a wrapper around
+&lt;code class=&quot;language-text&quot;&gt;isOldEnough()&lt;/code&gt;. This allows you to print a readable message on the webpage.&lt;br&gt;
+This function is imported into ‘index.php’ when you run: &lt;br&gt;
+&lt;code class=&quot;language-text&quot;&gt;require &amp;#39;functions.php&amp;#39;;&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;Lets go to Step 11&lt;/p&gt;
+&lt;h3&gt;Step 11 - MySQL 101&lt;/h3&gt;
+&lt;h2&gt;Links&lt;/h2&gt;
+&lt;p&gt;&lt;strong&gt;&lt;a href=&quot;https://github.com/ParamagicDev/php-for-beginners&quot;&gt;Follow along with my repo&lt;/a&gt;&lt;br&gt;&lt;/strong&gt;
+&lt;a href=&quot;https://laracasts.com&quot;&gt;Laracasts main site&lt;/a&gt;&lt;br&gt;
+&lt;a href=&quot;https://laracasts.com/series/php-for-beginners&quot;&gt;PHP for beginners&lt;/a&gt;&lt;br&gt;&lt;/p&gt;</content:encoded></item><item><title><![CDATA[Learning PHP - Part 4 - Lets get conditional]]></title><description><![CDATA[Part 4 Laracasts main site
 Laracasts - PHP for beginners Chapters covered: Step 8 - Booleans
-Step 9 - Conditionals Step 8 - Booleans I…]]></description><link>https://gatsby-starter-blog-demo.netlify.com/learning-php/part4/</link><guid isPermaLink="false">https://gatsby-starter-blog-demo.netlify.com/learning-php/part4/</guid><pubDate>Mon, 19 Aug 2019 04:28:06 GMT</pubDate><content:encoded>&lt;h1&gt;Part 3&lt;/h1&gt;
+Step 9 - Conditionals Step 8 - Booleans I…]]></description><link>https://gatsby-starter-blog-demo.netlify.com/learning-php/part4/</link><guid isPermaLink="false">https://gatsby-starter-blog-demo.netlify.com/learning-php/part4/</guid><pubDate>Mon, 19 Aug 2019 04:28:06 GMT</pubDate><content:encoded>&lt;h1&gt;Part 4&lt;/h1&gt;
 &lt;p&gt;&lt;a href=&quot;https://laracasts.com&quot;&gt;Laracasts main site&lt;/a&gt;&lt;br&gt;
 &lt;a href=&quot;https://laracasts.com/series/php-for-beginners&quot;&gt;Laracasts - PHP for beginners&lt;/a&gt;&lt;/p&gt;
 &lt;h2&gt;Chapters covered:&lt;/h2&gt;
