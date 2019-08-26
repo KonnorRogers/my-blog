@@ -1,6 +1,20 @@
-<?xml version="1.0" encoding="UTF-8"?><rss xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:content="http://purl.org/rss/1.0/modules/content/" xmlns:atom="http://www.w3.org/2005/Atom" version="2.0"><channel><title><![CDATA[Konnor's Blog]]></title><description><![CDATA[A starter blog demonstrating what Gatsby can do.]]></description><link>https://gatsby-starter-blog-demo.netlify.com</link><generator>RSS for Node</generator><lastBuildDate>Mon, 26 Aug 2019 08:42:55 GMT</lastBuildDate><item><title><![CDATA[Learning PHP - Part 6 - MySQL? Or Your SQL?]]></title><description><![CDATA[Chapters covered Step 11 - Databases 101 Step 11 - MySQL 101 Now its time to switch gears. Lets learn about MySQL. Its a relational database…]]></description><link>https://gatsby-starter-blog-demo.netlify.com/learning-php/part6/</link><guid isPermaLink="false">https://gatsby-starter-blog-demo.netlify.com/learning-php/part6/</guid><pubDate>Mon, 26 Aug 2019 06:24:59 GMT</pubDate><content:encoded>&lt;h2&gt;Chapters covered&lt;/h2&gt;
-&lt;p&gt;&lt;a href=&quot;https://laracasts.com/series/php-for-beginners/episodes/11&quot;&gt;Step 11 - Databases 101&lt;/a&gt;&lt;/p&gt;
-&lt;h3&gt;Step 11 - MySQL 101&lt;/h3&gt;
+<?xml version="1.0" encoding="UTF-8"?><rss xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:content="http://purl.org/rss/1.0/modules/content/" xmlns:atom="http://www.w3.org/2005/Atom" version="2.0"><channel><title><![CDATA[Konnor's Blog]]></title><description><![CDATA[A starter blog demonstrating what Gatsby can do.]]></description><link>https://gatsby-starter-blog-demo.netlify.com</link><generator>RSS for Node</generator><lastBuildDate>Mon, 26 Aug 2019 10:44:11 GMT</lastBuildDate><item><title><![CDATA[PHP for beginners - Part 7 - Classes?...Like school?]]></title><description><![CDATA[Part 7 Laracasts main site
+Laracasts - PHP for beginners Chapters covered Chapter 12 - Classes 101 Links Follow along with my repo
+Laracasts…]]></description><link>https://gatsby-starter-blog-demo.netlify.com/learning-php/part7/</link><guid isPermaLink="false">https://gatsby-starter-blog-demo.netlify.com/learning-php/part7/</guid><pubDate>Mon, 26 Aug 2019 10:31:03 GMT</pubDate><content:encoded>&lt;h1&gt;Part 7&lt;/h1&gt;
+&lt;p&gt;&lt;a href=&quot;https://laracasts.com&quot;&gt;Laracasts main site&lt;/a&gt;&lt;br&gt;
+&lt;a href=&quot;https://laracasts.com/series/php-for-beginners&quot;&gt;Laracasts - PHP for beginners&lt;/a&gt;&lt;/p&gt;
+&lt;h2&gt;Chapters covered&lt;/h2&gt;
+&lt;p&gt;&lt;a href=&quot;https://laracasts.com/series/php-for-beginners/episodes/12&quot;&gt;Chapter 12 - Classes 101&lt;/a&gt;&lt;/p&gt;
+&lt;h2&gt;Links&lt;/h2&gt;
+&lt;p&gt;&lt;strong&gt;&lt;a href=&quot;https://github.com/ParamagicDev/php-for-beginners&quot;&gt;Follow along with my repo&lt;/a&gt;&lt;br&gt;&lt;/strong&gt;
+&lt;a href=&quot;https://laracasts.com&quot;&gt;Laracasts main site&lt;/a&gt;&lt;br&gt;
+&lt;a href=&quot;https://laracasts.com/series/php-for-beginners&quot;&gt;PHP for beginners&lt;/a&gt;&lt;br&gt;&lt;/p&gt;</content:encoded></item><item><title><![CDATA[Learning PHP - Part 6 - MySQL? Or Your SQL?]]></title><description><![CDATA[Part 6 Laracasts main site
+Laracasts - PHP for beginners Chapters covered Chapter 11 - Databases 101 Chapter 11 - MySQL 101 Now its time to…]]></description><link>https://gatsby-starter-blog-demo.netlify.com/learning-php/part6/</link><guid isPermaLink="false">https://gatsby-starter-blog-demo.netlify.com/learning-php/part6/</guid><pubDate>Mon, 26 Aug 2019 06:24:59 GMT</pubDate><content:encoded>&lt;h1&gt;Part 6&lt;/h1&gt;
+&lt;p&gt;&lt;a href=&quot;https://laracasts.com&quot;&gt;Laracasts main site&lt;/a&gt;&lt;br&gt;
+&lt;a href=&quot;https://laracasts.com/series/php-for-beginners&quot;&gt;Laracasts - PHP for beginners&lt;/a&gt;&lt;/p&gt;
+&lt;h2&gt;Chapters covered&lt;/h2&gt;
+&lt;p&gt;&lt;a href=&quot;https://laracasts.com/series/php-for-beginners/episodes/11&quot;&gt;Chapter 11 - Databases 101&lt;/a&gt;&lt;/p&gt;
+&lt;h3&gt;Chapter 11 - MySQL 101&lt;/h3&gt;
 &lt;p&gt;Now its time to switch gears. Lets learn about MySQL. Its a relational database,
 or SQL-based database, which essentially means everythings related, as implied
 by the name via various ‘id’ columns. SQL stands for ‘Structured Query Language’.
@@ -113,12 +127,12 @@ classes.&lt;/p&gt;
 &lt;a href=&quot;https://www.mysql.com/downloads/&quot;&gt;MySQL downloads page&lt;/a&gt;&lt;br&gt;
 &lt;a href=&quot;https://www.digitalocean.com/community/tutorials/how-to-install-mysql-on-ubuntu-18-04&quot;&gt;DigitalOcean Guide to MySQL&lt;/a&gt;.&lt;br&gt;
 &lt;a href=&quot;https://dev.mysql.com/doc/workbench/en/&quot;&gt;MySQL-Workbench&lt;/a&gt;&lt;br&gt;&lt;/p&gt;</content:encoded></item><item><title><![CDATA[Learning PHP - Part 5 - Lets make it functional]]></title><description><![CDATA[Part 5 Laracasts main site
-Laracasts - PHP for beginners Chapters covered: Step 10 - Functions Step 10 - Functions Functions are simple, but…]]></description><link>https://gatsby-starter-blog-demo.netlify.com/learning-php/part5/</link><guid isPermaLink="false">https://gatsby-starter-blog-demo.netlify.com/learning-php/part5/</guid><pubDate>Mon, 26 Aug 2019 06:19:15 GMT</pubDate><content:encoded>&lt;h1&gt;Part 5&lt;/h1&gt;
+Laracasts - PHP for beginners Chapters covered: Chapter 10 - Functions Chapter 10 - Functions Functions are…]]></description><link>https://gatsby-starter-blog-demo.netlify.com/learning-php/part5/</link><guid isPermaLink="false">https://gatsby-starter-blog-demo.netlify.com/learning-php/part5/</guid><pubDate>Mon, 26 Aug 2019 06:19:15 GMT</pubDate><content:encoded>&lt;h1&gt;Part 5&lt;/h1&gt;
 &lt;p&gt;&lt;a href=&quot;https://laracasts.com&quot;&gt;Laracasts main site&lt;/a&gt;&lt;br&gt;
 &lt;a href=&quot;https://laracasts.com/series/php-for-beginners&quot;&gt;Laracasts - PHP for beginners&lt;/a&gt;&lt;/p&gt;
 &lt;h2&gt;Chapters covered:&lt;/h2&gt;
-&lt;p&gt;&lt;a href=&quot;https://laracasts.com/series/php-for-beginners/episodes/10&quot;&gt;Step 10 - Functions&lt;/a&gt;&lt;/p&gt;
-&lt;h3&gt;Step 10 - Functions&lt;/h3&gt;
+&lt;p&gt;&lt;a href=&quot;https://laracasts.com/series/php-for-beginners/episodes/10&quot;&gt;Chapter 10 - Functions&lt;/a&gt;&lt;/p&gt;
+&lt;h3&gt;Chapter 10 - Functions&lt;/h3&gt;
 &lt;p&gt;Functions are simple, but very powerful reusable pieces of code. They are the
 building blocks of any language. Lets see how they help shape PHP.&lt;/p&gt;
 &lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;php&quot;&gt;&lt;pre class=&quot;language-php&quot;&gt;&lt;code class=&quot;language-php&quot;&gt;// index.php
@@ -188,19 +202,19 @@ telling them if they’re allowed to come in.&lt;br&gt;&lt;/p&gt;
 &lt;code class=&quot;language-text&quot;&gt;isOldEnough()&lt;/code&gt;. This allows you to print a readable message on the webpage.&lt;br&gt;
 This function is imported into ‘index.php’ when you run: &lt;br&gt;
 &lt;code class=&quot;language-text&quot;&gt;require &amp;#39;functions.php&amp;#39;;&lt;/code&gt;&lt;/p&gt;
-&lt;p&gt;Lets go to Step 11 in the next part.&lt;/p&gt;
+&lt;p&gt;Lets go to Chapter 11 in the next part.&lt;/p&gt;
 &lt;h2&gt;Links&lt;/h2&gt;
 &lt;p&gt;&lt;strong&gt;&lt;a href=&quot;https://github.com/ParamagicDev/php-for-beginners&quot;&gt;Follow along with my repo&lt;/a&gt;&lt;br&gt;&lt;/strong&gt;
 &lt;a href=&quot;https://laracasts.com&quot;&gt;Laracasts main site&lt;/a&gt;&lt;br&gt;
 &lt;a href=&quot;https://laracasts.com/series/php-for-beginners&quot;&gt;PHP for beginners&lt;/a&gt;&lt;br&gt;&lt;/p&gt;</content:encoded></item><item><title><![CDATA[Learning PHP - Part 4 - Lets get conditional]]></title><description><![CDATA[Part 4 Laracasts main site
-Laracasts - PHP for beginners Chapters covered: Step 8 - Booleans
-Step 9 - Conditionals Step 8 - Booleans I…]]></description><link>https://gatsby-starter-blog-demo.netlify.com/learning-php/part4/</link><guid isPermaLink="false">https://gatsby-starter-blog-demo.netlify.com/learning-php/part4/</guid><pubDate>Mon, 19 Aug 2019 04:28:06 GMT</pubDate><content:encoded>&lt;h1&gt;Part 4&lt;/h1&gt;
+Laracasts - PHP for beginners Chapters covered: Chapter 8 - Booleans
+Chapter 9 - Conditionals Chapter…]]></description><link>https://gatsby-starter-blog-demo.netlify.com/learning-php/part4/</link><guid isPermaLink="false">https://gatsby-starter-blog-demo.netlify.com/learning-php/part4/</guid><pubDate>Mon, 19 Aug 2019 04:28:06 GMT</pubDate><content:encoded>&lt;h1&gt;Part 4&lt;/h1&gt;
 &lt;p&gt;&lt;a href=&quot;https://laracasts.com&quot;&gt;Laracasts main site&lt;/a&gt;&lt;br&gt;
 &lt;a href=&quot;https://laracasts.com/series/php-for-beginners&quot;&gt;Laracasts - PHP for beginners&lt;/a&gt;&lt;/p&gt;
 &lt;h2&gt;Chapters covered:&lt;/h2&gt;
-&lt;p&gt;&lt;a href=&quot;https://laracasts.com/series/php-for-beginners/episodes/8&quot;&gt;Step 8 - Booleans&lt;/a&gt;&lt;br&gt;
-&lt;a href=&quot;https://laracasts.com/series/php-for-beginners/episodes/9&quot;&gt;Step 9 - Conditionals&lt;/a&gt;&lt;/p&gt;
-&lt;h2&gt;Step 8 - Booleans&lt;/h2&gt;
+&lt;p&gt;&lt;a href=&quot;https://laracasts.com/series/php-for-beginners/episodes/8&quot;&gt;Chapter 8 - Booleans&lt;/a&gt;&lt;br&gt;
+&lt;a href=&quot;https://laracasts.com/series/php-for-beginners/episodes/9&quot;&gt;Chapter 9 - Conditionals&lt;/a&gt;&lt;/p&gt;
+&lt;h2&gt;Chapter 8 - Booleans&lt;/h2&gt;
 &lt;p&gt;I diverged from laracasts here. I didn’t want to make
 multiple &amp;#x3C;li&gt; tags, so I used a conditional which is
 in the next chapter. The code is as follows:&lt;/p&gt;
@@ -240,7 +254,7 @@ End the block, continue to the end&lt;/p&gt;
 All of the above are booleans.&lt;/p&gt;
 &lt;p&gt;I found this article &lt;a href=&quot;https://www.php-fig.org/psr/psr-12/#25-keywords-and-types&quot;&gt;PHP The Right Way Keyword &amp;#x26; Type&lt;/a&gt;&lt;/p&gt;
 &lt;p&gt;This suggests to use &lt;code class=&quot;language-text&quot;&gt;true&lt;/code&gt; and &lt;code class=&quot;language-text&quot;&gt;false&lt;/code&gt; for booleans&lt;/p&gt;
-&lt;h2&gt;Step 9 - Conditionals&lt;/h2&gt;
+&lt;h2&gt;Chapter 9 - Conditionals&lt;/h2&gt;
 &lt;p&gt;Plain if statement in php:&lt;/p&gt;
 &lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;php&quot;&gt;&lt;pre class=&quot;language-php&quot;&gt;&lt;code class=&quot;language-php&quot;&gt;&lt;span class=&quot;token php language-php&quot;&gt;&lt;span class=&quot;token delimiter important&quot;&gt;&amp;lt;?php&lt;/span&gt;
 
@@ -277,14 +291,14 @@ All of the above are booleans.&lt;/p&gt;
 &lt;a href=&quot;https://laracasts.com&quot;&gt;Laracasts main site&lt;/a&gt;&lt;br&gt;
 &lt;a href=&quot;https://laracasts.com/series/php-for-beginners&quot;&gt;PHP for beginners&lt;/a&gt;&lt;br&gt;
 &lt;a href=&quot;https://phptherightway.com&quot;&gt;PHP The Right Way&lt;/a&gt;&lt;/p&gt;</content:encoded></item><item><title><![CDATA[Learning PHP - Part 3 - Arrays, Arrays, and more Arrays]]></title><description><![CDATA[Part 3 Laracasts main site
-Laracasts - PHP for beginners Chapters covered: Step 6 - Understanding Arrays
-Step 7 - Associative Arrays Step…]]></description><link>https://gatsby-starter-blog-demo.netlify.com/learning-php/part3/</link><guid isPermaLink="false">https://gatsby-starter-blog-demo.netlify.com/learning-php/part3/</guid><pubDate>Sun, 18 Aug 2019 23:27:44 GMT</pubDate><content:encoded>&lt;h1&gt;Part 3&lt;/h1&gt;
+Laracasts - PHP for beginners Chapters covered: Chapter 6 - Understanding Arrays
+Chapter 7 - Associative Arrays…]]></description><link>https://gatsby-starter-blog-demo.netlify.com/learning-php/part3/</link><guid isPermaLink="false">https://gatsby-starter-blog-demo.netlify.com/learning-php/part3/</guid><pubDate>Sun, 18 Aug 2019 23:27:44 GMT</pubDate><content:encoded>&lt;h1&gt;Part 3&lt;/h1&gt;
 &lt;p&gt;&lt;a href=&quot;https://laracasts.com&quot;&gt;Laracasts main site&lt;/a&gt;&lt;br&gt;
 &lt;a href=&quot;https://laracasts.com/series/php-for-beginners&quot;&gt;Laracasts - PHP for beginners&lt;/a&gt;&lt;/p&gt;
 &lt;h2&gt;Chapters covered:&lt;/h2&gt;
-&lt;p&gt;&lt;a href=&quot;https://laracasts.com/series/php-for-beginners/episodes/6&quot;&gt;Step 6 - Understanding Arrays&lt;/a&gt;&lt;br&gt;
-&lt;a href=&quot;https://laracasts.com/series/php-for-beginners/episodes/7&quot;&gt;Step 7 - Associative Arrays&lt;/a&gt;&lt;br&gt;&lt;/p&gt;
-&lt;h2&gt;Step 6 - Understanding Arrays&lt;/h2&gt;
+&lt;p&gt;&lt;a href=&quot;https://laracasts.com/series/php-for-beginners/episodes/6&quot;&gt;Chapter 6 - Understanding Arrays&lt;/a&gt;&lt;br&gt;
+&lt;a href=&quot;https://laracasts.com/series/php-for-beginners/episodes/7&quot;&gt;Chapter 7 - Associative Arrays&lt;/a&gt;&lt;br&gt;&lt;/p&gt;
+&lt;h2&gt;Chapter 6 - Understanding Arrays&lt;/h2&gt;
 &lt;h3&gt;Looping through an array&lt;/h3&gt;
 &lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;php&quot;&gt;&lt;pre class=&quot;language-php&quot;&gt;&lt;code class=&quot;language-php&quot;&gt;// index.php
 &lt;span class=&quot;token php language-php&quot;&gt;&lt;span class=&quot;token delimiter important&quot;&gt;&amp;lt;?php&lt;/span&gt;
@@ -335,7 +349,7 @@ Step 7 - Associative Arrays Step…]]></description><link>https://gatsby-starter
 &lt;/ul&gt;
 &lt;/blockquote&gt;
 &lt;hr&gt;
-&lt;h2&gt;Step 7 - Associative Arrays&lt;/h2&gt;
+&lt;h2&gt;Chapter 7 - Associative Arrays&lt;/h2&gt;
 &lt;p&gt;These appear to me to be similar to a ruby hash so here we go:&lt;/p&gt;
 &lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;php&quot;&gt;&lt;pre class=&quot;language-php&quot;&gt;&lt;code class=&quot;language-php&quot;&gt;// index.php
 &lt;span class=&quot;token php language-php&quot;&gt;&lt;span class=&quot;token delimiter important&quot;&gt;&amp;lt;?php&lt;/span&gt;
@@ -439,16 +453,16 @@ Step 7 - Associative Arrays Step…]]></description><link>https://gatsby-starter
 &lt;p&gt;&lt;strong&gt;&lt;a href=&quot;https://github.com/ParamagicDev/php-for-beginners&quot;&gt;Follow along with my repo&lt;/a&gt;&lt;br&gt;&lt;/strong&gt;
 &lt;a href=&quot;https://laracasts.com&quot;&gt;Laracasts main site&lt;/a&gt;&lt;br&gt;
 &lt;a href=&quot;https://laracasts.com/series/php-for-beginners&quot;&gt;PHP for beginners&lt;/a&gt;&lt;br&gt;&lt;/p&gt;</content:encoded></item><item><title><![CDATA[Learning PHP - Part 2 - Lets get coding!]]></title><description><![CDATA[Part 2 Laracasts main site
-Laracasts - PHP for beginners Chapters Step 2 - Install a code editor
-Step 3 - Variables
-Step 4 - PHP and HTML…]]></description><link>https://gatsby-starter-blog-demo.netlify.com/learning-php/part2/</link><guid isPermaLink="false">https://gatsby-starter-blog-demo.netlify.com/learning-php/part2/</guid><pubDate>Sun, 18 Aug 2019 08:03:54 GMT</pubDate><content:encoded>&lt;h1&gt;Part 2&lt;/h1&gt;
+Laracasts - PHP for beginners Chapters Chapter 2 - Install a code editor
+Chapter 3 - Variables
+Chapter 4 - PHP…]]></description><link>https://gatsby-starter-blog-demo.netlify.com/learning-php/part2/</link><guid isPermaLink="false">https://gatsby-starter-blog-demo.netlify.com/learning-php/part2/</guid><pubDate>Sun, 18 Aug 2019 08:03:54 GMT</pubDate><content:encoded>&lt;h1&gt;Part 2&lt;/h1&gt;
 &lt;p&gt;&lt;a href=&quot;https://laracasts.com&quot;&gt;Laracasts main site&lt;/a&gt;&lt;br&gt;
 &lt;a href=&quot;https://laracasts.com/series/php-for-beginners&quot;&gt;Laracasts - PHP for beginners&lt;/a&gt;&lt;/p&gt;
 &lt;h2&gt;Chapters&lt;/h2&gt;
-&lt;p&gt;&lt;a href=&quot;https://laracasts.com/series/php-for-beginners/episodes/2&quot;&gt;Step 2 - Install a code editor&lt;/a&gt;&lt;br&gt;
-&lt;a href=&quot;https://laracasts.com/series/php-for-beginners/episodes/3&quot;&gt;Step 3 - Variables&lt;/a&gt;&lt;br&gt;
-&lt;a href=&quot;https://laracasts.com/series/php-for-beginners/episodes/4&quot;&gt;Step 4 - PHP and HTML&lt;/a&gt;&lt;br&gt;
-&lt;a href=&quot;https://laracasts.com/series/php-for-beginners/episodes/5&quot;&gt;Step 5 - Seperation of PHP logic&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a href=&quot;https://laracasts.com/series/php-for-beginners/episodes/2&quot;&gt;Chapter 2 - Install a code editor&lt;/a&gt;&lt;br&gt;
+&lt;a href=&quot;https://laracasts.com/series/php-for-beginners/episodes/3&quot;&gt;Chapter 3 - Variables&lt;/a&gt;&lt;br&gt;
+&lt;a href=&quot;https://laracasts.com/series/php-for-beginners/episodes/4&quot;&gt;Chapter 4 - PHP and HTML&lt;/a&gt;&lt;br&gt;
+&lt;a href=&quot;https://laracasts.com/series/php-for-beginners/episodes/5&quot;&gt;Chapter 5 - Seperation of PHP logic&lt;/a&gt;&lt;/p&gt;
 &lt;h2&gt;Hello World&lt;/h2&gt;
 &lt;p&gt;Are you really learning a new program if you don’t create a simple hello world?&lt;/p&gt;
 &lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;php&quot;&gt;&lt;pre class=&quot;language-php&quot;&gt;&lt;code class=&quot;language-php&quot;&gt;// hello-world.php
@@ -542,7 +556,7 @@ This is the article will cover the 1st step from Laracasts.&lt;/p&gt;
 &lt;p&gt;&lt;a href=&quot;https://laracasts.com&quot;&gt;Laracasts main site&lt;/a&gt;&lt;br&gt;
 &lt;a href=&quot;https://laracasts.com/series/php-for-beginners&quot;&gt;Laracasts - PHP for beginners&lt;/a&gt;&lt;br&gt;&lt;/p&gt;
 &lt;h2&gt;Chapters&lt;/h2&gt;
-&lt;p&gt;&lt;a href=&quot;https://laracasts.com/series/php-for-beginners/episodes/1&quot;&gt;Step 1 - Installing PHP&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a href=&quot;https://laracasts.com/series/php-for-beginners/episodes/1&quot;&gt;Chapter 1 - Installing PHP&lt;/a&gt;&lt;/p&gt;
 &lt;h2&gt;Installing PHP&lt;/h2&gt;
 &lt;p&gt;Originally, I installed PHP the usual way.&lt;/p&gt;
 &lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;shell&quot;&gt;&lt;pre class=&quot;language-shell&quot;&gt;&lt;code class=&quot;language-shell&quot;&gt;&lt;span class=&quot;token function&quot;&gt;sudo&lt;/span&gt; &lt;span class=&quot;token function&quot;&gt;apt&lt;/span&gt; &lt;span class=&quot;token function&quot;&gt;install&lt;/span&gt; -y php
