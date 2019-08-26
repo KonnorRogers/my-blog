@@ -11,10 +11,10 @@ description: Dealing with conditionals and booleans
 
 ## Chapters covered:
 
-[Step 8 - Booleans](https://laracasts.com/series/php-for-beginners/episodes/8)<br>
-[Step 9 - Conditionals](https://laracasts.com/series/php-for-beginners/episodes/9)
+[Chapter 8 - Booleans](https://laracasts.com/series/php-for-beginners/episodes/8)<br>
+[Chapter 9 - Conditionals](https://laracasts.com/series/php-for-beginners/episodes/9)
 
-## Step 8 - Booleans
+## Chapter 8 - Booleans
 
 I diverged from laracasts here. I didn't want to make
 multiple \<li\> tags, so I used a conditional which is
@@ -70,7 +70,7 @@ I found this article [PHP The Right Way Keyword & Type](https://www.php-fig.org/
 
 This suggests to use `true` and `false` for booleans
 
-## Step 9 - Conditionals
+## Chapter 9 - Conditionals
 
 Plain if statement in php:
 

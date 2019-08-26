@@ -4,11 +4,16 @@ date: "2019-08-26T02:24:59"
 description: "Lets learn some basics of SQL based databases, in this case, MySQL"
 ---
 
+# Part 6
+
+[Laracasts main site](https://laracasts.com)<br>
+[Laracasts - PHP for beginners](https://laracasts.com/series/php-for-beginners)
+
 ## Chapters covered
 
-[Step 11 - Databases 101](https://laracasts.com/series/php-for-beginners/episodes/11)
+[Chapter 11 - Databases 101](https://laracasts.com/series/php-for-beginners/episodes/11)
 
-### Step 11 - MySQL 101
+### Chapter 11 - MySQL 101
 
 Now its time to switch gears. Lets learn about MySQL. Its a relational database,
 or SQL-based database, which essentially means everythings related, as implied
@@ -167,6 +172,7 @@ it. Don't rush, find other commands. Have fun! Ill see you in the next part abou
 classes.
 
 ## Links
+
 <strong>[Follow along with my repo](https://github.com/ParamagicDev/php-for-beginners)<br></strong>
 [Laracasts main site](https://laracasts.com)<br>
 [PHP for beginners](https://laracasts.com/series/php-for-beginners)<br>

@@ -11,10 +11,10 @@ description: Lets dive deep into arrays and associative arrays
 
 ## Chapters covered:
 
-[Step 6 - Understanding Arrays](https://laracasts.com/series/php-for-beginners/episodes/6)<br>
-[Step 7 - Associative Arrays](https://laracasts.com/series/php-for-beginners/episodes/7)<br>
+[Chapter 6 - Understanding Arrays](https://laracasts.com/series/php-for-beginners/episodes/6)<br>
+[Chapter 7 - Associative Arrays](https://laracasts.com/series/php-for-beginners/episodes/7)<br>
 
-## Step 6 - Understanding Arrays
+## Chapter 6 - Understanding Arrays
 
 ### Looping through an array
 
@@ -77,7 +77,7 @@ This will produce the following:
 
 ---
 
-## Step 7 - Associative Arrays
+## Chapter 7 - Associative Arrays
 
 These appear to me to be similar to a ruby hash so here we go:
 

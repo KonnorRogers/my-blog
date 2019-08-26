@@ -11,9 +11,9 @@ description: "Lets learn a little bit about functions"
 
 ## Chapters covered:
 
-[Step 10 - Functions](https://laracasts.com/series/php-for-beginners/episodes/10)
+[Chapter 10 - Functions](https://laracasts.com/series/php-for-beginners/episodes/10)
 
-### Step 10 - Functions
+### Chapter 10 - Functions
 
 Functions are simple, but very powerful reusable pieces of code. They are the
 building blocks of any language. Lets see how they help shape PHP.
@@ -111,7 +111,7 @@ I'm not going to go too in depth, but basically `echoOldEnough()` is a wrapper a
 This function is imported into 'index.php' when you run: <br>
 `require 'functions.php';`
 
-Lets go to Step 11 in the next part.
+Lets go to Chapter 11 in the next part.
 
 
 

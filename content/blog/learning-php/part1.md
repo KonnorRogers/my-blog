@@ -17,7 +17,7 @@ This is the article will cover the 1st step from Laracasts.
 
 ## Chapters
 
-[Step 1 - Installing PHP](https://laracasts.com/series/php-for-beginners/episodes/1)
+[Chapter 1 - Installing PHP](https://laracasts.com/series/php-for-beginners/episodes/1)
 
 ## Installing PHP
 

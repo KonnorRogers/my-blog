@@ -11,10 +11,10 @@ description: Learn php with me! Part 2
 
 ## Chapters
 
-[Step 2 - Install a code editor](https://laracasts.com/series/php-for-beginners/episodes/2)<br>
-[Step 3 - Variables](https://laracasts.com/series/php-for-beginners/episodes/3)<br>
-[Step 4 - PHP and HTML](https://laracasts.com/series/php-for-beginners/episodes/4)<br>
-[Step 5 - Seperation of PHP logic](https://laracasts.com/series/php-for-beginners/episodes/5)
+[Chapter 2 - Install a code editor](https://laracasts.com/series/php-for-beginners/episodes/2)<br>
+[Chapter 3 - Variables](https://laracasts.com/series/php-for-beginners/episodes/3)<br>
+[Chapter 4 - PHP and HTML](https://laracasts.com/series/php-for-beginners/episodes/4)<br>
+[Chapter 5 - Seperation of PHP logic](https://laracasts.com/series/php-for-beginners/episodes/5)
 
 
 ## Hello World
