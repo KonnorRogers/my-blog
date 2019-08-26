@@ -41,8 +41,38 @@ dynamic, so lets extend it a little.
 ```php
 class Task {
   protected $description;
+
+  public function __construct($description) {
+    $this->$description;
+  }
 }
 ```
+
+This is a very basic example and intro to classes.
+Lets break it down now.
+
+`class Task` Define the class name<br>
+`protected $description;` initialize the variable $description<br>
+`public function __construct($description)` This is a special 'constructor' function.<br>
+This means that when a class is 'instantiated', to run the following code. Or in other
+words when you create a 'new' class, do the run the following code.<br>
+`$this->$description;` ahhhh yes. The magical '$this'. In some languages it may just
+be `this` or `self`. This is a tough term to wrap your head around so let's keep it simple.<br>
+
+In this case `$this` means, for THIS instance of Task, set the value provided in the constructor to
+this instance's $description variable<br>
+
+So what the heck does that above statment even mean? Well let's continue on. Examples
+explain this better than I can. Lets instantiate a the class Task now.
+
+```php
+$task = new Task('I am a description');
+```
+
+
+
+
+
 
 ## Links
 
