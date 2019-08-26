@@ -1,5 +1,119 @@
-<?xml version="1.0" encoding="UTF-8"?><rss xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:content="http://purl.org/rss/1.0/modules/content/" xmlns:atom="http://www.w3.org/2005/Atom" version="2.0"><channel><title><![CDATA[Konnor's Blog]]></title><description><![CDATA[A starter blog demonstrating what Gatsby can do.]]></description><link>https://gatsby-starter-blog-demo.netlify.com</link><generator>RSS for Node</generator><lastBuildDate>Sun, 25 Aug 2019 16:18:50 GMT</lastBuildDate><item><title><![CDATA[No title]]></title><description><![CDATA[Part 5 Laracasts main site
-Laracasts - PHP for beginners Chapters covered: Step 10 - Functions Step 10 - Functions Functions are simple, but…]]></description><link>https://gatsby-starter-blog-demo.netlify.com/learning-php/part5/</link><guid isPermaLink="false">https://gatsby-starter-blog-demo.netlify.com/learning-php/part5/</guid><content:encoded>&lt;h1&gt;Part 5&lt;/h1&gt;
+<?xml version="1.0" encoding="UTF-8"?><rss xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:content="http://purl.org/rss/1.0/modules/content/" xmlns:atom="http://www.w3.org/2005/Atom" version="2.0"><channel><title><![CDATA[Konnor's Blog]]></title><description><![CDATA[A starter blog demonstrating what Gatsby can do.]]></description><link>https://gatsby-starter-blog-demo.netlify.com</link><generator>RSS for Node</generator><lastBuildDate>Mon, 26 Aug 2019 08:30:39 GMT</lastBuildDate><item><title><![CDATA[Learning PHP - Part 6 - SQL based Databases - MySQL]]></title><description><![CDATA[Chapters covered Step 11 - Databases 101 Step 11 - MySQL 101 Now its time to switch gears. Lets learn about MySQL. Its a relational database…]]></description><link>https://gatsby-starter-blog-demo.netlify.com/learning-php/part6/</link><guid isPermaLink="false">https://gatsby-starter-blog-demo.netlify.com/learning-php/part6/</guid><pubDate>Mon, 26 Aug 2019 06:24:59 GMT</pubDate><content:encoded>&lt;h2&gt;Chapters covered&lt;/h2&gt;
+&lt;p&gt;&lt;a href=&quot;https://laracasts.com/series/php-for-beginners/episodes/11&quot;&gt;Step 11 - Databases 101&lt;/a&gt;&lt;/p&gt;
+&lt;h3&gt;Step 11 - MySQL 101&lt;/h3&gt;
+&lt;p&gt;Now its time to switch gears. Lets learn about MySQL. Its a relational database,
+or SQL-based database, which essentially means everythings related, as implied
+by the name via various ‘id’ columns. SQL stands for ‘Structured Query Language’.
+It’s simply a standardized way of accessing data in a database.&lt;/p&gt;
+&lt;p&gt;This is in contrast to a NoSQL-based database. The most obvious NoSQL-based database
+is MongoDB. NoSQL essentially follows a way of storing data nonrelationally. I won’t
+get into the advantages and disadvantages of both, just know that both exist.&lt;/p&gt;
+&lt;h4&gt;Installing MySQL - Ubuntu 18.04&lt;/h4&gt;
+&lt;p&gt;Feel free to check out &lt;a href=&quot;https://www.mysql.com/downloads/&quot;&gt;MySQL downloads page&lt;/a&gt; for
+your specific needs.&lt;/p&gt;
+&lt;p&gt;For me I used the following:&lt;/p&gt;
+&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;bash&quot;&gt;&lt;pre class=&quot;language-bash&quot;&gt;&lt;code class=&quot;language-bash&quot;&gt;&lt;span class=&quot;token function&quot;&gt;sudo&lt;/span&gt; &lt;span class=&quot;token function&quot;&gt;apt&lt;/span&gt; update
+&lt;span class=&quot;token function&quot;&gt;sudo&lt;/span&gt; &lt;span class=&quot;token function&quot;&gt;apt&lt;/span&gt; &lt;span class=&quot;token function&quot;&gt;install&lt;/span&gt; -y mysql-server &lt;span class=&quot;token comment&quot;&gt;# installs mysql&lt;/span&gt;
+&lt;span class=&quot;token function&quot;&gt;sudo&lt;/span&gt; mysql_secure_installation &lt;span class=&quot;token comment&quot;&gt;# will provide various prompts&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;br&gt;
+&lt;p&gt;Ensure its working:&lt;/p&gt;
+&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;bash&quot;&gt;&lt;pre class=&quot;language-bash&quot;&gt;&lt;code class=&quot;language-bash&quot;&gt;mysql &lt;span class=&quot;token comment&quot;&gt;# enters a prompt&lt;/span&gt;
+  -&lt;span class=&quot;token operator&quot;&gt;&gt;&lt;/span&gt; &lt;span class=&quot;token builtin class-name&quot;&gt;exit&lt;/span&gt;
+&lt;span class=&quot;token function&quot;&gt;sudo&lt;/span&gt; &lt;span class=&quot;token function&quot;&gt;service&lt;/span&gt; mysql status
+&lt;span class=&quot;token function&quot;&gt;sudo&lt;/span&gt; &lt;span class=&quot;token function&quot;&gt;service&lt;/span&gt; mysql stop
+&lt;span class=&quot;token function&quot;&gt;sudo&lt;/span&gt; &lt;span class=&quot;token function&quot;&gt;service&lt;/span&gt; mysql start
+&lt;span class=&quot;token function&quot;&gt;sudo&lt;/span&gt; &lt;span class=&quot;token function&quot;&gt;service&lt;/span&gt; mysql status&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;br&gt;
+&lt;p&gt;&lt;em&gt;If you are having permission issues: &lt;a href=&quot;#issues&quot;&gt;Check this out&lt;/a&gt;&lt;/em&gt;&lt;/p&gt;
+&lt;p&gt;There are additional configs to add users, but thats a little
+too advanced for what were doing here.&lt;/p&gt;
+&lt;h4&gt;Using MySQL&lt;/h4&gt;
+&lt;p&gt;Creating your first database:&lt;/p&gt;
+&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;bash&quot;&gt;&lt;pre class=&quot;language-bash&quot;&gt;&lt;code class=&quot;language-bash&quot;&gt;mysql
+ -&lt;span class=&quot;token operator&quot;&gt;&gt;&lt;/span&gt; show databases&lt;span class=&quot;token punctuation&quot;&gt;;&lt;/span&gt;
+&lt;span class=&quot;token comment&quot;&gt;# Lists databases&lt;/span&gt;
+ -&lt;span class=&quot;token operator&quot;&gt;&gt;&lt;/span&gt; create database todo&lt;span class=&quot;token punctuation&quot;&gt;;&lt;/span&gt;
+&lt;span class=&quot;token comment&quot;&gt;# Query OK, 1 row affected&lt;/span&gt;
+ -&lt;span class=&quot;token operator&quot;&gt;&gt;&lt;/span&gt; show databases&lt;span class=&quot;token punctuation&quot;&gt;;&lt;/span&gt; &lt;span class=&quot;token comment&quot;&gt;# should show mytodo&lt;/span&gt;
+ -&lt;span class=&quot;token operator&quot;&gt;&gt;&lt;/span&gt; use mytodo&lt;span class=&quot;token punctuation&quot;&gt;;&lt;/span&gt; &lt;span class=&quot;token comment&quot;&gt;# This tells mysql what database to switch into and use&lt;/span&gt;
+ -&lt;span class=&quot;token operator&quot;&gt;&gt;&lt;/span&gt; show tables&lt;span class=&quot;token punctuation&quot;&gt;;&lt;/span&gt; &lt;span class=&quot;token comment&quot;&gt;# should be empty&lt;/span&gt;
+ -&lt;span class=&quot;token operator&quot;&gt;&gt;&lt;/span&gt; CREATE TABLE todos &lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;description TEXT, completed BOOLEAN&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;;&lt;/span&gt;
+&lt;span class=&quot;token comment&quot;&gt;# Query OK, 0 rows affected&lt;/span&gt;
+ -&lt;span class=&quot;token operator&quot;&gt;&gt;&lt;/span&gt; show tables&lt;span class=&quot;token punctuation&quot;&gt;;&lt;/span&gt; &lt;span class=&quot;token comment&quot;&gt;# Should show your new todos table&lt;/span&gt;
+ -&lt;span class=&quot;token operator&quot;&gt;&gt;&lt;/span&gt; describe todos&lt;span class=&quot;token punctuation&quot;&gt;;&lt;/span&gt; &lt;span class=&quot;token comment&quot;&gt;# Shows your fields and types&lt;/span&gt;
+ -&lt;span class=&quot;token operator&quot;&gt;&gt;&lt;/span&gt; drop tables&lt;span class=&quot;token punctuation&quot;&gt;;&lt;/span&gt; &lt;span class=&quot;token comment&quot;&gt;# Removes your todos tables&lt;/span&gt;
+ -&lt;span class=&quot;token operator&quot;&gt;&gt;&lt;/span&gt; CREATE TABLE todos &lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;id INTEGER PRIMARY KEY AUTO_INCREMENT, description TEXT NOT NULL, completed BOOLEAN NOT NULL&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;;&lt;/span&gt;
+ -&lt;span class=&quot;token operator&quot;&gt;&gt;&lt;/span&gt; show tables&lt;span class=&quot;token punctuation&quot;&gt;;&lt;/span&gt;
+ -&lt;span class=&quot;token operator&quot;&gt;&gt;&lt;/span&gt; describe todos&lt;span class=&quot;token punctuation&quot;&gt;;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;br&gt;
+&lt;p&gt;I’m not going to get too in depth with the above commands, but I will touch on the
+following query.&lt;/p&gt;
+&lt;p&gt;Here’s the command:&lt;br&gt;&lt;br&gt;
+&lt;code class=&quot;language-text&quot;&gt;CREATE TABLE todos (id integer PRIMARY KEY AUTO_INCREMENT, description text NOT NULL,
+completed boolean NOT NULL);&lt;/code&gt;&lt;br&gt;&lt;/p&gt;
+&lt;p&gt;Here’s what it’s doing:&lt;/p&gt;
+&lt;p&gt;&lt;code class=&quot;language-text&quot;&gt;CREATE TABLE todos();&lt;/code&gt; Create the table called ‘todos’&lt;br&gt;
+&lt;code class=&quot;language-text&quot;&gt;id integer PRIMARY KEY AUTO_INCREMENT&lt;/code&gt;: The first field will be the &lt;code class=&quot;language-text&quot;&gt;id&lt;/code&gt; field,
+this field will accept an &lt;code class=&quot;language-text&quot;&gt;INTEGER&lt;/code&gt;. This field will also be the &lt;code class=&quot;language-text&quot;&gt;PRIMARY KEY&lt;/code&gt;.
+This means that the &lt;code class=&quot;language-text&quot;&gt;id&lt;/code&gt; will be the unique identifier for whatever data is stored.
+&lt;code class=&quot;language-text&quot;&gt;AUTO_INCREMENT&lt;/code&gt; means the user does not have to supply the id integer. Instead, the
+database will automatically set the id starting from 1.&lt;br&gt;&lt;/p&gt;
+&lt;h4&gt;Manipulating a tables data&lt;/h4&gt;
+&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;bash&quot;&gt;&lt;pre class=&quot;language-bash&quot;&gt;&lt;code class=&quot;language-bash&quot;&gt;mysql
+-&lt;span class=&quot;token operator&quot;&gt;&gt;&lt;/span&gt; INSERT INTO todos &lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;description, completed&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt; VALUES&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;token string&quot;&gt;&apos;Go to the store&apos;&lt;/span&gt;, &lt;span class=&quot;token boolean&quot;&gt;false&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;;&lt;/span&gt;
+&lt;span class=&quot;token comment&quot;&gt;# Will auto-add the id, will add the description &apos;Go to store&apos;, and the boolean false&lt;/span&gt;
+
+-&lt;span class=&quot;token operator&quot;&gt;&gt;&lt;/span&gt; SELECT * FROM todos&lt;span class=&quot;token punctuation&quot;&gt;;&lt;/span&gt;
+&lt;span class=&quot;token comment&quot;&gt;# Will show all columns in the todos table&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;h4&gt;Summarizing&lt;/h4&gt;
+&lt;p&gt;&lt;code class=&quot;language-text&quot;&gt;mysql&lt;/code&gt; Start mysql&lt;br&gt;
+&lt;code class=&quot;language-text&quot;&gt;-&amp;gt; create database &amp;lt;database&amp;gt;;&lt;/code&gt; Create the database with &amp;#x3C;database&gt;.&lt;br&gt;
+&lt;code class=&quot;language-text&quot;&gt;-&amp;gt; use database &amp;lt;database&amp;gt;;&lt;/code&gt; Set the current database to query to &amp;#x3C;database&gt;.&lt;br&gt;
+&lt;code class=&quot;language-text&quot;&gt;-&amp;gt; CREATE TABLE &amp;lt;table&amp;gt; (&amp;lt;fields&amp;gt;);&lt;/code&gt; Create a table within the database with a name of &amp;#x3C;table&gt;
+and has the following &amp;#x3C;fields&gt;.&lt;br&gt;
+&lt;code class=&quot;language-text&quot;&gt;-&amp;gt; show tables;&lt;/code&gt; List the tables in your database.&lt;br&gt;
+&lt;code class=&quot;language-text&quot;&gt;-&amp;gt; describe &amp;lt;table&amp;gt;;&lt;/code&gt; Shows the fields of the given &amp;#x3C;table&gt;.&lt;/p&gt;
+&lt;p&gt;Simple manipulation:&lt;br&gt;
+&lt;code class=&quot;language-text&quot;&gt;-&amp;gt; INSERT INTO &amp;lt;table&amp;gt;(&amp;lt;field1&amp;gt;, &amp;lt;field2&amp;gt;) VALUES(&amp;lt;value1&amp;gt;, &amp;lt;value2&amp;gt;);&lt;/code&gt;&lt;br&gt; Insert the following
+values into the specified &amp;#x3C;field&gt; for the given table name. Order is important.&lt;br&gt;&lt;br&gt;
+&lt;code class=&quot;language-text&quot;&gt;-&amp;gt; SELECT * FROM &amp;lt;table&amp;gt;;&lt;/code&gt;&lt;br&gt;
+Allows you to view all columns and their data from the given
+&amp;#x3C;table&gt;.&lt;br&gt;&lt;br&gt;
+&lt;code class=&quot;language-text&quot;&gt;-&amp;gt; SELECT * FROM &amp;lt;table&amp;gt; WHERE id = 1;&lt;/code&gt;&lt;br&gt;
+Select all columns from &amp;#x3C;table&gt; but only where the id is equal to 1.&lt;/p&gt;
+&lt;h4&gt;Installing a MySQL GUI - &lt;a href=&quot;https://dev.mysql.com/doc/workbench/en/&quot;&gt;MySQL-Workbench&lt;/a&gt;&lt;/h4&gt;
+&lt;p&gt;Now using the command line for everything is not very fun. You can simply google:&lt;br&gt;
+‘mysql database GUI tools’&lt;/p&gt;
+&lt;p&gt;I decided to use the officially supported mysql-workbench.&lt;/p&gt;
+&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;bash&quot;&gt;&lt;pre class=&quot;language-bash&quot;&gt;&lt;code class=&quot;language-bash&quot;&gt;&lt;span class=&quot;token function&quot;&gt;sudo&lt;/span&gt; &lt;span class=&quot;token function&quot;&gt;apt&lt;/span&gt; &lt;span class=&quot;token function&quot;&gt;install&lt;/span&gt; mysql-workbench
+mysql-workbench&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;Easy, simple, I like it.&lt;/p&gt;
+&lt;h3 id=&apos;issues&apos;&gt;Issues&lt;/h3&gt;
+&lt;h4&gt;Running mysql without sudo&lt;/h4&gt;
+&lt;p&gt;&lt;strong&gt;Note: &lt;/strong&gt; I ran into the issue of having to run mysql without sudo.
+I found this guide: &lt;a href=&quot;https://www.digitalocean.com/community/tutorials/how-to-install-mysql-on-ubuntu-18-04&quot;&gt;DigitalOcean Guide to MySQL&lt;/a&gt;.&lt;/p&gt;
+&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;bash&quot;&gt;&lt;pre class=&quot;language-bash&quot;&gt;&lt;code class=&quot;language-bash&quot;&gt;&lt;span class=&quot;token function&quot;&gt;sudo&lt;/span&gt; mysql
+-&lt;span class=&quot;token operator&quot;&gt;&gt;&lt;/span&gt; ALTER &lt;span class=&quot;token environment constant&quot;&gt;USER&lt;/span&gt; &lt;span class=&quot;token string&quot;&gt;&apos;root&apos;&lt;/span&gt;@&lt;span class=&quot;token string&quot;&gt;&apos;localhost&apos;&lt;/span&gt; IDENTIFIED WITH mysql_native_password BY &lt;span class=&quot;token string&quot;&gt;&apos;password&apos;&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;;&lt;/span&gt;
+-&lt;span class=&quot;token operator&quot;&gt;&gt;&lt;/span&gt; FLUSH PRIVILEGES&lt;span class=&quot;token punctuation&quot;&gt;;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;Yes, you can create a new user and then provide privileges that way. Again, beyond
+the scope of this, and this wont be used in production either.&lt;/p&gt;
+&lt;h4&gt;Running mysql-workbench without sudo&lt;/h4&gt;
+&lt;p&gt;I also had an issue running mysql-workbench without sudo. I solved this by
+chowning ~/.mysql&lt;/p&gt;
+&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;bash&quot;&gt;&lt;pre class=&quot;language-bash&quot;&gt;&lt;code class=&quot;language-bash&quot;&gt;&lt;span class=&quot;token function&quot;&gt;sudo&lt;/span&gt; &lt;span class=&quot;token function&quot;&gt;chown&lt;/span&gt; &lt;span class=&quot;token environment constant&quot;&gt;$USER&lt;/span&gt;&lt;span class=&quot;token builtin class-name&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;token environment constant&quot;&gt;$USER&lt;/span&gt; ~/.mysql
+mysql-workbench&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;br&gt;
+&lt;p&gt;I’ll let you figure out other configurations with mysql-workbench. Play around with
+it. Don’t rush, find other commands. Have fun! Ill see you in the next part about
+classes.&lt;/p&gt;
+&lt;h2&gt;Links&lt;/h2&gt;
+&lt;p&gt;&lt;strong&gt;&lt;a href=&quot;https://github.com/ParamagicDev/php-for-beginners&quot;&gt;Follow along with my repo&lt;/a&gt;&lt;br&gt;&lt;/strong&gt;
+&lt;a href=&quot;https://laracasts.com&quot;&gt;Laracasts main site&lt;/a&gt;&lt;br&gt;
+&lt;a href=&quot;https://laracasts.com/series/php-for-beginners&quot;&gt;PHP for beginners&lt;/a&gt;&lt;br&gt;
+&lt;a href=&quot;https://www.mysql.com/downloads/&quot;&gt;MySQL downloads page&lt;/a&gt;&lt;br&gt;
+&lt;a href=&quot;https://www.digitalocean.com/community/tutorials/how-to-install-mysql-on-ubuntu-18-04&quot;&gt;DigitalOcean Guide to MySQL&lt;/a&gt;.&lt;br&gt;
+&lt;a href=&quot;https://dev.mysql.com/doc/workbench/en/&quot;&gt;MySQL-Workbench&lt;/a&gt;&lt;br&gt;&lt;/p&gt;</content:encoded></item><item><title><![CDATA[Learning PHP - Part 5 - Functions]]></title><description><![CDATA[Part 5 Laracasts main site
+Laracasts - PHP for beginners Chapters covered: Step 10 - Functions Step 10 - Functions Functions are simple, but…]]></description><link>https://gatsby-starter-blog-demo.netlify.com/learning-php/part5/</link><guid isPermaLink="false">https://gatsby-starter-blog-demo.netlify.com/learning-php/part5/</guid><pubDate>Mon, 26 Aug 2019 06:19:15 GMT</pubDate><content:encoded>&lt;h1&gt;Part 5&lt;/h1&gt;
 &lt;p&gt;&lt;a href=&quot;https://laracasts.com&quot;&gt;Laracasts main site&lt;/a&gt;&lt;br&gt;
 &lt;a href=&quot;https://laracasts.com/series/php-for-beginners&quot;&gt;Laracasts - PHP for beginners&lt;/a&gt;&lt;/p&gt;
 &lt;h2&gt;Chapters covered:&lt;/h2&gt;
@@ -74,8 +188,7 @@ telling them if they’re allowed to come in.&lt;br&gt;&lt;/p&gt;
 &lt;code class=&quot;language-text&quot;&gt;isOldEnough()&lt;/code&gt;. This allows you to print a readable message on the webpage.&lt;br&gt;
 This function is imported into ‘index.php’ when you run: &lt;br&gt;
 &lt;code class=&quot;language-text&quot;&gt;require &amp;#39;functions.php&amp;#39;;&lt;/code&gt;&lt;/p&gt;
-&lt;p&gt;Lets go to Step 11&lt;/p&gt;
-&lt;h3&gt;Step 11 - MySQL 101&lt;/h3&gt;
+&lt;p&gt;Lets go to Step 11 in the next part.&lt;/p&gt;
 &lt;h2&gt;Links&lt;/h2&gt;
 &lt;p&gt;&lt;strong&gt;&lt;a href=&quot;https://github.com/ParamagicDev/php-for-beginners&quot;&gt;Follow along with my repo&lt;/a&gt;&lt;br&gt;&lt;/strong&gt;
 &lt;a href=&quot;https://laracasts.com&quot;&gt;Laracasts main site&lt;/a&gt;&lt;br&gt;
