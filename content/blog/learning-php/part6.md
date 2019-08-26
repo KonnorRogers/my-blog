@@ -1,7 +1,7 @@
 ---
-title: Learning PHP - Part 6 - SQL based Databases - MySQL
+title: Learning PHP - Part 6 - MySQL? Or Your SQL?
 date: "2019-08-26T02:24:59"
-description: "Lets learn some basics of MySQL databases"
+description: "Lets learn some basics of SQL based databases, in this case, MySQL"
 ---
 
 ## Chapters covered

@@ -1,5 +1,5 @@
 ---
-title: Learning PHP - Part 5 - Functions
+title: Learning PHP - Part 5 - Lets make it functional
 date: "2019-08-26T02:19:15"
 description: "Lets learn a little bit about functions"
 ---
