@@ -1,3 +1,9 @@
+---
+title: Learning PHP - Part 5 - Functions
+date: "2019-08-26T02:19:15"
+description: "Lets learn a little bit about functions"
+---
+
 # Part 5
 
 [Laracasts main site](https://laracasts.com)<br>
@@ -105,9 +111,9 @@ I'm not going to go too in depth, but basically `echoOldEnough()` is a wrapper a
 This function is imported into 'index.php' when you run: <br>
 `require 'functions.php';`
 
-Lets go to Step 11
+Lets go to Step 11 in the next part.
 
-### Step 11 - MySQL 101
+
 
 
 ## Links
