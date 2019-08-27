@@ -67,12 +67,75 @@ explain this better than I can. Lets instantiate a the class Task now.
 
 ```php
 $task = new Task('I am a description');
+var_dump($task);
 ```
 
+This will very simply provide a nice human readable version of task displayed in
+the web browser of your choice.
 
+Okay, this is great and all, but we can't do anything with this right now.
 
+You could try
 
+```php
+$task = new Task('I am a description');
+var_dump($task->$description);
+```
 
+But you'll get an access error. So let's talk about getters and setters.
+A getter simply 'gets' a value from a class and a setter 'sets' a value in a class.
+Getters and setters are part of a OOP term called 'encapsulation'. Don't worry about
+what that means for now, just know that it may come up in the future.
+Not very useful, but lets see how it works.
+
+```php
+class Task {
+  protected $description;
+
+  public function __construct($description){
+    $this->$description;
+  }
+
+  public function getDescription(){
+    return $this->description;
+  }
+
+  public function setDescription($description){
+    $this->description = $description;
+  }
+}
+
+$task = new Task("Go to the store");
+```
+<br>
+The above defines the class Task. Now lets see how we would access values.
+
+```php
+// ...above code omitted for brevity
+
+// Accessing the value of $task->description
+var_dump($task->getDescription();
+
+// Changes the value of $task->description to the new description
+$task->setDescription("Go to grandma's house");
+var_dump($task->getDescription();
+// Will now var_dump "Go to grandma's house" instead of "go to store"
+```
+<br>
+
+Now what if we want to make multiple tasks and store them in an array?
+Simple:
+
+```php
+// ...above code omitted for brevity
+$tasks = [
+  new Task("Go to store"),
+  new Task("Go to grandma's house"),
+  new Task("Go home")
+];
+
+var_dump($tasks);
+```
 
 ## Links
 
