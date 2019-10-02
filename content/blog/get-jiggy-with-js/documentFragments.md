@@ -14,9 +14,6 @@ description:
 [DocumentFragment API via MDN](https://developer.mozilla.org/en-US/docs/Web/API/DocumentFragment)
 [Relevant StackOverflow answer](https://stackoverflow.com/a/36798254)
 [My Github repository which uses DocumentFragment API](https://github.com/ParamagicDev/libraryBookJS)
-The repo doesn't uses the `class` keyword and instead uses the ES5 and prior version
-of classes simply as an introduction to myself who has not used classes in JS prior
-to ES6.
 
 ## What is the DocumentFragment API?
 
@@ -32,7 +29,52 @@ that do not need to be immediately rendered to the page.
 
 ## Using the DocumentFragment API
 
-I abstracted the DocumentFragment API into the my [utils.js] file in order to reuse it
-throughout the project.
+```bash
+const docFrag = new DocumentFragment();
+```
 
-### Basic structure
+Thats all it takes to make a document fragment!
+
+## Basic usage
+
+### Typical way of appending children
+
+```bash
+const div1 = document.createElement('div');
+
+const div2 = document.createElement('div');
+const div3 = document.createElement('div');
+
+document.body.appendChild(div);
+document.body.appendChild(p1);
+document.body.appendChild(p2);
+```
+
+Everytime you append a child to a rendered portion of the browser, you are rerendering the page with each `appendChild()` call. Lets look at how we could recreate the same functionality without causing performance issues.
+
+```bash
+// Create a docFrag to add elements to
+const docFrag = new DocumentFragment();
+
+const div1 = document.createElement('div');
+const div2 = document.createElement('div');
+const div3 = document.createElement('div');
+
+docFrag.appendChild(div1);
+docFrag.appendChild(div2);
+docFrag.appendChild(div3);
+
+document.body.appendChild(docFrag);
+```
+
+It requires 2 simple extra lines of code but will significantly change
+a users browser experience. Especially if you are doing something like
+server side rendering where you create many HTML elements via JS.
+This method as far as I'm aware is implemented by the major front-end frameworks like React, Vue, Angular etc.
+
+### Closing thoughts
+
+I hope you found this useful and next time you go to append some children
+you reach for DocumentFragment. Its a simple and easy to understand API with so
+many benefits. I was very happy with how approachable it was and it was
+very easy to see the benefits of the API.
