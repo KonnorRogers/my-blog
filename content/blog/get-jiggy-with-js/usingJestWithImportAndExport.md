@@ -1,5 +1,5 @@
 ---
-title: Using jest with Import and Export
+title: Gettin' Jiggy with JS - Using Jest with Import and Export
 date: "2019-10-02T18:20:55"
 description: Getting started with Jest in either a new or existing project
   that does not currently have a testing suite. In addition, we will be adding

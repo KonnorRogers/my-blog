@@ -1,5 +1,5 @@
 ---
-title: Gettin' Jiggy with Javascript
+title: Gettin' Jiggy with JS - What are Document Fragments?
 date: "2019-09-29T17:34:12"
 description:
   After searching and scouring the internet for the best way to append
