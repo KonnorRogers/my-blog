@@ -1,4 +1,212 @@
-<?xml version="1.0" encoding="UTF-8"?><rss xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:content="http://purl.org/rss/1.0/modules/content/" xmlns:atom="http://www.w3.org/2005/Atom" version="2.0"><channel><title><![CDATA[Konnor's Blog]]></title><description><![CDATA[A starter blog demonstrating what Gatsby can do.]]></description><link>https://gatsby-starter-blog-demo.netlify.com</link><generator>RSS for Node</generator><lastBuildDate>Tue, 27 Aug 2019 20:46:35 GMT</lastBuildDate><item><title><![CDATA[PHP for beginners - Part 7 - Classes?...Like school?]]></title><description><![CDATA[Part 7 Laracasts main site
+<?xml version="1.0" encoding="UTF-8"?><rss xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:content="http://purl.org/rss/1.0/modules/content/" xmlns:atom="http://www.w3.org/2005/Atom" version="2.0"><channel><title><![CDATA[Konnor's Blog]]></title><description><![CDATA[A starter blog demonstrating what Gatsby can do.]]></description><link>https://gatsby-starter-blog-demo.netlify.com</link><generator>RSS for Node</generator><lastBuildDate>Fri, 04 Oct 2019 21:12:02 GMT</lastBuildDate><item><title><![CDATA[Using jest with Import and Export]]></title><description><![CDATA[Purpose When using new tools I like to create my own documentation of setup.
+In this case we will be looking at: Jest Jest is a simple…]]></description><link>https://gatsby-starter-blog-demo.netlify.com/get-jiggy-with-js/gettingStartedWithJest/</link><guid isPermaLink="false">https://gatsby-starter-blog-demo.netlify.com/get-jiggy-with-js/gettingStartedWithJest/</guid><pubDate>Wed, 02 Oct 2019 22:20:55 GMT</pubDate><content:encoded>&lt;h1&gt;Purpose&lt;/h1&gt;
+&lt;p&gt;When using new tools I like to create my own documentation of setup.&lt;br&gt;
+In this case we will be looking at: &lt;a href=&quot;https://jestjs.io&quot;&gt;Jest&lt;/a&gt;&lt;br&gt;&lt;/p&gt;
+&lt;p&gt;Jest is a simple testing framework for javascript that uses
+very similar syntax to RSpec. In fact, it even supports the *.spec.js file extension.
+I however, like to use the *.test.js file, but you are free to do as you please.&lt;/p&gt;
+&lt;h2&gt;Quick Start&lt;/h2&gt;
+&lt;p&gt;At the time of writing this, I am using Jest 24.9, Babel 7.6, and ESLint 6.5&lt;/p&gt;
+&lt;p&gt;ESLint is not necessary for this Jest to properly use the import / export syntax,
+however, I like it for using prettier within my work environment.&lt;/p&gt;
+&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;bash&quot;&gt;&lt;pre class=&quot;language-bash&quot;&gt;&lt;code class=&quot;language-bash&quot;&gt;&lt;span class=&quot;token comment&quot;&gt;# If its a new project&lt;/span&gt;
+&lt;span class=&quot;token function&quot;&gt;npm&lt;/span&gt; init
+
+&lt;span class=&quot;token comment&quot;&gt;# install eslint, jest, and babel packages&lt;/span&gt;
+&lt;span class=&quot;token function&quot;&gt;npm&lt;/span&gt; &lt;span class=&quot;token function&quot;&gt;install&lt;/span&gt; --save-dev jest babel-jest @babel-core @babel-preset-env regenerator-runtime eslint eslint-plugin-jest
+
+&lt;span class=&quot;token comment&quot;&gt;# create a config file for jest and eslint&lt;/span&gt;
+npx jest --init
+npx eslint --init&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;Then modify eslint and jest config files accordingly.&lt;/p&gt;
+&lt;p&gt;&lt;a href=&quot;https://github.com/ParamagicDev/TicTacToeJS/blob/master/jest.config.js&quot;&gt;My Jest Config&lt;/a&gt;
+I just use the default from &lt;code class=&quot;language-text&quot;&gt;npx jest --init&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a href=&quot;https://github.com/ParamagicDev/TicTacToeJS/blob/master/.eslintrc.js&quot;&gt;My ESLint Config&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;I simply used the default from &lt;code class=&quot;language-text&quot;&gt;npx eslint --init&lt;/code&gt; and chose the appropriate options for the project.
+I added the following lines for use with Jest.&lt;/p&gt;
+&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;javascript&quot;&gt;&lt;pre class=&quot;language-javascript&quot;&gt;&lt;code class=&quot;language-javascript&quot;&gt;module&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;exports &lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;token punctuation&quot;&gt;{&lt;/span&gt;
+  &lt;span class=&quot;token comment&quot;&gt;// ...&lt;/span&gt;
+  env&lt;span class=&quot;token punctuation&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;token punctuation&quot;&gt;{&lt;/span&gt;
+    &lt;span class=&quot;token string&quot;&gt;&quot;jest/globals&quot;&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;token boolean&quot;&gt;true&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt;
+  &lt;span class=&quot;token punctuation&quot;&gt;}&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt;
+  &lt;span class=&quot;token keyword&quot;&gt;extends&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;token punctuation&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;token string&quot;&gt;&quot;plugins:jest/recommended&quot;&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;token string&quot;&gt;&quot;eslint:recommended&quot;&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;]&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt;
+  plugins&lt;span class=&quot;token punctuation&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;token punctuation&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;token string&quot;&gt;&quot;jest&quot;&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;]&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt;
+  &lt;span class=&quot;token comment&quot;&gt;// ...&lt;/span&gt;
+&lt;span class=&quot;token punctuation&quot;&gt;}&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;&lt;a href=&quot;https://github.com/ParamagicDev/TicTacToeJS/blob/master/babel.config.js&quot;&gt;My Babel Config&lt;/a&gt;
+There appears to be no &lt;code class=&quot;language-text&quot;&gt;npx babel --init&lt;/code&gt; so you must generate your own config file.
+I generated my using the &lt;a href=&quot;https://jestjs.io/docs/en/getting-started#using-babel&quot;&gt;Docs&lt;/a&gt;
+and it worked right out of the box.&lt;/p&gt;
+&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;javascript&quot;&gt;&lt;pre class=&quot;language-javascript&quot;&gt;&lt;code class=&quot;language-javascript&quot;&gt;&lt;span class=&quot;token comment&quot;&gt;// babel.config.js&lt;/span&gt;
+module&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;exports &lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;token punctuation&quot;&gt;{&lt;/span&gt;
+  presets&lt;span class=&quot;token punctuation&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;token punctuation&quot;&gt;[&lt;/span&gt;
+    &lt;span class=&quot;token punctuation&quot;&gt;[&lt;/span&gt;
+      &lt;span class=&quot;token string&quot;&gt;&quot;@babel/preset-env&quot;&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt;
+      &lt;span class=&quot;token punctuation&quot;&gt;{&lt;/span&gt;
+        targets&lt;span class=&quot;token punctuation&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;token punctuation&quot;&gt;{&lt;/span&gt;
+          node&lt;span class=&quot;token punctuation&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;token string&quot;&gt;&quot;current&quot;&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt;
+        &lt;span class=&quot;token punctuation&quot;&gt;}&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt;
+      &lt;span class=&quot;token punctuation&quot;&gt;}&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt;
+    &lt;span class=&quot;token punctuation&quot;&gt;]&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt;
+  &lt;span class=&quot;token punctuation&quot;&gt;]&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt;
+&lt;span class=&quot;token punctuation&quot;&gt;}&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;Now, all your tests will go into a &lt;code class=&quot;language-text&quot;&gt;__tests__/&lt;/code&gt; directory and you can name them
+&lt;code class=&quot;language-text&quot;&gt;*.test.js&lt;/code&gt; and you’re ready to rock and roll.&lt;/p&gt;
+&lt;h2&gt;The longer, more in depth guide&lt;/h2&gt;
+&lt;p&gt;As with all projects using javascript, start with creating your package.json.&lt;br&gt;&lt;/p&gt;
+&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;bash&quot;&gt;&lt;pre class=&quot;language-bash&quot;&gt;&lt;code class=&quot;language-bash&quot;&gt;&lt;span class=&quot;token function&quot;&gt;npm&lt;/span&gt; init&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;After filling in the appropriate fields, you will have a package.json and package-lock.json
+ready to go. Alternatively you can use yarn, and I actually prefer yarn for many reasons
+that I will not get into in this guide.&lt;/p&gt;
+&lt;h3&gt;Installing Jest&lt;/h3&gt;
+&lt;p&gt;&lt;a href=&quot;https://jestjs.io/docs/en/22.x/getting-started.html&quot;&gt;Jest Getting Started&lt;/a&gt;&lt;br&gt;&lt;/p&gt;
+&lt;p&gt;Jest’s documentation is quite good. And I quite enjoyed reading it, I recommend you check it out&lt;br&gt;&lt;/p&gt;
+&lt;p&gt;To start run the following:&lt;/p&gt;
+&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;bash&quot;&gt;&lt;pre class=&quot;language-bash&quot;&gt;&lt;code class=&quot;language-bash&quot;&gt;&lt;span class=&quot;token function&quot;&gt;npm&lt;/span&gt; &lt;span class=&quot;token function&quot;&gt;install&lt;/span&gt; --save-dev jest&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;That’s it! You’re done! Technically this is all you need to run Jest. However,
+if you’re using a non-Node based project IE: browser based project using ES6 imports,
+Jest will quickly get in the way.&lt;/p&gt;
+&lt;p&gt;Also, as a quick note, if you go into your jest config, the file it searches for tests
+is the &lt;code class=&quot;language-text&quot;&gt;__tests__&lt;/code&gt; directory. The getting started pages doesn’t mention this, but
+if you’re like me, you like to use a seperate tests directory.&lt;/p&gt;
+&lt;h3&gt;Installing Babel&lt;/h3&gt;
+&lt;p&gt;Jest uses the Node syntax of &lt;code class=&quot;language-text&quot;&gt;module.exports = &amp;lt;variable&amp;gt;&lt;/code&gt; and &lt;code class=&quot;language-text&quot;&gt;require(&amp;#39;&amp;lt;file&amp;gt;&amp;#39;)&lt;/code&gt;,
+it will not support the &lt;code class=&quot;language-text&quot;&gt;import&lt;/code&gt; and &lt;code class=&quot;language-text&quot;&gt;export&lt;/code&gt; statements of ES6.&lt;/p&gt;
+&lt;p&gt;Luckily, people way smarter than me already thought of this,
+so there is a babel transpiler for this.&lt;/p&gt;
+&lt;p&gt;To use this transpiler, you can install the following for use with Jest.&lt;/p&gt;
+&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;bash&quot;&gt;&lt;pre class=&quot;language-bash&quot;&gt;&lt;code class=&quot;language-bash&quot;&gt;&lt;span class=&quot;token function&quot;&gt;npm&lt;/span&gt; &lt;span class=&quot;token function&quot;&gt;install&lt;/span&gt; --save-dev babel-jest @babel-core @babel-preset-env regenerator-runtime&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;&lt;code class=&quot;language-text&quot;&gt;babel-jest&lt;/code&gt;, &lt;code class=&quot;language-text&quot;&gt;@babel-core&lt;/code&gt;, &lt;code class=&quot;language-text&quot;&gt;@babel-preset-env&lt;/code&gt; are technically the only required
+packages. &lt;code class=&quot;language-text&quot;&gt;regenerator-runtime&lt;/code&gt; according to the documentation is not needed with
+NPM versions &gt; 3/4 or Yarn. However, I included it just in case someone is using
+a different package manager.&lt;/p&gt;
+&lt;h4&gt;Adding a babel config&lt;/h4&gt;
+&lt;p&gt;The next step is to add a Babel config.&lt;/p&gt;
+&lt;p&gt;&lt;a href=&quot;https://github.com/ParamagicDev/TicTacToeJS/blob/master/babel.config.js&quot;&gt;My Babel Config&lt;/a&gt;
+There appears to be no &lt;code class=&quot;language-text&quot;&gt;npx babel --init&lt;/code&gt; so you must generate your own config file.
+I generated my using the &lt;a href=&quot;https://jestjs.io/docs/en/getting-started#using-babel&quot;&gt;Docs&lt;/a&gt;
+and it worked right out of the box.&lt;/p&gt;
+&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;javascript&quot;&gt;&lt;pre class=&quot;language-javascript&quot;&gt;&lt;code class=&quot;language-javascript&quot;&gt;&lt;span class=&quot;token comment&quot;&gt;// babel.config.js&lt;/span&gt;
+module&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;exports &lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;token punctuation&quot;&gt;{&lt;/span&gt;
+  presets&lt;span class=&quot;token punctuation&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;token punctuation&quot;&gt;[&lt;/span&gt;
+    &lt;span class=&quot;token punctuation&quot;&gt;[&lt;/span&gt;
+      &lt;span class=&quot;token string&quot;&gt;&quot;@babel/preset-env&quot;&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt;
+      &lt;span class=&quot;token punctuation&quot;&gt;{&lt;/span&gt;
+        targets&lt;span class=&quot;token punctuation&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;token punctuation&quot;&gt;{&lt;/span&gt;
+          node&lt;span class=&quot;token punctuation&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;token string&quot;&gt;&quot;current&quot;&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt;
+        &lt;span class=&quot;token punctuation&quot;&gt;}&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt;
+      &lt;span class=&quot;token punctuation&quot;&gt;}&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt;
+    &lt;span class=&quot;token punctuation&quot;&gt;]&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt;
+  &lt;span class=&quot;token punctuation&quot;&gt;]&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt;
+&lt;span class=&quot;token punctuation&quot;&gt;}&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;After adding this to the root of your project, you should be ready to start using
+import / export statements wherever you want!&lt;/p&gt;
+&lt;h4&gt;Ok, so how does this all work?&lt;/h4&gt;
+&lt;p&gt;Well, based on what I have read it’s super simple.
+Let’s take what the documentation uses.
+Given the following file:&lt;/p&gt;
+&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;javascript&quot;&gt;&lt;pre class=&quot;language-javascript&quot;&gt;&lt;code class=&quot;language-javascript&quot;&gt;&lt;span class=&quot;token comment&quot;&gt;// src/sum.js&lt;/span&gt;
+&lt;span class=&quot;token keyword&quot;&gt;export&lt;/span&gt; &lt;span class=&quot;token keyword&quot;&gt;default&lt;/span&gt; &lt;span class=&quot;token keyword&quot;&gt;function&lt;/span&gt; &lt;span class=&quot;token function&quot;&gt;sum&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;token parameter&quot;&gt;a&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt; b&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;token punctuation&quot;&gt;{&lt;/span&gt;
+  &lt;span class=&quot;token keyword&quot;&gt;return&lt;/span&gt; a &lt;span class=&quot;token operator&quot;&gt;+&lt;/span&gt; b
+&lt;span class=&quot;token punctuation&quot;&gt;}&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;javascript&quot;&gt;&lt;pre class=&quot;language-javascript&quot;&gt;&lt;code class=&quot;language-javascript&quot;&gt;&lt;span class=&quot;token comment&quot;&gt;// __tests__/sum.test.js&lt;/span&gt;
+
+&lt;span class=&quot;token keyword&quot;&gt;import&lt;/span&gt; sum &lt;span class=&quot;token keyword&quot;&gt;from&lt;/span&gt; &lt;span class=&quot;token string&quot;&gt;&quot;../src/sum.js&quot;&lt;/span&gt;
+
+&lt;span class=&quot;token function&quot;&gt;test&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;token string&quot;&gt;&quot;adds 1 + 2 to equal 3&quot;&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;token operator&quot;&gt;=&gt;&lt;/span&gt; &lt;span class=&quot;token punctuation&quot;&gt;{&lt;/span&gt;
+  &lt;span class=&quot;token function&quot;&gt;expect&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;token function&quot;&gt;sum&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;token number&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;token number&quot;&gt;2&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;token function&quot;&gt;toBe&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;token number&quot;&gt;3&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;
+&lt;span class=&quot;token punctuation&quot;&gt;}&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;So why does this work?&lt;/p&gt;
+&lt;p&gt;Well, Babel essentially takes your import statement: &lt;br&gt;
+&lt;code class=&quot;language-text&quot;&gt;import sum from &amp;quot;../src/sum.js&amp;quot;;&lt;/code&gt; &lt;br&gt;
+And turns it into&lt;br&gt;
+&lt;code class=&quot;language-text&quot;&gt;const sum = require(&amp;#39;../src/sum.js&amp;#39;);&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;And takes your export statement: &lt;br&gt;
+&lt;code class=&quot;language-text&quot;&gt;export default function sum(a, b) {&lt;/code&gt;&lt;br&gt;
+and turns it into&lt;br&gt;&lt;/p&gt;
+&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;javascript&quot;&gt;&lt;pre class=&quot;language-javascript&quot;&gt;&lt;code class=&quot;language-javascript&quot;&gt;&lt;span class=&quot;token keyword&quot;&gt;function&lt;/span&gt; &lt;span class=&quot;token function&quot;&gt;sum&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;token parameter&quot;&gt;a&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt; b&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;token punctuation&quot;&gt;{&lt;/span&gt;
+&lt;span class=&quot;token operator&quot;&gt;...&lt;/span&gt;code omitted &lt;span class=&quot;token keyword&quot;&gt;for&lt;/span&gt; brevity
+&lt;span class=&quot;token punctuation&quot;&gt;}&lt;/span&gt;
+module&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;exports &lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt; sum&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;There are key differences when looking at import / export vs module.exports / require
+if you dig further and look at the specs. I won’t get into the differences here, but
+there is a reason import / export statements are currently only experimental in NodeJS.&lt;/p&gt;
+&lt;p&gt;Technically, you could stop here, but I like to use ESLint to both lint and enforce code style.
+If you don’t tell ESLint about Jest, it will throw up many warnings. So, lets fix that.&lt;/p&gt;
+&lt;h3&gt;Installing ESLint&lt;/h3&gt;
+&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;bash&quot;&gt;&lt;pre class=&quot;language-bash&quot;&gt;&lt;code class=&quot;language-bash&quot;&gt;&lt;span class=&quot;token function&quot;&gt;npm&lt;/span&gt; &lt;span class=&quot;token function&quot;&gt;install&lt;/span&gt; --save-dev eslint eslint-plugin-jest
+npx eslint --init&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;This will generate a eslint config file for you once you choose from the command line
+options.&lt;/p&gt;
+&lt;p&gt;&lt;a href=&quot;https://github.com/ParamagicDev/TicTacToeJS/blob/master/.eslintrc.js&quot;&gt;My ESLint Config&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;I added the following lines for use with Jest in my &lt;code class=&quot;language-text&quot;&gt;.eslintrc.js&lt;/code&gt; file.&lt;/p&gt;
+&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;javascript&quot;&gt;&lt;pre class=&quot;language-javascript&quot;&gt;&lt;code class=&quot;language-javascript&quot;&gt;module&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;exports &lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;token punctuation&quot;&gt;{&lt;/span&gt;
+  &lt;span class=&quot;token comment&quot;&gt;// ...&lt;/span&gt;
+  env&lt;span class=&quot;token punctuation&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;token punctuation&quot;&gt;{&lt;/span&gt;
+    &lt;span class=&quot;token string&quot;&gt;&quot;jest/globals&quot;&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;token boolean&quot;&gt;true&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt;
+  &lt;span class=&quot;token punctuation&quot;&gt;}&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt;
+  &lt;span class=&quot;token keyword&quot;&gt;extends&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;token punctuation&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;token string&quot;&gt;&quot;plugins:jest/recommended&quot;&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;token string&quot;&gt;&quot;eslint:recommended&quot;&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;]&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt;
+  plugins&lt;span class=&quot;token punctuation&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;token punctuation&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;token string&quot;&gt;&quot;jest&quot;&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;]&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt;
+  &lt;span class=&quot;token comment&quot;&gt;// ...&lt;/span&gt;
+&lt;span class=&quot;token punctuation&quot;&gt;}&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;h3&gt;Closing thoughts&lt;/h3&gt;
+&lt;p&gt;Setting up Jest for the first time took a bit of work, but I got it all working to
+my liking and used it for testing in my &lt;a href=&quot;https://github.com/ParamagicDev/TicTacToeJS&quot;&gt;TicTacToe project&lt;/a&gt;.
+This was meant more so as a guide to myself, but if you found this helpful, feel free
+to share with your friends.&lt;/p&gt;</content:encoded></item><item><title><![CDATA[Gettin' Jiggy with Javascript]]></title><description><![CDATA[DocumentFragment - Appending multiple children to one or multiple elements Relevant Links DocumentFragment API via MDN
+Relevant…]]></description><link>https://gatsby-starter-blog-demo.netlify.com/get-jiggy-with-js/documentFragments/</link><guid isPermaLink="false">https://gatsby-starter-blog-demo.netlify.com/get-jiggy-with-js/documentFragments/</guid><pubDate>Sun, 29 Sep 2019 21:34:12 GMT</pubDate><content:encoded>&lt;h1&gt;DocumentFragment - Appending multiple children to one or multiple elements&lt;/h1&gt;
+&lt;h2&gt;Relevant Links&lt;/h2&gt;
+&lt;p&gt;&lt;a href=&quot;https://developer.mozilla.org/en-US/docs/Web/API/DocumentFragment&quot;&gt;DocumentFragment API via MDN&lt;/a&gt;
+&lt;a href=&quot;https://stackoverflow.com/a/36798254&quot;&gt;Relevant StackOverflow answer&lt;/a&gt;
+&lt;a href=&quot;https://github.com/ParamagicDev/libraryBookJS&quot;&gt;My Github repository which uses DocumentFragment API&lt;/a&gt;&lt;/p&gt;
+&lt;h2&gt;What is the DocumentFragment API?&lt;/h2&gt;
+&lt;p&gt;Below is the description from MDN:&lt;br&gt;&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;The DocumentFragment interface represents a minimal document object that has no parent. It is used as a lightweight version of Document that stores a segment of a document structure comprised of nodes just like a standard document. The key difference is that because the document fragment isn’t part of the active document tree structure, changes made to the fragment don’t affect the document, cause reflow, or incur any performance impact that can occur when changes are made.&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;&lt;i&gt;Key Takeaway:&lt;/i&gt;&lt;br&gt;
+The key difference is that because the document fragment isn’t part of the active document tree structure, changes made to the fragment don’t affect the document, cause reflow, or incur any performance impact that can occur when changes are made.&lt;br&gt;&lt;/p&gt;
+&lt;p&gt;This means the DocumentFragment API is the go to way to append multiple elements
+that do not need to be immediately rendered to the page.&lt;/p&gt;
+&lt;h2&gt;Using the DocumentFragment API&lt;/h2&gt;
+&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;bash&quot;&gt;&lt;pre class=&quot;language-bash&quot;&gt;&lt;code class=&quot;language-bash&quot;&gt;const docFrag &lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt; new DocumentFragment&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;Thats all it takes to make a document fragment!&lt;/p&gt;
+&lt;h2&gt;Basic usage&lt;/h2&gt;
+&lt;h3&gt;Typical way of appending children&lt;/h3&gt;
+&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;bash&quot;&gt;&lt;pre class=&quot;language-bash&quot;&gt;&lt;code class=&quot;language-bash&quot;&gt;const div1 &lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt; document.createElement&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;token string&quot;&gt;&apos;div&apos;&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;;&lt;/span&gt;
+
+const div2 &lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt; document.createElement&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;token string&quot;&gt;&apos;div&apos;&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;;&lt;/span&gt;
+const div3 &lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt; document.createElement&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;token string&quot;&gt;&apos;div&apos;&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;;&lt;/span&gt;
+
+document.body.appendChild&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;div&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;;&lt;/span&gt;
+document.body.appendChild&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;p1&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;;&lt;/span&gt;
+document.body.appendChild&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;p2&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;Everytime you append a child to a rendered portion of the browser, you are rerendering the page with each &lt;code class=&quot;language-text&quot;&gt;appendChild()&lt;/code&gt; call. Lets look at how we could recreate the same functionality without causing performance issues.&lt;/p&gt;
+&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;bash&quot;&gt;&lt;pre class=&quot;language-bash&quot;&gt;&lt;code class=&quot;language-bash&quot;&gt;// Create a docFrag to &lt;span class=&quot;token function&quot;&gt;add&lt;/span&gt; elements to
+const docFrag &lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt; new DocumentFragment&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;;&lt;/span&gt;
+
+const div1 &lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt; document.createElement&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;token string&quot;&gt;&apos;div&apos;&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;;&lt;/span&gt;
+const div2 &lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt; document.createElement&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;token string&quot;&gt;&apos;div&apos;&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;;&lt;/span&gt;
+const div3 &lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt; document.createElement&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;token string&quot;&gt;&apos;div&apos;&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;;&lt;/span&gt;
+
+docFrag.appendChild&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;div1&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;;&lt;/span&gt;
+docFrag.appendChild&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;div2&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;;&lt;/span&gt;
+docFrag.appendChild&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;div3&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;;&lt;/span&gt;
+
+document.body.appendChild&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;docFrag&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;It requires 2 simple extra lines of code but will significantly change
+a users browser experience. Especially if you are doing something like
+server side rendering where you create many HTML elements via JS.
+This method as far as I’m aware is implemented by the major front-end frameworks like React, Vue, Angular etc.&lt;/p&gt;
+&lt;h3&gt;Closing thoughts&lt;/h3&gt;
+&lt;p&gt;I hope you found this useful and next time you go to append some children
+you reach for DocumentFragment. Its a simple and easy to understand API with so
+many benefits. I was very happy with how approachable it was and it was
+very easy to see the benefits of the API.&lt;/p&gt;</content:encoded></item><item><title><![CDATA[Gettin' Jiggy with Javascript - Introduction]]></title><description><![CDATA[Purpose This is a collection of various things I have found while doing various projects
+using Javascript. This is not meant to be read in…]]></description><link>https://gatsby-starter-blog-demo.netlify.com/get-jiggy-with-js/introduction/</link><guid isPermaLink="false">https://gatsby-starter-blog-demo.netlify.com/get-jiggy-with-js/introduction/</guid><pubDate>Sun, 29 Sep 2019 21:31:23 GMT</pubDate><content:encoded>&lt;h1&gt;Purpose&lt;/h1&gt;
+&lt;p&gt;This is a collection of various things I have found while doing various projects
+using Javascript. This is not meant to be read in any order, rather its just random
+tidbits and items I have come across while using Javascript.&lt;/p&gt;</content:encoded></item><item><title><![CDATA[PHP for beginners - Part 7 - Classes?...Like school?]]></title><description><![CDATA[Part 7 Laracasts main site
 Laracasts - PHP for beginners Chapters covered Chapter 12 - Classes 101 Chapter 12 - Classes 101 What is a class…]]></description><link>https://gatsby-starter-blog-demo.netlify.com/learning-php/part7/</link><guid isPermaLink="false">https://gatsby-starter-blog-demo.netlify.com/learning-php/part7/</guid><pubDate>Mon, 26 Aug 2019 10:31:03 GMT</pubDate><content:encoded>&lt;h1&gt;Part 7&lt;/h1&gt;
 &lt;p&gt;&lt;a href=&quot;https://laracasts.com&quot;&gt;Laracasts main site&lt;/a&gt;&lt;br&gt;
 &lt;a href=&quot;https://laracasts.com/series/php-for-beginners&quot;&gt;Laracasts - PHP for beginners&lt;/a&gt;&lt;/p&gt;
