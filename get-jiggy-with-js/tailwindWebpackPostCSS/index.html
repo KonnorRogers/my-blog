@@ -36,6 +36,7 @@ module<span class="token punctuation">.</span>exports <span class="token operato
   variants<span class="token punctuation">:</span> <span class="token punctuation">{</span><span class="token punctuation">}</span><span class="token punctuation">,</span>
   plugins<span class="token punctuation">:</span> <span class="token punctuation">[</span><span class="token punctuation">]</span><span class="token punctuation">,</span>
 <span class="token punctuation">}</span></code></pre></div>
+<p><br><br></p>
 <p>If you don’t want to use webpack-dev-server you don’t have to. Personally, I like
 it for live-reloading in my browser. All I can really say about this is just pay
 attention to paths and make sure you check the webpack documentation. They do
@@ -70,6 +71,7 @@ module<span class="token punctuation">.</span>exports <span class="token operato
     open<span class="token punctuation">:</span> <span class="token boolean">true</span><span class="token punctuation">,</span>
   <span class="token punctuation">}</span><span class="token punctuation">,</span>
 <span class="token punctuation">}</span></code></pre></div>
+<p><br><br></p>
 <p>Feel free to add PurgeCSS, postcss-nested, postcss-import, etc here.
 For the simplicity of this guide, I will not include it here.</p>
 <div class="gatsby-highlight" data-language="javascript"><pre class="language-javascript"><code class="language-javascript"><span class="token comment">// postcss.config.js</span>
@@ -79,7 +81,7 @@ module<span class="token punctuation">.</span>exports <span class="token operato
     <span class="token function">require</span><span class="token punctuation">(</span><span class="token string">"autoprefixer"</span><span class="token punctuation">)</span><span class="token punctuation">,</span>
   <span class="token punctuation">]</span><span class="token punctuation">,</span>
 <span class="token punctuation">}</span></code></pre></div>
-<br>
+<p><br><br></p>
 <p>Use basic tailwind directives, this is where you would import your own
 components, utilities, and base css.</p>
 <div class="gatsby-highlight" data-language="css"><pre class="language-css"><code class="language-css"><span class="token comment">/* src/styles.css */</span>
@@ -89,7 +91,7 @@ components, utilities, and base css.</p>
 <span class="token atrule"><span class="token rule">@tailwind</span> components<span class="token punctuation">;</span></span>
 
 <span class="token atrule"><span class="token rule">@tailwind</span> utilities<span class="token punctuation">;</span></span></code></pre></div>
-<br>
+<p><br><br></p>
 <p><b> This is incredibly important </b></p>
 <p>If you do not import ‘./styles.css’ the tailwind directives will not run
 and everything you just did above will not even run.</p>
@@ -104,30 +106,29 @@ and everything you just did above will not even run.</p>
     <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>meta</span> <span class="token attr-name">charset</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>utf-8<span class="token punctuation">"</span></span> <span class="token punctuation">/></span></span>
     <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>meta</span> <span class="token attr-name">name</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>viewport<span class="token punctuation">"</span></span> <span class="token attr-name">content</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>width=device-width, initial-scale=1<span class="token punctuation">"</span></span> <span class="token punctuation">/></span></span>
     <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>title</span><span class="token punctuation">></span></span>Title<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>title</span><span class="token punctuation">></span></span>
-
-    <span class="token comment">&lt;!-- imports tailwind styles  --></span>
-    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>link</span> <span class="token attr-name">rel</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>stylesheet<span class="token punctuation">"</span></span> <span class="token attr-name">href</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>styles.css<span class="token punctuation">"</span></span> <span class="token punctuation">/></span></span>
   <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>head</span><span class="token punctuation">></span></span>
   <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>body</span><span class="token punctuation">></span></span>
     <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>div</span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>text-red-500<span class="token punctuation">"</span></span><span class="token punctuation">></span></span>Test Input<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>div</span><span class="token punctuation">></span></span>
+
     <span class="token comment">&lt;!-- Where webpack will output to --></span>
     <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>script</span> <span class="token attr-name">src</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>bundle.js<span class="token punctuation">"</span></span><span class="token punctuation">></span></span><span class="token script"></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>script</span><span class="token punctuation">></span></span>
   <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>body</span><span class="token punctuation">></span></span>
 <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>html</span><span class="token punctuation">></span></span></code></pre></div>
-<p>Below are commands to run your newly set up repository</p>
+<p>Below are commands to run your newly set up repository:</p>
 <div class="gatsby-highlight" data-language="bash"><pre class="language-bash"><code class="language-bash">npx webpack-dev-server <span class="token comment"># This will let you view it on localhost with live-reload</span>
 npx webpack <span class="token comment"># Will build the project</span></code></pre></div>
 <div class="gatsby-highlight" data-language="javascript"><pre class="language-javascript"><code class="language-javascript"><span class="token comment">// package.json</span>
 <span class="token punctuation">{</span>
   <span class="token comment">// ...</span>
   <span class="token string">"scripts"</span><span class="token punctuation">:</span> <span class="token punctuation">{</span>
-    <span class="token string">"dev:watch"</span><span class="token punctuation">:</span> <span class="token string">"webpack-dev-server --mode=development --config webpack.config.js"</span>
+    <span class="token string">"dev:watch"</span><span class="token punctuation">:</span> <span class="token string">"webpack-dev-server --mode=development --config webpack.config.js"</span><span class="token punctuation">,</span>
     <span class="token string">"dev:build"</span><span class="token punctuation">:</span> <span class="token string">"webpack --mode=development --config webpack.config.js"</span>
   <span class="token punctuation">}</span>
   <span class="token comment">// ...</span>
 <span class="token punctuation">}</span></code></pre></div>
 <div class="gatsby-highlight" data-language="bash"><pre class="language-bash"><code class="language-bash"><span class="token function">npm</span> run dev:watch
 <span class="token function">npm</span> run dev:build</code></pre></div>
+<br>
 <p>This should get you up and running with tailwindCSS in a development environment.
 I don’t recommend this for production particularly because it does not have PurgeCSS.
 This is meant more as a quick reference to start a project. I also recommend digging
