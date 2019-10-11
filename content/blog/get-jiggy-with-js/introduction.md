@@ -1,5 +1,5 @@
 ---
-title: Gettin' Jiggy with Javascript - Introduction
+title: Gettin' Jiggy with JS - Introduction
 date: "2019-09-29T17:31:23"
 description: "A basic introduction as to what this series will be about"
 ---
