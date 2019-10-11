@@ -1,9 +1,8 @@
 ---
 title: JS - How to configure webpack-dev-server live-reloading
 date: "2019-10-10T23:05:07"
-description:
-  In this post, I will go over how to configure webpack and webpack-dev-server to
-  allow for live-reloading similar to live-server
+description: In this post, I will go over how to configure webpack and
+  webpack-dev-server to allow for live-reloading similar to live-server
 ---
 
 ## Quick Start
