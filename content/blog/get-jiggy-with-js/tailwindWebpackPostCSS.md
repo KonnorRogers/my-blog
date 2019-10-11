@@ -45,6 +45,8 @@ postcss-loader css-loader style-loader \
 
 ### Configuration files
 
+This is the default from tailwind
+
 ```javascript
 // tailwind.config.js
 module.exports = {
@@ -56,9 +58,10 @@ module.exports = {
 }
 ```
 
-<br><br>
-
-This is the default from tailwind
+If you don't want to use webpack-dev-server you don't have to. Personally, I like
+it for live-reloading in my browser. All I can really say about this is just pay
+attention to paths and make sure you check the webpack documentation. They do
+a far better job of explaining what is going on here.
 
 ```javascript
 // webpack.config.js
@@ -93,10 +96,8 @@ module.exports = {
 }
 ```
 
-<br><br>
-
-If you don't want to use webpack-dev-server you don't have to. Personally, I like
-it for live-reloading in my browser.
+Feel free to add PurgeCSS, postcss-nested, postcss-import, etc here.
+For the simplicity of this guide, I will not include it here.
 
 ```javascript
 // postcss.config.js
@@ -108,10 +109,10 @@ module.exports = {
 }
 ```
 
-<br><br>
+<br>
 
-Feel free to add PurgeCSS, postcss-nested, postcss-import, etc here.
-For the simplicity of this guide, I will not include it here.
+Use basic tailwind directives, this is where you would import your own
+components, utilities, and base css.
 
 ```css
 /* src/styles.css */
@@ -123,20 +124,21 @@ For the simplicity of this guide, I will not include it here.
 @tailwind utilities;
 ```
 
-<br><br>
-Use tailwind directives
+<br>
+
+<b> This is incredibly important </b>
+
+If you do not import './styles.css' the tailwind directives will not run
+and everything you just did above will not even run.
 
 ```javascript
-/* src/index.js */
+// src/index.js
 import "./styles.css"
 ```
 
 <br><br>
 
-<b> This is incredibly import </b>
-
-If you do not import './styles.css' the tailwind directives will not run
-and everything you just did above will not even run.
+Just a simple html template to play around with
 
 ```html
 <!-- dist/index.html -->
@@ -158,16 +160,12 @@ and everything you just did above will not even run.
 </html>
 ```
 
-<br><br>
-
-Just a simple html template to play around with
+Below are commands to run your newly set up repository
 
 ```bash
 npx webpack-dev-server # This will let you view it on localhost with live-reload
 npx webpack # Will build the project
 ```
-
-Alternatively, you can create a script commands in your package.json file.
 
 ```javascript
 // package.json
