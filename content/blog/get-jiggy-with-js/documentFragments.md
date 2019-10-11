@@ -1,5 +1,5 @@
 ---
-title: Gettin' Jiggy with JS - What are Document Fragments?
+title: JS - Appending multiple children to an element
 date: "2019-09-29T17:34:12"
 description:
   After searching and scouring the internet for the best way to append
@@ -7,15 +7,15 @@ description:
   the DocumentFragment API
 ---
 
-# DocumentFragment - Appending multiple children to one or multiple elements
+## DocumentFragment - Appending multiple children to one or multiple elements
 
-## Relevant Links
+### Relevant Links
 
 [DocumentFragment API via MDN](https://developer.mozilla.org/en-US/docs/Web/API/DocumentFragment)
 [Relevant StackOverflow answer](https://stackoverflow.com/a/36798254)
 [My Github repository which uses DocumentFragment API](https://github.com/ParamagicDev/libraryBookJS)
 
-## What is the DocumentFragment API?
+### What is the DocumentFragment API?
 
 Below is the description from MDN:<br>
 
@@ -27,7 +27,7 @@ The key difference is that because the document fragment isn't part of the activ
 This means the DocumentFragment API is the go to way to append multiple elements
 that do not need to be immediately rendered to the page.
 
-## Using the DocumentFragment API
+### Using the DocumentFragment API
 
 ```bash
 const docFrag = new DocumentFragment();
@@ -35,9 +35,9 @@ const docFrag = new DocumentFragment();
 
 Thats all it takes to make a document fragment!
 
-## Basic usage
+### Basic usage
 
-### Typical way of appending children
+#### Typical way of appending children
 
 ```bash
 const div1 = document.createElement('div');
@@ -72,7 +72,7 @@ a users browser experience. Especially if you are doing something like
 server side rendering where you create many HTML elements via JS.
 This method as far as I'm aware is implemented by the major front-end frameworks like React, Vue, Angular etc.
 
-### Closing thoughts
+#### Closing thoughts
 
 I hope you found this useful and next time you go to append some children
 you reach for DocumentFragment. Its a simple and easy to understand API with so

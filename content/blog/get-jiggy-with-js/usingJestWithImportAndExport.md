@@ -1,9 +1,8 @@
 ---
-title: Gettin' Jiggy with JS - Using Jest with Import and Export
+title: JS - Using Jest with Import and Export statements
 date: "2019-10-02T18:20:55"
-description: Getting started with Jest in either a new or existing project
-  that does not currently have a testing suite. In addition, we will be adding
-  an ESLint config and babel config that uses Jest so we can practice good code style.
+description: Using jest with import and export statements is not easy.
+  I will detail how to use the ES6 based syntax in the following post.
 ---
 
 # Purpose
