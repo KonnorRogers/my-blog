@@ -5,7 +5,9 @@ description: I will detail how to setup TailwindCSS with PostCSS and Webpack.
   I will do the bare minimum setup to get it working without many plugins.
 ---
 
-## Quick Start
+At the time of writing, this works using Tailwind v1.1.2
+
+## [Reference Repository](https://github.com/paramagicdev/tailwind-example)
 
 ### File structure
 
@@ -24,6 +26,8 @@ description: I will detail how to setup TailwindCSS with PostCSS and Webpack.
 | webpack.config.js
 ```
 
+### CLI Commands
+
 ```bash
 npm init # if new project
 
@@ -39,6 +43,8 @@ postcss-loader css-loader style-loader \
 && touch postcss.config.js
 ```
 
+### Configuration files
+
 ```javascript
 // tailwind.config.js
 module.exports = {
@@ -49,6 +55,10 @@ module.exports = {
   plugins: [],
 }
 ```
+
+<br><br>
+
+This is the default from tailwind
 
 ```javascript
 // webpack.config.js
@@ -83,6 +93,11 @@ module.exports = {
 }
 ```
 
+<br><br>
+
+If you don't want to use webpack-dev-server you don't have to. Personally, I like
+it for live-reloading in my browser.
+
 ```javascript
 // postcss.config.js
 module.exports = {
@@ -92,6 +107,11 @@ module.exports = {
   ],
 }
 ```
+
+<br><br>
+
+Feel free to add PurgeCSS, postcss-nested, postcss-import, etc here.
+For the simplicity of this guide, I will not include it here.
 
 ```css
 /* src/styles.css */
@@ -103,10 +123,20 @@ module.exports = {
 @tailwind utilities;
 ```
 
+<br><br>
+Use tailwind directives
+
 ```javascript
 /* src/index.js */
 import "./styles.css"
 ```
+
+<br><br>
+
+<b> This is incredibly import </b>
+
+If you do not import './styles.css' the tailwind directives will not run
+and everything you just did above will not even run.
 
 ```html
 <!-- dist/index.html -->
@@ -128,12 +158,16 @@ import "./styles.css"
 </html>
 ```
 
+<br><br>
+
+Just a simple html template to play around with
+
 ```bash
 npx webpack-dev-server # This will let you view it on localhost with live-reload
 npx webpack # Will build the project
 ```
 
-Alternatively, you can create a dev command.
+Alternatively, you can create a script commands in your package.json file.
 
 ```javascript
 // package.json
