@@ -12,7 +12,7 @@ description: In this post, I will go over how to configure webpack and
 ```bash
 npm init # if it's a new project
 
-npm install webpack webpack-cli
+npm install webpack webpack-cli webpack-dev-server
 ```
 
 Add the following configuration in your root directory and it will allow for
