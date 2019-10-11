@@ -1,4 +1,102 @@
-<?xml version="1.0" encoding="UTF-8"?><rss xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:content="http://purl.org/rss/1.0/modules/content/" xmlns:atom="http://www.w3.org/2005/Atom" version="2.0"><channel><title><![CDATA[Konnor's Blog]]></title><description><![CDATA[A starter blog demonstrating what Gatsby can do.]]></description><link>https://gatsby-starter-blog-demo.netlify.com</link><generator>RSS for Node</generator><lastBuildDate>Fri, 04 Oct 2019 21:16:05 GMT</lastBuildDate><item><title><![CDATA[Gettin' Jiggy with JS - Using Jest with Import and Export]]></title><description><![CDATA[Purpose When using new tools I like to create my own documentation of setup.
+<?xml version="1.0" encoding="UTF-8"?><rss xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:content="http://purl.org/rss/1.0/modules/content/" xmlns:atom="http://www.w3.org/2005/Atom" version="2.0"><channel><title><![CDATA[Konnor's Blog]]></title><description><![CDATA[A starter blog demonstrating what Gatsby can do.]]></description><link>https://gatsby-starter-blog-demo.netlify.com</link><generator>RSS for Node</generator><lastBuildDate>Fri, 11 Oct 2019 03:42:10 GMT</lastBuildDate><item><title><![CDATA[JS - Configuring webpack-dev-server live-reloading]]></title><link>https://gatsby-starter-blog-demo.netlify.com/get-jiggy-with-js/webpackDevServer/</link><guid isPermaLink="false">https://gatsby-starter-blog-demo.netlify.com/get-jiggy-with-js/webpackDevServer/</guid><pubDate>Fri, 11 Oct 2019 03:05:07 GMT</pubDate><content:encoded></content:encoded></item><item><title><![CDATA[JS - How to configure webpack-dev-server live-reloading]]></title><description><![CDATA[Quick Start Reference Repository Add the following configuration in your root directory and it will allow for
+live reloading as well as…]]></description><link>https://gatsby-starter-blog-demo.netlify.com/get-jiggy-with-js/webpackDevServerLiveReloading/</link><guid isPermaLink="false">https://gatsby-starter-blog-demo.netlify.com/get-jiggy-with-js/webpackDevServerLiveReloading/</guid><pubDate>Fri, 11 Oct 2019 03:05:07 GMT</pubDate><content:encoded>&lt;h2&gt;Quick Start&lt;/h2&gt;
+&lt;p&gt;&lt;a href=&quot;https://github.com/paramagicdev/TicTacToeJS&quot;&gt;Reference Repository&lt;/a&gt;&lt;/p&gt;
+&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;bash&quot;&gt;&lt;pre class=&quot;language-bash&quot;&gt;&lt;code class=&quot;language-bash&quot;&gt;&lt;span class=&quot;token function&quot;&gt;npm&lt;/span&gt; init &lt;span class=&quot;token comment&quot;&gt;# if it&apos;s a new project&lt;/span&gt;
+
+&lt;span class=&quot;token function&quot;&gt;npm&lt;/span&gt; &lt;span class=&quot;token function&quot;&gt;install&lt;/span&gt; webpack webpack-cli&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;Add the following configuration in your root directory and it will allow for
+live reloading as well as automatically opening the default browser&lt;/p&gt;
+&lt;p&gt;&lt;a href=&quot;https://github.com/paramagicdev/TicTacToeJS/blob/master/webpack.config.js&quot;&gt;Reference Webpack Config&lt;/a&gt;&lt;/p&gt;
+&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;javascript&quot;&gt;&lt;pre class=&quot;language-javascript&quot;&gt;&lt;code class=&quot;language-javascript&quot;&gt;&lt;span class=&quot;token comment&quot;&gt;// webpack.config.js&lt;/span&gt;
+&lt;span class=&quot;token keyword&quot;&gt;const&lt;/span&gt; path &lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;token function&quot;&gt;require&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;token string&quot;&gt;&quot;path&quot;&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;
+
+module&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;exports &lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;token punctuation&quot;&gt;{&lt;/span&gt;
+  entry&lt;span class=&quot;token punctuation&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;token string&quot;&gt;&quot;./src/index.js&quot;&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt;
+  output&lt;span class=&quot;token punctuation&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;token punctuation&quot;&gt;{&lt;/span&gt;
+    path&lt;span class=&quot;token punctuation&quot;&gt;:&lt;/span&gt; path&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;token function&quot;&gt;resolve&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;__dirname&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;token string&quot;&gt;&quot;dist&quot;&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt;
+    filename&lt;span class=&quot;token punctuation&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;token string&quot;&gt;&quot;bundle.js&quot;&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt;
+  &lt;span class=&quot;token punctuation&quot;&gt;}&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt;
+
+  devServer&lt;span class=&quot;token punctuation&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;token punctuation&quot;&gt;{&lt;/span&gt;
+    open&lt;span class=&quot;token punctuation&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;token boolean&quot;&gt;true&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt;
+    publicPath&lt;span class=&quot;token punctuation&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;token string&quot;&gt;&quot;&quot;&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt;
+    contentBase&lt;span class=&quot;token punctuation&quot;&gt;:&lt;/span&gt; path&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;token function&quot;&gt;resolve&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;__dirname&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;token string&quot;&gt;&quot;dist&quot;&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt;
+    watchContentBase&lt;span class=&quot;token punctuation&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;token boolean&quot;&gt;true&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt;
+    compress&lt;span class=&quot;token punctuation&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;token boolean&quot;&gt;true&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt;
+  &lt;span class=&quot;token punctuation&quot;&gt;}&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt;
+&lt;span class=&quot;token punctuation&quot;&gt;}&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;Then running &lt;code class=&quot;language-text&quot;&gt;npx webpack-dev-server&lt;/code&gt; will automatically open the default web
+browser and allow automatic browser refreshing on file changes.&lt;/p&gt;
+&lt;h2&gt;In depth explanation&lt;/h2&gt;
+&lt;p&gt;Alright, so there’s a few assumptions when creating this configuration.&lt;/p&gt;
+&lt;h3&gt;File structure:&lt;/h3&gt;
+&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;project&quot;&gt;&lt;pre class=&quot;language-project&quot;&gt;&lt;code class=&quot;language-project&quot;&gt;dist/
+|-- style.css
+|-- index.html
+src/
+|-- index.js&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;html&quot;&gt;&lt;pre class=&quot;language-html&quot;&gt;&lt;code class=&quot;language-html&quot;&gt;// dist/index.html
+&lt;span class=&quot;token tag&quot;&gt;&lt;span class=&quot;token tag&quot;&gt;&lt;span class=&quot;token punctuation&quot;&gt;&amp;lt;&lt;/span&gt;html&lt;/span&gt; &lt;span class=&quot;token attr-name&quot;&gt;lang&lt;/span&gt;&lt;span class=&quot;token attr-value&quot;&gt;&lt;span class=&quot;token punctuation&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;&quot;&lt;/span&gt;en&lt;span class=&quot;token punctuation&quot;&gt;&quot;&lt;/span&gt;&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;&gt;&lt;/span&gt;&lt;/span&gt;
+  &lt;span class=&quot;token tag&quot;&gt;&lt;span class=&quot;token tag&quot;&gt;&lt;span class=&quot;token punctuation&quot;&gt;&amp;lt;&lt;/span&gt;head&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&quot;token tag&quot;&gt;&lt;span class=&quot;token tag&quot;&gt;&lt;span class=&quot;token punctuation&quot;&gt;&amp;lt;/&lt;/span&gt;head&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;&gt;&lt;/span&gt;&lt;/span&gt;
+  &lt;span class=&quot;token tag&quot;&gt;&lt;span class=&quot;token tag&quot;&gt;&lt;span class=&quot;token punctuation&quot;&gt;&amp;lt;&lt;/span&gt;body&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;&gt;&lt;/span&gt;&lt;/span&gt;
+    &lt;span class=&quot;token comment&quot;&gt;&amp;lt;!-- Name of your webpack bundle --&gt;&lt;/span&gt;
+    &lt;span class=&quot;token tag&quot;&gt;&lt;span class=&quot;token tag&quot;&gt;&lt;span class=&quot;token punctuation&quot;&gt;&amp;lt;&lt;/span&gt;script&lt;/span&gt; &lt;span class=&quot;token attr-name&quot;&gt;src&lt;/span&gt;&lt;span class=&quot;token attr-value&quot;&gt;&lt;span class=&quot;token punctuation&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;&quot;&lt;/span&gt;./bundle.js&lt;span class=&quot;token punctuation&quot;&gt;&quot;&lt;/span&gt;&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&quot;token script&quot;&gt;&lt;/span&gt;&lt;span class=&quot;token tag&quot;&gt;&lt;span class=&quot;token tag&quot;&gt;&lt;span class=&quot;token punctuation&quot;&gt;&amp;lt;/&lt;/span&gt;script&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;&gt;&lt;/span&gt;&lt;/span&gt;
+  &lt;span class=&quot;token tag&quot;&gt;&lt;span class=&quot;token tag&quot;&gt;&lt;span class=&quot;token punctuation&quot;&gt;&amp;lt;/&lt;/span&gt;body&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;&gt;&lt;/span&gt;&lt;/span&gt;
+&lt;span class=&quot;token tag&quot;&gt;&lt;span class=&quot;token tag&quot;&gt;&lt;span class=&quot;token punctuation&quot;&gt;&amp;lt;/&lt;/span&gt;html&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;&gt;&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;It is important that the script you source, &lt;code class=&quot;language-text&quot;&gt;&amp;lt;script src=&amp;quot;./bundle.js&amp;gt;&amp;lt;/script&amp;gt;&amp;quot;&lt;/code&gt;
+is the same path as what is output by webpack in your &lt;code class=&quot;language-text&quot;&gt;webpack.config.js&lt;/code&gt; file&lt;/p&gt;
+&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;javascript&quot;&gt;&lt;pre class=&quot;language-javascript&quot;&gt;&lt;code class=&quot;language-javascript&quot;&gt;&lt;span class=&quot;token comment&quot;&gt;// Resolves to &apos;./dist/bundle.js&apos;&lt;/span&gt;
+  output&lt;span class=&quot;token punctuation&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;token punctuation&quot;&gt;{&lt;/span&gt;
+    path&lt;span class=&quot;token punctuation&quot;&gt;:&lt;/span&gt; path&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;token function&quot;&gt;resolve&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;__dirname&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;token string&quot;&gt;&quot;dist&quot;&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt;
+    filename&lt;span class=&quot;token punctuation&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;token string&quot;&gt;&quot;bundle.js&quot;&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt;
+  &lt;span class=&quot;token punctuation&quot;&gt;}&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;This is important because webpack-dev-server saves your new bundle into memory
+and does not actually build a new &lt;code class=&quot;language-text&quot;&gt;bundle.js&lt;/code&gt; in your &lt;code class=&quot;language-text&quot;&gt;dist/&lt;/code&gt; directory.&lt;/p&gt;
+&lt;h3&gt;DevServer configuration&lt;/h3&gt;
+&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;javascript&quot;&gt;&lt;pre class=&quot;language-javascript&quot;&gt;&lt;code class=&quot;language-javascript&quot;&gt;&lt;span class=&quot;token comment&quot;&gt;// webpack.config.js&lt;/span&gt;
+
+module&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;exports &lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;token punctuation&quot;&gt;{&lt;/span&gt;
+  &lt;span class=&quot;token comment&quot;&gt;// Above code omitted for brevity&lt;/span&gt;
+  devServer&lt;span class=&quot;token punctuation&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;token punctuation&quot;&gt;{&lt;/span&gt;
+    open&lt;span class=&quot;token punctuation&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;token boolean&quot;&gt;true&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;token comment&quot;&gt;// Tells webpack-dev-server to open your default browser&lt;/span&gt;
+    publicPath&lt;span class=&quot;token punctuation&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;token string&quot;&gt;&quot;&quot;&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;token comment&quot;&gt;// Where your webpack bundle will be sent to&lt;/span&gt;
+    contentBase&lt;span class=&quot;token punctuation&quot;&gt;:&lt;/span&gt; path&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;token function&quot;&gt;resolve&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;__dirname&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;token string&quot;&gt;&quot;dist&quot;&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;token comment&quot;&gt;// Where your static files are, ie: index.html&lt;/span&gt;
+    watchContentBase&lt;span class=&quot;token punctuation&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;token boolean&quot;&gt;true&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;token comment&quot;&gt;// Enable live-reloading&lt;/span&gt;
+    compress&lt;span class=&quot;token punctuation&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;token boolean&quot;&gt;true&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;token comment&quot;&gt;// no real significance here&lt;/span&gt;
+  &lt;span class=&quot;token punctuation&quot;&gt;}&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt;
+&lt;span class=&quot;token punctuation&quot;&gt;}&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;Alright, lets go through line by line&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;code class=&quot;language-text&quot;&gt;open: true&lt;/code&gt; : Tells webpack-dev-server to automatically open the browser to the
+path provided by &lt;code class=&quot;language-text&quot;&gt;contentBase&lt;/code&gt;.&lt;/li&gt;
+&lt;li&gt;&lt;code class=&quot;language-text&quot;&gt;publicPath: &amp;quot;&amp;quot;&lt;/code&gt; : This tells webpack where to send the bundle to. In this case, just set it to the current directory. This is prepended to&lt;/li&gt;
+&lt;/ul&gt;
+&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;javascript&quot;&gt;&lt;pre class=&quot;language-javascript&quot;&gt;&lt;code class=&quot;language-javascript&quot;&gt;output&lt;span class=&quot;token punctuation&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;token punctuation&quot;&gt;{&lt;/span&gt;
+  path&lt;span class=&quot;token punctuation&quot;&gt;:&lt;/span&gt; path&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;token function&quot;&gt;resolve&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;__dirname&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;token string&quot;&gt;&apos;dist&apos;&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt;
+  filename&lt;span class=&quot;token punctuation&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;token string&quot;&gt;&apos;bundle.js&apos;&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt;
+&lt;span class=&quot;token punctuation&quot;&gt;}&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;So if publicPath was set to &lt;code class=&quot;language-text&quot;&gt;&amp;quot;dist/&amp;quot;&lt;/code&gt;, then in that case, your &lt;code class=&quot;language-text&quot;&gt;bundle.js&lt;/code&gt; file
+would be in &lt;code class=&quot;language-text&quot;&gt;./dist/dist/bundle.js&lt;/code&gt; instead of &lt;code class=&quot;language-text&quot;&gt;./dist/bundle.js&lt;/code&gt;. Yes, it’s confusing. I know, it tripped me up for a while.&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;code class=&quot;language-text&quot;&gt;contentBase: path.resolve(__dirname, &amp;quot;dist&amp;quot;)&lt;/code&gt; : This tells webpack-dev-server
+what files to watch. This should be where your static files are. IE: index.html,
+style.css, etc.., basically, anything that webpack does not touch when bundling.&lt;/li&gt;
+&lt;li&gt;&lt;code class=&quot;language-text&quot;&gt;watchContentBase: true&lt;/code&gt; : This enables live-reloading, this auto-refreshes
+the browser.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;In my &lt;a href=&quot;https://github.com/ParamagicDev/TicTacToeJS&quot;&gt;Tic Tac Toe Repo&lt;/a&gt; I see
+the following output:&lt;/p&gt;
+&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;bash&quot;&gt;&lt;pre class=&quot;language-bash&quot;&gt;&lt;code class=&quot;language-bash&quot;&gt;ℹ ｢wds｣: Project is running at http://localhost:8080/
+ℹ ｢wds｣: webpack output is served from /
+ℹ ｢wds｣: Content not from webpack is served from /home/krog/odin-project/javascript/TicTacToeJS/dist
+&lt;span class=&quot;token comment&quot;&gt;### Below code omitted&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;This is telling me, if I open up &lt;code class=&quot;language-text&quot;&gt;http://localhost:8080&lt;/code&gt; it will automatically
+display &lt;code class=&quot;language-text&quot;&gt;&amp;#39;/index.html&amp;#39;&lt;/code&gt; for me. Webpack output is set to &lt;code class=&quot;language-text&quot;&gt;/bundle.js&lt;/code&gt; Both files
+will have &lt;code class=&quot;language-text&quot;&gt;dist/&lt;/code&gt; prepended to them because that is the directory that we are opening.&lt;/p&gt;
+&lt;p&gt;Yes. I know. Confusing.&lt;br&gt;&lt;br&gt;
+Play around with my repo, play with the config.
+Read the &lt;a href=&quot;https://webpack.js.org/configuration/dev-server/&quot;&gt;webpack-dev-server documentation&lt;/a&gt;. Eventually it will click. Best of luck learning webpack!&lt;br&gt;&lt;br&gt;
+If you have any questions feel free to email me: Konnor7414@gmail.com&lt;/p&gt;</content:encoded></item><item><title><![CDATA[JS - Using Jest with Import and Export statements]]></title><description><![CDATA[Purpose When using new tools I like to create my own documentation of setup.
 In this case we will be looking at: Jest Jest is a simple…]]></description><link>https://gatsby-starter-blog-demo.netlify.com/get-jiggy-with-js/usingJestWithImportAndExport/</link><guid isPermaLink="false">https://gatsby-starter-blog-demo.netlify.com/get-jiggy-with-js/usingJestWithImportAndExport/</guid><pubDate>Wed, 02 Oct 2019 22:20:55 GMT</pubDate><content:encoded>&lt;h1&gt;Purpose&lt;/h1&gt;
 &lt;p&gt;When using new tools I like to create my own documentation of setup.&lt;br&gt;
 In this case we will be looking at: &lt;a href=&quot;https://jestjs.io&quot;&gt;Jest&lt;/a&gt;&lt;br&gt;&lt;/p&gt;
@@ -153,13 +251,13 @@ options.&lt;/p&gt;
 &lt;p&gt;Setting up Jest for the first time took a bit of work, but I got it all working to
 my liking and used it for testing in my &lt;a href=&quot;https://github.com/ParamagicDev/TicTacToeJS&quot;&gt;TicTacToe project&lt;/a&gt;.
 This was meant more so as a guide to myself, but if you found this helpful, feel free
-to share with your friends.&lt;/p&gt;</content:encoded></item><item><title><![CDATA[Gettin' Jiggy with JS - What are Document Fragments?]]></title><description><![CDATA[DocumentFragment - Appending multiple children to one or multiple elements Relevant Links DocumentFragment API via MDN
-Relevant…]]></description><link>https://gatsby-starter-blog-demo.netlify.com/get-jiggy-with-js/documentFragments/</link><guid isPermaLink="false">https://gatsby-starter-blog-demo.netlify.com/get-jiggy-with-js/documentFragments/</guid><pubDate>Sun, 29 Sep 2019 21:34:12 GMT</pubDate><content:encoded>&lt;h1&gt;DocumentFragment - Appending multiple children to one or multiple elements&lt;/h1&gt;
-&lt;h2&gt;Relevant Links&lt;/h2&gt;
+to share with your friends.&lt;/p&gt;</content:encoded></item><item><title><![CDATA[JS - Appending multiple children to an element]]></title><description><![CDATA[DocumentFragment - Appending multiple children to one or multiple elements Relevant Links DocumentFragment API via MDN
+Relevant…]]></description><link>https://gatsby-starter-blog-demo.netlify.com/get-jiggy-with-js/documentFragments/</link><guid isPermaLink="false">https://gatsby-starter-blog-demo.netlify.com/get-jiggy-with-js/documentFragments/</guid><pubDate>Sun, 29 Sep 2019 21:34:12 GMT</pubDate><content:encoded>&lt;h2&gt;DocumentFragment - Appending multiple children to one or multiple elements&lt;/h2&gt;
+&lt;h3&gt;Relevant Links&lt;/h3&gt;
 &lt;p&gt;&lt;a href=&quot;https://developer.mozilla.org/en-US/docs/Web/API/DocumentFragment&quot;&gt;DocumentFragment API via MDN&lt;/a&gt;
 &lt;a href=&quot;https://stackoverflow.com/a/36798254&quot;&gt;Relevant StackOverflow answer&lt;/a&gt;
 &lt;a href=&quot;https://github.com/ParamagicDev/libraryBookJS&quot;&gt;My Github repository which uses DocumentFragment API&lt;/a&gt;&lt;/p&gt;
-&lt;h2&gt;What is the DocumentFragment API?&lt;/h2&gt;
+&lt;h3&gt;What is the DocumentFragment API?&lt;/h3&gt;
 &lt;p&gt;Below is the description from MDN:&lt;br&gt;&lt;/p&gt;
 &lt;blockquote&gt;
 &lt;p&gt;The DocumentFragment interface represents a minimal document object that has no parent. It is used as a lightweight version of Document that stores a segment of a document structure comprised of nodes just like a standard document. The key difference is that because the document fragment isn’t part of the active document tree structure, changes made to the fragment don’t affect the document, cause reflow, or incur any performance impact that can occur when changes are made.&lt;/p&gt;
@@ -168,11 +266,11 @@ Relevant…]]></description><link>https://gatsby-starter-blog-demo.netlify.com/g
 The key difference is that because the document fragment isn’t part of the active document tree structure, changes made to the fragment don’t affect the document, cause reflow, or incur any performance impact that can occur when changes are made.&lt;br&gt;&lt;/p&gt;
 &lt;p&gt;This means the DocumentFragment API is the go to way to append multiple elements
 that do not need to be immediately rendered to the page.&lt;/p&gt;
-&lt;h2&gt;Using the DocumentFragment API&lt;/h2&gt;
+&lt;h3&gt;Using the DocumentFragment API&lt;/h3&gt;
 &lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;bash&quot;&gt;&lt;pre class=&quot;language-bash&quot;&gt;&lt;code class=&quot;language-bash&quot;&gt;const docFrag &lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt; new DocumentFragment&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 &lt;p&gt;Thats all it takes to make a document fragment!&lt;/p&gt;
-&lt;h2&gt;Basic usage&lt;/h2&gt;
-&lt;h3&gt;Typical way of appending children&lt;/h3&gt;
+&lt;h3&gt;Basic usage&lt;/h3&gt;
+&lt;h4&gt;Typical way of appending children&lt;/h4&gt;
 &lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;bash&quot;&gt;&lt;pre class=&quot;language-bash&quot;&gt;&lt;code class=&quot;language-bash&quot;&gt;const div1 &lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt; document.createElement&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;token string&quot;&gt;&apos;div&apos;&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;;&lt;/span&gt;
 
 const div2 &lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt; document.createElement&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;token string&quot;&gt;&apos;div&apos;&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;;&lt;/span&gt;
@@ -198,11 +296,11 @@ document.body.appendChild&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/s
 a users browser experience. Especially if you are doing something like
 server side rendering where you create many HTML elements via JS.
 This method as far as I’m aware is implemented by the major front-end frameworks like React, Vue, Angular etc.&lt;/p&gt;
-&lt;h3&gt;Closing thoughts&lt;/h3&gt;
+&lt;h4&gt;Closing thoughts&lt;/h4&gt;
 &lt;p&gt;I hope you found this useful and next time you go to append some children
 you reach for DocumentFragment. Its a simple and easy to understand API with so
 many benefits. I was very happy with how approachable it was and it was
-very easy to see the benefits of the API.&lt;/p&gt;</content:encoded></item><item><title><![CDATA[Gettin' Jiggy with JS - Introduction]]></title><description><![CDATA[Purpose This is a collection of various things I have found while doing various projects
+very easy to see the benefits of the API.&lt;/p&gt;</content:encoded></item><item><title><![CDATA[JS - Introduction]]></title><description><![CDATA[Purpose This is a collection of various things I have found while doing various projects
 using Javascript. This is not meant to be read in…]]></description><link>https://gatsby-starter-blog-demo.netlify.com/get-jiggy-with-js/introduction/</link><guid isPermaLink="false">https://gatsby-starter-blog-demo.netlify.com/get-jiggy-with-js/introduction/</guid><pubDate>Sun, 29 Sep 2019 21:31:23 GMT</pubDate><content:encoded>&lt;h1&gt;Purpose&lt;/h1&gt;
 &lt;p&gt;This is a collection of various things I have found while doing various projects
 using Javascript. This is not meant to be read in any order, rather its just random
