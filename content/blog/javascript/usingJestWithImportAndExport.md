@@ -26,7 +26,7 @@ however, I like it for using prettier within my work environment.
 npm init
 
 # install eslint, jest, and babel packages
-npm install --save-dev jest babel-jest @babel-core @babel-preset-env regenerator-runtime eslint eslint-plugin-jest
+npm install --save-dev jest babel-jest @babel/core @babel/preset-env regenerator-runtime eslint eslint-plugin-jest
 
 # create a config file for jest and eslint
 npx jest --init
@@ -122,10 +122,10 @@ so there is a babel transpiler for this.
 To use this transpiler, you can install the following for use with Jest.
 
 ```bash
-npm install --save-dev babel-jest @babel-core @babel-preset-env regenerator-runtime
+npm install --save-dev babel-jest @babel/core @babel/preset-env regenerator-runtime
 ```
 
-`babel-jest`, `@babel-core`, `@babel-preset-env` are technically the only required
+`babel-jest`, `@babel/core`, `@babel/preset-env` are technically the only required
 packages. `regenerator-runtime` according to the documentation is not needed with
 NPM versions > 3/4 or Yarn. However, I included it just in case someone is using
 a different package manager.
