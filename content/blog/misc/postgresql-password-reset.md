@@ -135,7 +135,7 @@ The easiest way to fix this is to change all options in the last column to `trus
 
 I made a script specifically for changing the options in the last column to `trust`
 
-[Change to trust script](https://github.com/ParamagicDev/config-files/blob/master/scripts/postgres-pass-reset.sh)
+#### [Change to trust script](https://github.com/ParamagicDev/config-files/blob/master/scripts/postgres-pass-reset.sh)
 
 Now you can go in and change the password for the user to whatever you would like it to be.
 
@@ -151,7 +151,7 @@ This will change password of the user 'postgres' to the value of 'NEW_PASSWORD'
 
 Now if you would like to lock your database back down I created a script for that as well!
 
-[Reset auth options to md5 script](https://github.com/ParamagicDev/config-files/blob/master/scripts/postgres-md5-require.sh)
+#### [Reset auth options to md5 script](https://github.com/ParamagicDev/config-files/blob/master/scripts/postgres-md5-require.sh)
 
 This will now require a password everytime you attempt to login.
 
