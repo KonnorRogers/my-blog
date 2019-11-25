@@ -1,4 +1,153 @@
-<?xml version="1.0" encoding="UTF-8"?><rss xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:content="http://purl.org/rss/1.0/modules/content/" xmlns:atom="http://www.w3.org/2005/Atom" version="2.0"><channel><title><![CDATA[Konnor's Blog]]></title><description><![CDATA[A starter blog demonstrating what Gatsby can do.]]></description><link>https://gatsby-starter-blog-demo.netlify.com</link><generator>RSS for Node</generator><lastBuildDate>Sun, 13 Oct 2019 15:17:23 GMT</lastBuildDate><item><title><![CDATA[How to setup TailwindCSS with PostCSS and Webpack]]></title><description><![CDATA[At the time of writing, this works using Tailwind v1.1.2 Reference Repository File structure CLI Commands Configuration files This is the…]]></description><link>https://gatsby-starter-blog-demo.netlify.com/javascript/tailwindWebpackPostCSS/</link><guid isPermaLink="false">https://gatsby-starter-blog-demo.netlify.com/javascript/tailwindWebpackPostCSS/</guid><pubDate>Fri, 11 Oct 2019 06:59:29 GMT</pubDate><content:encoded>&lt;p&gt;At the time of writing, this works using Tailwind v1.1.2&lt;/p&gt;
+<?xml version="1.0" encoding="UTF-8"?><rss xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:content="http://purl.org/rss/1.0/modules/content/" xmlns:atom="http://www.w3.org/2005/Atom" version="2.0"><channel><title><![CDATA[Konnor's Blog]]></title><description><![CDATA[A starter blog demonstrating what Gatsby can do.]]></description><link>https://gatsby-starter-blog-demo.netlify.com</link><generator>RSS for Node</generator><lastBuildDate>Mon, 25 Nov 2019 22:02:47 GMT</lastBuildDate><item><title><![CDATA[PostgresQL - Setting up postgres on a local environment]]></title><description><![CDATA[Purpose Setting up a database for the first time is never any fun. In this short post I will detail how I have come to setup PostgresQL for…]]></description><link>https://gatsby-starter-blog-demo.netlify.com/misc/postgresql-password-reset/</link><guid isPermaLink="false">https://gatsby-starter-blog-demo.netlify.com/misc/postgresql-password-reset/</guid><pubDate>Mon, 25 Nov 2019 01:59:03 GMT</pubDate><content:encoded>&lt;h2&gt;Purpose&lt;/h2&gt;
+&lt;p&gt;Setting up a database for the first time is never any fun. In this short post I will detail how I have come to setup PostgresQL for local development environments.&lt;/p&gt;
+&lt;h3&gt;Quick Start&lt;/h3&gt;
+&lt;h4&gt;WARNING:&lt;/h4&gt;
+&lt;p&gt;This will change all instances of /etc/postgresql/*/main/pg_hba.conf auth options to ‘trust’ &lt;br&gt;&lt;/p&gt;
+&lt;p&gt;Proceed with caution:&lt;/p&gt;
+&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;bash&quot;&gt;&lt;pre class=&quot;language-bash&quot;&gt;&lt;code class=&quot;language-bash&quot;&gt;&lt;span class=&quot;token function&quot;&gt;git&lt;/span&gt; clone https://github.com/ParamagicDev/config-files.git ~/paramagic-config-files
+&lt;span class=&quot;token builtin class-name&quot;&gt;cd&lt;/span&gt; ~/paramagic-config-files
+./scripts/postgres-setup.sh
+./scripts/postgres-pass-reset.sh
+
+psql -U postgres
+
+&lt;span class=&quot;token comment&quot;&gt;# This will drop you into a postgres instance as the admin&lt;/span&gt;
+$ alter user postgres with password &lt;span class=&quot;token string&quot;&gt;&apos;YOUR SNAZZY PASSWORD&apos;&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;;&lt;/span&gt;
+$ &lt;span class=&quot;token punctuation&quot;&gt;\&lt;/span&gt;q
+
+&lt;span class=&quot;token comment&quot;&gt;# This will make postgres require a password in order&lt;/span&gt;
+&lt;span class=&quot;token comment&quot;&gt;# to be instantiated&lt;/span&gt;
+./scripts/postgres-md5-require.sh&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;h3&gt;Explanation&lt;/h3&gt;
+&lt;p&gt;Okay, I’m assuming you read the quick start, saw the warnings, and decided
+to read a little more about whats happening in these scripts.&lt;/p&gt;
+&lt;h4&gt;Installation scripts&lt;/h4&gt;
+&lt;h5&gt;&lt;a href=&quot;https://github.com/ParamagicDev/config-files/tree/master/scripts&quot;&gt;My PostgresQL scripts&lt;/a&gt;&lt;/h5&gt;
+&lt;p&gt;The contents of these scripts was partially stolen from the &lt;a href=&quot;https://github.com/docker-library/postgres/blob/4a82eb932030788572b637c8e138abb94401640c/12/Dockerfile&quot;&gt;Official PostgresQL Dockerfile&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;So what does this script do?&lt;/p&gt;
+&lt;p&gt;Well first let me show you the contents.&lt;/p&gt;
+&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;text&quot;&gt;&lt;pre class=&quot;language-text&quot;&gt;&lt;code class=&quot;language-text&quot;&gt;#!/bin/bash
+
+# postgres-setup.sh
+pg_user=&amp;quot;postgres&amp;quot;
+pg_dir=&amp;quot;/var/lib/postgresql&amp;quot;
+pg_data=&amp;quot;/var/lib/postgresql/data&amp;quot;
+
+# Installs postgresql
+sudo apt update &amp;amp;&amp;amp; sudo apt install \
+  postgresql postgresql-contrib postgresql-common libpq-dev -y
+
+# Creates the postgres user and postgres group
+sudo groupadd &amp;quot;$pg_user&amp;quot;
+sudo useradd -r -g &amp;quot;$pg_user&amp;quot; --home-dir=&amp;quot;$pg_dir&amp;quot; --shell=/bin/bash &amp;quot;$pg_user&amp;quot;
+
+sudo mkdir -p &amp;quot;$pg_dir&amp;quot;
+sudo chown -R &amp;quot;$pg_user&amp;quot;:&amp;quot;$pg_user&amp;quot; &amp;quot;$pg_dir&amp;quot;
+
+sudo mkdir -p &amp;quot;$pg_dir&amp;quot; &amp;amp;&amp;amp; sudo chown -R &amp;quot;$pg_user&amp;quot;:&amp;quot;$pg_user&amp;quot; &amp;quot;$pg_dir&amp;quot; &amp;amp;&amp;amp; \
+  sudo chmod 2777 /var/run/postgresql
+
+
+# this 777 will be replaced by 700 at runtime (allows semi-arbitrary &amp;quot;--user&amp;quot; values)
+sudo mkdir -p &amp;quot;$pg_data&amp;quot; \
+  &amp;amp;&amp;amp; sudo chown -R &amp;quot;$pg_user&amp;quot;:&amp;quot;$pg_user&amp;quot; &amp;quot;$pg_data&amp;quot; \
+  &amp;amp;&amp;amp; sudo chmod 777 &amp;quot;$pg_data&amp;quot;bash&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;Basically, this script says:&lt;br&gt;&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;Download postgres from the apt repository (default debian based package manager)
+&lt;br&gt;&lt;/li&gt;
+&lt;li&gt;Then after downloading postgres, create a user for the postgres database named “postgres”
+&lt;br&gt;&lt;/li&gt;
+&lt;li&gt;Create the appropriate directories and change the read / write / execute properties of each directory based on the offical PostgresQL Dockerfile.
+&lt;br&gt;&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;In a nutshell, thats all that the script does.&lt;/p&gt;
+&lt;p&gt;Now, you can try logging into the database from the command line.&lt;/p&gt;
+&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;bash&quot;&gt;&lt;pre class=&quot;language-bash&quot;&gt;&lt;code class=&quot;language-bash&quot;&gt;psql -U postgres&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;This probably will not work due to permissions set in a file called &lt;code class=&quot;language-text&quot;&gt;pg_hba.conf&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;For me, this file was located on my Ubuntu 18.10 &amp;#x26; 19.04 machines in the location:&lt;/p&gt;
+&lt;p&gt;&lt;code class=&quot;language-text&quot;&gt;/etc/postgresql/&amp;lt;version-number&amp;gt;/main/pg_hba.conf&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;So heres where things get tricky. You may have previously setup a password youve forgotten, maybe theres something weird going on and you cant get into the database, anythings possible.&lt;/p&gt;
+&lt;p&gt;If you checked out the &lt;code class=&quot;language-text&quot;&gt;pg_hba.conf file&lt;/code&gt; you’ll see a setup similar to this:&lt;/p&gt;
+&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;conf&quot;&gt;&lt;pre class=&quot;language-conf&quot;&gt;&lt;code class=&quot;language-conf&quot;&gt;# ... above code omitted for brevity
+# Database administrative login by Unix domain socket
+local   all             postgres                                peer
+
+# TYPE  DATABASE        USER            ADDRESS                 METHOD
+
+# &amp;quot;local&amp;quot; is for Unix domain socket connections only
+local   all             all                                     peer
+# IPv4 local connections:
+host    all             all             127.0.0.1/32            md5
+# IPv6 local connections:
+host    all             all             ::1/128                 md5
+# Allow replication connections from localhost, by a user with the
+# replication privilege.
+#local   replication     postgres                                peer
+#host    replication     postgres        127.0.0.1/32            peer
+#host    replication     postgres        ::1/128                 peer&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;Without getting too technical, the very last column of each row decides the
+authentication option you would like to use. If for some reason you cannot
+get access to your database, there may be a password set for the user that
+you don’t know.&lt;/p&gt;
+&lt;p&gt;The easiest way to fix this is to change all options in the last column to &lt;code class=&quot;language-text&quot;&gt;trust&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;I made a script specifically for changing the options in the last column to &lt;code class=&quot;language-text&quot;&gt;trust&lt;/code&gt;&lt;/p&gt;
+&lt;h4&gt;&lt;a href=&quot;https://github.com/ParamagicDev/config-files/blob/master/scripts/postgres-pass-reset.sh&quot;&gt;Change to trust script&lt;/a&gt;&lt;/h4&gt;
+&lt;p&gt;Now you can go in and change the password for the user to whatever you would like it to be.&lt;/p&gt;
+&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;bash&quot;&gt;&lt;pre class=&quot;language-bash&quot;&gt;&lt;code class=&quot;language-bash&quot;&gt;psql -U postgres
+
+&lt;span class=&quot;token comment&quot;&gt;# drops you into a postgres instance&lt;/span&gt;
+-&lt;span class=&quot;token operator&quot;&gt;&gt;&lt;/span&gt; alter user postgres with password &lt;span class=&quot;token string&quot;&gt;&apos;NEW_PASSWORD&apos;&lt;/span&gt;&quot;
+-&lt;span class=&quot;token operator&quot;&gt;&gt;&lt;/span&gt; &lt;span class=&quot;token punctuation&quot;&gt;\&lt;/span&gt;q&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;This will change password of the user ‘postgres’ to the value of ‘NEW_PASSWORD’&lt;/p&gt;
+&lt;p&gt;Now if you would like to lock your database back down I created a script for that as well!&lt;/p&gt;
+&lt;h4&gt;&lt;a href=&quot;https://github.com/ParamagicDev/config-files/blob/master/scripts/postgres-md5-require.sh&quot;&gt;Reset auth options to md5 script&lt;/a&gt;&lt;/h4&gt;
+&lt;p&gt;This will now require a password everytime you attempt to login.&lt;/p&gt;
+&lt;h3&gt;Additional notes&lt;/h3&gt;
+&lt;p&gt;If you don’t want to use my scripts you can manually edit your
+&lt;code class=&quot;language-text&quot;&gt;/etc/postgresql/&amp;lt;version_number&amp;gt;/main/pg_hba.conf&lt;/code&gt; to reflect the options you would like.&lt;/p&gt;
+&lt;p&gt;Be careful with this, as for me I’m using postgresql version 11.5, however, when editing
+&lt;code class=&quot;language-text&quot;&gt;/etc/postgresql/11/main/pg_hba.conf&lt;/code&gt; It did not properly reflect my settings.&lt;/p&gt;
+&lt;p&gt;I had to edit &lt;code class=&quot;language-text&quot;&gt;/etc/postgresql/9.5/pg_hba.conf&lt;/code&gt; which is the reason my scripts will change
+the value of the auth method in all &lt;code class=&quot;language-text&quot;&gt;/etc/postgresql/&amp;lt;version-number&amp;gt;/pg_hba.conf&lt;/code&gt; files&lt;/p&gt;
+&lt;h3&gt;Closing thoughts&lt;/h3&gt;
+&lt;p&gt;Setting up a database is never fun which is why I now always try to script the process.
+This one had me stumped for a whole day before I came across the relevant articles. I hope
+this article can help you as much as it helped me! Have a fantastic day.&lt;/p&gt;
+&lt;p&gt;Any questions feel free to email me: Konnor7414@gmail.com&lt;/p&gt;
+&lt;p&gt;I don’t claim to know all, and I don’t even work as a software developer fulltime…(yet)
+I’m sure I made some errors and some mistakes. Feel free to correct me and I will update the article&lt;/p&gt;
+&lt;p&gt;Setting up a database is never fun which is why I now always try to script the process.
+This one had me stumped for a whole day before I came across the relevant articles. I hope
+this article can help you as much as it helped me! Have a fantastic day.&lt;/p&gt;
+&lt;p&gt;Any questions feel free to email me: Konnor7414@gmail.com&lt;/p&gt;
+&lt;p&gt;I don’t claim to know all, and I don’t even work as a software developer fulltime…(yet)
+I’m sure I made some errors and some mistakes. Feel free to correct me and I will update the article.&lt;/p&gt;
+&lt;h3&gt;Links&lt;/h3&gt;
+&lt;h4&gt;&lt;a href=&quot;https://github.com/ParamagicDev/config-files/tree/master/scripts&quot;&gt;My config-files repo with postgres scripts&lt;/a&gt;&lt;/h4&gt;
+&lt;p&gt;&lt;a href=&quot;https://www.postgresql.org/&quot;&gt;PostgresQL Homepage&lt;/a&gt;
+&lt;a href=&quot;https://github.com/docker-library/postgres/blob/4a82eb932030788572b637c8e138abb94401640c/12/Dockerfile&quot;&gt;PostgresQL Dockerfile&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a href=&quot;https://enterprise.arcgis.com/en/server/10.3/cloud/amazon/change-default-database-passwords-on-linux.htm&quot;&gt;Where I found the sed scripts&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a href=&quot;https://stackoverflow.com/questions/4494336/how-do-you-store-a-list-of-directories-into-an-array-in-bash-and-then-print-the&quot;&gt;How I figured out how to put multiple directories into a bash array&lt;/a&gt;&lt;/p&gt;</content:encoded></item><item><title><![CDATA[PHP for Beginners - Part 8 - What the heck is PDO?]]></title><description><![CDATA[Okay, lets continue where we left off with MySQL prior to learning classes. First, make sure your MySQL still works. Ensure you have a…]]></description><link>https://gatsby-starter-blog-demo.netlify.com/learning-php/part8/</link><guid isPermaLink="false">https://gatsby-starter-blog-demo.netlify.com/learning-php/part8/</guid><pubDate>Sat, 23 Nov 2019 18:02:49 GMT</pubDate><content:encoded>&lt;p&gt;Okay, lets continue where we left off with MySQL prior to learning classes.&lt;/p&gt;
+&lt;p&gt;First, make sure your MySQL still works. Ensure you have a usable database for use
+by the PDO builtin class for PHP.&lt;/p&gt;
+&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;bash&quot;&gt;&lt;pre class=&quot;language-bash&quot;&gt;&lt;code class=&quot;language-bash&quot;&gt;$ mysql
+$ -&lt;span class=&quot;token operator&quot;&gt;&gt;&lt;/span&gt; create database mytodo&lt;span class=&quot;token punctuation&quot;&gt;;&lt;/span&gt; &lt;span class=&quot;token comment&quot;&gt;# Create the database&lt;/span&gt;
+$ -&lt;span class=&quot;token operator&quot;&gt;&gt;&lt;/span&gt; show databases &lt;span class=&quot;token comment&quot;&gt;# Ensure it appears&lt;/span&gt;
+$ -&lt;span class=&quot;token operator&quot;&gt;&gt;&lt;/span&gt; &lt;span class=&quot;token builtin class-name&quot;&gt;exit&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;Alright, now lets dive in.&lt;/p&gt;
+&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;php&quot;&gt;&lt;pre class=&quot;language-php&quot;&gt;&lt;code class=&quot;language-php&quot;&gt;// index.php
+
+&lt;span class=&quot;token php language-php&quot;&gt;&lt;span class=&quot;token delimiter important&quot;&gt;&amp;lt;?php&lt;/span&gt;
+
+&lt;span class=&quot;token keyword&quot;&gt;try&lt;/span&gt; &lt;span class=&quot;token punctuation&quot;&gt;{&lt;/span&gt;
+  &lt;span class=&quot;token variable&quot;&gt;$pdo&lt;/span&gt; &lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;token keyword&quot;&gt;new&lt;/span&gt; &lt;span class=&quot;token class-name&quot;&gt;PDO&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;token single-quoted-string string&quot;&gt;&apos;mysql:host=127.0.0.1;dbname=mytodos&apos;&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;token single-quoted-string string&quot;&gt;&apos;root&apos;&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;token single-quoted-string string&quot;&gt;&apos;Medic12!&apos;&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;;&lt;/span&gt;
+&lt;span class=&quot;token punctuation&quot;&gt;}&lt;/span&gt; &lt;span class=&quot;token keyword&quot;&gt;catch&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;PDOException &lt;span class=&quot;token variable&quot;&gt;$e&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;token punctuation&quot;&gt;{&lt;/span&gt;
+  &lt;span class=&quot;token keyword&quot;&gt;die&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;token single-quoted-string string&quot;&gt;&apos;could not connect.&apos;&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;;&lt;/span&gt;
+&lt;span class=&quot;token punctuation&quot;&gt;}&lt;/span&gt;
+
+&lt;span class=&quot;token keyword&quot;&gt;require&lt;/span&gt; &lt;span class=&quot;token single-quoted-string string&quot;&gt;&apos;index.view.php&apos;&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;;&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;&lt;br&gt;&lt;br&gt;&lt;/p&gt;</content:encoded></item><item><title><![CDATA[How to setup TailwindCSS with PostCSS and Webpack]]></title><description><![CDATA[At the time of writing, this works using Tailwind v1.1.2 Reference Repository File structure CLI Commands Configuration files This is the…]]></description><link>https://gatsby-starter-blog-demo.netlify.com/get-jiggy-with-js/tailwindWebpackPostCSS/</link><guid isPermaLink="false">https://gatsby-starter-blog-demo.netlify.com/get-jiggy-with-js/tailwindWebpackPostCSS/</guid><pubDate>Fri, 11 Oct 2019 06:59:29 GMT</pubDate><content:encoded>&lt;p&gt;At the time of writing, this works using Tailwind v1.1.2&lt;/p&gt;
 &lt;h2&gt;&lt;a href=&quot;https://github.com/paramagicdev/tailwind-example&quot;&gt;Reference Repository&lt;/a&gt;&lt;/h2&gt;
 &lt;h3&gt;File structure&lt;/h3&gt;
 &lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;project&quot;&gt;&lt;pre class=&quot;language-project&quot;&gt;&lt;code class=&quot;language-project&quot;&gt;- current_directory/
@@ -134,7 +283,7 @@ I don’t recommend this for production particularly because it does not have Pu
 This is meant more as a quick reference to start a project. I also recommend digging
 deeper into webpacks documentation as well as PostCSS to get a better idea on how
 to use both.&lt;/p&gt;</content:encoded></item><item><title><![CDATA[JS - How to configure webpack-dev-server live-reloading]]></title><description><![CDATA[Quick Start Reference Repository Add the following configuration in your root directory and it will allow for
-live reloading as well as…]]></description><link>https://gatsby-starter-blog-demo.netlify.com/javascript/webpackDevServerLiveReloading/</link><guid isPermaLink="false">https://gatsby-starter-blog-demo.netlify.com/javascript/webpackDevServerLiveReloading/</guid><pubDate>Fri, 11 Oct 2019 03:05:07 GMT</pubDate><content:encoded>&lt;h2&gt;Quick Start&lt;/h2&gt;
+live reloading as well as…]]></description><link>https://gatsby-starter-blog-demo.netlify.com/get-jiggy-with-js/webpackDevServerLiveReloading/</link><guid isPermaLink="false">https://gatsby-starter-blog-demo.netlify.com/get-jiggy-with-js/webpackDevServerLiveReloading/</guid><pubDate>Fri, 11 Oct 2019 03:05:07 GMT</pubDate><content:encoded>&lt;h2&gt;Quick Start&lt;/h2&gt;
 &lt;p&gt;&lt;a href=&quot;https://github.com/paramagicdev/TicTacToeJS&quot;&gt;Reference Repository&lt;/a&gt;&lt;/p&gt;
 &lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;bash&quot;&gt;&lt;pre class=&quot;language-bash&quot;&gt;&lt;code class=&quot;language-bash&quot;&gt;&lt;span class=&quot;token function&quot;&gt;npm&lt;/span&gt; init &lt;span class=&quot;token comment&quot;&gt;# if it&apos;s a new project&lt;/span&gt;
 
@@ -232,7 +381,7 @@ will have &lt;code class=&quot;language-text&quot;&gt;dist/&lt;/code&gt; prepend
 Play around with my repo, play with the config.
 Read the &lt;a href=&quot;https://webpack.js.org/configuration/dev-server/&quot;&gt;webpack-dev-server documentation&lt;/a&gt;. Eventually it will click. Best of luck learning webpack!&lt;br&gt;&lt;br&gt;
 If you have any questions feel free to email me: Konnor7414@gmail.com&lt;/p&gt;</content:encoded></item><item><title><![CDATA[JS - Using Jest with Import and Export statements]]></title><description><![CDATA[Purpose When using new tools I like to create my own documentation of setup.
-In this case we will be looking at: Jest Jest is a simple…]]></description><link>https://gatsby-starter-blog-demo.netlify.com/javascript/usingJestWithImportAndExport/</link><guid isPermaLink="false">https://gatsby-starter-blog-demo.netlify.com/javascript/usingJestWithImportAndExport/</guid><pubDate>Wed, 02 Oct 2019 22:20:55 GMT</pubDate><content:encoded>&lt;h1&gt;Purpose&lt;/h1&gt;
+In this case we will be looking at: Jest Jest is a simple…]]></description><link>https://gatsby-starter-blog-demo.netlify.com/get-jiggy-with-js/usingJestWithImportAndExport/</link><guid isPermaLink="false">https://gatsby-starter-blog-demo.netlify.com/get-jiggy-with-js/usingJestWithImportAndExport/</guid><pubDate>Wed, 02 Oct 2019 22:20:55 GMT</pubDate><content:encoded>&lt;h1&gt;Purpose&lt;/h1&gt;
 &lt;p&gt;When using new tools I like to create my own documentation of setup.&lt;br&gt;
 In this case we will be looking at: &lt;a href=&quot;https://jestjs.io&quot;&gt;Jest&lt;/a&gt;&lt;br&gt;&lt;/p&gt;
 &lt;p&gt;Jest is a simple testing framework for javascript that uses
@@ -387,7 +536,7 @@ options.&lt;/p&gt;
 my liking and used it for testing in my &lt;a href=&quot;https://github.com/ParamagicDev/TicTacToeJS&quot;&gt;TicTacToe project&lt;/a&gt;.
 This was meant more so as a guide to myself, but if you found this helpful, feel free
 to share with your friends.&lt;/p&gt;</content:encoded></item><item><title><![CDATA[JS - Appending multiple children to an element]]></title><description><![CDATA[DocumentFragment - Appending multiple children to one or multiple elements Relevant Links DocumentFragment API via MDN
-Relevant…]]></description><link>https://gatsby-starter-blog-demo.netlify.com/javascript/documentFragments/</link><guid isPermaLink="false">https://gatsby-starter-blog-demo.netlify.com/javascript/documentFragments/</guid><pubDate>Sun, 29 Sep 2019 21:34:12 GMT</pubDate><content:encoded>&lt;h2&gt;DocumentFragment - Appending multiple children to one or multiple elements&lt;/h2&gt;
+Relevant…]]></description><link>https://gatsby-starter-blog-demo.netlify.com/get-jiggy-with-js/documentFragments/</link><guid isPermaLink="false">https://gatsby-starter-blog-demo.netlify.com/get-jiggy-with-js/documentFragments/</guid><pubDate>Sun, 29 Sep 2019 21:34:12 GMT</pubDate><content:encoded>&lt;h2&gt;DocumentFragment - Appending multiple children to one or multiple elements&lt;/h2&gt;
 &lt;h3&gt;Relevant Links&lt;/h3&gt;
 &lt;p&gt;&lt;a href=&quot;https://developer.mozilla.org/en-US/docs/Web/API/DocumentFragment&quot;&gt;DocumentFragment API via MDN&lt;/a&gt;
 &lt;a href=&quot;https://stackoverflow.com/a/36798254&quot;&gt;Relevant StackOverflow answer&lt;/a&gt;
@@ -436,7 +585,7 @@ This method as far as I’m aware is implemented by the major front-end framewor
 you reach for DocumentFragment. Its a simple and easy to understand API with so
 many benefits. I was very happy with how approachable it was and it was
 very easy to see the benefits of the API.&lt;/p&gt;</content:encoded></item><item><title><![CDATA[JS - Introduction]]></title><description><![CDATA[Purpose This is a collection of various things I have found while doing various projects
-using Javascript. This is not meant to be read in…]]></description><link>https://gatsby-starter-blog-demo.netlify.com/javascript/introduction/</link><guid isPermaLink="false">https://gatsby-starter-blog-demo.netlify.com/javascript/introduction/</guid><pubDate>Sun, 29 Sep 2019 21:31:23 GMT</pubDate><content:encoded>&lt;h1&gt;Purpose&lt;/h1&gt;
+using Javascript. This is not meant to be read in…]]></description><link>https://gatsby-starter-blog-demo.netlify.com/get-jiggy-with-js/introduction/</link><guid isPermaLink="false">https://gatsby-starter-blog-demo.netlify.com/get-jiggy-with-js/introduction/</guid><pubDate>Sun, 29 Sep 2019 21:31:23 GMT</pubDate><content:encoded>&lt;h1&gt;Purpose&lt;/h1&gt;
 &lt;p&gt;This is a collection of various things I have found while doing various projects
 using Javascript. This is not meant to be read in any order, rather its just random
 tidbits and items I have come across while using Javascript.&lt;/p&gt;</content:encoded></item><item><title><![CDATA[PHP for beginners - Part 7 - Classes?...Like school?]]></title><description><![CDATA[Part 7 Laracasts main site
