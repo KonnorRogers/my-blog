@@ -1,4 +1,66 @@
-<?xml version="1.0" encoding="UTF-8"?><rss xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:content="http://purl.org/rss/1.0/modules/content/" xmlns:atom="http://www.w3.org/2005/Atom" version="2.0"><channel><title><![CDATA[Konnor's Blog]]></title><description><![CDATA[A starter blog demonstrating what Gatsby can do.]]></description><link>https://gatsby-starter-blog-demo.netlify.com</link><generator>RSS for Node</generator><lastBuildDate>Wed, 27 Nov 2019 15:33:50 GMT</lastBuildDate><item><title><![CDATA[PostgresQL - Setting up postgres on a local environment]]></title><description><![CDATA[Purpose Setting up a database for the first time is never any fun. In this short post I will detail how I have come to setup PostgresQL for…]]></description><link>https://gatsby-starter-blog-demo.netlify.com/misc/postgresql-password-reset/</link><guid isPermaLink="false">https://gatsby-starter-blog-demo.netlify.com/misc/postgresql-password-reset/</guid><pubDate>Mon, 25 Nov 2019 01:59:03 GMT</pubDate><content:encoded>&lt;h2&gt;Purpose&lt;/h2&gt;
+<?xml version="1.0" encoding="UTF-8"?><rss xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:content="http://purl.org/rss/1.0/modules/content/" xmlns:atom="http://www.w3.org/2005/Atom" version="2.0"><channel><title><![CDATA[Konnor's Blog]]></title><description><![CDATA[A starter blog demonstrating what Gatsby can do.]]></description><link>https://gatsby-starter-blog-demo.netlify.com</link><generator>RSS for Node</generator><lastBuildDate>Thu, 05 Dec 2019 10:56:59 GMT</lastBuildDate><item><title><![CDATA[Making EMS Helper - Introduction]]></title><description><![CDATA[Tech Stack Ruby on Rails v6.0.1 Ruby 2.6.3 Explanation I am most familiar with Ruby on Rails and therefore felt I would be most
+productive…]]></description><link>https://gatsby-starter-blog-demo.netlify.com/making-ems-helper/introduction/</link><guid isPermaLink="false">https://gatsby-starter-blog-demo.netlify.com/making-ems-helper/introduction/</guid><pubDate>Thu, 05 Dec 2019 10:07:36 GMT</pubDate><content:encoded>&lt;h2&gt;Tech Stack&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;Ruby on Rails v6.0.1&lt;/li&gt;
+&lt;li&gt;Ruby 2.6.3&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3&gt;Explanation&lt;/h3&gt;
+&lt;p&gt;I am most familiar with Ruby on Rails and therefore felt I would be most
+productive using Ruby on Rails for this project&lt;/p&gt;
+&lt;h2&gt;Deployment&lt;/h2&gt;
+&lt;p&gt;I still have not decided between a self host option like Linode / DigitalOcean
+or letting Heroku handle it for me. As this is a small personal project, and I would
+like to get a feel for DevOps I will most likely be self hosting using DigitalOcean / Linode
+combined with Docker containers.&lt;/p&gt;
+&lt;h2&gt;Scope&lt;/h2&gt;
+&lt;p&gt;I plan for this to be very limited scope. Very simply, I plan to have a database
+of every hospital. Each hospital will have an address and series of boolean
+values as to its capabilities. The biggest challenge will be
+aggregating the appropriate data.&lt;/p&gt;
+&lt;h2&gt;Data aggregation&lt;/h2&gt;
+&lt;p&gt;Data aggregation seems to be the biggest challenge, thankfully someone has already
+somewhat solved this problem.&lt;br&gt;
+&lt;a href=&quot;https://hifld-geoplatform.opendata.arcgis.com/datasets/hospitals&quot;&gt;https://hifld-geoplatform.opendata.arcgis.com/datasets/hospitals&lt;/a&gt;
+The Homeland Infrastructure Foundation has aggregated all hospitals in the 50 states
+via each individual state department. They even have an easy to use API as well
+as the added bonus of Trauma levels.&lt;/p&gt;
+&lt;p&gt;Unfortunately, they do not have things such as Stroke Centers, Cath labs, and various
+point of entry capabilites. I will most likely be creating a scraper using Nokogiri to get this information from
+each individual states respective website.&lt;/p&gt;
+&lt;p&gt;In addition, I plan to have a form for users to submit for review the addition of a new
+hospital. I will most likely have to add a sign in system at some point
+should this project gain any traction.&lt;/p&gt;
+&lt;h2&gt;Geocoding&lt;/h2&gt;
+&lt;p&gt;What is geocoding? Geocoding and geolocation a way of quantifying a longitude
+and latitude location for any given location.&lt;br&gt;
+Geocoding and geolocation will be the basis of using a user’s current location and searching the radius
+for the closest appropriate facility. This is a big part of this project&lt;br&gt;&lt;/p&gt;
+&lt;p&gt;Again, this is another solved problem. Initially I had thought Google Maps was the only option,
+on further review there is a lovely RubyGem called &lt;a href=&quot;https://github.com/alexreisner/geocoder&quot;&gt;Geocoder&lt;/a&gt;
+which aggregates multiple APIs. I have not dug into what service it would call out to
+as currently this is a tightly scoped project with no plans of hitting API request limits.&lt;/p&gt;
+&lt;h2&gt;Database backups&lt;/h2&gt;
+&lt;p&gt;I have not settled on any particular service for database backups yet.
+It is a consideration I have and it is worth noting. The database plans to be fairly
+static, however, it’s always good to be prepared.&lt;/p&gt;
+&lt;p&gt;As of now, the easiest option seems to set up a cron job to backup the database using
+&lt;code class=&quot;language-text&quot;&gt;pg_dump&lt;/code&gt; and then sending that file to a remote server maybe like an AWS S3 bucket?&lt;/p&gt;
+&lt;p&gt;Alternatively, I found this github repo &lt;a href=&quot;https://github.com/fastmonkeys/stellar&quot;&gt;https://github.com/fastmonkeys/stellar&lt;/a&gt;
+which appears to be a faster alternative to &lt;code class=&quot;language-text&quot;&gt;pg_dump&lt;/code&gt; and &lt;code class=&quot;language-text&quot;&gt;pg_restore&lt;/code&gt;. I still have not
+settled on a good option but as this fleshes out it will become important&lt;/p&gt;
+&lt;h2&gt;Error Tracking&lt;/h2&gt;
+&lt;p&gt;Sentry. Need I say more? Sentry is great its raved about, I may even integrate
+with LogRocket. Again, future problem, not needed right away.&lt;/p&gt;
+&lt;h2&gt;CI / CD Pipeline&lt;/h2&gt;
+&lt;p&gt;Yes, its a small project, but following best practices is not a bad thing.
+Currently, I plan on using github actions as my CI / CD. Setting up Jenkins / Travis / CircleCI
+seems like more headache than using an integrated option.&lt;/p&gt;
+&lt;h2&gt;Donations!&lt;/h2&gt;
+&lt;p&gt;Its important to make sure that this can at least be self sustainable. I plan to
+create a donations page which integrates with Stripe / Paypal to allow people to keep
+the lights on!&lt;/p&gt;
+&lt;h2&gt;Closing thoughts&lt;/h2&gt;
+&lt;p&gt;EMS Helper plans to be a free service which will take donations in order to keep the service running. I currently do not have plans to make it a paid service. In addition, you can follow along with my progress on the &lt;a href=&quot;https://github.com/ParamagicDev/ems_helper/tree/development&quot;&gt;development branch on Github.&lt;/a&gt;&lt;/p&gt;</content:encoded></item><item><title><![CDATA[PostgresQL - Setting up postgres on a local environment]]></title><description><![CDATA[Purpose Setting up a database for the first time is never any fun. In this short post I will detail how I have come to setup PostgresQL for…]]></description><link>https://gatsby-starter-blog-demo.netlify.com/misc/postgresql-password-reset/</link><guid isPermaLink="false">https://gatsby-starter-blog-demo.netlify.com/misc/postgresql-password-reset/</guid><pubDate>Mon, 25 Nov 2019 01:59:03 GMT</pubDate><content:encoded>&lt;h2&gt;Purpose&lt;/h2&gt;
 &lt;p&gt;Setting up a database for the first time is never any fun. In this short post I will detail how I have come to setup PostgresQL for local development environments.&lt;/p&gt;
 &lt;h3&gt;Quick Start&lt;/h3&gt;
 &lt;h4&gt;WARNING:&lt;/h4&gt;
