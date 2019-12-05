@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="UTF-8"?><rss xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:content="http://purl.org/rss/1.0/modules/content/" xmlns:atom="http://www.w3.org/2005/Atom" version="2.0"><channel><title><![CDATA[Konnor's Blog]]></title><description><![CDATA[A starter blog demonstrating what Gatsby can do.]]></description><link>https://gatsby-starter-blog-demo.netlify.com</link><generator>RSS for Node</generator><lastBuildDate>Thu, 05 Dec 2019 10:56:59 GMT</lastBuildDate><item><title><![CDATA[Making EMS Helper - Introduction]]></title><description><![CDATA[Tech Stack Ruby on Rails v6.0.1 Ruby 2.6.3 Explanation I am most familiar with Ruby on Rails and therefore felt I would be most
+<?xml version="1.0" encoding="UTF-8"?><rss xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:content="http://purl.org/rss/1.0/modules/content/" xmlns:atom="http://www.w3.org/2005/Atom" version="2.0"><channel><title><![CDATA[Konnor's Blog]]></title><description><![CDATA[A starter blog demonstrating what Gatsby can do.]]></description><link>https://gatsby-starter-blog-demo.netlify.com</link><generator>RSS for Node</generator><lastBuildDate>Thu, 05 Dec 2019 11:05:58 GMT</lastBuildDate><item><title><![CDATA[Making EMS Helper - Introduction]]></title><description><![CDATA[Tech Stack Ruby on Rails v6.0.1 Ruby 2.6.3 Explanation I am most familiar with Ruby on Rails and therefore felt I would be most
 productive…]]></description><link>https://gatsby-starter-blog-demo.netlify.com/making-ems-helper/introduction/</link><guid isPermaLink="false">https://gatsby-starter-blog-demo.netlify.com/making-ems-helper/introduction/</guid><pubDate>Thu, 05 Dec 2019 10:07:36 GMT</pubDate><content:encoded>&lt;h2&gt;Tech Stack&lt;/h2&gt;
 &lt;ul&gt;
 &lt;li&gt;Ruby on Rails v6.0.1&lt;/li&gt;
@@ -55,6 +55,12 @@ with LogRocket. Again, future problem, not needed right away.&lt;/p&gt;
 &lt;p&gt;Yes, its a small project, but following best practices is not a bad thing.
 Currently, I plan on using github actions as my CI / CD. Setting up Jenkins / Travis / CircleCI
 seems like more headache than using an integrated option.&lt;/p&gt;
+&lt;h2&gt;Using docker-compose&lt;/h2&gt;
+&lt;p&gt;As part of any good CI / CD pipeline, ideally I should be using Docker / containerization.
+I have setup my docker-compose and Dockerfile in my repo to be used to provide a reproducible
+environment. Unfortunately, I feel docker local development needs a little work,
+but it definitely has its place in a CI / CD pipeline for sure as well as providing
+a starting point for new users.&lt;/p&gt;
 &lt;h2&gt;Donations!&lt;/h2&gt;
 &lt;p&gt;Its important to make sure that this can at least be self sustainable. I plan to
 create a donations page which integrates with Stripe / Paypal to allow people to keep
