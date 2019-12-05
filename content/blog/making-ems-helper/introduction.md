@@ -82,6 +82,14 @@ Yes, its a small project, but following best practices is not a bad thing.
 Currently, I plan on using github actions as my CI / CD. Setting up Jenkins / Travis / CircleCI
 seems like more headache than using an integrated option.
 
+## Using docker-compose
+
+As part of any good CI / CD pipeline, ideally I should be using Docker / containerization.
+I have setup my docker-compose and Dockerfile in my repo to be used to provide a reproducible
+environment. Unfortunately, I feel docker local development needs a little work,
+but it definitely has its place in a CI / CD pipeline for sure as well as providing
+a starting point for new users.
+
 ## Donations!
 
 Its important to make sure that this can at least be self sustainable. I plan to
