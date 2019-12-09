@@ -242,7 +242,7 @@ I will write!
 
 Special thanks to Chris @ gorails for his free content.
 He helped me with the tailwind setup.
-[Tailwind Setup Video](https://gorails.com/episodes/tailwind-css-framework-with-rails)
+[Tailwind Setup Video](https://gorails.com/episodes/tailwindcss-1-0-with-rails-6)
 
 Docker documentation is fantastic check it out.
 [Docker Docs](https://docs.docker.com/)
