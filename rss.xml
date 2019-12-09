@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="UTF-8"?><rss xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:content="http://purl.org/rss/1.0/modules/content/" xmlns:atom="http://www.w3.org/2005/Atom" version="2.0"><channel><title><![CDATA[Konnor's Blog]]></title><description><![CDATA[A starter blog demonstrating what Gatsby can do.]]></description><link>https://gatsby-starter-blog-demo.netlify.com</link><generator>RSS for Node</generator><lastBuildDate>Mon, 09 Dec 2019 08:08:06 GMT</lastBuildDate><item><title><![CDATA[Making EMS Helper - Setting up]]></title><description><![CDATA[Github Repo Creating a Rails 6 app  This will generate the initial project structure. I will be using postgresql as my database. Adding .env…]]></description><link>https://gatsby-starter-blog-demo.netlify.com/making-ems-helper/setting-up/</link><guid isPermaLink="false">https://gatsby-starter-blog-demo.netlify.com/making-ems-helper/setting-up/</guid><pubDate>Mon, 09 Dec 2019 03:40:37 GMT</pubDate><content:encoded>&lt;h2&gt;&lt;a href=&quot;https://github.com/ParamagicDev/ems_helper/tree/cd623419d8c885cac66c1d3e6fa0f8507d35b686&quot;&gt;Github Repo&lt;/a&gt;&lt;/h2&gt;
+<?xml version="1.0" encoding="UTF-8"?><rss xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:content="http://purl.org/rss/1.0/modules/content/" xmlns:atom="http://www.w3.org/2005/Atom" version="2.0"><channel><title><![CDATA[Konnor's Blog]]></title><description><![CDATA[A starter blog demonstrating what Gatsby can do.]]></description><link>https://gatsby-starter-blog-demo.netlify.com</link><generator>RSS for Node</generator><lastBuildDate>Mon, 09 Dec 2019 08:26:58 GMT</lastBuildDate><item><title><![CDATA[Making EMS Helper - Setting up]]></title><description><![CDATA[Github Repo Creating a Rails 6 app  This will generate the initial project structure. I will be using postgresql as my database. Adding .env…]]></description><link>https://gatsby-starter-blog-demo.netlify.com/making-ems-helper/setting-up/</link><guid isPermaLink="false">https://gatsby-starter-blog-demo.netlify.com/making-ems-helper/setting-up/</guid><pubDate>Mon, 09 Dec 2019 03:40:37 GMT</pubDate><content:encoded>&lt;h2&gt;&lt;a href=&quot;https://github.com/ParamagicDev/ems_helper/tree/cd623419d8c885cac66c1d3e6fa0f8507d35b686&quot;&gt;Github Repo&lt;/a&gt;&lt;/h2&gt;
 &lt;h2&gt;Creating a Rails 6 app&lt;/h2&gt;
 &lt;p&gt;&lt;code class=&quot;language-text&quot;&gt;rails new ems_helper --database=postgresql&lt;/code&gt;&lt;/p&gt;
 &lt;p&gt;This will generate the initial project structure. I will be using postgresql as my database.&lt;/p&gt;
@@ -25,19 +25,65 @@ gem &lt;span class=&quot;token string&quot;&gt;&apos;dotenv-rails&apos;&lt;/span
 other web components.&lt;/p&gt;
 &lt;p&gt;Here is a link to my &lt;a href=&quot;https://github.com/ParamagicDev/ems_helper/blob/master/docker-compose.yml&quot;&gt;docker-compose.yml&lt;/a&gt; file which pulls in PostgresQL.&lt;/p&gt;
 &lt;p&gt;I pulled most of this config off the &lt;a href=&quot;https://docs.docker.com/compose/rails/&quot;&gt;Docker official documentation&lt;/a&gt;.&lt;/p&gt;
-&lt;h3&gt;Using docker-compose&lt;/h3&gt;
+&lt;h3&gt;Docker-compose commands&lt;/h3&gt;
+&lt;p&gt;Before we get into building the project, let’s take a look at some basic commands:&lt;/p&gt;
+&lt;p&gt;&lt;code class=&quot;language-text&quot;&gt;docker-compose down&lt;/code&gt; to bring down the container
+&lt;code class=&quot;language-text&quot;&gt;docker-compose up --build&lt;/code&gt; rebuilds the container if you make changes.
+&lt;code class=&quot;language-text&quot;&gt;docker-compose run web &amp;lt;command&amp;gt;&lt;/code&gt; will run the commands from inside the container.&lt;/p&gt;
+&lt;p&gt;If for some reason the items listed below do not work, try resetting the container.&lt;/p&gt;
+&lt;p&gt;Also, if you add something to the &lt;code class=&quot;language-text&quot;&gt;Gemfile&lt;/code&gt;, to update the container you must do the following:&lt;/p&gt;
+&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;bash&quot;&gt;&lt;pre class=&quot;language-bash&quot;&gt;&lt;code class=&quot;language-bash&quot;&gt;docker-compose run web bundle &lt;span class=&quot;token function&quot;&gt;install&lt;/span&gt;
+docker-compose down
+
+&lt;span class=&quot;token comment&quot;&gt;# You must rebuild the container because the Gemfile.lock has been updated as well&lt;/span&gt;
+docker-compose up --build&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;h3&gt;Setting up Rails with docker-compose&lt;/h3&gt;
 &lt;p&gt;Alright time to start everything up.&lt;/p&gt;
-&lt;p&gt;Run a &lt;code class=&quot;language-text&quot;&gt;docker-compose up --build&lt;/code&gt;.&lt;/p&gt;
-&lt;p&gt;Go grab a coffee, take a bathroom break, this may take a little while.&lt;/p&gt;
-&lt;p&gt;Then run the following inside a seperate terminal once that has all finished&lt;/p&gt;
+&lt;p&gt;Run a &lt;code class=&quot;language-text&quot;&gt;docker-compose up --build&lt;/code&gt;.
+Then run the following inside a seperate terminal once that has all finished&lt;/p&gt;
 &lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;bash&quot;&gt;&lt;pre class=&quot;language-bash&quot;&gt;&lt;code class=&quot;language-bash&quot;&gt;docker-compose run --rm web rails db:setup&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;You will most likely run into an issue with postgres.
+To fix this, navigate to &lt;code class=&quot;language-text&quot;&gt;./config/database.yml&lt;/code&gt;&lt;/p&gt;
+&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;yaml&quot;&gt;&lt;pre class=&quot;language-yaml&quot;&gt;&lt;code class=&quot;language-yaml&quot;&gt;&lt;span class=&quot;token key atrule&quot;&gt;default&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;token important&quot;&gt;&amp;amp;default&lt;/span&gt;
+  &lt;span class=&quot;token key atrule&quot;&gt;adapter&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;:&lt;/span&gt; postgresql
+  &lt;span class=&quot;token key atrule&quot;&gt;encoding&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;:&lt;/span&gt; unicode
+  &lt;span class=&quot;token key atrule&quot;&gt;host&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;:&lt;/span&gt; &amp;lt;%= ENV&lt;span class=&quot;token punctuation&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;token string&quot;&gt;&apos;PG_HOST&apos;&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;]&lt;/span&gt; %&lt;span class=&quot;token punctuation&quot;&gt;&gt;&lt;/span&gt;
+  &lt;span class=&quot;token key atrule&quot;&gt;username&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;:&lt;/span&gt; &amp;lt;%= ENV&lt;span class=&quot;token punctuation&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;token string&quot;&gt;&apos;PG_USER&apos;&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;]&lt;/span&gt; %&lt;span class=&quot;token punctuation&quot;&gt;&gt;&lt;/span&gt;
+  &lt;span class=&quot;token key atrule&quot;&gt;password&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;:&lt;/span&gt; &amp;lt;%= ENV&lt;span class=&quot;token punctuation&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;token string&quot;&gt;&apos;PG_PASSWORD&apos;&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;]&lt;/span&gt; %&lt;span class=&quot;token punctuation&quot;&gt;&gt;&lt;/span&gt;
+  &lt;span class=&quot;token key atrule&quot;&gt;pool&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;token number&quot;&gt;5&lt;/span&gt;
+
+&lt;span class=&quot;token key atrule&quot;&gt;development&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;:&lt;/span&gt;
+  &lt;span class=&quot;token key atrule&quot;&gt;&amp;lt;&amp;lt;&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;token important&quot;&gt;*default&lt;/span&gt;
+  &lt;span class=&quot;token key atrule&quot;&gt;database&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;:&lt;/span&gt; myapp_development
+
+&lt;span class=&quot;token key atrule&quot;&gt;test&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;:&lt;/span&gt;
+  &lt;span class=&quot;token key atrule&quot;&gt;&amp;lt;&amp;lt;&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;token important&quot;&gt;*default&lt;/span&gt;
+  &lt;span class=&quot;token key atrule&quot;&gt;database&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;:&lt;/span&gt; myapp_test&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;Now here’s where it gets a little tricky.&lt;br&gt;
+In the root directory, create a file called &lt;code class=&quot;language-text&quot;&gt;.env&lt;/code&gt;&lt;/p&gt;
+&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;bash&quot;&gt;&lt;pre class=&quot;language-bash&quot;&gt;&lt;code class=&quot;language-bash&quot;&gt;&lt;span class=&quot;token comment&quot;&gt;# .env&lt;/span&gt;
+
+&lt;span class=&quot;token assign-left variable&quot;&gt;PG_USER&lt;/span&gt;&lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;token string&quot;&gt;&apos;postgres&apos;&lt;/span&gt;
+
+&lt;span class=&quot;token comment&quot;&gt;# Docker does not use a password on the container for local development&lt;/span&gt;
+&lt;span class=&quot;token assign-left variable&quot;&gt;PG_PASSWORD&lt;/span&gt;&lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;token string&quot;&gt;&apos;&apos;&lt;/span&gt;
+
+&lt;span class=&quot;token comment&quot;&gt;# Change this to &apos;&apos; if not using docker. I have also set this manually inside of&lt;/span&gt;
+&lt;span class=&quot;token comment&quot;&gt;# the docker-compose.yml file.&lt;/span&gt;
+&lt;span class=&quot;token assign-left variable&quot;&gt;PG_HOST&lt;/span&gt;&lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;token string&quot;&gt;&apos;db&apos;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;Docker documentation says to use ‘db’ as the host in the &lt;code class=&quot;language-text&quot;&gt;database.yml&lt;/code&gt; file.&lt;br&gt;
+You will run into an error if you do not do this. I spent over 2 hours debugging this.
+Not a fun time.&lt;/p&gt;
+&lt;p&gt;Now, you should be able to create the database!&lt;/p&gt;
+&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;bash&quot;&gt;&lt;pre class=&quot;language-bash&quot;&gt;&lt;code class=&quot;language-bash&quot;&gt;&lt;span class=&quot;token comment&quot;&gt;# equivalent to rails db:create &amp;amp;&amp;amp; rails db:migrate &amp;amp;&amp;amp; rails db:seed&lt;/span&gt;
+docker-compose run --rm web rails db:setup&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 &lt;p&gt;Finally, in your browser navigate to &lt;code class=&quot;language-text&quot;&gt;localhost:3000&lt;/code&gt;&lt;/p&gt;
 &lt;p&gt;The “Hello, Welcome to Rails” page should appear!&lt;/p&gt;
-&lt;h4&gt;Quick note&lt;/h4&gt;
+&lt;h4&gt;Permissions Errors&lt;/h4&gt;
 &lt;p&gt;If on Linux, for me there are some permissions issues with Docker. &lt;br&gt;
 Ensure to &lt;code class=&quot;language-text&quot;&gt;chown -R .&lt;/code&gt; from the root directory after using Docker if you run into
 permissions issues&lt;/p&gt;
-&lt;h3&gt;Adding tailwindcss&lt;/h3&gt;
+&lt;h3&gt;Adding TailwindCSS&lt;/h3&gt;
 &lt;p&gt;I really enjoy using &lt;a href=&quot;https://tailwindcss.com&quot;&gt;TailwindCSS&lt;/a&gt; so I added it into
 the application.&lt;/p&gt;
 &lt;p&gt;There’s a few steps to this.&lt;/p&gt;

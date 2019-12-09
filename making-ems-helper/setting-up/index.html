@@ -25,19 +25,65 @@ gem <span class="token string">'dotenv-rails'</span><span class="token punctuati
 other web components.</p>
 <p>Here is a link to my <a href="https://github.com/ParamagicDev/ems_helper/blob/master/docker-compose.yml">docker-compose.yml</a> file which pulls in PostgresQL.</p>
 <p>I pulled most of this config off the <a href="https://docs.docker.com/compose/rails/">Docker official documentation</a>.</p>
-<h3>Using docker-compose</h3>
+<h3>Docker-compose commands</h3>
+<p>Before we get into building the project, let’s take a look at some basic commands:</p>
+<p><code class="language-text">docker-compose down</code> to bring down the container
+<code class="language-text">docker-compose up --build</code> rebuilds the container if you make changes.
+<code class="language-text">docker-compose run web &lt;command&gt;</code> will run the commands from inside the container.</p>
+<p>If for some reason the items listed below do not work, try resetting the container.</p>
+<p>Also, if you add something to the <code class="language-text">Gemfile</code>, to update the container you must do the following:</p>
+<div class="gatsby-highlight" data-language="bash"><pre class="language-bash"><code class="language-bash">docker-compose run web bundle <span class="token function">install</span>
+docker-compose down
+
+<span class="token comment"># You must rebuild the container because the Gemfile.lock has been updated as well</span>
+docker-compose up --build</code></pre></div>
+<h3>Setting up Rails with docker-compose</h3>
 <p>Alright time to start everything up.</p>
-<p>Run a <code class="language-text">docker-compose up --build</code>.</p>
-<p>Go grab a coffee, take a bathroom break, this may take a little while.</p>
-<p>Then run the following inside a seperate terminal once that has all finished</p>
+<p>Run a <code class="language-text">docker-compose up --build</code>.
+Then run the following inside a seperate terminal once that has all finished</p>
 <div class="gatsby-highlight" data-language="bash"><pre class="language-bash"><code class="language-bash">docker-compose run --rm web rails db:setup</code></pre></div>
+<p>You will most likely run into an issue with postgres.
+To fix this, navigate to <code class="language-text">./config/database.yml</code></p>
+<div class="gatsby-highlight" data-language="yaml"><pre class="language-yaml"><code class="language-yaml"><span class="token key atrule">default</span><span class="token punctuation">:</span> <span class="token important">&amp;default</span>
+  <span class="token key atrule">adapter</span><span class="token punctuation">:</span> postgresql
+  <span class="token key atrule">encoding</span><span class="token punctuation">:</span> unicode
+  <span class="token key atrule">host</span><span class="token punctuation">:</span> &lt;%= ENV<span class="token punctuation">[</span><span class="token string">'PG_HOST'</span><span class="token punctuation">]</span> %<span class="token punctuation">></span>
+  <span class="token key atrule">username</span><span class="token punctuation">:</span> &lt;%= ENV<span class="token punctuation">[</span><span class="token string">'PG_USER'</span><span class="token punctuation">]</span> %<span class="token punctuation">></span>
+  <span class="token key atrule">password</span><span class="token punctuation">:</span> &lt;%= ENV<span class="token punctuation">[</span><span class="token string">'PG_PASSWORD'</span><span class="token punctuation">]</span> %<span class="token punctuation">></span>
+  <span class="token key atrule">pool</span><span class="token punctuation">:</span> <span class="token number">5</span>
+
+<span class="token key atrule">development</span><span class="token punctuation">:</span>
+  <span class="token key atrule">&lt;&lt;</span><span class="token punctuation">:</span> <span class="token important">*default</span>
+  <span class="token key atrule">database</span><span class="token punctuation">:</span> myapp_development
+
+<span class="token key atrule">test</span><span class="token punctuation">:</span>
+  <span class="token key atrule">&lt;&lt;</span><span class="token punctuation">:</span> <span class="token important">*default</span>
+  <span class="token key atrule">database</span><span class="token punctuation">:</span> myapp_test</code></pre></div>
+<p>Now here’s where it gets a little tricky.<br>
+In the root directory, create a file called <code class="language-text">.env</code></p>
+<div class="gatsby-highlight" data-language="bash"><pre class="language-bash"><code class="language-bash"><span class="token comment"># .env</span>
+
+<span class="token assign-left variable">PG_USER</span><span class="token operator">=</span><span class="token string">'postgres'</span>
+
+<span class="token comment"># Docker does not use a password on the container for local development</span>
+<span class="token assign-left variable">PG_PASSWORD</span><span class="token operator">=</span><span class="token string">''</span>
+
+<span class="token comment"># Change this to '' if not using docker. I have also set this manually inside of</span>
+<span class="token comment"># the docker-compose.yml file.</span>
+<span class="token assign-left variable">PG_HOST</span><span class="token operator">=</span><span class="token string">'db'</span></code></pre></div>
+<p>Docker documentation says to use ‘db’ as the host in the <code class="language-text">database.yml</code> file.<br>
+You will run into an error if you do not do this. I spent over 2 hours debugging this.
+Not a fun time.</p>
+<p>Now, you should be able to create the database!</p>
+<div class="gatsby-highlight" data-language="bash"><pre class="language-bash"><code class="language-bash"><span class="token comment"># equivalent to rails db:create &amp;&amp; rails db:migrate &amp;&amp; rails db:seed</span>
+docker-compose run --rm web rails db:setup</code></pre></div>
 <p>Finally, in your browser navigate to <code class="language-text">localhost:3000</code></p>
 <p>The “Hello, Welcome to Rails” page should appear!</p>
-<h4>Quick note</h4>
+<h4>Permissions Errors</h4>
 <p>If on Linux, for me there are some permissions issues with Docker. <br>
 Ensure to <code class="language-text">chown -R .</code> from the root directory after using Docker if you run into
 permissions issues</p>
-<h3>Adding tailwindcss</h3>
+<h3>Adding TailwindCSS</h3>
 <p>I really enjoy using <a href="https://tailwindcss.com">TailwindCSS</a> so I added it into
 the application.</p>
 <p>There’s a few steps to this.</p>
