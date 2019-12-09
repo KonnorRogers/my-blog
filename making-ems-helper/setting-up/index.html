@@ -42,6 +42,7 @@ docker-compose up --build</code></pre></div>
 <p>Run a <code class="language-text">docker-compose up --build</code>.
 Then run the following inside a seperate terminal once that has all finished</p>
 <div class="gatsby-highlight" data-language="bash"><pre class="language-bash"><code class="language-bash">docker-compose run --rm web rails db:setup</code></pre></div>
+<p><br><br></p>
 <p>You will most likely run into an issue with postgres.
 To fix this, navigate to <code class="language-text">./config/database.yml</code></p>
 <div class="gatsby-highlight" data-language="yaml"><pre class="language-yaml"><code class="language-yaml"><span class="token key atrule">default</span><span class="token punctuation">:</span> <span class="token important">&amp;default</span>
@@ -59,6 +60,7 @@ To fix this, navigate to <code class="language-text">./config/database.yml</code
 <span class="token key atrule">test</span><span class="token punctuation">:</span>
   <span class="token key atrule">&lt;&lt;</span><span class="token punctuation">:</span> <span class="token important">*default</span>
   <span class="token key atrule">database</span><span class="token punctuation">:</span> myapp_test</code></pre></div>
+<p><br><br></p>
 <p>Now here’s where it gets a little tricky.<br>
 In the root directory, create a file called <code class="language-text">.env</code></p>
 <div class="gatsby-highlight" data-language="bash"><pre class="language-bash"><code class="language-bash"><span class="token comment"># .env</span>
@@ -71,12 +73,14 @@ In the root directory, create a file called <code class="language-text">.env</co
 <span class="token comment"># Change this to '' if not using docker. I have also set this manually inside of</span>
 <span class="token comment"># the docker-compose.yml file.</span>
 <span class="token assign-left variable">PG_HOST</span><span class="token operator">=</span><span class="token string">'db'</span></code></pre></div>
+<p><br><br></p>
 <p>Docker documentation says to use ‘db’ as the host in the <code class="language-text">database.yml</code> file.<br>
 You will run into an error if you do not do this. I spent over 2 hours debugging this.
 Not a fun time.</p>
 <p>Now, you should be able to create the database!</p>
 <div class="gatsby-highlight" data-language="bash"><pre class="language-bash"><code class="language-bash"><span class="token comment"># equivalent to rails db:create &amp;&amp; rails db:migrate &amp;&amp; rails db:seed</span>
 docker-compose run --rm web rails db:setup</code></pre></div>
+<p><br><br></p>
 <p>Finally, in your browser navigate to <code class="language-text">localhost:3000</code></p>
 <p>The “Hello, Welcome to Rails” page should appear!</p>
 <h4>Permissions Errors</h4>
@@ -96,6 +100,7 @@ Add the base classes.</li>
 <span class="token keyword">@import</span> <span class="token string">"tailwindcss/base"</span><span class="token punctuation">;</span>
 <span class="token keyword">@import</span> <span class="token string">"tailwindcss/components"</span><span class="token punctuation">;</span>
 <span class="token keyword">@import</span> <span class="token string">"tailwindcss/utilities"</span><span class="token punctuation">;</span></code></pre></div>
+<p><br><br></p>
 <ol start="3">
 <li>Inside <code class="language-text">./app/javascript/packs/application.js</code> add the following require statement.</li>
 </ol>
@@ -104,6 +109,7 @@ Add the base classes.</li>
 <span class="token comment">// ...</span>
 <span class="token function">require</span><span class="token punctuation">(</span><span class="token string">"stylesheets/tailwind.scss"</span><span class="token punctuation">)</span>
 <span class="token comment">// ...</span></code></pre></div>
+<p><br><br></p>
 <ol start="4">
 <li>Finally, inside of <code class="language-text">./app/views/layouts/application.html.erb</code></li>
 </ol>
@@ -115,15 +121,18 @@ Add the base classes.</li>
 <span class="token erb language-erb"><span class="token delimiter punctuation">&lt;%=</span> stylesheet_pack_tag <span class="token string">'application'</span><span class="token punctuation">,</span> media<span class="token punctuation">:</span> <span class="token string">'all'</span><span class="token punctuation">,</span> <span class="token string">'data-turbolinks-track'</span><span class="token punctuation">:</span> <span class="token string">'reload'</span> <span class="token delimiter punctuation">%></span></span>
 # ...
 <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>head</span><span class="token punctuation">></span></span></code></pre></div>
+<p><br><br></p>
 <ol start="5">
 <li>Unfortunately, you can’t really test that everything is working yet. So, let’s make it work!</li>
 </ol>
 <div class="gatsby-highlight" data-language="bash"><pre class="language-bash"><code class="language-bash">docker-compose run --rm web rails generate controller static_pages index</code></pre></div>
+<p><br><br></p>
 <p>Navigate to <code class="language-text">config/routes.rb</code> and add the following</p>
 <div class="gatsby-highlight" data-language="ruby"><pre class="language-ruby"><code class="language-ruby"><span class="token constant">Rails</span><span class="token punctuation">.</span>application<span class="token punctuation">.</span>routes<span class="token punctuation">.</span>draw <span class="token keyword">do</span>
   <span class="token comment"># For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html</span>
   root <span class="token string">'static_pages#index'</span>
 <span class="token keyword">end</span></code></pre></div>
+<p><br><br></p>
 <ol start="6">
 <li>Bringing it all together, to ensure everything works as correctly, add a Tailwind
 class to an html element.</li>
@@ -137,6 +146,7 @@ class to an html element.</li>
   <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>div</span><span class="token punctuation">></span></span>
 <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>body</span><span class="token punctuation">></span></span>
 <span class="token erb language-erb"><span class="token delimiter punctuation">&lt;%</span><span class="token comment"># ... </span><span class="token delimiter punctuation">%></span></span></code></pre></div>
+<p><br><br></p>
 <p>And thats it! You’re now fully setup with Rails 6, webpack, TailwindCSS, Docker / docker-compose
 From here, its time to start parsing the API content. That will be the next installment
 I will write!</p>
