@@ -33,7 +33,7 @@ gem 'dotenv-rails', groups: %i[development test]
 
 ## Docker
 
-First things first, setup a Dockerfile
+First things first, setup a Dockerfile in the root directory.
 
 ### Adding Dockerfile
 
