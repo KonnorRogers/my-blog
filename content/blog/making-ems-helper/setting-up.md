@@ -1,7 +1,8 @@
 ---
 title: Making EMS Helper - Setting up
 date: "2019-12-08T22:40:37"
-description: Detailing the initial setup of EMS Helper with rails 6
+description: Detailing the initial setup of EMS Helper with Rails 6, Webpack,
+  TailwindCSS, Docker, and Docker-Compose
 ---
 
 ## [Github Repo](https://github.com/ParamagicDev/ems_helper/tree/cd623419d8c885cac66c1d3e6fa0f8507d35b686)
