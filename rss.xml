@@ -1,4 +1,110 @@
-<?xml version="1.0" encoding="UTF-8"?><rss xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:content="http://purl.org/rss/1.0/modules/content/" xmlns:atom="http://www.w3.org/2005/Atom" version="2.0"><channel><title><![CDATA[Konnor's Blog]]></title><description><![CDATA[A starter blog demonstrating what Gatsby can do.]]></description><link>https://gatsby-starter-blog-demo.netlify.com</link><generator>RSS for Node</generator><lastBuildDate>Thu, 05 Dec 2019 11:05:58 GMT</lastBuildDate><item><title><![CDATA[Making EMS Helper - Introduction]]></title><description><![CDATA[Tech Stack Ruby on Rails v6.0.1 Ruby 2.6.3 Explanation I am most familiar with Ruby on Rails and therefore felt I would be most
+<?xml version="1.0" encoding="UTF-8"?><rss xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:content="http://purl.org/rss/1.0/modules/content/" xmlns:atom="http://www.w3.org/2005/Atom" version="2.0"><channel><title><![CDATA[Konnor's Blog]]></title><description><![CDATA[A starter blog demonstrating what Gatsby can do.]]></description><link>https://gatsby-starter-blog-demo.netlify.com</link><generator>RSS for Node</generator><lastBuildDate>Mon, 09 Dec 2019 07:58:30 GMT</lastBuildDate><item><title><![CDATA[Making EMS Helper - Setting up]]></title><description><![CDATA[Github Repo Creating a Rails 6 app  This will generate the initial project structure. I will be using postgresql as my database. Adding .env…]]></description><link>https://gatsby-starter-blog-demo.netlify.com/making-ems-helper/setting-up/</link><guid isPermaLink="false">https://gatsby-starter-blog-demo.netlify.com/making-ems-helper/setting-up/</guid><pubDate>Mon, 09 Dec 2019 03:40:37 GMT</pubDate><content:encoded>&lt;h2&gt;&lt;a href=&quot;https://github.com/ParamagicDev/ems_helper/tree/cd623419d8c885cac66c1d3e6fa0f8507d35b686&quot;&gt;Github Repo&lt;/a&gt;&lt;/h2&gt;
+&lt;h2&gt;Creating a Rails 6 app&lt;/h2&gt;
+&lt;p&gt;&lt;code class=&quot;language-text&quot;&gt;rails new ems_helper --database=postgresql&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;This will generate the initial project structure. I will be using postgresql as my database.&lt;/p&gt;
+&lt;h3&gt;Adding .env files&lt;/h3&gt;
+&lt;p&gt;I added the .env file as well the &lt;code class=&quot;language-text&quot;&gt;dotenv-rails&lt;/code&gt; gem to allow the use
+of the .env files to allow for easy local development for things that requires
+logins or API keys.&lt;/p&gt;
+&lt;p&gt;&lt;a href=&quot;https://github.com/ParamagicDev/ems_helper/blob/master/Gemfile&quot;&gt;My gemfile&lt;/a&gt;&lt;/p&gt;
+&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;ruby&quot;&gt;&lt;pre class=&quot;language-ruby&quot;&gt;&lt;code class=&quot;language-ruby&quot;&gt;&lt;span class=&quot;token comment&quot;&gt;# Gemfile&lt;/span&gt;
+
+&lt;span class=&quot;token comment&quot;&gt;# ...&lt;/span&gt;
+&lt;span class=&quot;token comment&quot;&gt;# Make sure it is the first gem added. This way gems that require privileges&lt;/span&gt;
+&lt;span class=&quot;token comment&quot;&gt;# can inherit from dotenv-rails&lt;/span&gt;
+gem &lt;span class=&quot;token string&quot;&gt;&apos;dotenv-rails&apos;&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt; groups&lt;span class=&quot;token punctuation&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;token string&quot;&gt;%i[development test]&lt;/span&gt;
+&lt;span class=&quot;token comment&quot;&gt;# ...&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;h2&gt;Docker&lt;/h2&gt;
+&lt;p&gt;First things first, setup a Dockerfile&lt;/p&gt;
+&lt;h3&gt;Adding Dockerfile&lt;/h3&gt;
+&lt;p&gt;&lt;a href=&quot;https://github.com/ParamagicDev/ems_helper/blob/master/Dockerfile&quot;&gt;My Dockerfile&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;Basically, pull in Ruby 2.6.3, add nodejs, and add all packages is what this Dockerfile does.&lt;/p&gt;
+&lt;h3&gt;Setting up docker-compose&lt;/h3&gt;
+&lt;p&gt;docker-compose is a utility provided by Docker to pull in various components.&lt;/p&gt;
+&lt;p&gt;IE: Redis, Memcache, caching layer, PostgresQL, MySQL, MonogoDB databases, and various
+other web components.&lt;/p&gt;
+&lt;p&gt;Here is a link to my &lt;a href=&quot;https://github.com/ParamagicDev/ems_helper/blob/master/docker-compose.yml&quot;&gt;docker-compose.yml&lt;/a&gt; file which pulls in PostgresQL.&lt;/p&gt;
+&lt;p&gt;I pulled most of this config off the &lt;a href=&quot;https://docs.docker.com/compose/rails/&quot;&gt;Docker official documentation&lt;/a&gt;.&lt;/p&gt;
+&lt;h3&gt;Using docker-compose&lt;/h3&gt;
+&lt;p&gt;Alright time to start everything up.&lt;/p&gt;
+&lt;p&gt;Run a &lt;code class=&quot;language-text&quot;&gt;docker-compose up --build&lt;/code&gt;.&lt;/p&gt;
+&lt;p&gt;Go grab a coffee, take a bathroom break, this may take a little while.&lt;/p&gt;
+&lt;p&gt;Then run the following inside a seperate terminal once that has all finished&lt;/p&gt;
+&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;bash&quot;&gt;&lt;pre class=&quot;language-bash&quot;&gt;&lt;code class=&quot;language-bash&quot;&gt;docker-compose run --rm web rails db:setup&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;Finally, in your browser navigate to &lt;code class=&quot;language-text&quot;&gt;localhost:3000&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;The “Hello, Welcome to Rails” page should appear!&lt;/p&gt;
+&lt;h4&gt;Quick note&lt;/h4&gt;
+&lt;p&gt;If on Linux, for me there are some permissions issues with Docker. &lt;br&gt;
+Ensure to &lt;code class=&quot;language-text&quot;&gt;chown -R .&lt;/code&gt; from the root directory after using Docker if you run into
+permissions issues&lt;/p&gt;
+&lt;h3&gt;Adding tailwindcss&lt;/h3&gt;
+&lt;p&gt;I really enjoy using &lt;a href=&quot;https://tailwindcss.com&quot;&gt;TailwindCSS&lt;/a&gt; so I added it into
+the application.&lt;/p&gt;
+&lt;p&gt;There’s a few steps to this.&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;&lt;code class=&quot;language-text&quot;&gt;yarn install tailwindcss&lt;/code&gt; - add the tailwindcss node module&lt;/li&gt;
+&lt;li&gt;Then, create a tailwind stylesheet called &lt;code class=&quot;language-text&quot;&gt;./app/javascript/stylesheets/tailwind.scss&lt;/code&gt;
+Add the base classes.&lt;/li&gt;
+&lt;/ol&gt;
+&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;scss&quot;&gt;&lt;pre class=&quot;language-scss&quot;&gt;&lt;code class=&quot;language-scss&quot;&gt;&lt;span class=&quot;token comment&quot;&gt;// app/javascript/stylesheets/tailwind.css&lt;/span&gt;
+&lt;span class=&quot;token keyword&quot;&gt;@import&lt;/span&gt; &lt;span class=&quot;token string&quot;&gt;&quot;tailwindcss/base&quot;&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;;&lt;/span&gt;
+&lt;span class=&quot;token keyword&quot;&gt;@import&lt;/span&gt; &lt;span class=&quot;token string&quot;&gt;&quot;tailwindcss/components&quot;&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;;&lt;/span&gt;
+&lt;span class=&quot;token keyword&quot;&gt;@import&lt;/span&gt; &lt;span class=&quot;token string&quot;&gt;&quot;tailwindcss/utilities&quot;&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;ol start=&quot;3&quot;&gt;
+&lt;li&gt;Inside &lt;code class=&quot;language-text&quot;&gt;./app/javascript/packs/application.js&lt;/code&gt; add the following require statement.&lt;/li&gt;
+&lt;/ol&gt;
+&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;javascript&quot;&gt;&lt;pre class=&quot;language-javascript&quot;&gt;&lt;code class=&quot;language-javascript&quot;&gt;&lt;span class=&quot;token comment&quot;&gt;// app/javascript/packs/application.js&lt;/span&gt;
+
+&lt;span class=&quot;token comment&quot;&gt;// ...&lt;/span&gt;
+&lt;span class=&quot;token function&quot;&gt;require&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;token string&quot;&gt;&quot;stylesheets/tailwind.scss&quot;&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;
+&lt;span class=&quot;token comment&quot;&gt;// ...&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;ol start=&quot;4&quot;&gt;
+&lt;li&gt;Finally, inside of &lt;code class=&quot;language-text&quot;&gt;./app/views/layouts/application.html.erb&lt;/code&gt;&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;Add a stylesheet pack tag inside the head of the view&lt;/p&gt;
+&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;erb&quot;&gt;&lt;pre class=&quot;language-erb&quot;&gt;&lt;code class=&quot;language-erb&quot;&gt;&lt;span class=&quot;token erb language-erb&quot;&gt;&lt;span class=&quot;token delimiter punctuation&quot;&gt;&amp;lt;%&lt;/span&gt;&lt;span class=&quot;token comment&quot;&gt;# app/views/layouts/application.html.erb &lt;/span&gt;&lt;span class=&quot;token delimiter punctuation&quot;&gt;%&gt;&lt;/span&gt;&lt;/span&gt;
+
+&lt;span class=&quot;token tag&quot;&gt;&lt;span class=&quot;token tag&quot;&gt;&lt;span class=&quot;token punctuation&quot;&gt;&amp;lt;&lt;/span&gt;head&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;&gt;&lt;/span&gt;&lt;/span&gt;
+# ...
+&lt;span class=&quot;token erb language-erb&quot;&gt;&lt;span class=&quot;token delimiter punctuation&quot;&gt;&amp;lt;%=&lt;/span&gt; stylesheet_pack_tag &lt;span class=&quot;token string&quot;&gt;&apos;application&apos;&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt; media&lt;span class=&quot;token punctuation&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;token string&quot;&gt;&apos;all&apos;&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;token string&quot;&gt;&apos;data-turbolinks-track&apos;&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;token string&quot;&gt;&apos;reload&apos;&lt;/span&gt; &lt;span class=&quot;token delimiter punctuation&quot;&gt;%&gt;&lt;/span&gt;&lt;/span&gt;
+# ...
+&lt;span class=&quot;token tag&quot;&gt;&lt;span class=&quot;token tag&quot;&gt;&lt;span class=&quot;token punctuation&quot;&gt;&amp;lt;/&lt;/span&gt;head&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;&gt;&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;ol start=&quot;5&quot;&gt;
+&lt;li&gt;Unfortunately, you can’t really test that everything is working yet. So, let’s make it work!&lt;/li&gt;
+&lt;/ol&gt;
+&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;bash&quot;&gt;&lt;pre class=&quot;language-bash&quot;&gt;&lt;code class=&quot;language-bash&quot;&gt;docker-compose run --rm web rails generate controller static_pages index&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;Navigate to &lt;code class=&quot;language-text&quot;&gt;config/routes.rb&lt;/code&gt; and add the following&lt;/p&gt;
+&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;ruby&quot;&gt;&lt;pre class=&quot;language-ruby&quot;&gt;&lt;code class=&quot;language-ruby&quot;&gt;&lt;span class=&quot;token constant&quot;&gt;Rails&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;application&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;routes&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;draw &lt;span class=&quot;token keyword&quot;&gt;do&lt;/span&gt;
+  &lt;span class=&quot;token comment&quot;&gt;# For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html&lt;/span&gt;
+  root &lt;span class=&quot;token string&quot;&gt;&apos;static_pages#index&apos;&lt;/span&gt;
+&lt;span class=&quot;token keyword&quot;&gt;end&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;ol start=&quot;6&quot;&gt;
+&lt;li&gt;Bringing it all together, to ensure everything works as correctly, add a Tailwind
+class to an html element.&lt;/li&gt;
+&lt;/ol&gt;
+&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;erb&quot;&gt;&lt;pre class=&quot;language-erb&quot;&gt;&lt;code class=&quot;language-erb&quot;&gt;&lt;span class=&quot;token erb language-erb&quot;&gt;&lt;span class=&quot;token delimiter punctuation&quot;&gt;&amp;lt;%&lt;/span&gt;&lt;span class=&quot;token comment&quot;&gt;# app/views/static_pages/index.html.erb &lt;/span&gt;&lt;span class=&quot;token delimiter punctuation&quot;&gt;%&gt;&lt;/span&gt;&lt;/span&gt;
+
+&lt;span class=&quot;token erb language-erb&quot;&gt;&lt;span class=&quot;token delimiter punctuation&quot;&gt;&amp;lt;%&lt;/span&gt;&lt;span class=&quot;token comment&quot;&gt;# ... &lt;/span&gt;&lt;span class=&quot;token delimiter punctuation&quot;&gt;%&gt;&lt;/span&gt;&lt;/span&gt;
+&lt;span class=&quot;token tag&quot;&gt;&lt;span class=&quot;token tag&quot;&gt;&lt;span class=&quot;token punctuation&quot;&gt;&amp;lt;&lt;/span&gt;body&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;&gt;&lt;/span&gt;&lt;/span&gt;
+  &lt;span class=&quot;token tag&quot;&gt;&lt;span class=&quot;token tag&quot;&gt;&lt;span class=&quot;token punctuation&quot;&gt;&amp;lt;&lt;/span&gt;div&lt;/span&gt; &lt;span class=&quot;token attr-name&quot;&gt;class&lt;/span&gt;&lt;span class=&quot;token attr-value&quot;&gt;&lt;span class=&quot;token punctuation&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;&quot;&lt;/span&gt;text-red-500&lt;span class=&quot;token punctuation&quot;&gt;&quot;&lt;/span&gt;&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;&gt;&lt;/span&gt;&lt;/span&gt;
+    Hello there!
+  &lt;span class=&quot;token tag&quot;&gt;&lt;span class=&quot;token tag&quot;&gt;&lt;span class=&quot;token punctuation&quot;&gt;&amp;lt;/&lt;/span&gt;div&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;&gt;&lt;/span&gt;&lt;/span&gt;
+&lt;span class=&quot;token tag&quot;&gt;&lt;span class=&quot;token tag&quot;&gt;&lt;span class=&quot;token punctuation&quot;&gt;&amp;lt;/&lt;/span&gt;body&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;&gt;&lt;/span&gt;&lt;/span&gt;
+&lt;span class=&quot;token erb language-erb&quot;&gt;&lt;span class=&quot;token delimiter punctuation&quot;&gt;&amp;lt;%&lt;/span&gt;&lt;span class=&quot;token comment&quot;&gt;# ... &lt;/span&gt;&lt;span class=&quot;token delimiter punctuation&quot;&gt;%&gt;&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;And thats it! You’re now fully setup with Rails 6, webpack, TailwindCSS, Docker / docker-compose
+From here, its time to start parsing the API content. That will be the next installment
+I will write!&lt;/p&gt;
+&lt;h2&gt;Links&lt;/h2&gt;
+&lt;p&gt;Special thanks to Chris @ gorails for his free content.
+He helped me with the tailwind setup.
+&lt;a href=&quot;https://gorails.com/episodes/tailwind-css-framework-with-rails&quot;&gt;Tailwind Setup Video&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;Docker documentation is fantastic check it out.
+&lt;a href=&quot;https://docs.docker.com/&quot;&gt;Docker Docs&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;Check out the Rails docs obviously
+&lt;a href=&quot;https://rubyonrails.org/&quot;&gt;Rails Docs&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;Finally, feel free to follow along with my repo. Most of the development will take
+place on the &lt;code class=&quot;language-text&quot;&gt;development branch&lt;/code&gt;.&lt;/p&gt;
+&lt;p&gt;&lt;a href=&quot;https://github.com/ParamagicDev/ems_helper&quot;&gt;Github Repo&lt;/a&gt;&lt;/p&gt;</content:encoded></item><item><title><![CDATA[Making EMS Helper - Introduction]]></title><description><![CDATA[Tech Stack Ruby on Rails v6.0.1 Ruby 2.6.3 Explanation I am most familiar with Ruby on Rails and therefore felt I would be most
 productive…]]></description><link>https://gatsby-starter-blog-demo.netlify.com/making-ems-helper/introduction/</link><guid isPermaLink="false">https://gatsby-starter-blog-demo.netlify.com/making-ems-helper/introduction/</guid><pubDate>Thu, 05 Dec 2019 10:07:36 GMT</pubDate><content:encoded>&lt;h2&gt;Tech Stack&lt;/h2&gt;
 &lt;ul&gt;
 &lt;li&gt;Ruby on Rails v6.0.1&lt;/li&gt;
