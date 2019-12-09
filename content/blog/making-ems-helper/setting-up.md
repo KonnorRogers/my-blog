@@ -52,17 +52,82 @@ Here is a link to my [docker-compose.yml](https://github.com/ParamagicDev/ems_he
 
 I pulled most of this config off the [Docker official documentation](https://docs.docker.com/compose/rails/).
 
-### Using docker-compose
+### Docker-compose commands
+
+Before we get into building the project, let's take a look at some basic commands:
+
+`docker-compose down` to bring down the container
+`docker-compose up --build` rebuilds the container if you make changes.
+`docker-compose run web <command>` will run the commands from inside the container.
+
+If for some reason the items listed below do not work, try resetting the container.
+
+Also, if you add something to the `Gemfile`, to update the container you must do the following:
+
+```bash
+docker-compose run web bundle install
+docker-compose down
+
+# You must rebuild the container because the Gemfile.lock has been updated as well
+docker-compose up --build
+```
+
+### Setting up Rails with docker-compose
 
 Alright time to start everything up.
 
 Run a `docker-compose up --build`.
-
-Go grab a coffee, take a bathroom break, this may take a little while.
-
 Then run the following inside a seperate terminal once that has all finished
 
 ```bash
+docker-compose run --rm web rails db:setup
+```
+
+You will most likely run into an issue with postgres.
+To fix this, navigate to `./config/database.yml`
+
+```yaml
+default: &default
+  adapter: postgresql
+  encoding: unicode
+  host: <%= ENV['PG_HOST'] %>
+  username: <%= ENV['PG_USER'] %>
+  password: <%= ENV['PG_PASSWORD'] %>
+  pool: 5
+
+development:
+  <<: *default
+  database: myapp_development
+
+test:
+  <<: *default
+  database: myapp_test
+```
+
+Now here's where it gets a little tricky.<br>
+In the root directory, create a file called `.env`
+
+```bash
+# .env
+
+PG_USER='postgres'
+
+# Docker does not use a password on the container for local development
+PG_PASSWORD=''
+
+# Change this to '' if not using docker. I have also set this manually inside of
+# the docker-compose.yml file.
+PG_HOST='db'
+```
+
+Docker documentation says to use 'db' as the host in the `database.yml` file.<br>
+You will run into an error if you do not do this. I spent over 2 hours debugging this.
+Not a fun time.
+
+Now, you should be able to create the database!
+
+```bash
+# equivalent to rails db:create && rails db:migrate && rails db:seed
 docker-compose run --rm web rails db:setup
 ```
 
@@ -70,13 +135,13 @@ Finally, in your browser navigate to `localhost:3000`
 
 The "Hello, Welcome to Rails" page should appear!
 
-#### Quick note
+#### Permissions Errors
 
 If on Linux, for me there are some permissions issues with Docker. <br>
 Ensure to `chown -R .` from the root directory after using Docker if you run into
 permissions issues
 
-### Adding tailwindcss
+### Adding TailwindCSS
 
 I really enjoy using [TailwindCSS](https://tailwindcss.com) so I added it into
 the application.
