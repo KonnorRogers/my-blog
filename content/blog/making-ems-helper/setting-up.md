@@ -83,6 +83,8 @@ Then run the following inside a seperate terminal once that has all finished
 docker-compose run --rm web rails db:setup
 ```
 
+<br><br>
+
 You will most likely run into an issue with postgres.
 To fix this, navigate to `./config/database.yml`
 
@@ -104,6 +106,8 @@ test:
   database: myapp_test
 ```
 
+<br><br>
+
 Now here's where it gets a little tricky.<br>
 In the root directory, create a file called `.env`
 
@@ -120,6 +124,8 @@ PG_PASSWORD=''
 PG_HOST='db'
 ```
 
+<br><br>
+
 Docker documentation says to use 'db' as the host in the `database.yml` file.<br>
 You will run into an error if you do not do this. I spent over 2 hours debugging this.
 Not a fun time.
@@ -130,6 +136,8 @@ Now, you should be able to create the database!
 # equivalent to rails db:create && rails db:migrate && rails db:seed
 docker-compose run --rm web rails db:setup
 ```
+
+<br><br>
 
 Finally, in your browser navigate to `localhost:3000`
 
@@ -160,6 +168,8 @@ There's a few steps to this.
 @import "tailwindcss/utilities";
 ```
 
+<br><br>
+
 3. Inside `./app/javascript/packs/application.js` add the following require statement.
 
 ```javascript
@@ -169,6 +179,8 @@ There's a few steps to this.
 require("stylesheets/tailwind.scss")
 // ...
 ```
+
+<br><br>
 
 4. Finally, inside of `./app/views/layouts/application.html.erb`
 
@@ -184,11 +196,15 @@ Add a stylesheet pack tag inside the head of the view
 </head>
 ```
 
+<br><br>
+
 5. Unfortunately, you can't really test that everything is working yet. So, let's make it work!
 
 ```bash
 docker-compose run --rm web rails generate controller static_pages index
 ```
+
+<br><br>
 
 Navigate to `config/routes.rb` and add the following
 
@@ -198,6 +214,8 @@ Rails.application.routes.draw do
   root 'static_pages#index'
 end
 ```
+
+<br><br>
 
 6. Bringing it all together, to ensure everything works as correctly, add a Tailwind
    class to an html element.
@@ -213,6 +231,8 @@ end
 </body>
 <%# ... %>
 ```
+
+<br><br>
 
 And thats it! You're now fully setup with Rails 6, webpack, TailwindCSS, Docker / docker-compose
 From here, its time to start parsing the API content. That will be the next installment
