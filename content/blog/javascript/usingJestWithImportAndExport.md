@@ -30,7 +30,7 @@ I realized I never included the use of Webpack for bundling everything! I added 
 npm init
 
 # install eslint, jest, and babel packages
-npm install --save-dev webpack webpack-cli webpack-dev-server jest babel-jest @babel/core @babel/preset-env regenerator-runtime eslint eslint-plugin-jest
+npm install --save-dev webpack webpack-cli webpack-dev-server jest babel-jest babel-loader @babel/core @babel/preset-env regenerator-runtime eslint eslint-plugin-jest
 
 # create a config file for jest and eslint
 npx jest --init
