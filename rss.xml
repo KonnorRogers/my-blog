@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="UTF-8"?><rss xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:content="http://purl.org/rss/1.0/modules/content/" xmlns:atom="http://www.w3.org/2005/Atom" version="2.0"><channel><title><![CDATA[Konnor's Blog]]></title><description><![CDATA[A starter blog demonstrating what Gatsby can do.]]></description><link>https://gatsby-starter-blog-demo.netlify.com</link><generator>RSS for Node</generator><lastBuildDate>Mon, 09 Dec 2019 08:35:55 GMT</lastBuildDate><item><title><![CDATA[Making EMS Helper - Setting up]]></title><description><![CDATA[Github Repo Creating a Rails 6 app  This will generate the initial project structure. I will be using postgresql as my database. Adding .env…]]></description><link>https://gatsby-starter-blog-demo.netlify.com/making-ems-helper/setting-up/</link><guid isPermaLink="false">https://gatsby-starter-blog-demo.netlify.com/making-ems-helper/setting-up/</guid><pubDate>Mon, 09 Dec 2019 03:40:37 GMT</pubDate><content:encoded>&lt;h2&gt;&lt;a href=&quot;https://github.com/ParamagicDev/ems_helper/tree/cd623419d8c885cac66c1d3e6fa0f8507d35b686&quot;&gt;Github Repo&lt;/a&gt;&lt;/h2&gt;
+<?xml version="1.0" encoding="UTF-8"?><rss xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:content="http://purl.org/rss/1.0/modules/content/" xmlns:atom="http://www.w3.org/2005/Atom" version="2.0"><channel><title><![CDATA[Konnor's Blog]]></title><description><![CDATA[A starter blog demonstrating what Gatsby can do.]]></description><link>https://gatsby-starter-blog-demo.netlify.com</link><generator>RSS for Node</generator><lastBuildDate>Wed, 11 Dec 2019 13:21:20 GMT</lastBuildDate><item><title><![CDATA[Making EMS Helper - Setting up]]></title><description><![CDATA[Github Repo Creating a Rails 6 app  This will generate the initial project structure. I will be using postgresql as my database. Adding .env…]]></description><link>https://gatsby-starter-blog-demo.netlify.com/making-ems-helper/setting-up/</link><guid isPermaLink="false">https://gatsby-starter-blog-demo.netlify.com/making-ems-helper/setting-up/</guid><pubDate>Mon, 09 Dec 2019 03:40:37 GMT</pubDate><content:encoded>&lt;h2&gt;&lt;a href=&quot;https://github.com/ParamagicDev/ems_helper/tree/cd623419d8c885cac66c1d3e6fa0f8507d35b686&quot;&gt;Github Repo&lt;/a&gt;&lt;/h2&gt;
 &lt;h2&gt;Creating a Rails 6 app&lt;/h2&gt;
 &lt;p&gt;&lt;code class=&quot;language-text&quot;&gt;rails new ems_helper --database=postgresql&lt;/code&gt;&lt;/p&gt;
 &lt;p&gt;This will generate the initial project structure. I will be using postgresql as my database.&lt;/p&gt;
@@ -621,16 +621,21 @@ I however, like to use the *.test.js file, but you are free to do as you please.
 &lt;p&gt;At the time of writing this, I am using Jest 24.9, Babel 7.6, and ESLint 6.5&lt;/p&gt;
 &lt;p&gt;ESLint is not necessary for this Jest to properly use the import / export syntax,
 however, I like it for using prettier within my work environment.&lt;/p&gt;
+&lt;h3&gt;EDIT&lt;/h3&gt;
+&lt;p&gt;I realized I never included the use of Webpack for bundling everything! I added the command below and my webpack config&lt;/p&gt;
 &lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;bash&quot;&gt;&lt;pre class=&quot;language-bash&quot;&gt;&lt;code class=&quot;language-bash&quot;&gt;&lt;span class=&quot;token comment&quot;&gt;# If its a new project&lt;/span&gt;
 &lt;span class=&quot;token function&quot;&gt;npm&lt;/span&gt; init
 
 &lt;span class=&quot;token comment&quot;&gt;# install eslint, jest, and babel packages&lt;/span&gt;
-&lt;span class=&quot;token function&quot;&gt;npm&lt;/span&gt; &lt;span class=&quot;token function&quot;&gt;install&lt;/span&gt; --save-dev jest babel-jest @babel/core @babel/preset-env regenerator-runtime eslint eslint-plugin-jest
+&lt;span class=&quot;token function&quot;&gt;npm&lt;/span&gt; &lt;span class=&quot;token function&quot;&gt;install&lt;/span&gt; --save-dev webpack webpack-cli webpack-dev-server jest babel-jest @babel/core @babel/preset-env regenerator-runtime eslint eslint-plugin-jest
 
 &lt;span class=&quot;token comment&quot;&gt;# create a config file for jest and eslint&lt;/span&gt;
 npx jest --init
 npx eslint --init&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 &lt;p&gt;Then modify eslint and jest config files accordingly.&lt;/p&gt;
+&lt;p&gt;&lt;a href=&quot;https://github.com/ParamagicDev/TicTacToeJS/blob/master/webpack.config.js&quot;&gt;My webpack config&lt;/a&gt;
+Refer to webpack documentation for further instruction. I also have a previous writeup.
+&lt;a href=&quot;https://paramagicdev.github.io/my-blog/javascript/webpackDevServerLiveReloading/&quot;&gt;https://paramagicdev.github.io/my-blog/javascript/webpackDevServerLiveReloading/&lt;/a&gt;&lt;/p&gt;
 &lt;p&gt;&lt;a href=&quot;https://github.com/ParamagicDev/TicTacToeJS/blob/master/jest.config.js&quot;&gt;My Jest Config&lt;/a&gt;
 I just use the default from &lt;code class=&quot;language-text&quot;&gt;npx jest --init&lt;/code&gt;&lt;/p&gt;
 &lt;p&gt;&lt;a href=&quot;https://github.com/ParamagicDev/TicTacToeJS/blob/master/.eslintrc.js&quot;&gt;My ESLint Config&lt;/a&gt;&lt;/p&gt;
