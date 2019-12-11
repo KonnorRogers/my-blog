@@ -21,12 +21,16 @@ At the time of writing this, I am using Jest 24.9, Babel 7.6, and ESLint 6.5
 ESLint is not necessary for this Jest to properly use the import / export syntax,
 however, I like it for using prettier within my work environment.
 
+### EDIT
+
+I realized I never included the use of Webpack for bundling everything! I added the command below and my webpack config
+
 ```bash
 # If its a new project
 npm init
 
 # install eslint, jest, and babel packages
-npm install --save-dev jest babel-jest @babel/core @babel/preset-env regenerator-runtime eslint eslint-plugin-jest
+npm install --save-dev webpack webpack-cli webpack-dev-server jest babel-jest @babel/core @babel/preset-env regenerator-runtime eslint eslint-plugin-jest
 
 # create a config file for jest and eslint
 npx jest --init
@@ -34,6 +38,10 @@ npx eslint --init
 ```
 
 Then modify eslint and jest config files accordingly.
+
+[My webpack config](https://github.com/ParamagicDev/TicTacToeJS/blob/master/webpack.config.js)
+Refer to webpack documentation for further instruction. I also have a previous writeup.
+[https://paramagicdev.github.io/my-blog/javascript/webpackDevServerLiveReloading/](https://paramagicdev.github.io/my-blog/javascript/webpackDevServerLiveReloading/)
 
 [My Jest Config](https://github.com/ParamagicDev/TicTacToeJS/blob/master/jest.config.js)
 I just use the default from `npx jest --init`
