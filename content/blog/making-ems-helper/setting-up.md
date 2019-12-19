@@ -156,7 +156,7 @@ the application.
 
 There's a few steps to this.
 
-1. `yarn install tailwindcss` - add the tailwindcss node module
+1. `yarn add tailwindcss` - add the tailwindcss node module
 
 2. Then, create a tailwind stylesheet called `./app/javascript/stylesheets/tailwind.scss`
    Add the base classes.
@@ -254,3 +254,7 @@ Finally, feel free to follow along with my repo. Most of the development will ta
 place on the `development branch`.
 
 [Github Repo](https://github.com/ParamagicDev/ems_helper)
+
+#### EDIT
+
+I create a Rails 6 skeleton for tailwind css [HERE](https://github.com/ParamagicDev/rails6-skeleton/tree/tailwindcss)
