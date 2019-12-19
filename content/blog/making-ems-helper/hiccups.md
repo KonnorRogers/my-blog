@@ -15,4 +15,13 @@ how to aggregate the data.
 ## Using Wikipedia
 
 Wikipedia appears to have a semi-complete list. May be best to look into this as a means
-to populate the database.
+to populate the database. They also appear to have a semi complete list of trauma centers.
+No mention of PCI facilities is made on Wikipedia nor stroke centers.
+
+## Moving forward
+
+Unfortunately, it appearst this projects is more data aggregation heavy than it is
+technically challenging. The time required to make the project work would be enormous.
+
+Either on my part of getting the data myself or by using community involvement
+and filtering in new locations. It just doesn't seem feasible at this time.
