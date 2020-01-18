@@ -1,4 +1,182 @@
-<?xml version="1.0" encoding="UTF-8"?><rss xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:content="http://purl.org/rss/1.0/modules/content/" xmlns:atom="http://www.w3.org/2005/Atom" version="2.0"><channel><title><![CDATA[Konnor's Blog]]></title><description><![CDATA[A starter blog demonstrating what Gatsby can do.]]></description><link>https://gatsby-starter-blog-demo.netlify.com</link><generator>GatsbyJS</generator><lastBuildDate>Thu, 19 Dec 2019 16:00:49 GMT</lastBuildDate><item><title><![CDATA[Making EMS Helper - Hiccups]]></title><description><![CDATA[Aggregating the data Unfortunately, as detailed in my previous post
+<?xml version="1.0" encoding="UTF-8"?><rss xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:content="http://purl.org/rss/1.0/modules/content/" xmlns:atom="http://www.w3.org/2005/Atom" version="2.0"><channel><title><![CDATA[Konnor's Blog]]></title><description><![CDATA[A blog documentating my various processes]]></description><link>https://gatsby-starter-blog-demo.netlify.com</link><generator>GatsbyJS</generator><lastBuildDate>Sat, 18 Jan 2020 00:14:25 GMT</lastBuildDate><item><title><![CDATA[Setting up a Gatsby project with Docker]]></title><description><![CDATA[Quick start First create a new directory (or use an existing directory, this method will NOT
+create a new git directory for you) Next step…]]></description><link>https://gatsby-starter-blog-demo.netlify.com/javascript/setting-up-gatsby-with-docker/</link><guid isPermaLink="false">https://gatsby-starter-blog-demo.netlify.com/javascript/setting-up-gatsby-with-docker/</guid><pubDate>Thu, 16 Jan 2020 21:55:01 GMT</pubDate><content:encoded>&lt;h2&gt;Quick start&lt;/h2&gt;
+&lt;p&gt;First create a new directory (or use an existing directory, this method will NOT
+create a new git directory for you)&lt;/p&gt;
+&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;bash&quot;&gt;&lt;pre class=&quot;language-bash&quot;&gt;&lt;code class=&quot;language-bash&quot;&gt;&lt;span class=&quot;token function&quot;&gt;mkdir&lt;/span&gt; my-new-gatsby-project
+&lt;span class=&quot;token builtin class-name&quot;&gt;cd&lt;/span&gt; my-new-gatsby-project
+&lt;span class=&quot;token function&quot;&gt;touch&lt;/span&gt; Dockerfile.dev docker-compose.yml package.json yarn.lock&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;/br&gt;
+&lt;p&gt;Next step, we must fill in the &lt;code class=&quot;language-text&quot;&gt;package.json&lt;/code&gt; file.&lt;/p&gt;
+&lt;p&gt;There are 2 ways to handle this. You can either run &lt;code class=&quot;language-text&quot;&gt;yarn init or npm init&lt;/code&gt; if you have
+yarn / npm installed on your computer.&lt;/p&gt;
+&lt;p&gt;However, if you do not have npm / yarn it is fine. The &lt;code class=&quot;language-text&quot;&gt;package.json&lt;/code&gt; just needs
+some values to get Docker to run appropriately. Run the command below to fill in
+a temporary &lt;code class=&quot;language-text&quot;&gt;package.json&lt;/code&gt; file.&lt;/p&gt;
+&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;json&quot;&gt;&lt;pre class=&quot;language-json&quot;&gt;&lt;code class=&quot;language-json&quot;&gt;&lt;span class=&quot;token comment&quot;&gt;// ./package.json&lt;/span&gt;
+
+&lt;span class=&quot;token punctuation&quot;&gt;{&lt;/span&gt;
+  &lt;span class=&quot;token property&quot;&gt;&quot;name&quot;&lt;/span&gt;&lt;span class=&quot;token operator&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;token string&quot;&gt;&quot;docker-with-gatsby&quot;&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt;
+  &lt;span class=&quot;token property&quot;&gt;&quot;description&quot;&lt;/span&gt;&lt;span class=&quot;token operator&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;token string&quot;&gt;&quot;An example repo for setting up Gatsby with Docker&quot;&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt;
+  &lt;span class=&quot;token property&quot;&gt;&quot;version&quot;&lt;/span&gt;&lt;span class=&quot;token operator&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;token string&quot;&gt;&quot;1.0.0&quot;&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt;
+  &lt;span class=&quot;token property&quot;&gt;&quot;main&quot;&lt;/span&gt;&lt;span class=&quot;token operator&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;token string&quot;&gt;&quot;index.js&quot;&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt;
+  &lt;span class=&quot;token property&quot;&gt;&quot;repository&quot;&lt;/span&gt;&lt;span class=&quot;token operator&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;token string&quot;&gt;&quot;git@github.com:ParamagicDev/docker-with-gatsby.git&quot;&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt;
+  &lt;span class=&quot;token property&quot;&gt;&quot;author&quot;&lt;/span&gt;&lt;span class=&quot;token operator&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;token string&quot;&gt;&quot;paramagicdev &amp;lt;konnor5456@gmail.com&gt;&quot;&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt;
+  &lt;span class=&quot;token property&quot;&gt;&quot;license&quot;&lt;/span&gt;&lt;span class=&quot;token operator&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;token string&quot;&gt;&quot;MIT&quot;&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt;
+  &lt;span class=&quot;token property&quot;&gt;&quot;private&quot;&lt;/span&gt;&lt;span class=&quot;token operator&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;token boolean&quot;&gt;true&lt;/span&gt;
+&lt;span class=&quot;token punctuation&quot;&gt;}&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;/br&gt;
+&lt;p&gt;Then, we’ll fill in the Dockerfile.dev with the following values.&lt;/p&gt;
+&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;dockerfile&quot;&gt;&lt;pre class=&quot;language-dockerfile&quot;&gt;&lt;code class=&quot;language-dockerfile&quot;&gt;&lt;span class=&quot;token comment&quot;&gt;# ./Dockerfile.dev&lt;/span&gt;
+
+&lt;span class=&quot;token keyword&quot;&gt;FROM&lt;/span&gt; node&lt;span class=&quot;token punctuation&quot;&gt;:&lt;/span&gt;13.6.0&lt;span class=&quot;token punctuation&quot;&gt;-&lt;/span&gt;alpine3.11
+
+&lt;span class=&quot;token comment&quot;&gt;# Taken from https://www.stoutlabs.com/blog/2019-02-05-my-docker-setup-gatsby-next/&lt;/span&gt;
+&lt;span class=&quot;token keyword&quot;&gt;RUN&lt;/span&gt; \
+  apk add &lt;span class=&quot;token punctuation&quot;&gt;-&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;-&lt;/span&gt;no&lt;span class=&quot;token punctuation&quot;&gt;-&lt;/span&gt;cache python make g++ git &amp;amp;&amp;amp; \
+  apk add vips&lt;span class=&quot;token punctuation&quot;&gt;-&lt;/span&gt;dev fftw&lt;span class=&quot;token punctuation&quot;&gt;-&lt;/span&gt;dev &lt;span class=&quot;token punctuation&quot;&gt;-&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;-&lt;/span&gt;no&lt;span class=&quot;token punctuation&quot;&gt;-&lt;/span&gt;cache &lt;span class=&quot;token punctuation&quot;&gt;-&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;-&lt;/span&gt;repository http&lt;span class=&quot;token punctuation&quot;&gt;:&lt;/span&gt;//dl&lt;span class=&quot;token punctuation&quot;&gt;-&lt;/span&gt;3.alpinelinux.org/alpine/edge/community &lt;span class=&quot;token punctuation&quot;&gt;-&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;-&lt;/span&gt;repository http&lt;span class=&quot;token punctuation&quot;&gt;:&lt;/span&gt;//dl&lt;span class=&quot;token punctuation&quot;&gt;-&lt;/span&gt;3.alpinelinux.org/alpine/edge/main &amp;amp;&amp;amp; \
+  rm &lt;span class=&quot;token punctuation&quot;&gt;-&lt;/span&gt;fR /var/cache/apk/*
+
+&lt;span class=&quot;token keyword&quot;&gt;RUN&lt;/span&gt; yarn global add gatsby&lt;span class=&quot;token punctuation&quot;&gt;-&lt;/span&gt;cli
+
+&lt;span class=&quot;token comment&quot;&gt;# The port gatsby runs on&lt;/span&gt;
+&lt;span class=&quot;token keyword&quot;&gt;EXPOSE&lt;/span&gt; 8000
+
+&lt;span class=&quot;token keyword&quot;&gt;WORKDIR&lt;/span&gt; /myapp
+&lt;span class=&quot;token keyword&quot;&gt;COPY&lt;/span&gt; ./package.json /myapp
+&lt;span class=&quot;token keyword&quot;&gt;COPY&lt;/span&gt; ./yarn.lock /myapp
+&lt;span class=&quot;token keyword&quot;&gt;RUN&lt;/span&gt; yarn install &amp;amp;&amp;amp; yarn cache clean
+&lt;span class=&quot;token keyword&quot;&gt;COPY&lt;/span&gt; . /myapp
+&lt;span class=&quot;token keyword&quot;&gt;CMD&lt;/span&gt; &lt;span class=&quot;token punctuation&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;token string&quot;&gt;&quot;gatsby&quot;&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;token string&quot;&gt;&quot;develop&quot;&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;token string&quot;&gt;&quot;-H&quot;&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;token string&quot;&gt;&quot;0.0.0.0&quot;&lt;/span&gt; &lt;span class=&quot;token punctuation&quot;&gt;]&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;/br&gt;
+&lt;p&gt;After finishing with the Dockerfile, well build a &lt;code class=&quot;language-text&quot;&gt;docker-compose.yml&lt;/code&gt; to bring
+everything together. Technically, you could run the whole project without docker-compose
+but it makes commands a lot more verbose by having to include volumes and ports
+and various other things. Docker-compose simply streamlines the process.&lt;/p&gt;
+&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;yaml&quot;&gt;&lt;pre class=&quot;language-yaml&quot;&gt;&lt;code class=&quot;language-yaml&quot;&gt;&lt;span class=&quot;token comment&quot;&gt;# ./docker-compose.yml&lt;/span&gt;
+
+&lt;span class=&quot;token key atrule&quot;&gt;version&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;token string&quot;&gt;&quot;3&quot;&lt;/span&gt;
+&lt;span class=&quot;token key atrule&quot;&gt;services&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;:&lt;/span&gt;
+  &lt;span class=&quot;token key atrule&quot;&gt;web&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;:&lt;/span&gt;
+    &lt;span class=&quot;token key atrule&quot;&gt;build&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;:&lt;/span&gt;
+      &lt;span class=&quot;token key atrule&quot;&gt;context&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;:&lt;/span&gt; .
+      &lt;span class=&quot;token key atrule&quot;&gt;dockerfile&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;:&lt;/span&gt; Dockerfile.dev
+    &lt;span class=&quot;token key atrule&quot;&gt;ports&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;:&lt;/span&gt;
+      &lt;span class=&quot;token punctuation&quot;&gt;-&lt;/span&gt; &lt;span class=&quot;token string&quot;&gt;&quot;8000:8000&quot;&lt;/span&gt;
+    &lt;span class=&quot;token key atrule&quot;&gt;volumes&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;:&lt;/span&gt;
+      &lt;span class=&quot;token punctuation&quot;&gt;-&lt;/span&gt; /myapp/node_modules
+      &lt;span class=&quot;token punctuation&quot;&gt;-&lt;/span&gt; .&lt;span class=&quot;token punctuation&quot;&gt;:&lt;/span&gt;/myapp
+    &lt;span class=&quot;token key atrule&quot;&gt;environment&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;:&lt;/span&gt;
+      &lt;span class=&quot;token punctuation&quot;&gt;-&lt;/span&gt; NODE_ENV=development
+      &lt;span class=&quot;token punctuation&quot;&gt;-&lt;/span&gt; GATSBY_WEBPACK_PUBLICPATH=/&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;Your file structure should at least contain the following when running &lt;code class=&quot;language-text&quot;&gt;tree .&lt;/code&gt;:&lt;/p&gt;
+&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;bash&quot;&gt;&lt;pre class=&quot;language-bash&quot;&gt;&lt;code class=&quot;language-bash&quot;&gt;&lt;span class=&quot;token builtin class-name&quot;&gt;.&lt;/span&gt;
+├── docker-compose.yml
+├── Dockerfile.dev
+├── package.json
+└── yarn.lock&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;&lt;a href=&quot;https://github.com/ParamagicDev/docker-with-gatsby/tree/initial-docker-setup&quot;&gt;Reference Repository Commit&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;After copying the contents of the files above into docker-compose.yml &amp;#x26; Dockerfile.dev
+respectively, then run the following commands:&lt;/p&gt;
+&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;bash&quot;&gt;&lt;pre class=&quot;language-bash&quot;&gt;&lt;code class=&quot;language-bash&quot;&gt;&lt;span class=&quot;token comment&quot;&gt;# Unfortunately, yarn does not have a similar command to npx&lt;/span&gt;
+docker-compose run --rm web npx degit https://github.com/gatsbyjs/gatsby-starter-default &lt;span class=&quot;token builtin class-name&quot;&gt;.&lt;/span&gt; --force&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;Your gatsby project is now ready to dev on! Simply run the following:&lt;/p&gt;
+&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;bash&quot;&gt;&lt;pre class=&quot;language-bash&quot;&gt;&lt;code class=&quot;language-bash&quot;&gt;docker-compose up --build&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;Navigate to localhost:8000 in your web browser, and your project should be running!&lt;/p&gt;
+&lt;h3&gt;Additional info&lt;/h3&gt;
+&lt;p&gt;The &lt;code class=&quot;language-text&quot;&gt;docker-compose up --build&lt;/code&gt; command is only needed when rebuilding, IE:
+Adding packages, removing packages, etc.&lt;/p&gt;
+&lt;p&gt;If you have only changed files that do not need a full rebuild, you can run
+subsequent instances of docker-compose with simple &lt;code class=&quot;language-text&quot;&gt;docker-compose up&lt;/code&gt;&lt;/p&gt;
+&lt;h4&gt;Using yarn&lt;/h4&gt;
+&lt;p&gt;If you are planning on using yarn instead of npm like I have above, make sure to remove
+the package-lock.json generated by degit when pulling in the gatsby starter&lt;/p&gt;
+&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;bash&quot;&gt;&lt;pre class=&quot;language-bash&quot;&gt;&lt;code class=&quot;language-bash&quot;&gt;&lt;span class=&quot;token function&quot;&gt;rm&lt;/span&gt; package-lock.json&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;Otherwise, when installing packages yarn will complain about conflicting package
+managers.&lt;/p&gt;
+&lt;h4&gt;Updating packages&lt;/h4&gt;
+&lt;p&gt;To update packages you can either do a straight upgrade or an interactive upgrade
+as follows.&lt;/p&gt;
+&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;bash&quot;&gt;&lt;pre class=&quot;language-bash&quot;&gt;&lt;code class=&quot;language-bash&quot;&gt;&lt;span class=&quot;token comment&quot;&gt;# Interactive upgrade&lt;/span&gt;
+docker-compose run --rm web &lt;span class=&quot;token function&quot;&gt;yarn&lt;/span&gt; upgrade-interactive
+
+&lt;span class=&quot;token comment&quot;&gt;# Non-interactive&lt;/span&gt;
+docker-compose run --rm web &lt;span class=&quot;token function&quot;&gt;yarn&lt;/span&gt; upgrade&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;If you’re not currently inside a git repo and would like to use git, make sure to
+run a &lt;code class=&quot;language-text&quot;&gt;git init&lt;/code&gt; from the root directory&lt;/p&gt;
+&lt;h2&gt;Bonus content - Adding &lt;a href=&quot;https://www.docz.site&quot;&gt;Docz&lt;/a&gt;&lt;/h2&gt;
+&lt;p&gt;Alright, now when I initially tried this I did not realize Docz had released a v2.
+Make sure you are targetting v2. There are 2 different ways to create a project
+with Docz.&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;The first way is similar to &lt;code class=&quot;language-text&quot;&gt;create-react-app&lt;/code&gt;. If you have node installed,
+you can run the following command:&lt;/li&gt;
+&lt;/ol&gt;
+&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;bash&quot;&gt;&lt;pre class=&quot;language-bash&quot;&gt;&lt;code class=&quot;language-bash&quot;&gt;npx create-docz-app my-docz-app
+&lt;span class=&quot;token comment&quot;&gt;# or&lt;/span&gt;
+&lt;span class=&quot;token function&quot;&gt;yarn&lt;/span&gt; create docz-app my-docz-app&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;ol start=&quot;2&quot;&gt;
+&lt;li&gt;The alternative way is if you followed the steps above to create a barebones
+Gatsby project.&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;After following the steps above, your project should look like this:&lt;/p&gt;
+&lt;p&gt;&lt;a href=&quot;https://github.com/ParamagicDev/docker-with-gatsby&quot;&gt;Gatsby Initial Setup&lt;/a&gt;&lt;/p&gt;
+&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;bash&quot;&gt;&lt;pre class=&quot;language-bash&quot;&gt;&lt;code class=&quot;language-bash&quot;&gt;tree &lt;span class=&quot;token builtin class-name&quot;&gt;.&lt;/span&gt;
+
+&lt;span class=&quot;token builtin class-name&quot;&gt;.&lt;/span&gt;
+├── docker-compose.yml
+├── Dockerfile.dev
+├── gatsby-browser.js
+├── gatsby-config.js
+├── gatsby-node.js
+├── gatsby-ssr.js
+├── LICENSE
+├── node_modules
+├── package.json
+├── package-lock.json
+├── public
+├── README.md
+├── src
+└── yarn.lock&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;Next, run the following:&lt;/p&gt;
+&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;bash&quot;&gt;&lt;pre class=&quot;language-bash&quot;&gt;&lt;code class=&quot;language-bash&quot;&gt;&lt;span class=&quot;token function&quot;&gt;yarn&lt;/span&gt; &lt;span class=&quot;token function&quot;&gt;add&lt;/span&gt; docz&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;Add the following 3 scripts into &lt;code class=&quot;language-text&quot;&gt;package.json&lt;/code&gt;&lt;/p&gt;
+&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;javascript&quot;&gt;&lt;pre class=&quot;language-javascript&quot;&gt;&lt;code class=&quot;language-javascript&quot;&gt;&lt;span class=&quot;token punctuation&quot;&gt;{&lt;/span&gt;
+  &lt;span class=&quot;token string&quot;&gt;&quot;scripts&quot;&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;token punctuation&quot;&gt;{&lt;/span&gt;
+      &lt;span class=&quot;token string&quot;&gt;&quot;docz:dev&quot;&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;token string&quot;&gt;&quot;docz dev&quot;&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt;
+      &lt;span class=&quot;token string&quot;&gt;&quot;docz:build&quot;&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;token string&quot;&gt;&quot;docz build&quot;&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt;
+      &lt;span class=&quot;token string&quot;&gt;&quot;docz:serve&quot;&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;token string&quot;&gt;&quot;docz build &amp;amp;&amp;amp; docz serve&quot;&lt;/span&gt;
+  &lt;span class=&quot;token punctuation&quot;&gt;}&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt;
+&lt;span class=&quot;token punctuation&quot;&gt;}&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;Now you are free to start creating &lt;code class=&quot;language-text&quot;&gt;.mdx&lt;/code&gt; files anywhere! I personally prefer
+to place them either in a docs/ directory or simply within the src/ directory.
+Either way, docz will automatically detect and parse all &lt;code class=&quot;language-text&quot;&gt;.mdx&lt;/code&gt; based extensions
+and build them into a &lt;code class=&quot;language-text&quot;&gt;./docz/dist&lt;/code&gt; directory.&lt;/p&gt;
+&lt;p&gt;&lt;code class=&quot;language-text&quot;&gt;yarn docz:dev&lt;/code&gt; will create a localhost:8000 view of your docz
+&lt;code class=&quot;language-text&quot;&gt;yarn docz:build&lt;/code&gt; will build into ./docz/dist directory
+&lt;code class=&quot;language-text&quot;&gt;yarn docz:serve&lt;/code&gt; will build into ./docz/dist directory &amp;#x26; will allow you view it in browser&lt;/p&gt;
+&lt;p&gt;Hope this helped you with Gatsby, Docz, or general Docker setup!
+Good luck out there!&lt;/p&gt;
+&lt;h2&gt;Issues&lt;/h2&gt;
+&lt;p&gt;When running the docker process, it runs as root. As a result, on Linux the files
+created by Degit will be owned by the root user. Run the following to fix
+any permissions errors from the root directory:&lt;/p&gt;
+&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;bash&quot;&gt;&lt;pre class=&quot;language-bash&quot;&gt;&lt;code class=&quot;language-bash&quot;&gt;&lt;span class=&quot;token function&quot;&gt;sudo&lt;/span&gt; &lt;span class=&quot;token function&quot;&gt;chown&lt;/span&gt; -R &lt;span class=&quot;token string&quot;&gt;&quot;&lt;span class=&quot;token environment constant&quot;&gt;$USER&lt;/span&gt;&quot;&lt;/span&gt;&lt;span class=&quot;token builtin class-name&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;token string&quot;&gt;&quot;&lt;span class=&quot;token environment constant&quot;&gt;$USER&lt;/span&gt;&quot;&lt;/span&gt; &lt;span class=&quot;token builtin class-name&quot;&gt;.&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;h2&gt;Links&lt;/h2&gt;
+&lt;h3&gt;Gatsby&lt;/h3&gt;
+&lt;p&gt;&lt;a href=&quot;https://gatsbyjs.org&quot;&gt;Gatsby Home&lt;/a&gt;
+&lt;/br&gt;
+&lt;a href=&quot;https://github.com/gatsbyjs/gatsby-starter-default&quot;&gt;Gatsby Starter Github page&lt;/a&gt;
+&lt;/br&gt;&lt;/p&gt;
+&lt;h3&gt;Degit&lt;/h3&gt;
+&lt;blockquote&gt;
+&lt;p&gt;I actually learned about Degit when browsing the Svelte documentation
+&lt;/br&gt;&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;&lt;a href=&quot;https://github.com/Rich-Harris/degit&quot;&gt;Degit Source Code&lt;/a&gt;
+&lt;/br&gt;&lt;/p&gt;
+&lt;h3&gt;Docz&lt;/h3&gt;
+&lt;p&gt;&lt;a href=&quot;https://www.docz.site&quot;&gt;Docz Homepage&lt;/a&gt;
+&lt;a href=&quot;https://www.docz.site/docs/getting-started&quot;&gt;Docz Getting Started&lt;/a&gt;&lt;/p&gt;</content:encoded></item><item><title><![CDATA[Making EMS Helper - Hiccups]]></title><description><![CDATA[Aggregating the data Unfortunately, as detailed in my previous post
 populating the database will not be as easy as expected. Upon further…]]></description><link>https://gatsby-starter-blog-demo.netlify.com/making-ems-helper/hiccups/</link><guid isPermaLink="false">https://gatsby-starter-blog-demo.netlify.com/making-ems-helper/hiccups/</guid><pubDate>Thu, 19 Dec 2019 01:48:45 GMT</pubDate><content:encoded>&lt;h2&gt;Aggregating the data&lt;/h2&gt;
 &lt;p&gt;Unfortunately, as detailed in my &lt;a href=&quot;https://paramagicdev.github.io/my-blog/making-ems-helper/introduction&quot;&gt;previous post&lt;/a&gt;
 populating the database will not be as easy as expected. Upon further inspection,
@@ -107,7 +285,7 @@ permissions issues&lt;/p&gt;
 the application.&lt;/p&gt;
 &lt;p&gt;There’s a few steps to this.&lt;/p&gt;
 &lt;ol&gt;
-&lt;li&gt;&lt;code class=&quot;language-text&quot;&gt;yarn install tailwindcss&lt;/code&gt; - add the tailwindcss node module&lt;/li&gt;
+&lt;li&gt;&lt;code class=&quot;language-text&quot;&gt;yarn add tailwindcss&lt;/code&gt; - add the tailwindcss node module&lt;/li&gt;
 &lt;li&gt;Then, create a tailwind stylesheet called &lt;code class=&quot;language-text&quot;&gt;./app/javascript/stylesheets/tailwind.scss&lt;/code&gt;
 Add the base classes.&lt;/li&gt;
 &lt;/ol&gt;
@@ -175,7 +353,9 @@ He helped me with the tailwind setup.
 &lt;a href=&quot;https://rubyonrails.org/&quot;&gt;Rails Docs&lt;/a&gt;&lt;/p&gt;
 &lt;p&gt;Finally, feel free to follow along with my repo. Most of the development will take
 place on the &lt;code class=&quot;language-text&quot;&gt;development branch&lt;/code&gt;.&lt;/p&gt;
-&lt;p&gt;&lt;a href=&quot;https://github.com/ParamagicDev/ems_helper&quot;&gt;Github Repo&lt;/a&gt;&lt;/p&gt;</content:encoded></item><item><title><![CDATA[Making EMS Helper - Introduction]]></title><description><![CDATA[Tech Stack Ruby on Rails v6.0.1 Ruby 2.6.3 Explanation I am most familiar with Ruby on Rails and therefore felt I would be most
+&lt;p&gt;&lt;a href=&quot;https://github.com/ParamagicDev/ems_helper&quot;&gt;Github Repo&lt;/a&gt;&lt;/p&gt;
+&lt;h4&gt;EDIT&lt;/h4&gt;
+&lt;p&gt;I create a Rails 6 skeleton for tailwind css &lt;a href=&quot;https://github.com/ParamagicDev/rails6-skeleton/tree/tailwindcss&quot;&gt;HERE&lt;/a&gt;&lt;/p&gt;</content:encoded></item><item><title><![CDATA[Making EMS Helper - Introduction]]></title><description><![CDATA[Tech Stack Ruby on Rails v6.0.1 Ruby 2.6.3 Explanation I am most familiar with Ruby on Rails and therefore felt I would be most
 productive…]]></description><link>https://gatsby-starter-blog-demo.netlify.com/making-ems-helper/introduction/</link><guid isPermaLink="false">https://gatsby-starter-blog-demo.netlify.com/making-ems-helper/introduction/</guid><pubDate>Thu, 05 Dec 2019 10:07:36 GMT</pubDate><content:encoded>&lt;h2&gt;Tech Stack&lt;/h2&gt;
 &lt;ul&gt;
 &lt;li&gt;Ruby on Rails v6.0.1&lt;/li&gt;

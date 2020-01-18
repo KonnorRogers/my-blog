@@ -14,102 +14,185 @@
       
       
       
-      }</script><link rel="alternate" type="application/rss+xml" href="/my-blog/rss.xml"/><link rel="icon" href="/my-blog/icons/icon-48x48.png?v=edf3d310d67f8284a562bc3a58c3e761"/><link rel="manifest" href="/my-blog/manifest.webmanifest"/><meta name="theme-color" content="#663399"/><link rel="apple-touch-icon" sizes="48x48" href="/my-blog/icons/icon-48x48.png?v=edf3d310d67f8284a562bc3a58c3e761"/><link rel="apple-touch-icon" sizes="72x72" href="/my-blog/icons/icon-72x72.png?v=edf3d310d67f8284a562bc3a58c3e761"/><link rel="apple-touch-icon" sizes="96x96" href="/my-blog/icons/icon-96x96.png?v=edf3d310d67f8284a562bc3a58c3e761"/><link rel="apple-touch-icon" sizes="144x144" href="/my-blog/icons/icon-144x144.png?v=edf3d310d67f8284a562bc3a58c3e761"/><link rel="apple-touch-icon" sizes="192x192" href="/my-blog/icons/icon-192x192.png?v=edf3d310d67f8284a562bc3a58c3e761"/><link rel="apple-touch-icon" sizes="256x256" href="/my-blog/icons/icon-256x256.png?v=edf3d310d67f8284a562bc3a58c3e761"/><link rel="apple-touch-icon" sizes="384x384" href="/my-blog/icons/icon-384x384.png?v=edf3d310d67f8284a562bc3a58c3e761"/><link rel="apple-touch-icon" sizes="512x512" href="/my-blog/icons/icon-512x512.png?v=edf3d310d67f8284a562bc3a58c3e761"/><title data-react-helmet="true">PHP for beginners - Part 7 - Classes?...Like school? | Konnor&#x27;s Blog</title><meta data-react-helmet="true" name="description" content="Lets look into classes in PHP. Classes are the building blocks of Object Oriented Programming"/><meta data-react-helmet="true" property="og:title" content="PHP for beginners - Part 7 - Classes?...Like school?"/><meta data-react-helmet="true" property="og:description" content="Lets look into classes in PHP. Classes are the building blocks of Object Oriented Programming"/><meta data-react-helmet="true" property="og:type" content="website"/><link as="script" rel="preload" href="/my-blog/webpack-runtime-ec5d30f1add82224443c.js"/><link as="script" rel="preload" href="/my-blog/styles-6133af54753cf25b25aa.js"/><link as="script" rel="preload" href="/my-blog/app-dcdf01736cb70320daa9.js"/><link as="script" rel="preload" href="/my-blog/commons-490edc93850716640750.js"/><link as="script" rel="preload" href="/my-blog/component---src-templates-blog-post-js-292ad712afcc2c94095e.js"/><link as="fetch" rel="preload" href="/my-blog/page-data/learning-php/part7/page-data.json" crossorigin="anonymous"/></head><body><div id="___gatsby"><div style="outline:none" tabindex="-1" role="group" id="gatsby-focus-wrapper"><div style="margin-left:auto;margin-right:auto;max-width:42rem;padding:2.625rem 1.3125rem"><header><h3 style="font-family:Montserrat, sans-serif;margin-top:0"><a style="box-shadow:none;text-decoration:none;color:inherit" href="/my-blog/">Konnor&#x27;s Blog</a></h3></header><main><article><header><h1 style="margin-top:1.75rem;margin-bottom:0">PHP for beginners - Part 7 - Classes?...Like school?</h1><p style="font-size:0.83255rem;line-height:1.75rem;display:block;margin-bottom:1.75rem">August 26, 2019</p></header><section><h1>Part 7</h1>
-<p><a href="https://laracasts.com">Laracasts main site</a><br>
-<a href="https://laracasts.com/series/php-for-beginners">Laracasts - PHP for beginners</a></p>
-<h2>Chapters covered</h2>
-<p><a href="https://laracasts.com/series/php-for-beginners/episodes/12">Chapter 12 - Classes 101</a></p>
-<h3>Chapter 12 - Classes 101</h3>
-<p>What is a class? Well, according to Wikipedia, this is what a programming class is:<br>
-In object-oriented programming, a class is an extensible program-code-template for creating objects, providing initial values for state (member variables) and implementations of behavior (member functions or methods)</p>
-<p>What does that mean? A class is very simply a way of packaging variables and functions
-within a template to be reused or extended.</p>
-<p>Yea but what does that mean? Its kind of hard to wrap your head around, but lets
-dive into what classes do in PHP and how to make them. This will better help you
-understand what’s going on.</p>
-<h4>Syntax</h4>
-<div class="gatsby-highlight" data-language="php"><pre class="language-php"><code class="language-php"><span class="token keyword">class</span> <span class="token class-name">Task</span> <span class="token punctuation">{</span>
+      }</script><link rel="alternate" type="application/rss+xml" href="/my-blog/rss.xml"/><link rel="icon" href="/my-blog/icons/icon-48x48.png?v=edf3d310d67f8284a562bc3a58c3e761"/><link rel="manifest" href="/my-blog/manifest.webmanifest"/><meta name="theme-color" content="#663399"/><link rel="apple-touch-icon" sizes="48x48" href="/my-blog/icons/icon-48x48.png?v=edf3d310d67f8284a562bc3a58c3e761"/><link rel="apple-touch-icon" sizes="72x72" href="/my-blog/icons/icon-72x72.png?v=edf3d310d67f8284a562bc3a58c3e761"/><link rel="apple-touch-icon" sizes="96x96" href="/my-blog/icons/icon-96x96.png?v=edf3d310d67f8284a562bc3a58c3e761"/><link rel="apple-touch-icon" sizes="144x144" href="/my-blog/icons/icon-144x144.png?v=edf3d310d67f8284a562bc3a58c3e761"/><link rel="apple-touch-icon" sizes="192x192" href="/my-blog/icons/icon-192x192.png?v=edf3d310d67f8284a562bc3a58c3e761"/><link rel="apple-touch-icon" sizes="256x256" href="/my-blog/icons/icon-256x256.png?v=edf3d310d67f8284a562bc3a58c3e761"/><link rel="apple-touch-icon" sizes="384x384" href="/my-blog/icons/icon-384x384.png?v=edf3d310d67f8284a562bc3a58c3e761"/><link rel="apple-touch-icon" sizes="512x512" href="/my-blog/icons/icon-512x512.png?v=edf3d310d67f8284a562bc3a58c3e761"/><title data-react-helmet="true">Setting up a Gatsby project with Docker | Konnor&#x27;s Blog</title><meta data-react-helmet="true" name="description" content="How to setup a new gatsby project with docker within the current directory of your project"/><meta data-react-helmet="true" property="og:title" content="Setting up a Gatsby project with Docker"/><meta data-react-helmet="true" property="og:description" content="How to setup a new gatsby project with docker within the current directory of your project"/><meta data-react-helmet="true" property="og:type" content="website"/><link as="script" rel="preload" href="/my-blog/webpack-runtime-ec5d30f1add82224443c.js"/><link as="script" rel="preload" href="/my-blog/styles-6133af54753cf25b25aa.js"/><link as="script" rel="preload" href="/my-blog/app-dcdf01736cb70320daa9.js"/><link as="script" rel="preload" href="/my-blog/commons-490edc93850716640750.js"/><link as="script" rel="preload" href="/my-blog/component---src-templates-blog-post-js-292ad712afcc2c94095e.js"/><link as="fetch" rel="preload" href="/my-blog/page-data/javascript/setting-up-gatsby-with-docker/page-data.json" crossorigin="anonymous"/></head><body><div id="___gatsby"><div style="outline:none" tabindex="-1" role="group" id="gatsby-focus-wrapper"><div style="margin-left:auto;margin-right:auto;max-width:42rem;padding:2.625rem 1.3125rem"><header><h3 style="font-family:Montserrat, sans-serif;margin-top:0"><a style="box-shadow:none;text-decoration:none;color:inherit" href="/my-blog/">Konnor&#x27;s Blog</a></h3></header><main><article><header><h1 style="margin-top:1.75rem;margin-bottom:0">Setting up a Gatsby project with Docker</h1><p style="font-size:0.83255rem;line-height:1.75rem;display:block;margin-bottom:1.75rem">January 16, 2020</p></header><section><h2>Quick start</h2>
+<p>First create a new directory (or use an existing directory, this method will NOT
+create a new git directory for you)</p>
+<div class="gatsby-highlight" data-language="bash"><pre class="language-bash"><code class="language-bash"><span class="token function">mkdir</span> my-new-gatsby-project
+<span class="token builtin class-name">cd</span> my-new-gatsby-project
+<span class="token function">touch</span> Dockerfile.dev docker-compose.yml package.json yarn.lock</code></pre></div>
+</br>
+<p>Next step, we must fill in the <code class="language-text">package.json</code> file.</p>
+<p>There are 2 ways to handle this. You can either run <code class="language-text">yarn init or npm init</code> if you have
+yarn / npm installed on your computer.</p>
+<p>However, if you do not have npm / yarn it is fine. The <code class="language-text">package.json</code> just needs
+some values to get Docker to run appropriately. Run the command below to fill in
+a temporary <code class="language-text">package.json</code> file.</p>
+<div class="gatsby-highlight" data-language="json"><pre class="language-json"><code class="language-json"><span class="token comment">// ./package.json</span>
 
+<span class="token punctuation">{</span>
+  <span class="token property">"name"</span><span class="token operator">:</span> <span class="token string">"docker-with-gatsby"</span><span class="token punctuation">,</span>
+  <span class="token property">"description"</span><span class="token operator">:</span> <span class="token string">"An example repo for setting up Gatsby with Docker"</span><span class="token punctuation">,</span>
+  <span class="token property">"version"</span><span class="token operator">:</span> <span class="token string">"1.0.0"</span><span class="token punctuation">,</span>
+  <span class="token property">"main"</span><span class="token operator">:</span> <span class="token string">"index.js"</span><span class="token punctuation">,</span>
+  <span class="token property">"repository"</span><span class="token operator">:</span> <span class="token string">"git@github.com:ParamagicDev/docker-with-gatsby.git"</span><span class="token punctuation">,</span>
+  <span class="token property">"author"</span><span class="token operator">:</span> <span class="token string">"paramagicdev &lt;konnor5456@gmail.com>"</span><span class="token punctuation">,</span>
+  <span class="token property">"license"</span><span class="token operator">:</span> <span class="token string">"MIT"</span><span class="token punctuation">,</span>
+  <span class="token property">"private"</span><span class="token operator">:</span> <span class="token boolean">true</span>
 <span class="token punctuation">}</span></code></pre></div>
-<p>Wow thats it? Yes, technically this is all a class needs, however this isnt very
-dynamic, so lets extend it a little.</p>
-<div class="gatsby-highlight" data-language="php"><pre class="language-php"><code class="language-php"><span class="token keyword">class</span> <span class="token class-name">Task</span> <span class="token punctuation">{</span>
-  <span class="token keyword">protected</span> <span class="token variable">$description</span><span class="token punctuation">;</span>
+</br>
+<p>Then, we’ll fill in the Dockerfile.dev with the following values.</p>
+<div class="gatsby-highlight" data-language="dockerfile"><pre class="language-dockerfile"><code class="language-dockerfile"><span class="token comment"># ./Dockerfile.dev</span>
 
-  <span class="token keyword">public</span> <span class="token keyword">function</span> <span class="token function">__construct</span><span class="token punctuation">(</span><span class="token variable">$description</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
-    <span class="token variable">$this</span><span class="token operator">-</span><span class="token operator">></span><span class="token variable">$description</span><span class="token punctuation">;</span>
-  <span class="token punctuation">}</span>
+<span class="token keyword">FROM</span> node<span class="token punctuation">:</span>13.6.0<span class="token punctuation">-</span>alpine3.11
+
+<span class="token comment"># Taken from https://www.stoutlabs.com/blog/2019-02-05-my-docker-setup-gatsby-next/</span>
+<span class="token keyword">RUN</span> \
+  apk add <span class="token punctuation">-</span><span class="token punctuation">-</span>no<span class="token punctuation">-</span>cache python make g++ git &amp;&amp; \
+  apk add vips<span class="token punctuation">-</span>dev fftw<span class="token punctuation">-</span>dev <span class="token punctuation">-</span><span class="token punctuation">-</span>no<span class="token punctuation">-</span>cache <span class="token punctuation">-</span><span class="token punctuation">-</span>repository http<span class="token punctuation">:</span>//dl<span class="token punctuation">-</span>3.alpinelinux.org/alpine/edge/community <span class="token punctuation">-</span><span class="token punctuation">-</span>repository http<span class="token punctuation">:</span>//dl<span class="token punctuation">-</span>3.alpinelinux.org/alpine/edge/main &amp;&amp; \
+  rm <span class="token punctuation">-</span>fR /var/cache/apk/*
+
+<span class="token keyword">RUN</span> yarn global add gatsby<span class="token punctuation">-</span>cli
+
+<span class="token comment"># The port gatsby runs on</span>
+<span class="token keyword">EXPOSE</span> 8000
+
+<span class="token keyword">WORKDIR</span> /myapp
+<span class="token keyword">COPY</span> ./package.json /myapp
+<span class="token keyword">COPY</span> ./yarn.lock /myapp
+<span class="token keyword">RUN</span> yarn install &amp;&amp; yarn cache clean
+<span class="token keyword">COPY</span> . /myapp
+<span class="token keyword">CMD</span> <span class="token punctuation">[</span><span class="token string">"gatsby"</span><span class="token punctuation">,</span> <span class="token string">"develop"</span><span class="token punctuation">,</span> <span class="token string">"-H"</span><span class="token punctuation">,</span> <span class="token string">"0.0.0.0"</span> <span class="token punctuation">]</span></code></pre></div>
+</br>
+<p>After finishing with the Dockerfile, well build a <code class="language-text">docker-compose.yml</code> to bring
+everything together. Technically, you could run the whole project without docker-compose
+but it makes commands a lot more verbose by having to include volumes and ports
+and various other things. Docker-compose simply streamlines the process.</p>
+<div class="gatsby-highlight" data-language="yaml"><pre class="language-yaml"><code class="language-yaml"><span class="token comment"># ./docker-compose.yml</span>
+
+<span class="token key atrule">version</span><span class="token punctuation">:</span> <span class="token string">"3"</span>
+<span class="token key atrule">services</span><span class="token punctuation">:</span>
+  <span class="token key atrule">web</span><span class="token punctuation">:</span>
+    <span class="token key atrule">build</span><span class="token punctuation">:</span>
+      <span class="token key atrule">context</span><span class="token punctuation">:</span> .
+      <span class="token key atrule">dockerfile</span><span class="token punctuation">:</span> Dockerfile.dev
+    <span class="token key atrule">ports</span><span class="token punctuation">:</span>
+      <span class="token punctuation">-</span> <span class="token string">"8000:8000"</span>
+    <span class="token key atrule">volumes</span><span class="token punctuation">:</span>
+      <span class="token punctuation">-</span> /myapp/node_modules
+      <span class="token punctuation">-</span> .<span class="token punctuation">:</span>/myapp
+    <span class="token key atrule">environment</span><span class="token punctuation">:</span>
+      <span class="token punctuation">-</span> NODE_ENV=development
+      <span class="token punctuation">-</span> GATSBY_WEBPACK_PUBLICPATH=/</code></pre></div>
+<p>Your file structure should at least contain the following when running <code class="language-text">tree .</code>:</p>
+<div class="gatsby-highlight" data-language="bash"><pre class="language-bash"><code class="language-bash"><span class="token builtin class-name">.</span>
+├── docker-compose.yml
+├── Dockerfile.dev
+├── package.json
+└── yarn.lock</code></pre></div>
+<p><a href="https://github.com/ParamagicDev/docker-with-gatsby/tree/initial-docker-setup">Reference Repository Commit</a></p>
+<p>After copying the contents of the files above into docker-compose.yml &#x26; Dockerfile.dev
+respectively, then run the following commands:</p>
+<div class="gatsby-highlight" data-language="bash"><pre class="language-bash"><code class="language-bash"><span class="token comment"># Unfortunately, yarn does not have a similar command to npx</span>
+docker-compose run --rm web npx degit https://github.com/gatsbyjs/gatsby-starter-default <span class="token builtin class-name">.</span> --force</code></pre></div>
+<p>Your gatsby project is now ready to dev on! Simply run the following:</p>
+<div class="gatsby-highlight" data-language="bash"><pre class="language-bash"><code class="language-bash">docker-compose up --build</code></pre></div>
+<p>Navigate to localhost:8000 in your web browser, and your project should be running!</p>
+<h3>Additional info</h3>
+<p>The <code class="language-text">docker-compose up --build</code> command is only needed when rebuilding, IE:
+Adding packages, removing packages, etc.</p>
+<p>If you have only changed files that do not need a full rebuild, you can run
+subsequent instances of docker-compose with simple <code class="language-text">docker-compose up</code></p>
+<h4>Using yarn</h4>
+<p>If you are planning on using yarn instead of npm like I have above, make sure to remove
+the package-lock.json generated by degit when pulling in the gatsby starter</p>
+<div class="gatsby-highlight" data-language="bash"><pre class="language-bash"><code class="language-bash"><span class="token function">rm</span> package-lock.json</code></pre></div>
+<p>Otherwise, when installing packages yarn will complain about conflicting package
+managers.</p>
+<h4>Updating packages</h4>
+<p>To update packages you can either do a straight upgrade or an interactive upgrade
+as follows.</p>
+<div class="gatsby-highlight" data-language="bash"><pre class="language-bash"><code class="language-bash"><span class="token comment"># Interactive upgrade</span>
+docker-compose run --rm web <span class="token function">yarn</span> upgrade-interactive
+
+<span class="token comment"># Non-interactive</span>
+docker-compose run --rm web <span class="token function">yarn</span> upgrade</code></pre></div>
+<p>If you’re not currently inside a git repo and would like to use git, make sure to
+run a <code class="language-text">git init</code> from the root directory</p>
+<h2>Bonus content - Adding <a href="https://www.docz.site">Docz</a></h2>
+<p>Alright, now when I initially tried this I did not realize Docz had released a v2.
+Make sure you are targetting v2. There are 2 different ways to create a project
+with Docz.</p>
+<ol>
+<li>The first way is similar to <code class="language-text">create-react-app</code>. If you have node installed,
+you can run the following command:</li>
+</ol>
+<div class="gatsby-highlight" data-language="bash"><pre class="language-bash"><code class="language-bash">npx create-docz-app my-docz-app
+<span class="token comment"># or</span>
+<span class="token function">yarn</span> create docz-app my-docz-app</code></pre></div>
+<ol start="2">
+<li>The alternative way is if you followed the steps above to create a barebones
+Gatsby project.</li>
+</ol>
+<p>After following the steps above, your project should look like this:</p>
+<p><a href="https://github.com/ParamagicDev/docker-with-gatsby">Gatsby Initial Setup</a></p>
+<div class="gatsby-highlight" data-language="bash"><pre class="language-bash"><code class="language-bash">tree <span class="token builtin class-name">.</span>
+
+<span class="token builtin class-name">.</span>
+├── docker-compose.yml
+├── Dockerfile.dev
+├── gatsby-browser.js
+├── gatsby-config.js
+├── gatsby-node.js
+├── gatsby-ssr.js
+├── LICENSE
+├── node_modules
+├── package.json
+├── package-lock.json
+├── public
+├── README.md
+├── src
+└── yarn.lock</code></pre></div>
+<p>Next, run the following:</p>
+<div class="gatsby-highlight" data-language="bash"><pre class="language-bash"><code class="language-bash"><span class="token function">yarn</span> <span class="token function">add</span> docz</code></pre></div>
+<p>Add the following 3 scripts into <code class="language-text">package.json</code></p>
+<div class="gatsby-highlight" data-language="javascript"><pre class="language-javascript"><code class="language-javascript"><span class="token punctuation">{</span>
+  <span class="token string">"scripts"</span><span class="token punctuation">:</span> <span class="token punctuation">{</span>
+      <span class="token string">"docz:dev"</span><span class="token punctuation">:</span> <span class="token string">"docz dev"</span><span class="token punctuation">,</span>
+      <span class="token string">"docz:build"</span><span class="token punctuation">:</span> <span class="token string">"docz build"</span><span class="token punctuation">,</span>
+      <span class="token string">"docz:serve"</span><span class="token punctuation">:</span> <span class="token string">"docz build &amp;&amp; docz serve"</span>
+  <span class="token punctuation">}</span><span class="token punctuation">,</span>
 <span class="token punctuation">}</span></code></pre></div>
-<p>This is a very basic example and intro to classes.
-Lets break it down now.</p>
-<p><code class="language-text">class Task</code> Define the class name<br>
-<code class="language-text">protected $description;</code> initialize the variable $description<br>
-<code class="language-text">public function __construct($description)</code> This is a special ‘constructor’ function.<br>
-This means that when a class is ‘instantiated’, to run the following code. Or in other
-words when you create a ‘new’ class, do the run the following code.<br>
-<code class="language-text">$this-&gt;$description;</code> ahhhh yes. The magical ‘$this’. In some languages it may just
-be <code class="language-text">this</code> or <code class="language-text">self</code>. This is a tough term to wrap your head around so let’s keep it simple.<br></p>
-<p>In this case <code class="language-text">$this</code> means, for THIS instance of Task, set the value provided in the constructor to
-this instance’s $description variable<br></p>
-<p>So what the heck does that above statment even mean? Well let’s continue on. Examples
-explain this better than I can. Lets instantiate a the class Task now.</p>
-<div class="gatsby-highlight" data-language="php"><pre class="language-php"><code class="language-php"><span class="token variable">$task</span> <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">Task</span><span class="token punctuation">(</span><span class="token single-quoted-string string">'I am a description'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-<span class="token function">var_dump</span><span class="token punctuation">(</span><span class="token variable">$task</span><span class="token punctuation">)</span><span class="token punctuation">;</span></code></pre></div>
-<p>This will very simply provide a nice human readable version of task displayed in
-the web browser of your choice.</p>
-<p>Okay, this is great and all, but we can’t do anything with this right now.</p>
-<p>You could try</p>
-<div class="gatsby-highlight" data-language="php"><pre class="language-php"><code class="language-php"><span class="token variable">$task</span> <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">Task</span><span class="token punctuation">(</span><span class="token single-quoted-string string">'I am a description'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-<span class="token function">var_dump</span><span class="token punctuation">(</span><span class="token variable">$task</span><span class="token operator">-</span><span class="token operator">></span><span class="token variable">$description</span><span class="token punctuation">)</span><span class="token punctuation">;</span></code></pre></div>
-<p>But you’ll get an access error. So let’s talk about getters and setters.
-A getter simply ‘gets’ a value from a class and a setter ‘sets’ a value in a class.
-Getters and setters are part of a OOP term called ‘encapsulation’. Don’t worry about
-what that means for now, just know that it may come up in the future.
-Not very useful, but lets see how it works.</p>
-<div class="gatsby-highlight" data-language="php"><pre class="language-php"><code class="language-php"><span class="token keyword">class</span> <span class="token class-name">Task</span> <span class="token punctuation">{</span>
-  <span class="token keyword">protected</span> <span class="token variable">$description</span><span class="token punctuation">;</span>
-
-  <span class="token keyword">public</span> <span class="token keyword">function</span> <span class="token function">__construct</span><span class="token punctuation">(</span><span class="token variable">$description</span><span class="token punctuation">)</span><span class="token punctuation">{</span>
-    <span class="token variable">$this</span><span class="token operator">-</span><span class="token operator">></span><span class="token variable">$description</span><span class="token punctuation">;</span>
-  <span class="token punctuation">}</span>
-
-  <span class="token keyword">public</span> <span class="token keyword">function</span> <span class="token function">getDescription</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">{</span>
-    <span class="token keyword">return</span> <span class="token variable">$this</span><span class="token operator">-</span><span class="token operator">></span><span class="token property">description</span><span class="token punctuation">;</span>
-  <span class="token punctuation">}</span>
-
-  <span class="token keyword">public</span> <span class="token keyword">function</span> <span class="token function">setDescription</span><span class="token punctuation">(</span><span class="token variable">$description</span><span class="token punctuation">)</span><span class="token punctuation">{</span>
-    <span class="token variable">$this</span><span class="token operator">-</span><span class="token operator">></span><span class="token property">description</span> <span class="token operator">=</span> <span class="token variable">$description</span><span class="token punctuation">;</span>
-  <span class="token punctuation">}</span>
-<span class="token punctuation">}</span>
-
-<span class="token variable">$task</span> <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">Task</span><span class="token punctuation">(</span><span class="token double-quoted-string string">"Go to the store"</span><span class="token punctuation">)</span><span class="token punctuation">;</span></code></pre></div>
-<br>
-The above defines the class Task. Now lets see how we would access values.
-<div class="gatsby-highlight" data-language="php"><pre class="language-php"><code class="language-php"><span class="token comment">// ...above code omitted for brevity</span>
-
-<span class="token comment">// Accessing the value of $task->description</span>
-<span class="token function">var_dump</span><span class="token punctuation">(</span><span class="token variable">$task</span><span class="token operator">-</span><span class="token operator">></span><span class="token function">getDescription</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-
-<span class="token comment">// Changes the value of $task->description to the new description</span>
-<span class="token variable">$task</span><span class="token operator">-</span><span class="token operator">></span><span class="token function">setDescription</span><span class="token punctuation">(</span><span class="token double-quoted-string string">"Go to grandma's house"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-<span class="token function">var_dump</span><span class="token punctuation">(</span><span class="token variable">$task</span><span class="token operator">-</span><span class="token operator">></span><span class="token function">getDescription</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-<span class="token comment">// Will now var_dump "Go to grandma'</span>s house<span class="token double-quoted-string string">" instead of "</span>go to store"</code></pre></div>
-<br>
-<p>Now what if we want to make multiple tasks and store them in an array?
-Simple:</p>
-<div class="gatsby-highlight" data-language="php"><pre class="language-php"><code class="language-php"><span class="token comment">// ...above code omitted for brevity</span>
-<span class="token variable">$tasks</span> <span class="token operator">=</span> <span class="token punctuation">[</span>
-  <span class="token keyword">new</span> <span class="token class-name">Task</span><span class="token punctuation">(</span><span class="token double-quoted-string string">"Go to store"</span><span class="token punctuation">)</span><span class="token punctuation">,</span>
-  <span class="token keyword">new</span> <span class="token class-name">Task</span><span class="token punctuation">(</span><span class="token double-quoted-string string">"Go to grandma's house"</span><span class="token punctuation">)</span><span class="token punctuation">,</span>
-  <span class="token keyword">new</span> <span class="token class-name">Task</span><span class="token punctuation">(</span><span class="token double-quoted-string string">"Go home"</span><span class="token punctuation">)</span>
-<span class="token punctuation">]</span><span class="token punctuation">;</span>
-
-<span class="token function">var_dump</span><span class="token punctuation">(</span><span class="token variable">$tasks</span><span class="token punctuation">)</span><span class="token punctuation">;</span></code></pre></div>
+<p>Now you are free to start creating <code class="language-text">.mdx</code> files anywhere! I personally prefer
+to place them either in a docs/ directory or simply within the src/ directory.
+Either way, docz will automatically detect and parse all <code class="language-text">.mdx</code> based extensions
+and build them into a <code class="language-text">./docz/dist</code> directory.</p>
+<p><code class="language-text">yarn docz:dev</code> will create a localhost:8000 view of your docz
+<code class="language-text">yarn docz:build</code> will build into ./docz/dist directory
+<code class="language-text">yarn docz:serve</code> will build into ./docz/dist directory &#x26; will allow you view it in browser</p>
+<p>Hope this helped you with Gatsby, Docz, or general Docker setup!
+Good luck out there!</p>
+<h2>Issues</h2>
+<p>When running the docker process, it runs as root. As a result, on Linux the files
+created by Degit will be owned by the root user. Run the following to fix
+any permissions errors from the root directory:</p>
+<div class="gatsby-highlight" data-language="bash"><pre class="language-bash"><code class="language-bash"><span class="token function">sudo</span> <span class="token function">chown</span> -R <span class="token string">"<span class="token environment constant">$USER</span>"</span><span class="token builtin class-name">:</span><span class="token string">"<span class="token environment constant">$USER</span>"</span> <span class="token builtin class-name">.</span></code></pre></div>
 <h2>Links</h2>
-<p><strong><a href="https://github.com/ParamagicDev/php-for-beginners">Follow along with my repo</a><br></strong>
-<a href="https://laracasts.com">Laracasts main site</a><br>
-<a href="https://laracasts.com/series/php-for-beginners">PHP for beginners</a><br></p></section><hr style="margin-bottom:1.75rem"/><footer><div style="display:flex;margin-bottom:4.375rem"><div class=" gatsby-image-wrapper" style="position:relative;overflow:hidden;display:inline-block;width:50px;height:50px;margin-right:0.875rem;margin-bottom:0;min-width:50px;border-radius:100%"><img src="data:image/jpeg;base64,/9j/2wBDABALDA4MChAODQ4SERATGCgaGBYWGDEjJR0oOjM9PDkzODdASFxOQERXRTc4UG1RV19iZ2hnPk1xeXBkeFxlZ2P/2wBDARESEhgVGC8aGi9jQjhCY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2P/wgARCAAUABQDASIAAhEBAxEB/8QAFwABAQEBAAAAAAAAAAAAAAAAAAMEAv/EABYBAQEBAAAAAAAAAAAAAAAAAAIBAP/aAAwDAQACEAMQAAAByypYKbY1yag3gKf/xAAcEAABBAMBAAAAAAAAAAAAAAABAAIRIQMSEyL/2gAIAQEAAQUCyN9NFUju4twyeIUXMN3K/8QAFxEAAwEAAAAAAAAAAAAAAAAAAAEQEf/aAAgBAwEBPwE13//EABYRAAMAAAAAAAAAAAAAAAAAAAAQIf/aAAgBAgEBPwEj/8QAGhAAAgMBAQAAAAAAAAAAAAAAAAEQMVFBkf/aAAgBAQAGPwJuKfpRunISj//EABwQAQEAAgIDAAAAAAAAAAAAAAERACExkRBhcf/aAAgBAQABPyFWiDZciq3eoYad+T7bIQMnTJcGNHy/cGBJPD//2gAMAwEAAgADAAAAELwYAf/EABcRAAMBAAAAAAAAAAAAAAAAAAEQIRH/2gAIAQMBAT8QFRkX/8QAFxEAAwEAAAAAAAAAAAAAAAAAARAhMf/aAAgBAgEBPxDBUFK//8QAIBABAAMAAgAHAAAAAAAAAAAAAQARITFBUWFxgZGhsf/aAAgBAQABPxBEBK03zIIEzvd+8TNRPYBb49zMtLU1R9xKLVboXr3GsIzWu5UahbnD4hLg3oK32jZyT//Z" alt="Konnor Rogers" style="position:absolute;top:0;left:0;width:100%;height:100%;object-fit:cover;object-position:center;opacity:1;transition-delay:500ms;border-radius:50%"/><noscript><picture><source srcset="/my-blog/static/621c3c9e2c72d5759211bcf58b1217ae/30d3a/profile-pic.jpg 1x,
+<h3>Gatsby</h3>
+<p><a href="https://gatsbyjs.org">Gatsby Home</a>
+</br>
+<a href="https://github.com/gatsbyjs/gatsby-starter-default">Gatsby Starter Github page</a>
+</br></p>
+<h3>Degit</h3>
+<blockquote>
+<p>I actually learned about Degit when browsing the Svelte documentation
+</br></p>
+</blockquote>
+<p><a href="https://github.com/Rich-Harris/degit">Degit Source Code</a>
+</br></p>
+<h3>Docz</h3>
+<p><a href="https://www.docz.site">Docz Homepage</a>
+<a href="https://www.docz.site/docs/getting-started">Docz Getting Started</a></p></section><hr style="margin-bottom:1.75rem"/><footer><div style="display:flex;margin-bottom:4.375rem"><div class=" gatsby-image-wrapper" style="position:relative;overflow:hidden;display:inline-block;width:50px;height:50px;margin-right:0.875rem;margin-bottom:0;min-width:50px;border-radius:100%"><img src="data:image/jpeg;base64,/9j/2wBDABALDA4MChAODQ4SERATGCgaGBYWGDEjJR0oOjM9PDkzODdASFxOQERXRTc4UG1RV19iZ2hnPk1xeXBkeFxlZ2P/2wBDARESEhgVGC8aGi9jQjhCY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2P/wgARCAAUABQDASIAAhEBAxEB/8QAFwABAQEBAAAAAAAAAAAAAAAAAAMEAv/EABYBAQEBAAAAAAAAAAAAAAAAAAIBAP/aAAwDAQACEAMQAAAByypYKbY1yag3gKf/xAAcEAABBAMBAAAAAAAAAAAAAAABAAIRIQMSEyL/2gAIAQEAAQUCyN9NFUju4twyeIUXMN3K/8QAFxEAAwEAAAAAAAAAAAAAAAAAAAEQEf/aAAgBAwEBPwE13//EABYRAAMAAAAAAAAAAAAAAAAAAAAQIf/aAAgBAgEBPwEj/8QAGhAAAgMBAQAAAAAAAAAAAAAAAAEQMVFBkf/aAAgBAQAGPwJuKfpRunISj//EABwQAQEAAgIDAAAAAAAAAAAAAAERACExkRBhcf/aAAgBAQABPyFWiDZciq3eoYad+T7bIQMnTJcGNHy/cGBJPD//2gAMAwEAAgADAAAAELwYAf/EABcRAAMBAAAAAAAAAAAAAAAAAAEQIRH/2gAIAQMBAT8QFRkX/8QAFxEAAwEAAAAAAAAAAAAAAAAAARAhMf/aAAgBAgEBPxDBUFK//8QAIBABAAMAAgAHAAAAAAAAAAAAAQARITFBUWFxgZGhsf/aAAgBAQABPxBEBK03zIIEzvd+8TNRPYBb49zMtLU1R9xKLVboXr3GsIzWu5UahbnD4hLg3oK32jZyT//Z" alt="Konnor Rogers" style="position:absolute;top:0;left:0;width:100%;height:100%;object-fit:cover;object-position:center;opacity:1;transition-delay:500ms;border-radius:50%"/><noscript><picture><source srcset="/my-blog/static/621c3c9e2c72d5759211bcf58b1217ae/30d3a/profile-pic.jpg 1x,
 /my-blog/static/621c3c9e2c72d5759211bcf58b1217ae/66c95/profile-pic.jpg 1.5x,
 /my-blog/static/621c3c9e2c72d5759211bcf58b1217ae/aacbd/profile-pic.jpg 2x" /><img loading="lazy" width="50" height="50" srcset="/my-blog/static/621c3c9e2c72d5759211bcf58b1217ae/30d3a/profile-pic.jpg 1x,
 /my-blog/static/621c3c9e2c72d5759211bcf58b1217ae/66c95/profile-pic.jpg 1.5x,
-/my-blog/static/621c3c9e2c72d5759211bcf58b1217ae/aacbd/profile-pic.jpg 2x" src="/my-blog/static/621c3c9e2c72d5759211bcf58b1217ae/30d3a/profile-pic.jpg" alt="Konnor Rogers" style="position:absolute;top:0;left:0;opacity:1;width:100%;height:100%;object-fit:cover;object-position:center"/></picture></noscript></div><p>Written by <strong>Konnor Rogers</strong> who lives in Providence, RI.<br/><strong>Konnor Rogers</strong> currently works as a Paramedic. Currently trying to become a full-time software developer.<br/>Feel free to contact me:  <a href="mailto:konnor7414@gmail.com">konnor7414@gmail.com</a> </p></div></footer></article><nav><ul style="display:flex;flex-wrap:wrap;justify-content:space-between;list-style:none;padding:0"><li><a rel="prev" href="/my-blog/learning-php/part6/">← <!-- -->Learning PHP - Part 6 - MySQL? Or Your SQL?</a></li><li><a rel="next" href="/my-blog/javascript/introduction/">JS - Introduction<!-- --> →</a></li></ul></nav></main><footer>© <!-- -->2020<!-- -->, Built with<!-- --> <a href="https://www.gatsbyjs.org">Gatsby</a></footer></div></div></div><script id="gatsby-script-loader">/*<![CDATA[*/window.pagePath="/learning-php/part7/";/*]]>*/</script><script id="gatsby-chunk-mapping">/*<![CDATA[*/window.___chunkMapping={"app":["/app-dcdf01736cb70320daa9.js"],"component---node-modules-gatsby-plugin-offline-app-shell-js":["/component---node-modules-gatsby-plugin-offline-app-shell-js-6cc37212ef529ca81b4e.js"],"component---src-templates-blog-post-js":["/component---src-templates-blog-post-js-292ad712afcc2c94095e.js"],"component---src-pages-404-js":["/component---src-pages-404-js-a7fe603e83fb856d053f.js"],"component---src-pages-index-js":["/component---src-pages-index-js-d9bdaf965cdb474dec4c.js"]};/*]]>*/</script><script src="/my-blog/component---src-templates-blog-post-js-292ad712afcc2c94095e.js" async=""></script><script src="/my-blog/commons-490edc93850716640750.js" async=""></script><script src="/my-blog/app-dcdf01736cb70320daa9.js" async=""></script><script src="/my-blog/styles-6133af54753cf25b25aa.js" async=""></script><script src="/my-blog/webpack-runtime-ec5d30f1add82224443c.js" async=""></script></body></html>
+/my-blog/static/621c3c9e2c72d5759211bcf58b1217ae/aacbd/profile-pic.jpg 2x" src="/my-blog/static/621c3c9e2c72d5759211bcf58b1217ae/30d3a/profile-pic.jpg" alt="Konnor Rogers" style="position:absolute;top:0;left:0;opacity:1;width:100%;height:100%;object-fit:cover;object-position:center"/></picture></noscript></div><p>Written by <strong>Konnor Rogers</strong> who lives in Providence, RI.<br/><strong>Konnor Rogers</strong> currently works as a Paramedic. Currently trying to become a full-time software developer.<br/>Feel free to contact me:  <a href="mailto:konnor7414@gmail.com">konnor7414@gmail.com</a> </p></div></footer></article><nav><ul style="display:flex;flex-wrap:wrap;justify-content:space-between;list-style:none;padding:0"><li><a rel="prev" href="/my-blog/making-ems-helper/hiccups/">← <!-- -->Making EMS Helper - Hiccups</a></li><li></li></ul></nav></main><footer>© <!-- -->2020<!-- -->, Built with<!-- --> <a href="https://www.gatsbyjs.org">Gatsby</a></footer></div></div></div><script id="gatsby-script-loader">/*<![CDATA[*/window.pagePath="/javascript/setting-up-gatsby-with-docker/";/*]]>*/</script><script id="gatsby-chunk-mapping">/*<![CDATA[*/window.___chunkMapping={"app":["/app-dcdf01736cb70320daa9.js"],"component---node-modules-gatsby-plugin-offline-app-shell-js":["/component---node-modules-gatsby-plugin-offline-app-shell-js-6cc37212ef529ca81b4e.js"],"component---src-templates-blog-post-js":["/component---src-templates-blog-post-js-292ad712afcc2c94095e.js"],"component---src-pages-404-js":["/component---src-pages-404-js-a7fe603e83fb856d053f.js"],"component---src-pages-index-js":["/component---src-pages-index-js-d9bdaf965cdb474dec4c.js"]};/*]]>*/</script><script src="/my-blog/component---src-templates-blog-post-js-292ad712afcc2c94095e.js" async=""></script><script src="/my-blog/commons-490edc93850716640750.js" async=""></script><script src="/my-blog/app-dcdf01736cb70320daa9.js" async=""></script><script src="/my-blog/styles-6133af54753cf25b25aa.js" async=""></script><script src="/my-blog/webpack-runtime-ec5d30f1add82224443c.js" async=""></script></body></html>
