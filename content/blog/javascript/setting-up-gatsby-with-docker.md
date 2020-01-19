@@ -49,25 +49,8 @@ Then, we'll fill in the Dockerfile.dev with the following values.
 ```dockerfile
 # ./Dockerfile.dev
 
-FROM node:13.6.0-alpine3.11
+FROM node:13.6.0
 
-# Taken from https://www.stoutlabs.com/blog/2019-02-05-my-docker-setup-gatsby-next/
-RUN \
-  apk add --no-cache python make g++ git && \
-  apk add vips-dev fftw-dev --no-cache --repository http://dl-3.alpinelinux.org/alpine/edge/community --repository http://dl-3.alpinelinux.org/alpine/edge/main && \
-  rm -fR /var/cache/apk/*
-
-RUN yarn global add gatsby-cli
-
-# The port gatsby runs on
-EXPOSE 8000
-
-WORKDIR /myapp
-COPY ./package.json /myapp
-COPY ./yarn.lock /myapp
-RUN yarn install && yarn cache clean
-COPY . /myapp
-CMD ["gatsby", "develop", "-H", "0.0.0.0" ]
 ```
 
 </br>
