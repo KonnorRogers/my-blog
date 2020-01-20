@@ -58,7 +58,7 @@ a temporary <code class="language-text">package.json</code> file.</p>
 <span class="token keyword">COPY</span> ./package.json /myapp
 <span class="token keyword">COPY</span> ./yarn.lock /myapp
 
-<span class="token keyword">RUN</span> yarn install <span class="token punctuation">-</span><span class="token punctuation">-</span>force &amp;&amp; yarn cache clean
+<span class="token keyword">RUN</span> yarn install &amp;&amp; yarn cache clean
 <span class="token keyword">COPY</span> . /myapp
 <span class="token keyword">CMD</span> <span class="token punctuation">[</span><span class="token string">"gatsby"</span><span class="token punctuation">,</span> <span class="token string">"develop"</span><span class="token punctuation">,</span> <span class="token string">"-H"</span><span class="token punctuation">,</span> <span class="token string">"0.0.0.0"</span> <span class="token punctuation">]</span></code></pre></div>
 </br>
