@@ -1,9 +1,9 @@
-<?xml version="1.0" encoding="UTF-8"?><rss xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:content="http://purl.org/rss/1.0/modules/content/" xmlns:atom="http://www.w3.org/2005/Atom" version="2.0"><channel><title><![CDATA[Konnor's Blog]]></title><description><![CDATA[A blog documentating my various processes]]></description><link>https://gatsby-starter-blog-demo.netlify.com</link><generator>GatsbyJS</generator><lastBuildDate>Mon, 20 Jan 2020 08:37:30 GMT</lastBuildDate><item><title><![CDATA[Adding tailwindcss to a Gatsby project]]></title><description><![CDATA[Prerequisites Node (preferably 8+, I used 11.15.0)
+<?xml version="1.0" encoding="UTF-8"?><rss xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:content="http://purl.org/rss/1.0/modules/content/" xmlns:atom="http://www.w3.org/2005/Atom" version="2.0"><channel><title><![CDATA[Konnor's Blog]]></title><description><![CDATA[A blog documentating my various processes]]></description><link>https://gatsby-starter-blog-demo.netlify.com</link><generator>GatsbyJS</generator><lastBuildDate>Mon, 20 Jan 2020 08:39:34 GMT</lastBuildDate><item><title><![CDATA[Adding tailwindcss to a Gatsby project]]></title><description><![CDATA[Prerequisites Node (preferably 8+, I used 11.15.0)
 Npm (I used 6.7.0)
 Git (Gatsby requires Git to pull in starters) Note to windows users I…]]></description><link>https://gatsby-starter-blog-demo.netlify.com/misc/adding-tailwindcss-to-gatsby/</link><guid isPermaLink="false">https://gatsby-starter-blog-demo.netlify.com/misc/adding-tailwindcss-to-gatsby/</guid><pubDate>Mon, 20 Jan 2020 07:26:43 GMT</pubDate><content:encoded>&lt;h2&gt;Prerequisites&lt;/h2&gt;
-&lt;p&gt;Node (preferably 8+, I used 11.15.0)
-Npm (I used 6.7.0)
-Git (Gatsby requires Git to pull in starters)&lt;/p&gt;
+&lt;p&gt;Node (preferably 8+, I used 11.15.0)&lt;/br&gt;
+Npm (I used 6.7.0)&lt;/br&gt;
+Git (Gatsby requires Git to pull in starters)&lt;/br&gt;&lt;/p&gt;
 &lt;h2&gt;Note to windows users&lt;/h2&gt;
 &lt;p&gt;I wrote this tutorial with intent for Unix based users. Whenever you see the
 command &lt;code class=&quot;language-text&quot;&gt;touch&lt;/code&gt; it just means create a file and &lt;code class=&quot;language-text&quot;&gt;mkdir&lt;/code&gt; means create a directory (folder).
