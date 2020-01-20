@@ -6,9 +6,9 @@ description: Details on how to add tailwindcss to a Gatsby project.
 
 ## Prerequisites
 
-Node (preferably 8+, I used 11.15.0)
-Npm (I used 6.7.0)
-Git (Gatsby requires Git to pull in starters)
+Node (preferably 8+, I used 11.15.0)</br>
+Npm (I used 6.7.0)</br>
+Git (Gatsby requires Git to pull in starters)</br>
 
 ## Note to windows users
 
