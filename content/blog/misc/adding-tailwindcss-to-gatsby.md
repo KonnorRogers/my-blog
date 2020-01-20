@@ -40,7 +40,7 @@ touch src/styles/tailwind.css
 
 </br>
 
-1. Add gatsby-postcss-plugin to `./gatsby-config.js`
+<b>1. Add gatsby-postcss-plugin to `./gatsby-config.js`</b>
 
 ```javascript
 // ./gatsby-config.js
@@ -63,7 +63,7 @@ module.exports = {
 
 </br>
 
-2. Add the following values to `./postcss.config.js`
+<b>2. Add the following values to `./postcss.config.js`</b>
 
 ```javascript
 // ./postcss.config.js
@@ -77,7 +77,7 @@ module.exports = {
 
 </br>
 
-3. Add tailwindcss directives to `./src/styles/tailwind.css`
+<b>3. Add tailwindcss directives to `./src/styles/tailwind.css`</b>
 
 ```css
 /* ./src/styles/tailwind.css */
@@ -88,7 +88,7 @@ module.exports = {
 
 </br>
 
-4. Add tailwindcss globally by importing it in `gatsby-browser.js`
+<b>4. Add tailwindcss globally by importing it in `gatsby-browser.js`</b>
 
 ```javascript
 // ./gatsby-browser.js
@@ -98,7 +98,7 @@ import "./src/styles/tailwind.css"
 
 </br>
 
-5. Add a tailwind style to a an item in `./src/pages/index.js` to test that its working
+<b>5. Add a tailwind style to a an item in `./src/pages/index.js` to test that its working</b>
 
 ```javascript
 // ./src/pages/index.js
@@ -110,7 +110,7 @@ import "./src/styles/tailwind.css"
 
 </br>
 
-6. Start up your server
+<b>6. Start up your server</b>
 
 ```bash
 gatsby develop
@@ -118,14 +118,14 @@ gatsby develop
 
 </br>
 
-7. Navigate to localhost:8000 to see if Tailwind is working. That's it!
+<b>7. Navigate to `localhost:8000` to see if Tailwind is working. That's it!</b>
 
 ## Full tutorial
 
 If you already have a Gatsby project feel free to skip ahead to the
 [Adding to an existing project section](#adding-to-an-existing-project)
 
-1. First, start by creating a new Gatsby project. The easiest way to do so is:
+<b>1. First, start by creating a new Gatsby project. The easiest way to do so is:</b>
 
 ```bash
 npm install --global gatsby-cli
@@ -133,7 +133,7 @@ npm install --global gatsby-cli
 
 </br>
 
-2. Then to create a new project:
+<b>2. Then to create a new project:</b>
 
 ```bash
 gatsby new tailwind-gatsby-project
@@ -141,9 +141,9 @@ gatsby new tailwind-gatsby-project
 
 </br>
 
-This will create a new Gatsby project called `tailwind-project`
+This will create a new Gatsby project called `tailwind-gatsby-project`
 
-3. Now, navigate into the project directory:
+<b>3. Now, navigate into the project directory:</b>
 
 ```bash
 cd tailwind-gatsby-project
@@ -155,7 +155,7 @@ Make sure running `gatsby develop` works before moving on.
 
 ## Adding to an existing project
 
-4. Add [gatsby-plugin-postcss](https://www.gatsbyjs.org/packages/gatsby-plugin-postcss/) package
+<b>4. Add [gatsby-plugin-postcss](https://www.gatsbyjs.org/packages/gatsby-plugin-postcss/) package</b>
 
 ```bash
 npm install gatsby-plugin-postcss
@@ -163,7 +163,7 @@ npm install gatsby-plugin-postcss
 
 </br>
 
-5. Add gatsby-postcss-plugin to `gatsby-config.js`
+<b>5. Add gatsby-postcss-plugin to `gatsby-config.js`</b>
 
 ```javascript
 // ./gatsby-config.js
@@ -186,7 +186,7 @@ module.exports = {
 
 </br>
 
-6. Create a `postcss.config.js` file in the root directory
+<b>6. Create a `postcss.config.js` file in the root directory</b>
 
 ```bash
 touch postcss.config.js
@@ -194,7 +194,7 @@ touch postcss.config.js
 
 </br>
 
-7. Add the following content to `postcss.config.js`:
+<b>7. Add the following content to `postcss.config.js`:</b>
 
 ```javascript
 // ./postcss.config.js
@@ -208,7 +208,7 @@ module.exports = {
 
 </br>
 
-8. Add the [TailwindCSS](https://tailwindcss.com/docs/installation) package
+<b>8. Add the [TailwindCSS](https://tailwindcss.com/docs/installation) package</b>
 
 ```bash
 npm install --save-dev tailwindcss
@@ -216,7 +216,7 @@ npm install --save-dev tailwindcss
 
 </br>
 
-9. Create a directory called in `styles` in the `src` directory
+<b>9. Create a directory called in `styles` in the `src` directory</b>
 
 ```bash
 mkdir src/styles
@@ -224,7 +224,7 @@ mkdir src/styles
 
 </br>
 
-10. Create a stylesheet called `tailwind.css` in the `src/styles` directory
+<b>10. Create a stylesheet called `tailwind.css` in the `src/styles` directory</b>
 
 ```bash
 touch src/styles/tailwind.css
@@ -232,7 +232,7 @@ touch src/styles/tailwind.css
 
 </br>
 
-11. Add the following content:
+<b>11. Add the following content:</b>
 
 ```css
 /* ./src/styles/tailwind.css */
@@ -244,7 +244,7 @@ touch src/styles/tailwind.css
 
 </br>
 
-12. To add tailwind styles globally, import it in `gatsby-browser.js`
+<b>12. To add tailwind styles globally, import it in `gatsby-browser.js`</b>
 
 ```javascript
 import "./src/styles/tailwind.css"
@@ -255,7 +255,7 @@ import "./src/styles/tailwind.css"
 Everything should now be working! However, we currently have no way of telling.
 Lets add a tailwind style to the index page.
 
-13. Add a tailwind style to the `<h1></h1>` tag in `src/pages/index.js`
+<b>13. Add a tailwind style to the `<h1></h1>` tag in `src/pages/index.js`</b>
 
 ```javascript
 // ./src/pages/index.js
@@ -267,7 +267,7 @@ Lets add a tailwind style to the index page.
 
 </br>
 
-14. Run `gatsby-develop`
+<b>14. Run `gatsby-develop`</b>
 
 You should now see a red background for the text that says "Hi people". This
 lets you know tailwind is working as expected! Hope this worked for you getting
