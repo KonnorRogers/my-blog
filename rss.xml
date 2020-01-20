@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="UTF-8"?><rss xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:content="http://purl.org/rss/1.0/modules/content/" xmlns:atom="http://www.w3.org/2005/Atom" version="2.0"><channel><title><![CDATA[Konnor's Blog]]></title><description><![CDATA[A blog documentating my various processes]]></description><link>https://gatsby-starter-blog-demo.netlify.com</link><generator>GatsbyJS</generator><lastBuildDate>Mon, 20 Jan 2020 08:36:16 GMT</lastBuildDate><item><title><![CDATA[Adding tailwindcss to a Gatsby project]]></title><description><![CDATA[Prerequisites Node (preferably 8+, I used 11.15.0)
+<?xml version="1.0" encoding="UTF-8"?><rss xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:content="http://purl.org/rss/1.0/modules/content/" xmlns:atom="http://www.w3.org/2005/Atom" version="2.0"><channel><title><![CDATA[Konnor's Blog]]></title><description><![CDATA[A blog documentating my various processes]]></description><link>https://gatsby-starter-blog-demo.netlify.com</link><generator>GatsbyJS</generator><lastBuildDate>Mon, 20 Jan 2020 08:37:30 GMT</lastBuildDate><item><title><![CDATA[Adding tailwindcss to a Gatsby project]]></title><description><![CDATA[Prerequisites Node (preferably 8+, I used 11.15.0)
 Npm (I used 6.7.0)
 Git (Gatsby requires Git to pull in starters) Note to windows users I…]]></description><link>https://gatsby-starter-blog-demo.netlify.com/misc/adding-tailwindcss-to-gatsby/</link><guid isPermaLink="false">https://gatsby-starter-blog-demo.netlify.com/misc/adding-tailwindcss-to-gatsby/</guid><pubDate>Mon, 20 Jan 2020 07:26:43 GMT</pubDate><content:encoded>&lt;h2&gt;Prerequisites&lt;/h2&gt;
 &lt;p&gt;Node (preferably 8+, I used 11.15.0)
@@ -157,12 +157,12 @@ restart it.&lt;/p&gt;
 &lt;h3&gt;My github repo using Tailwind and Gatsby&lt;/h3&gt;
 &lt;p&gt;&lt;a href=&quot;https://github.com/ParamagicDev/tailwind-gatsby-project&quot;&gt;Reference Repository&lt;/a&gt;&lt;/p&gt;
 &lt;h3&gt;Gatsby&lt;/h3&gt;
-&lt;p&gt;&lt;a href=&quot;https://www.gatsbyjs.org&quot;&gt;Gatsby&lt;/a&gt;
-&lt;a href=&quot;https://www.gatsbyjs.org/docs/tailwind-css/&quot;&gt;Gatsby + Tailwind tutorial&lt;/a&gt;
-&lt;a href=&quot;https://www.gatsbyjs.org/tutorial/part-two/#creating-global-styles-with-standard-css-files&quot;&gt;Using CSS in Gatsby&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a href=&quot;https://www.gatsbyjs.org&quot;&gt;Gatsby&lt;/a&gt;&lt;/br&gt;
+&lt;a href=&quot;https://www.gatsbyjs.org/docs/tailwind-css/&quot;&gt;Gatsby + Tailwind tutorial&lt;/a&gt;&lt;/br&gt;
+&lt;a href=&quot;https://www.gatsbyjs.org/tutorial/part-two/#creating-global-styles-with-standard-css-files&quot;&gt;Using CSS in Gatsby&lt;/a&gt;&lt;/br&gt;&lt;/p&gt;
 &lt;h3&gt;Tailwind&lt;/h3&gt;
-&lt;p&gt;&lt;a href=&quot;https://tailwindcss.com/&quot;&gt;TailwindCSS&lt;/a&gt;
-&lt;a href=&quot;https://tailwindcss.com/docs/installation&quot;&gt;TailwindCSS Installation&lt;/a&gt;&lt;/p&gt;</content:encoded></item><item><title><![CDATA[Setting up a Gatsby project with Docker]]></title><description><![CDATA[Quick start First create a new directory (or use an existing directory, this method will NOT
+&lt;p&gt;&lt;a href=&quot;https://tailwindcss.com/&quot;&gt;TailwindCSS&lt;/a&gt;&lt;/br&gt;
+&lt;a href=&quot;https://tailwindcss.com/docs/installation&quot;&gt;TailwindCSS Installation&lt;/a&gt;&lt;/br&gt;&lt;/p&gt;</content:encoded></item><item><title><![CDATA[Setting up a Gatsby project with Docker]]></title><description><![CDATA[Quick start First create a new directory (or use an existing directory, this method will NOT
 create a new git directory for you) Next step…]]></description><link>https://gatsby-starter-blog-demo.netlify.com/javascript/setting-up-gatsby-with-docker/</link><guid isPermaLink="false">https://gatsby-starter-blog-demo.netlify.com/javascript/setting-up-gatsby-with-docker/</guid><pubDate>Thu, 16 Jan 2020 21:55:01 GMT</pubDate><content:encoded>&lt;h2&gt;Quick start&lt;/h2&gt;
 &lt;p&gt;First create a new directory (or use an existing directory, this method will NOT
 create a new git directory for you)&lt;/p&gt;
