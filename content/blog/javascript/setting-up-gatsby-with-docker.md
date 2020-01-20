@@ -207,26 +207,9 @@ Next, run the following:
 yarn add docz
 ```
 
-Add the following 3 scripts into `package.json`
-
-```javascript
-{
-  "scripts": {
-      "docz:dev": "docz dev",
-      "docz:build": "docz build",
-      "docz:serve": "docz build && docz serve"
-  },
-}
-```
-
-Now you are free to start creating `.mdx` files anywhere! I personally prefer
-to place them either in a docs/ directory or simply within the src/ directory.
-Either way, docz will automatically detect and parse all `.mdx` based extensions
-and build them into a `./docz/dist` directory.
-
-`yarn docz:dev` will create a localhost:8000 view of your docz
-`yarn docz:build` will build into ./docz/dist directory
-`yarn docz:serve` will build into ./docz/dist directory & will allow you view it in browser
+There are many ways to use the new docz but because the project I'm making is specifically
+for documentation and won't be using anything else, all my `.mdx` files will be in the
+`src/pages` directory because this is how Gatsby provides routing.
 
 Hope this helped you with Gatsby, Docz, or general Docker setup!
 Good luck out there!
