@@ -284,11 +284,11 @@ restart it.
 
 ### Gatsby
 
-[Gatsby](https://www.gatsbyjs.org)
-[Gatsby + Tailwind tutorial](https://www.gatsbyjs.org/docs/tailwind-css/)
-[Using CSS in Gatsby](https://www.gatsbyjs.org/tutorial/part-two/#creating-global-styles-with-standard-css-files)
+[Gatsby](https://www.gatsbyjs.org)</br>
+[Gatsby + Tailwind tutorial](https://www.gatsbyjs.org/docs/tailwind-css/)</br>
+[Using CSS in Gatsby](https://www.gatsbyjs.org/tutorial/part-two/#creating-global-styles-with-standard-css-files)</br>
 
 ### Tailwind
 
-[TailwindCSS](https://tailwindcss.com/)
-[TailwindCSS Installation](https://tailwindcss.com/docs/installation)
+[TailwindCSS](https://tailwindcss.com/)</br>
+[TailwindCSS Installation](https://tailwindcss.com/docs/installation)</br>
