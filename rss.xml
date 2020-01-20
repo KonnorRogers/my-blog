@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="UTF-8"?><rss xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:content="http://purl.org/rss/1.0/modules/content/" xmlns:atom="http://www.w3.org/2005/Atom" version="2.0"><channel><title><![CDATA[Konnor's Blog]]></title><description><![CDATA[A blog documentating my various processes]]></description><link>https://gatsby-starter-blog-demo.netlify.com</link><generator>GatsbyJS</generator><lastBuildDate>Sat, 18 Jan 2020 00:22:34 GMT</lastBuildDate><item><title><![CDATA[Setting up a Gatsby project with Docker]]></title><description><![CDATA[Quick start First create a new directory (or use an existing directory, this method will NOT
+<?xml version="1.0" encoding="UTF-8"?><rss xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:content="http://purl.org/rss/1.0/modules/content/" xmlns:atom="http://www.w3.org/2005/Atom" version="2.0"><channel><title><![CDATA[Konnor's Blog]]></title><description><![CDATA[A blog documentating my various processes]]></description><link>https://gatsby-starter-blog-demo.netlify.com</link><generator>RSS for Node</generator><lastBuildDate>Mon, 20 Jan 2020 05:38:14 GMT</lastBuildDate><item><title><![CDATA[Setting up a Gatsby project with Docker]]></title><description><![CDATA[Quick start First create a new directory (or use an existing directory, this method will NOT
 create a new git directory for you) Next step…]]></description><link>https://gatsby-starter-blog-demo.netlify.com/javascript/setting-up-gatsby-with-docker/</link><guid isPermaLink="false">https://gatsby-starter-blog-demo.netlify.com/javascript/setting-up-gatsby-with-docker/</guid><pubDate>Thu, 16 Jan 2020 21:55:01 GMT</pubDate><content:encoded>&lt;h2&gt;Quick start&lt;/h2&gt;
 &lt;p&gt;First create a new directory (or use an existing directory, this method will NOT
 create a new git directory for you)&lt;/p&gt;
@@ -28,13 +28,11 @@ a temporary &lt;code class=&quot;language-text&quot;&gt;package.json&lt;/code&gt
 &lt;p&gt;Then, we’ll fill in the Dockerfile.dev with the following values.&lt;/p&gt;
 &lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;dockerfile&quot;&gt;&lt;pre class=&quot;language-dockerfile&quot;&gt;&lt;code class=&quot;language-dockerfile&quot;&gt;&lt;span class=&quot;token comment&quot;&gt;# ./Dockerfile.dev&lt;/span&gt;
 
-&lt;span class=&quot;token keyword&quot;&gt;FROM&lt;/span&gt; node&lt;span class=&quot;token punctuation&quot;&gt;:&lt;/span&gt;13.6.0&lt;span class=&quot;token punctuation&quot;&gt;-&lt;/span&gt;alpine3.11
+&lt;span class=&quot;token keyword&quot;&gt;FROM&lt;/span&gt; node&lt;span class=&quot;token punctuation&quot;&gt;:&lt;/span&gt;12.14.0&lt;span class=&quot;token punctuation&quot;&gt;-&lt;/span&gt;slim
 
-&lt;span class=&quot;token comment&quot;&gt;# Taken from https://www.stoutlabs.com/blog/2019-02-05-my-docker-setup-gatsby-next/&lt;/span&gt;
-&lt;span class=&quot;token keyword&quot;&gt;RUN&lt;/span&gt; \
-  apk add &lt;span class=&quot;token punctuation&quot;&gt;-&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;-&lt;/span&gt;no&lt;span class=&quot;token punctuation&quot;&gt;-&lt;/span&gt;cache python make g++ git &amp;amp;&amp;amp; \
-  apk add vips&lt;span class=&quot;token punctuation&quot;&gt;-&lt;/span&gt;dev fftw&lt;span class=&quot;token punctuation&quot;&gt;-&lt;/span&gt;dev &lt;span class=&quot;token punctuation&quot;&gt;-&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;-&lt;/span&gt;no&lt;span class=&quot;token punctuation&quot;&gt;-&lt;/span&gt;cache &lt;span class=&quot;token punctuation&quot;&gt;-&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;-&lt;/span&gt;repository http&lt;span class=&quot;token punctuation&quot;&gt;:&lt;/span&gt;//dl&lt;span class=&quot;token punctuation&quot;&gt;-&lt;/span&gt;3.alpinelinux.org/alpine/edge/community &lt;span class=&quot;token punctuation&quot;&gt;-&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;-&lt;/span&gt;repository http&lt;span class=&quot;token punctuation&quot;&gt;:&lt;/span&gt;//dl&lt;span class=&quot;token punctuation&quot;&gt;-&lt;/span&gt;3.alpinelinux.org/alpine/edge/main &amp;amp;&amp;amp; \
-  rm &lt;span class=&quot;token punctuation&quot;&gt;-&lt;/span&gt;fR /var/cache/apk/*
+&lt;span class=&quot;token keyword&quot;&gt;RUN&lt;/span&gt; apt update &amp;amp;&amp;amp; apt upgrade &lt;span class=&quot;token punctuation&quot;&gt;-&lt;/span&gt;y &amp;amp;&amp;amp; \
+    apt install gcc g++ make python git libc6&lt;span class=&quot;token punctuation&quot;&gt;-&lt;/span&gt;dev build&lt;span class=&quot;token punctuation&quot;&gt;-&lt;/span&gt;essential libpng&lt;span class=&quot;token punctuation&quot;&gt;-&lt;/span&gt;dev \
+    libjpeg&lt;span class=&quot;token punctuation&quot;&gt;-&lt;/span&gt;dev libvips&lt;span class=&quot;token punctuation&quot;&gt;-&lt;/span&gt;dev libvips musl&lt;span class=&quot;token punctuation&quot;&gt;-&lt;/span&gt;dev node&lt;span class=&quot;token punctuation&quot;&gt;-&lt;/span&gt;gyp pngquant webp &lt;span class=&quot;token punctuation&quot;&gt;-&lt;/span&gt;y
 
 &lt;span class=&quot;token keyword&quot;&gt;RUN&lt;/span&gt; yarn global add gatsby&lt;span class=&quot;token punctuation&quot;&gt;-&lt;/span&gt;cli
 
@@ -44,7 +42,8 @@ a temporary &lt;code class=&quot;language-text&quot;&gt;package.json&lt;/code&gt
 &lt;span class=&quot;token keyword&quot;&gt;WORKDIR&lt;/span&gt; /myapp
 &lt;span class=&quot;token keyword&quot;&gt;COPY&lt;/span&gt; ./package.json /myapp
 &lt;span class=&quot;token keyword&quot;&gt;COPY&lt;/span&gt; ./yarn.lock /myapp
-&lt;span class=&quot;token keyword&quot;&gt;RUN&lt;/span&gt; yarn install &amp;amp;&amp;amp; yarn cache clean
+
+&lt;span class=&quot;token keyword&quot;&gt;RUN&lt;/span&gt; yarn install &lt;span class=&quot;token punctuation&quot;&gt;-&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;-&lt;/span&gt;force &amp;amp;&amp;amp; yarn cache clean
 &lt;span class=&quot;token keyword&quot;&gt;COPY&lt;/span&gt; . /myapp
 &lt;span class=&quot;token keyword&quot;&gt;CMD&lt;/span&gt; &lt;span class=&quot;token punctuation&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;token string&quot;&gt;&quot;gatsby&quot;&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;token string&quot;&gt;&quot;develop&quot;&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;token string&quot;&gt;&quot;-H&quot;&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;token string&quot;&gt;&quot;0.0.0.0&quot;&lt;/span&gt; &lt;span class=&quot;token punctuation&quot;&gt;]&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 &lt;/br&gt;
@@ -75,7 +74,7 @@ and various other things. Docker-compose simply streamlines the process.&lt;/p&g
 ├── package.json
 └── yarn.lock&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 &lt;p&gt;&lt;a href=&quot;https://github.com/ParamagicDev/docker-with-gatsby/tree/initial-docker-setup&quot;&gt;Reference Repository Commit&lt;/a&gt;&lt;/p&gt;
-&lt;p&gt;After copying the contents of the files above into docker-compose.yml &amp;#x26; Dockerfile.dev
+&lt;p&gt;After copying the contents of the files above into &lt;code class=&quot;language-text&quot;&gt;docker-compose.yml&lt;/code&gt; &amp;#x26; &lt;code class=&quot;language-text&quot;&gt;Dockerfile.dev&lt;/code&gt;
 respectively, then run the following commands:&lt;/p&gt;
 &lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;bash&quot;&gt;&lt;pre class=&quot;language-bash&quot;&gt;&lt;code class=&quot;language-bash&quot;&gt;&lt;span class=&quot;token comment&quot;&gt;# Unfortunately, yarn does not have a similar command to npx&lt;/span&gt;
 docker-compose run --rm web npx degit https://github.com/gatsbyjs/gatsby-starter-default &lt;span class=&quot;token builtin class-name&quot;&gt;.&lt;/span&gt; --force&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
@@ -89,7 +88,7 @@ Adding packages, removing packages, etc.&lt;/p&gt;
 subsequent instances of docker-compose with simple &lt;code class=&quot;language-text&quot;&gt;docker-compose up&lt;/code&gt;&lt;/p&gt;
 &lt;h4&gt;Using yarn&lt;/h4&gt;
 &lt;p&gt;If you are planning on using yarn instead of npm like I have above, make sure to remove
-the package-lock.json generated by degit when pulling in the gatsby starter&lt;/p&gt;
+the &lt;code class=&quot;language-text&quot;&gt;package-lock.json&lt;/code&gt; generated by degit when pulling in the gatsby starter&lt;/p&gt;
 &lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;bash&quot;&gt;&lt;pre class=&quot;language-bash&quot;&gt;&lt;code class=&quot;language-bash&quot;&gt;&lt;span class=&quot;token function&quot;&gt;rm&lt;/span&gt; package-lock.json&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 &lt;p&gt;Otherwise, when installing packages yarn will complain about conflicting package
 managers.&lt;/p&gt;
@@ -161,6 +160,12 @@ Good luck out there!&lt;/p&gt;
 created by Degit will be owned by the root user. Run the following to fix
 any permissions errors from the root directory:&lt;/p&gt;
 &lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;bash&quot;&gt;&lt;pre class=&quot;language-bash&quot;&gt;&lt;code class=&quot;language-bash&quot;&gt;&lt;span class=&quot;token function&quot;&gt;sudo&lt;/span&gt; &lt;span class=&quot;token function&quot;&gt;chown&lt;/span&gt; -R &lt;span class=&quot;token string&quot;&gt;&quot;&lt;span class=&quot;token environment constant&quot;&gt;$USER&lt;/span&gt;&quot;&lt;/span&gt;&lt;span class=&quot;token builtin class-name&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;token string&quot;&gt;&quot;&lt;span class=&quot;token environment constant&quot;&gt;$USER&lt;/span&gt;&quot;&lt;/span&gt; &lt;span class=&quot;token builtin class-name&quot;&gt;.&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;Originally, this tutorial used an Alpine based docker images. Theres a lot of
+compatibility issues with the image processing library ‘sharp’. As a result,
+I decided to use a Debian based Docker image for an easier build process.&lt;/p&gt;
+&lt;p&gt;I also ran into issues with using Node 13.6.0. It kept saying sharp was not self registering.
+There appears to be many compatibility issues with sharp so I wanted to keep this
+as close to my host machine as possible.&lt;/p&gt;
 &lt;h2&gt;Links&lt;/h2&gt;
 &lt;h3&gt;Gatsby&lt;/h3&gt;
 &lt;p&gt;&lt;a href=&quot;https://gatsbyjs.org&quot;&gt;Gatsby Home&lt;/a&gt;
