@@ -156,6 +156,14 @@ Gatsby project.</li>
 <p>There are many ways to use the new docz but because the project I’m making is specifically
 for documentation and won’t be using anything else, all my <code class="language-text">.mdx</code> files will be in the
 <code class="language-text">src/pages</code> directory because this is how Gatsby provides routing.</p>
+<p>Additionally, you must add the <code class="language-text">gatsby-transformer-mdx</code> plugin in both your
+<code class="language-text">./gatsby-config.js</code> and to your <code class="language-text">./package.json</code> file like so:</p>
+<div class="gatsby-highlight" data-language="bash"><pre class="language-bash"><code class="language-bash">docker-compose run --rm web <span class="token function">yarn</span> <span class="token function">add</span> gatsby-transformer-mdx</code></pre></div>
+</br>
+<p>Then, you must add it to your <code class="language-text">./gatsby-config.js</code> file.</p>
+<div class="gatsby-highlight" data-language="javascript"><pre class="language-javascript"><code class="language-javascript">module<span class="token punctuation">.</span>exports <span class="token operator">=</span> <span class="token punctuation">{</span>
+  plugins<span class="token punctuation">:</span> <span class="token punctuation">[</span><span class="token string">"gatsby-transformer-mdx"</span><span class="token punctuation">]</span><span class="token punctuation">,</span>
+<span class="token punctuation">}</span></code></pre></div>
 <p>Hope this helped you with Gatsby, Docz, or general Docker setup!
 Good luck out there!</p>
 <h2>Issues</h2>
