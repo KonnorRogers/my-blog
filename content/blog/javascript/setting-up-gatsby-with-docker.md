@@ -211,6 +211,23 @@ There are many ways to use the new docz but because the project I'm making is sp
 for documentation and won't be using anything else, all my `.mdx` files will be in the
 `src/pages` directory because this is how Gatsby provides routing.
 
+Additionally, you must add the `gatsby-transformer-mdx` plugin in both your
+`./gatsby-config.js` and to your `./package.json` file like so:
+
+```bash
+docker-compose run --rm web yarn add gatsby-transformer-mdx
+```
+
+</br>
+
+Then, you must add it to your `./gatsby-config.js` file.
+
+```javascript
+module.exports = {
+  plugins: ["gatsby-transformer-mdx"],
+}
+```
+
 Hope this helped you with Gatsby, Docz, or general Docker setup!
 Good luck out there!
 
