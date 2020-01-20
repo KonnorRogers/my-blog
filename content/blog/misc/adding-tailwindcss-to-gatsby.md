@@ -153,7 +153,7 @@ cd tailwind-gatsby-project
 
 Make sure running `gatsby develop` works before moving on.
 
-## Adding to an existing project
+<h2 id="adding-to-an-existing-project"> Adding to an existing project</h2>
 
 <b>4. Add [gatsby-plugin-postcss](https://www.gatsbyjs.org/packages/gatsby-plugin-postcss/) package</b>
 
