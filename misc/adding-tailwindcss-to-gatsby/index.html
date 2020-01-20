@@ -35,6 +35,7 @@ npx tailwind init
 <span class="token function">touch</span> postcss.config.js
 <span class="token function">mkdir</span> src/styles
 <span class="token function">touch</span> src/styles/tailwind.css</code></pre></div>
+</br>
 <ol>
 <li>Add gatsby-postcss-plugin to <code class="language-text">./gatsby-config.js</code></li>
 </ol>
@@ -54,6 +55,7 @@ module<span class="token punctuation">.</span>exports <span class="token operato
     <span class="token comment">// Below code omitted for brevity</span>
   <span class="token punctuation">]</span><span class="token punctuation">,</span>
 <span class="token punctuation">}</span></code></pre></div>
+</br>
 <ol start="2">
 <li>Add the following values to <code class="language-text">./postcss.config.js</code></li>
 </ol>
@@ -64,6 +66,7 @@ module<span class="token punctuation">.</span>exports <span class="token operato
 module<span class="token punctuation">.</span>exports <span class="token operator">=</span> <span class="token punctuation">{</span>
   plugins<span class="token punctuation">:</span> <span class="token punctuation">[</span><span class="token function">tailwindcss</span><span class="token punctuation">(</span><span class="token template-string"><span class="token template-punctuation string">`</span><span class="token string">./tailwind.config.js</span><span class="token template-punctuation string">`</span></span><span class="token punctuation">)</span><span class="token punctuation">,</span> <span class="token function">require</span><span class="token punctuation">(</span><span class="token string">"autoprefixer"</span><span class="token punctuation">)</span><span class="token punctuation">]</span><span class="token punctuation">,</span>
 <span class="token punctuation">}</span></code></pre></div>
+</br>
 <ol start="3">
 <li>Add tailwindcss directives to <code class="language-text">./src/styles/tailwind.css</code></li>
 </ol>
@@ -71,12 +74,14 @@ module<span class="token punctuation">.</span>exports <span class="token operato
 <span class="token atrule"><span class="token rule">@tailwind</span> base
 <span class="token rule">@tailwind</span> utilities<span class="token punctuation">;</span></span>
 <span class="token atrule"><span class="token rule">@tailwind</span> components<span class="token punctuation">;</span></span></code></pre></div>
+</br>
 <ol start="4">
 <li>Add tailwindcss globally by importing it in <code class="language-text">gatsby-browser.js</code></li>
 </ol>
 <div class="gatsby-highlight" data-language="javascript"><pre class="language-javascript"><code class="language-javascript"><span class="token comment">// ./gatsby-browser.js</span>
 
 <span class="token keyword">import</span> <span class="token string">"./src/styles/tailwind.css"</span></code></pre></div>
+</br>
 <ol start="5">
 <li>Add a tailwind style to a an item in <code class="language-text">./src/pages/index.js</code> to test that its working</li>
 </ol>
@@ -85,10 +90,12 @@ module<span class="token punctuation">.</span>exports <span class="token operato
 <span class="token comment">// Above code omitted for brevity</span>
 <span class="token operator">&lt;</span>h1 className<span class="token operator">=</span><span class="token string">"bg-red-500"</span><span class="token operator">></span>Hi people<span class="token operator">&lt;</span><span class="token operator">/</span>h1<span class="token operator">></span>
 <span class="token comment">// Below code omitted for brevity</span></code></pre></div>
+</br>
 <ol start="6">
 <li>Start up your server</li>
 </ol>
 <div class="gatsby-highlight" data-language="bash"><pre class="language-bash"><code class="language-bash">gatsby develop</code></pre></div>
+</br>
 <ol start="7">
 <li>Navigate to localhost:8000 to see if Tailwind is working. That’s it!</li>
 </ol>
@@ -110,12 +117,14 @@ module<span class="token punctuation">.</span>exports <span class="token operato
 <li>Now, navigate into the project directory:</li>
 </ol>
 <div class="gatsby-highlight" data-language="bash"><pre class="language-bash"><code class="language-bash"><span class="token builtin class-name">cd</span> tailwind-gatsby-project</code></pre></div>
+</br>
 <p>Make sure running <code class="language-text">gatsby develop</code> works before moving on.</p>
 <h2>Adding to an existing project</h2>
 <ol start="4">
 <li>Add <a href="https://www.gatsbyjs.org/packages/gatsby-plugin-postcss/">gatsby-plugin-postcss</a> package</li>
 </ol>
 <div class="gatsby-highlight" data-language="bash"><pre class="language-bash"><code class="language-bash"><span class="token function">npm</span> <span class="token function">install</span> gatsby-plugin-postcss</code></pre></div>
+</br>
 <ol start="5">
 <li>Add gatsby-postcss-plugin to <code class="language-text">gatsby-config.js</code></li>
 </ol>
@@ -135,10 +144,12 @@ module<span class="token punctuation">.</span>exports <span class="token operato
     <span class="token comment">// Below code omitted for brevity</span>
   <span class="token punctuation">]</span><span class="token punctuation">,</span>
 <span class="token punctuation">}</span></code></pre></div>
+</br>
 <ol start="6">
 <li>Create a <code class="language-text">postcss.config.js</code> file in the root directory</li>
 </ol>
 <div class="gatsby-highlight" data-language="bash"><pre class="language-bash"><code class="language-bash"><span class="token function">touch</span> postcss.config.js</code></pre></div>
+</br>
 <ol start="7">
 <li>Add the following content to <code class="language-text">postcss.config.js</code>:</li>
 </ol>
@@ -149,18 +160,22 @@ module<span class="token punctuation">.</span>exports <span class="token operato
 module<span class="token punctuation">.</span>exports <span class="token operator">=</span> <span class="token punctuation">{</span>
   plugins<span class="token punctuation">:</span> <span class="token punctuation">[</span><span class="token function">tailwindcss</span><span class="token punctuation">(</span><span class="token template-string"><span class="token template-punctuation string">`</span><span class="token string">./tailwind.config.js</span><span class="token template-punctuation string">`</span></span><span class="token punctuation">)</span><span class="token punctuation">,</span> <span class="token function">require</span><span class="token punctuation">(</span><span class="token string">"autoprefixer"</span><span class="token punctuation">)</span><span class="token punctuation">]</span><span class="token punctuation">,</span>
 <span class="token punctuation">}</span></code></pre></div>
+</br>
 <ol start="8">
 <li>Add the <a href="https://tailwindcss.com/docs/installation">TailwindCSS</a> package</li>
 </ol>
 <div class="gatsby-highlight" data-language="bash"><pre class="language-bash"><code class="language-bash"><span class="token function">npm</span> <span class="token function">install</span> --save-dev tailwindcss</code></pre></div>
+</br>
 <ol start="9">
 <li>Create a directory called in <code class="language-text">styles</code> in the <code class="language-text">src</code> directory</li>
 </ol>
 <div class="gatsby-highlight" data-language="bash"><pre class="language-bash"><code class="language-bash"><span class="token function">mkdir</span> src/styles</code></pre></div>
+</br>
 <ol start="10">
 <li>Create a stylesheet called <code class="language-text">tailwind.css</code> in the <code class="language-text">src/styles</code> directory</li>
 </ol>
 <div class="gatsby-highlight" data-language="bash"><pre class="language-bash"><code class="language-bash"><span class="token function">touch</span> src/styles/tailwind.css</code></pre></div>
+</br>
 <ol start="11">
 <li>Add the following content:</li>
 </ol>
@@ -169,10 +184,12 @@ module<span class="token punctuation">.</span>exports <span class="token operato
 <span class="token atrule"><span class="token rule">@tailwind</span> base<span class="token punctuation">;</span></span>
 <span class="token atrule"><span class="token rule">@tailwind</span> components<span class="token punctuation">;</span></span>
 <span class="token atrule"><span class="token rule">@tailwind</span> utilities<span class="token punctuation">;</span></span></code></pre></div>
+</br>
 <ol start="12">
 <li>To add tailwind styles globally, import it in <code class="language-text">gatsby-browser.js</code></li>
 </ol>
 <div class="gatsby-highlight" data-language="javascript"><pre class="language-javascript"><code class="language-javascript"><span class="token keyword">import</span> <span class="token string">"./src/styles/tailwind.css"</span></code></pre></div>
+</br>
 <p>Everything should now be working! However, we currently have no way of telling.
 Lets add a tailwind style to the index page.</p>
 <ol start="13">
@@ -183,6 +200,7 @@ Lets add a tailwind style to the index page.</p>
 <span class="token comment">// Above code omitted for brevity</span>
 <span class="token operator">&lt;</span>h1 className<span class="token operator">=</span><span class="token string">"bg-red-500"</span><span class="token operator">></span>Hi people<span class="token operator">&lt;</span><span class="token operator">/</span>h1<span class="token operator">></span>
 <span class="token comment">// Below code omitted for brevity</span></code></pre></div>
+</br>
 <ol start="14">
 <li>Run <code class="language-text">gatsby-develop</code></li>
 </ol>
