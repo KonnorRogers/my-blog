@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="UTF-8"?><rss xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:content="http://purl.org/rss/1.0/modules/content/" xmlns:atom="http://www.w3.org/2005/Atom" version="2.0"><channel><title><![CDATA[Konnor's Blog]]></title><description><![CDATA[A blog documentating my various processes]]></description><link>https://gatsby-starter-blog-demo.netlify.com</link><generator>RSS for Node</generator><lastBuildDate>Mon, 20 Jan 2020 05:38:14 GMT</lastBuildDate><item><title><![CDATA[Setting up a Gatsby project with Docker]]></title><description><![CDATA[Quick start First create a new directory (or use an existing directory, this method will NOT
+<?xml version="1.0" encoding="UTF-8"?><rss xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:content="http://purl.org/rss/1.0/modules/content/" xmlns:atom="http://www.w3.org/2005/Atom" version="2.0"><channel><title><![CDATA[Konnor's Blog]]></title><description><![CDATA[A blog documentating my various processes]]></description><link>https://gatsby-starter-blog-demo.netlify.com</link><generator>RSS for Node</generator><lastBuildDate>Mon, 20 Jan 2020 06:05:23 GMT</lastBuildDate><item><title><![CDATA[Setting up a Gatsby project with Docker]]></title><description><![CDATA[Quick start First create a new directory (or use an existing directory, this method will NOT
 create a new git directory for you) Next step…]]></description><link>https://gatsby-starter-blog-demo.netlify.com/javascript/setting-up-gatsby-with-docker/</link><guid isPermaLink="false">https://gatsby-starter-blog-demo.netlify.com/javascript/setting-up-gatsby-with-docker/</guid><pubDate>Thu, 16 Jan 2020 21:55:01 GMT</pubDate><content:encoded>&lt;h2&gt;Quick start&lt;/h2&gt;
 &lt;p&gt;First create a new directory (or use an existing directory, this method will NOT
 create a new git directory for you)&lt;/p&gt;
@@ -138,21 +138,9 @@ Gatsby project.&lt;/li&gt;
 └── yarn.lock&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 &lt;p&gt;Next, run the following:&lt;/p&gt;
 &lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;bash&quot;&gt;&lt;pre class=&quot;language-bash&quot;&gt;&lt;code class=&quot;language-bash&quot;&gt;&lt;span class=&quot;token function&quot;&gt;yarn&lt;/span&gt; &lt;span class=&quot;token function&quot;&gt;add&lt;/span&gt; docz&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-&lt;p&gt;Add the following 3 scripts into &lt;code class=&quot;language-text&quot;&gt;package.json&lt;/code&gt;&lt;/p&gt;
-&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;javascript&quot;&gt;&lt;pre class=&quot;language-javascript&quot;&gt;&lt;code class=&quot;language-javascript&quot;&gt;&lt;span class=&quot;token punctuation&quot;&gt;{&lt;/span&gt;
-  &lt;span class=&quot;token string&quot;&gt;&quot;scripts&quot;&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;token punctuation&quot;&gt;{&lt;/span&gt;
-      &lt;span class=&quot;token string&quot;&gt;&quot;docz:dev&quot;&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;token string&quot;&gt;&quot;docz dev&quot;&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt;
-      &lt;span class=&quot;token string&quot;&gt;&quot;docz:build&quot;&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;token string&quot;&gt;&quot;docz build&quot;&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt;
-      &lt;span class=&quot;token string&quot;&gt;&quot;docz:serve&quot;&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;token string&quot;&gt;&quot;docz build &amp;amp;&amp;amp; docz serve&quot;&lt;/span&gt;
-  &lt;span class=&quot;token punctuation&quot;&gt;}&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt;
-&lt;span class=&quot;token punctuation&quot;&gt;}&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-&lt;p&gt;Now you are free to start creating &lt;code class=&quot;language-text&quot;&gt;.mdx&lt;/code&gt; files anywhere! I personally prefer
-to place them either in a docs/ directory or simply within the src/ directory.
-Either way, docz will automatically detect and parse all &lt;code class=&quot;language-text&quot;&gt;.mdx&lt;/code&gt; based extensions
-and build them into a &lt;code class=&quot;language-text&quot;&gt;./docz/dist&lt;/code&gt; directory.&lt;/p&gt;
-&lt;p&gt;&lt;code class=&quot;language-text&quot;&gt;yarn docz:dev&lt;/code&gt; will create a localhost:8000 view of your docz
-&lt;code class=&quot;language-text&quot;&gt;yarn docz:build&lt;/code&gt; will build into ./docz/dist directory
-&lt;code class=&quot;language-text&quot;&gt;yarn docz:serve&lt;/code&gt; will build into ./docz/dist directory &amp;#x26; will allow you view it in browser&lt;/p&gt;
+&lt;p&gt;There are many ways to use the new docz but because the project I’m making is specifically
+for documentation and won’t be using anything else, all my &lt;code class=&quot;language-text&quot;&gt;.mdx&lt;/code&gt; files will be in the
+&lt;code class=&quot;language-text&quot;&gt;src/pages&lt;/code&gt; directory because this is how Gatsby provides routing.&lt;/p&gt;
 &lt;p&gt;Hope this helped you with Gatsby, Docz, or general Docker setup!
 Good luck out there!&lt;/p&gt;
 &lt;h2&gt;Issues&lt;/h2&gt;

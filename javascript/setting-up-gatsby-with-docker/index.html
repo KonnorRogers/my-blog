@@ -153,21 +153,9 @@ Gatsby project.</li>
 └── yarn.lock</code></pre></div>
 <p>Next, run the following:</p>
 <div class="gatsby-highlight" data-language="bash"><pre class="language-bash"><code class="language-bash"><span class="token function">yarn</span> <span class="token function">add</span> docz</code></pre></div>
-<p>Add the following 3 scripts into <code class="language-text">package.json</code></p>
-<div class="gatsby-highlight" data-language="javascript"><pre class="language-javascript"><code class="language-javascript"><span class="token punctuation">{</span>
-  <span class="token string">"scripts"</span><span class="token punctuation">:</span> <span class="token punctuation">{</span>
-      <span class="token string">"docz:dev"</span><span class="token punctuation">:</span> <span class="token string">"docz dev"</span><span class="token punctuation">,</span>
-      <span class="token string">"docz:build"</span><span class="token punctuation">:</span> <span class="token string">"docz build"</span><span class="token punctuation">,</span>
-      <span class="token string">"docz:serve"</span><span class="token punctuation">:</span> <span class="token string">"docz build &amp;&amp; docz serve"</span>
-  <span class="token punctuation">}</span><span class="token punctuation">,</span>
-<span class="token punctuation">}</span></code></pre></div>
-<p>Now you are free to start creating <code class="language-text">.mdx</code> files anywhere! I personally prefer
-to place them either in a docs/ directory or simply within the src/ directory.
-Either way, docz will automatically detect and parse all <code class="language-text">.mdx</code> based extensions
-and build them into a <code class="language-text">./docz/dist</code> directory.</p>
-<p><code class="language-text">yarn docz:dev</code> will create a localhost:8000 view of your docz
-<code class="language-text">yarn docz:build</code> will build into ./docz/dist directory
-<code class="language-text">yarn docz:serve</code> will build into ./docz/dist directory &#x26; will allow you view it in browser</p>
+<p>There are many ways to use the new docz but because the project I’m making is specifically
+for documentation and won’t be using anything else, all my <code class="language-text">.mdx</code> files will be in the
+<code class="language-text">src/pages</code> directory because this is how Gatsby provides routing.</p>
 <p>Hope this helped you with Gatsby, Docz, or general Docker setup!
 Good luck out there!</p>
 <h2>Issues</h2>
