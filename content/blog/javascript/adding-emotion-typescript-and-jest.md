@@ -1,0 +1,53 @@
+---
+title: Adding Emotion, Typescript, and Jest to Gatsby
+date: "2020-03-05T21:17:08"
+description: A detailed description of adding emotion, typescript, jest, and react-testing-library.
+---
+
+## Purpose
+
+The purpose of this is to detail how to add Emotion, Typescript, Jest,
+and React-testing-library to an existing project.
+
+<a href="#table-of-contents">
+  <h2 id="table-of-contents">
+    Table of Contents
+  </h2>
+</a>
+
+<a href="#adding-eslint">
+  <h3 id="adding-eslint">
+    Adding ESLint
+  </h3>
+</a>
+
+Before we add typescript, lets first specify the linting options.
+
+The Gatsby default comes with a `.prettierrc` file defined.
+It does not however come with a `.eslintrc.js` defined in the root directory.
+So, lets add it.
+
+```javascript
+// .eslintrc.js
+module.exports = {
+  root: true,
+  parser: "@typescript-eslint/parser",
+  plugins: ["@typescript-eslint", "react", "jest"],
+  extends: [
+    "prettier",
+    "eslint:recommended",
+    "plugin:@typescript-eslint/eslint-recommended",
+    "plugin:@typescript-eslint/recommended",
+    "plugin:react/recommended",
+    "plugin:jest/recommended",
+  ],
+}
+```
+
+Next, install the packages required to get ESlint to work.
+
+```bash
+npm install --save-dev eslint @typescript-eslint/parser @typescript-eslint/eslint-plugin eslint-plugin-jest eslint-plugin-react
+```
+
+We save these as dev dependencies because they are not needed for runtime files.
