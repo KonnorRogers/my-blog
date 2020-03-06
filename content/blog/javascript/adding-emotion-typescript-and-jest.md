@@ -44,6 +44,19 @@ module.exports = {
 }
 ```
 
+Add an `.eslintignore` with the following config:
+
+```javascript
+// .eslintignore
+
+# don't ever lint node_modules
+node_modules
+# don't lint build output (make sure it's set to your correct build folder name)
+dist
+# don't lint nyc coverage output
+coverage
+```
+
 Next, install the packages required to get ESlint to work.
 
 ```bash
@@ -57,3 +70,7 @@ Next, we need to add typescript otherwise eslint wont work properly.
 <a href="#adding-typescript">
   <h3 id="adding-typescript">Adding Typescript</h3>
 </a>
+
+```bash
+npm install --save-dev typescript
+```
