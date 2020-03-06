@@ -47,7 +47,13 @@ module.exports = {
 Next, install the packages required to get ESlint to work.
 
 ```bash
-npm install --save-dev eslint @typescript-eslint/parser @typescript-eslint/eslint-plugin eslint-plugin-jest eslint-plugin-react
+npm install --save-dev eslint @typescript-eslint/parser @typescript-eslint/eslint-plugin eslint-plugin-jest eslint-plugin-react eslint-plugin-prettier
 ```
 
 We save these as dev dependencies because they are not needed for runtime files.
+
+Next, we need to add typescript otherwise eslint wont work properly.
+
+<a href="#adding-typescript">
+  <h3 id="adding-typescript">Adding Typescript</h3>
+</a>
