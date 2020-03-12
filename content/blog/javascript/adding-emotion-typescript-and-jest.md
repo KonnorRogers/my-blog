@@ -29,11 +29,20 @@ and React-testing-library to an existing project.
   - [I know what I'm doing, lets do it quick](#i-know-what-im-doing)
 
 - #### [Resources](#resources)
+  - [Jest](#jest)
+  - [React-Testing-Library](#rtl)
+  - [Typescript](#typescript)
+  - [Emotion](#emotion)
+  - [ESLint](#eslint)
+  - [Starter Repo](#starter-repo)
 
 <br />
 
 I will be going through adding the above items based on using the
 [Gatsby Default Starter](https://www.gatsbyjs.org/starters/gatsbyjs/gatsby-starter-default/)
+<br />
+This is essentially a guide to adding the above technologies to an existing Gatsby
+project.
 
 <h3 id="adding-typescript">
   <a href="#adding-typescript">
@@ -764,34 +773,60 @@ module.exports = {
   </a>
 </h3>
 
-#### JEST
+<h4 id="jest">
+  <a href="#jest">
+    Jest
+  </a>
+</h4>
 
 - [http://jestjs.io/](http://jestjs.io/)
 - [https://www.gatsbyjs.org/docs/unit-testing/](https://www.gatsbyjs.org/docs/unit-testing/)
 
-#### React-testing-library
+<h4 id="rtl">
+  <a href="#rtl">
+    React-Testing-Library
+  </a>
+</h4>
 
 - [https://www.gatsbyjs.org/docs/testing-react-components/](https://www.gatsbyjs.org/docs/testing-react-components/)
 - [https://www.gatsbyjs.org/docs/testing-css-in-js/](https://www.gatsbyjs.org/docs/testing-css-in-js/)
 
-Cypress:
+<h4 id="typescript">
+  <a href="#typescript">
+    Typescript
+  </a>
+</h4>
 
-https://www.gatsbyjs.org/docs/end-to-end-testing/
+- [https://www.typescriptlang.org/](https://www.typescriptlang.org/)
+- [https://www.gatsbyjs.org/packages/gatsby-plugin-typescript/](https://www.gatsbyjs.org/packages/gatsby-plugin-typescript/)
 
-Typescript:
+<h4 id="emotion">
+  <a href="#emotion">
+    Emotion
+  </a>
+</h4>
 
-https://www.typescriptlang.org/
-https://www.gatsbyjs.org/packages/gatsby-plugin-typescript/
+- [https://emotion.sh/docs/introduction](https://emotion.sh/docs/introduction)
+- [https://www.gatsbyjs.org/docs/emotion/](https://www.gatsbyjs.org/docs/emotion/)
+- [https://www.gatsbyjs.org/packages/gatsby-plugin-emotion/](https://www.gatsbyjs.org/docs/emotion/)
 
-Emotion:
+<h4 id="eslint">
+  <a href="#eslint">
+    Eslint
+  </a>
+</h4>
 
-https://emotion.sh/docs/introduction
-https://www.gatsbyjs.org/docs/emotion/
-https://www.gatsbyjs.org/packages/gatsby-plugin-emotion/
+- [https://github.com/typescript-eslint/typescript-eslint/blob/master/docs/getting-started/linting/README.md](https://github.com/typescript-eslint/typescript-eslint/blob/master/docs/getting-started/linting/README.md)
+- [https://github.com/prettier/eslint-plugin-prettier](https://github.com/prettier/eslint-plugin-prettier)
+- [https://eslint.org/](https://eslint.org/)
 
-Eslint:
+These are not all the links I used, there was a lot of googling and stackoverflow involved,
+but this is a pretty good starting point. Hope this helped! Good luck out there!
 
-https://github.com/typescript-eslint/typescript-eslint/blob/master/docs/getting-started/linting/README.md
+Also, here's the starter I created in the process of all this it has some additions not covered here.
 
-https://github.com/prettier/eslint-plugin-prettier
-https://eslint.org/
+<h4 id="starter-repo">
+  <a href="https://github.com/ParamagicDev/gatsby-starter-emotion-typescript-and-tests">
+    Starter Repository
+  </a>
+</h4>
