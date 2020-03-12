@@ -25,7 +25,10 @@ and React-testing-library to an existing project.
   - [Adding React-testing-library](#adding-rtl)
 
 - #### [Quick start](#quick-start)
+
   - [I know what I'm doing, lets do it quick](#i-know-what-im-doing)
+
+- #### [Resources](#resources)
 
 <br />
 
@@ -107,6 +110,7 @@ module.exports = {
     "linebreak-style": ["error", "unix"],
     camelcase: "off",
     "@typescript-eslint/camelcase": ["error", { properties: "never" }],
+    "react/prop-types": "off",
   },
   plugins: ["@typescript-eslint", "prettier", "react", "jest"],
   extends: [
@@ -119,6 +123,12 @@ module.exports = {
   settings: {
     react: {
       version: "detect",
+    },
+    "import/resolver": {
+      alias: [
+        ["~components", "./src/components"],
+        ["~", "./src/"],
+      ],
     },
   },
 }
@@ -134,6 +144,33 @@ node_modules
 dist
 coverage
 gatsby-*
+```
+
+We will also have to define a `tsconfig.json` file.
+
+```js
+// tsconfig.json
+{
+  "compilerOptions": {
+    "module": "commonjs",
+    "target": "esnext",
+    "jsx": "preserve",
+    "lib": ["dom", "esnext"],
+    "strict": true,
+    "noEmit": true,
+    "skipLibCheck": true,
+    "isolatedModules": false,
+    "esModuleInterop": true,
+    "noUnusedLocals": false,
+    "allowJs": true,
+    "baseUrl": ".",
+    "paths": {
+      "~*": ["src/*"],
+      "~components/*": ["src/components/*"]
+    }
+  },
+  "exclude": ["node_modules", "public", ".cache", "gatsby*"]
+}
 ```
 
 <br />
@@ -171,8 +208,8 @@ To confirm its working from the command line, let's add some scripts to our `pac
 Now we can run:
 
 ```bash
-npm run type-check # should return no errors
-npm run lint # runs eslint on all files
+npm run type-check
+npm run lint # runs eslint
 ```
 
 So now, we are able to change our `.js` files to `.tsx` files. I won't go over it here,
@@ -564,6 +601,7 @@ module.exports = {
     "linebreak-style": ["error", "unix"],
     camelcase: "off",
     "@typescript-eslint/camelcase": ["error", { properties: "never" }],
+    "react/prop-types": "off",
   },
   plugins: ["@typescript-eslint", "prettier", "react", "jest"],
   extends: [
@@ -576,6 +614,12 @@ module.exports = {
   settings: {
     react: {
       version: "detect",
+    },
+    "import/resolver": {
+      alias: [
+        ["~components", "./src/components"],
+        ["~", "./src/"],
+      ],
     },
   },
 }
@@ -688,3 +732,66 @@ module.exports = {
   useStaticQuery: jest.fn(),
 }
 ```
+
+```js
+// tsconfig.json
+{
+  "compilerOptions": {
+    "module": "commonjs",
+    "target": "esnext",
+    "jsx": "preserve",
+    "lib": ["dom", "esnext"],
+    "strict": true,
+    "noEmit": true,
+    "skipLibCheck": true,
+    "isolatedModules": false,
+    "esModuleInterop": true,
+    "noUnusedLocals": false,
+    "allowJs": true,
+    "baseUrl": ".",
+    "paths": {
+      "~*": ["src/*"],
+      "~components/*": ["src/components/*"]
+    }
+  },
+  "exclude": ["node_modules", "public", ".cache", "gatsby*"]
+}
+```
+
+<h3 id="resources">
+  <a href="#resources">
+    Useful Resources / Resources used
+  </a>
+</h3>
+
+#### JEST
+
+- [http://jestjs.io/](http://jestjs.io/)
+- [https://www.gatsbyjs.org/docs/unit-testing/](https://www.gatsbyjs.org/docs/unit-testing/)
+
+#### React-testing-library
+
+- [https://www.gatsbyjs.org/docs/testing-react-components/](https://www.gatsbyjs.org/docs/testing-react-components/)
+- [https://www.gatsbyjs.org/docs/testing-css-in-js/](https://www.gatsbyjs.org/docs/testing-css-in-js/)
+
+Cypress:
+
+https://www.gatsbyjs.org/docs/end-to-end-testing/
+
+Typescript:
+
+https://www.typescriptlang.org/
+https://www.gatsbyjs.org/packages/gatsby-plugin-typescript/
+
+Emotion:
+
+https://emotion.sh/docs/introduction
+https://www.gatsbyjs.org/docs/emotion/
+https://www.gatsbyjs.org/packages/gatsby-plugin-emotion/
+
+Eslint:
+
+https://github.com/typescript-eslint/typescript-eslint/blob/master/docs/getting-started/linting/README.md
+
+https://github.com/prettier/eslint-plugin-prettier
+https://eslint.org/
