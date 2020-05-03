@@ -1,4 +1,149 @@
-<?xml version="1.0" encoding="UTF-8"?><rss xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:content="http://purl.org/rss/1.0/modules/content/" xmlns:atom="http://www.w3.org/2005/Atom" version="2.0"><channel><title><![CDATA[Konnor's Blog]]></title><description><![CDATA[A blog documentating my various processes]]></description><link>https://gatsby-starter-blog-demo.netlify.com</link><generator>GatsbyJS</generator><lastBuildDate>Thu, 12 Mar 2020 21:40:05 GMT</lastBuildDate><item><title><![CDATA[Adding Emotion, Typescript, and Jest to Gatsby]]></title><description><![CDATA[Purpose The purpose of this is to detail how to add Emotion, Typescript, Jest,
+<?xml version="1.0" encoding="UTF-8"?><rss xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:content="http://purl.org/rss/1.0/modules/content/" xmlns:atom="http://www.w3.org/2005/Atom" version="2.0"><channel><title><![CDATA[Konnor's Blog]]></title><description><![CDATA[A blog documentating my various processes]]></description><link>https://gatsby-starter-blog-demo.netlify.com</link><generator>GatsbyJS</generator><lastBuildDate>Sun, 03 May 2020 23:25:48 GMT</lastBuildDate><item><title><![CDATA[Getting Started with Rails 6]]></title><description><![CDATA[Purpose The purpose of this is to have a reusable source for setting up a Rails
+project. I will be following the Getting Started with Rails…]]></description><link>https://gatsby-starter-blog-demo.netlify.com/rails/getting-started-with-rails-6/</link><guid isPermaLink="false">https://gatsby-starter-blog-demo.netlify.com/rails/getting-started-with-rails-6/</guid><pubDate>Sun, 03 May 2020 21:56:32 GMT</pubDate><content:encoded>&lt;h2&gt;Purpose&lt;/h2&gt;
+&lt;p&gt;The purpose of this is to have a reusable source for setting up a Rails
+project.&lt;/p&gt;
+&lt;p&gt;I will be following the &lt;a href=&quot;https://guides.rubyonrails.org/getting_started.html&quot;&gt;Getting Started with Rails
+Guide&lt;/a&gt; to setup a
+new Rails projects.&lt;/p&gt;
+&lt;p&gt;I will also be using the &lt;a href=&quot;https://docs.docker.com/compose/rails/&quot;&gt;Docker Quickstart with Compose and Rails
+guide&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;I will also be using Docker just to provide a consistent development
+environment.&lt;/p&gt;
+&lt;h2 id=&quot;table-of-contents&quot;&gt;
+  &lt;a href=&quot;#table-of-contents&quot;&gt;
+    Table Of Contents
+  &lt;/a&gt;
+&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&quot;#prerequisites&quot;&gt;Prerequisites&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;a href=&quot;#getting-started&quot;&gt;Getting Started&lt;/a&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&quot;#adding-a-dockerfile&quot;&gt;Adding a Dockerfile&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;#adding-a-gemfile&quot;&gt;Adding a Gemfile&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;#links&quot;&gt;Links&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&quot;prerequisites&quot;&gt;
+  &lt;a href=&quot;#prerequisites&quot;&gt;
+    Prerequisites
+  &lt;/a&gt;
+&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;Ruby &gt;= 2.5.0&lt;/li&gt;
+&lt;li&gt;Rails &gt;= 6&lt;/li&gt;
+&lt;li&gt;PostgresQL (or Sqlite3)&lt;/li&gt;
+&lt;li&gt;Docker&lt;/li&gt;
+&lt;li&gt;Docker Compose&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&quot;getting-started&quot;&gt;
+  &lt;a href=&quot;#getting-started&quot;&gt;
+    Getting Started
+  &lt;/a&gt;
+&lt;/h2&gt;
+&lt;p&gt;Alright first lets create our directory where we want the Rails app. I
+named mine &lt;code class=&quot;language-text&quot;&gt;getting-started-with-rails-6&lt;/code&gt;&lt;/p&gt;
+&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;bash&quot;&gt;&lt;pre class=&quot;language-bash&quot;&gt;&lt;code class=&quot;language-bash&quot;&gt;&lt;span class=&quot;token function&quot;&gt;mkdir&lt;/span&gt; getting-started-with-rails-6
+&lt;span class=&quot;token builtin class-name&quot;&gt;cd&lt;/span&gt; getting-started-with-rails-6&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;br /&gt;
+&lt;h2 id=&quot;adding-a-dockerfile&quot;&gt;
+  &lt;a href=&quot;#adding-a-dockerfile&quot;&gt;Adding a Dockerfile&lt;/a&gt;
+&lt;/h2&gt;
+&lt;p&gt;The next step is to create our &lt;code class=&quot;language-text&quot;&gt;Dockerfile&lt;/code&gt;. This step is optional, if you
+would like to skip this step feel free.&lt;/p&gt;
+&lt;p&gt;The below &lt;code class=&quot;language-text&quot;&gt;Dockerfile&lt;/code&gt; is taken from the &lt;a href=&quot;https://docs.docker.com/compose/rails/&quot;&gt;Docker Quickstart
+Rails&lt;/a&gt;&lt;/p&gt;
+&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;yaml&quot;&gt;&lt;pre class=&quot;language-yaml&quot;&gt;&lt;code class=&quot;language-yaml&quot;&gt;&lt;span class=&quot;token comment&quot;&gt;# Dockerfile&lt;/span&gt;
+FROM ruby&lt;span class=&quot;token punctuation&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;token number&quot;&gt;2.5&lt;/span&gt;
+RUN apt&lt;span class=&quot;token punctuation&quot;&gt;-&lt;/span&gt;get update &lt;span class=&quot;token punctuation&quot;&gt;-&lt;/span&gt;qq &amp;amp;&amp;amp; apt&lt;span class=&quot;token punctuation&quot;&gt;-&lt;/span&gt;get install &lt;span class=&quot;token punctuation&quot;&gt;-&lt;/span&gt;y nodejs postgresql&lt;span class=&quot;token punctuation&quot;&gt;-&lt;/span&gt;client
+RUN mkdir /myapp
+WORKDIR /myapp
+COPY Gemfile /myapp/Gemfile
+COPY Gemfile.lock /myapp/Gemfile.lock
+RUN bundle install
+COPY . /myapp
+
+&lt;span class=&quot;token comment&quot;&gt;# Add a script to be executed every time the container starts.&lt;/span&gt;
+COPY entrypoint.sh /usr/bin/
+RUN chmod +x /usr/bin/entrypoint.sh
+ENTRYPOINT &lt;span class=&quot;token punctuation&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;token string&quot;&gt;&quot;entrypoint.sh&quot;&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;]&lt;/span&gt;
+EXPOSE 3000
+
+&lt;span class=&quot;token comment&quot;&gt;# Start the main process.&lt;/span&gt;
+CMD &lt;span class=&quot;token punctuation&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;token string&quot;&gt;&quot;rails&quot;&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;token string&quot;&gt;&quot;server&quot;&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;token string&quot;&gt;&quot;-b&quot;&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;token string&quot;&gt;&quot;0.0.0.0&quot;&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;]&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;br /&gt;
+&lt;h3 id=&quot;adding-a-gemfile&quot;&gt;
+  Adding a Gemfile
+&lt;/h3&gt;
+&lt;p&gt;Next we will deviate slightly from the above Docker quickstart. Instead
+of using Rails 5 we’ll use Rails 6.&lt;/p&gt;
+&lt;p&gt;Create a &lt;code class=&quot;language-text&quot;&gt;Gemfile&lt;/code&gt; with the following contents:&lt;/p&gt;
+&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;ruby&quot;&gt;&lt;pre class=&quot;language-ruby&quot;&gt;&lt;code class=&quot;language-ruby&quot;&gt;&lt;span class=&quot;token comment&quot;&gt;# Gemfile&lt;/span&gt;
+source &lt;span class=&quot;token string&quot;&gt;&apos;https://rubygems.org&apos;&lt;/span&gt;
+gem &lt;span class=&quot;token string&quot;&gt;&apos;rails&apos;&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;token string&quot;&gt;&apos;~&gt;6&apos;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;br /&gt;
+&lt;p&gt;Then add an empty &lt;code class=&quot;language-text&quot;&gt;Gemfile.lock&lt;/code&gt;&lt;/p&gt;
+&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;bash&quot;&gt;&lt;pre class=&quot;language-bash&quot;&gt;&lt;code class=&quot;language-bash&quot;&gt;&lt;span class=&quot;token function&quot;&gt;touch&lt;/span&gt; Gemfile.lock&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;br /&gt;
+&lt;p&gt;Now lets create an &lt;code class=&quot;language-text&quot;&gt;entrypoint.sh&lt;/code&gt; script to fix a server issue with
+Rails.&lt;/p&gt;
+&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;bash&quot;&gt;&lt;pre class=&quot;language-bash&quot;&gt;&lt;code class=&quot;language-bash&quot;&gt;&lt;span class=&quot;token shebang important&quot;&gt;#!/bin/bash&lt;/span&gt;
+&lt;span class=&quot;token comment&quot;&gt;# entrypoint.sh&lt;/span&gt;
+
+&lt;span class=&quot;token builtin class-name&quot;&gt;set&lt;/span&gt; -e
+
+&lt;span class=&quot;token comment&quot;&gt;# Remove a potentially pre-existing server.pid for Rails.&lt;/span&gt;
+&lt;span class=&quot;token function&quot;&gt;rm&lt;/span&gt; -f /myapp/tmp/pids/server.pid
+
+&lt;span class=&quot;token comment&quot;&gt;# Then exec the container&apos;s main process (what&apos;s set as CMD in the Dockerfile).&lt;/span&gt;
+&lt;span class=&quot;token builtin class-name&quot;&gt;exec&lt;/span&gt; &lt;span class=&quot;token string&quot;&gt;&quot;&lt;span class=&quot;token variable&quot;&gt;$@&lt;/span&gt;&quot;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;br /&gt;
+&lt;h3 id=&quot;adding-docker-compose&quot;&gt;
+  &lt;a href=&quot;#adding-docker-compose&quot;&gt;
+    Adding docker-compose.yml
+  &lt;/a&gt;
+&lt;/h3&gt;
+&lt;p&gt;Finally, lets add a &lt;code class=&quot;language-text&quot;&gt;docker-compose.yml&lt;/code&gt; with the following content:&lt;/p&gt;
+&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;yaml&quot;&gt;&lt;pre class=&quot;language-yaml&quot;&gt;&lt;code class=&quot;language-yaml&quot;&gt;&lt;span class=&quot;token key atrule&quot;&gt;version&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;token string&quot;&gt;&apos;3&apos;&lt;/span&gt;
+&lt;span class=&quot;token key atrule&quot;&gt;services&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;:&lt;/span&gt;
+  &lt;span class=&quot;token key atrule&quot;&gt;db&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;:&lt;/span&gt;
+    &lt;span class=&quot;token key atrule&quot;&gt;image&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;:&lt;/span&gt; postgres
+    &lt;span class=&quot;token key atrule&quot;&gt;volumes&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;:&lt;/span&gt;
+      &lt;span class=&quot;token punctuation&quot;&gt;-&lt;/span&gt; ./tmp/db&lt;span class=&quot;token punctuation&quot;&gt;:&lt;/span&gt;/var/lib/postgresql/data
+  &lt;span class=&quot;token key atrule&quot;&gt;web&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;:&lt;/span&gt;
+    &lt;span class=&quot;token key atrule&quot;&gt;build&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;:&lt;/span&gt; .
+    &lt;span class=&quot;token key atrule&quot;&gt;command&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;:&lt;/span&gt; bash &lt;span class=&quot;token punctuation&quot;&gt;-&lt;/span&gt;c &quot;rm &lt;span class=&quot;token punctuation&quot;&gt;-&lt;/span&gt;f tmp/pids/server.pid &amp;amp;&amp;amp; bundle exec rails s &lt;span class=&quot;token punctuation&quot;&gt;-&lt;/span&gt;p 3000 &lt;span class=&quot;token punctuation&quot;&gt;-&lt;/span&gt;b &apos;0.0.0.0&apos;&quot;
+
+    &lt;span class=&quot;token key atrule&quot;&gt;volumes&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;:&lt;/span&gt;
+      &lt;span class=&quot;token punctuation&quot;&gt;-&lt;/span&gt; .&lt;span class=&quot;token punctuation&quot;&gt;:&lt;/span&gt;/myapp
+      &lt;span class=&quot;token punctuation&quot;&gt;-&lt;/span&gt; /myapp/node_modules
+
+    &lt;span class=&quot;token key atrule&quot;&gt;ports&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;:&lt;/span&gt;
+      &lt;span class=&quot;token punctuation&quot;&gt;-&lt;/span&gt; &lt;span class=&quot;token string&quot;&gt;&quot;3000:3000&quot;&lt;/span&gt;
+
+    &lt;span class=&quot;token key atrule&quot;&gt;environment&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;:&lt;/span&gt;
+      RAILS_ENV=&quot;development&quot;
+
+    &lt;span class=&quot;token key atrule&quot;&gt;depends_on&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;:&lt;/span&gt;
+      &lt;span class=&quot;token punctuation&quot;&gt;-&lt;/span&gt; db&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;h2 id=&quot;links&quot;&gt;
+  &lt;a href=&quot;#links&quot;&gt;Links&lt;/a&gt;
+&lt;/h2&gt;
+&lt;h3 id=&quot;rails&quot;&gt;
+  &lt;a href=&quot;#rails&quot;&gt;Rails&lt;/a&gt;
+&lt;/h3&gt;
+&lt;p&gt;&lt;a href=&quot;https://rubyonrails.org/&quot;&gt;Ruby on Rails Homepage&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a href=&quot;https://guides.rubyonrails.org/getting_started.html&quot;&gt;Ruby on Rails Getting Started Guide&lt;/a&gt;&lt;/p&gt;
+&lt;h3 id=&quot;docker&quot;&gt;
+  &lt;a href=&quot;#docker&quot;&gt;Docker&lt;/a&gt;
+&lt;/h3&gt;
+&lt;p&gt;&lt;a href=&quot;https://docs.docker.com/compose/rails/&quot;&gt;Docker Compose with Rails&lt;/a&gt;&lt;/p&gt;
+&lt;h3 id=&quot;databases&quot;&gt;
+  &lt;a href=&quot;#databases&quot;&gt;Databases&lt;/a&gt;
+&lt;/h3&gt;
+&lt;p&gt;&lt;a href=&quot;https://www.postgresql.org/&quot;&gt;PostgresQL Homepage&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a href=&quot;https://www.sqlite.org/index.html&quot;&gt;Sqlite3 Homepage&lt;/a&gt;&lt;/p&gt;</content:encoded></item><item><title><![CDATA[Adding Emotion, Typescript, and Jest to Gatsby]]></title><description><![CDATA[Purpose The purpose of this is to detail how to add Emotion, Typescript, Jest,
 and React-testing-library to an existing project. Step by…]]></description><link>https://gatsby-starter-blog-demo.netlify.com/javascript/adding-emotion-typescript-and-jest/</link><guid isPermaLink="false">https://gatsby-starter-blog-demo.netlify.com/javascript/adding-emotion-typescript-and-jest/</guid><pubDate>Fri, 06 Mar 2020 02:17:08 GMT</pubDate><content:encoded>&lt;h2&gt;&lt;a href=&quot;#&quot;&gt;Purpose&lt;/a&gt;&lt;/h2&gt;
 &lt;p&gt;The purpose of this is to detail how to add Emotion, Typescript, Jest,
 and React-testing-library to an existing project.&lt;/p&gt;
@@ -656,7 +801,7 @@ Git (Gatsby requires Git to pull in starters)&lt;/br&gt;&lt;/p&gt;
 command &lt;code class=&quot;language-text&quot;&gt;touch&lt;/code&gt; it just means create a file and &lt;code class=&quot;language-text&quot;&gt;mkdir&lt;/code&gt; means create a directory (folder).
 Also, I wrote filepaths with Unix based OS’es in mind.&lt;/p&gt;
 &lt;h2&gt;TLDR&lt;/h2&gt;
-&lt;p&gt;For the full tutorial &lt;a href=&quot;#full-tutorial&quot;&gt;Click here&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;For the full tutorial below &lt;a href=&quot;#full-tutorial&quot;&gt;Click here&lt;/a&gt;&lt;/p&gt;
 &lt;h3&gt;For new projects&lt;/h3&gt;
 &lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;bash&quot;&gt;&lt;pre class=&quot;language-bash&quot;&gt;&lt;code class=&quot;language-bash&quot;&gt;&lt;span class=&quot;token function&quot;&gt;npm&lt;/span&gt; &lt;span class=&quot;token function&quot;&gt;install&lt;/span&gt; --global gatsby-cli
 gatsby new tailwind-gatsby-project
@@ -670,7 +815,9 @@ npx tailwind init
 &lt;span class=&quot;token function&quot;&gt;mkdir&lt;/span&gt; src/styles
 &lt;span class=&quot;token function&quot;&gt;touch&lt;/span&gt; src/styles/tailwind.css&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 &lt;/br&gt;
-&lt;p&gt;&lt;b&gt;1. Add gatsby-postcss-plugin to &lt;code class=&quot;language-text&quot;&gt;./gatsby-config.js&lt;/code&gt;&lt;/b&gt;&lt;/p&gt;
+&lt;strong&gt;
+  1. Add gatsby-postcss-plugin to `./gatsby-config.js`
+&lt;/strong&gt;
 &lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;javascript&quot;&gt;&lt;pre class=&quot;language-javascript&quot;&gt;&lt;code class=&quot;language-javascript&quot;&gt;&lt;span class=&quot;token comment&quot;&gt;// ./gatsby-config.js&lt;/span&gt;
 module&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;exports &lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;token punctuation&quot;&gt;{&lt;/span&gt;
   &lt;span class=&quot;token comment&quot;&gt;// Above code omitted for brevity&lt;/span&gt;
@@ -688,7 +835,7 @@ module&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;exports &lt;
   &lt;span class=&quot;token punctuation&quot;&gt;]&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt;
 &lt;span class=&quot;token punctuation&quot;&gt;}&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 &lt;/br&gt;
-&lt;p&gt;&lt;b&gt;2. Add the following values to &lt;code class=&quot;language-text&quot;&gt;./postcss.config.js&lt;/code&gt;&lt;/b&gt;&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;2. Add the following values to &lt;code class=&quot;language-text&quot;&gt;./postcss.config.js&lt;/code&gt;&lt;/strong&gt;&lt;/p&gt;
 &lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;javascript&quot;&gt;&lt;pre class=&quot;language-javascript&quot;&gt;&lt;code class=&quot;language-javascript&quot;&gt;&lt;span class=&quot;token comment&quot;&gt;// ./postcss.config.js&lt;/span&gt;
 
 &lt;span class=&quot;token keyword&quot;&gt;const&lt;/span&gt; tailwindcss &lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;token function&quot;&gt;require&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;token template-string&quot;&gt;&lt;span class=&quot;token template-punctuation string&quot;&gt;`&lt;/span&gt;&lt;span class=&quot;token string&quot;&gt;tailwindcss&lt;/span&gt;&lt;span class=&quot;token template-punctuation string&quot;&gt;`&lt;/span&gt;&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;
@@ -697,47 +844,47 @@ module&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;exports &lt;
   plugins&lt;span class=&quot;token operator&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;token punctuation&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;token function&quot;&gt;tailwindcss&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;token template-string&quot;&gt;&lt;span class=&quot;token template-punctuation string&quot;&gt;`&lt;/span&gt;&lt;span class=&quot;token string&quot;&gt;./tailwind.config.js&lt;/span&gt;&lt;span class=&quot;token template-punctuation string&quot;&gt;`&lt;/span&gt;&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;token function&quot;&gt;require&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;token string&quot;&gt;&quot;autoprefixer&quot;&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;]&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt;
 &lt;span class=&quot;token punctuation&quot;&gt;}&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 &lt;/br&gt;
-&lt;p&gt;&lt;b&gt;3. Add tailwindcss directives to &lt;code class=&quot;language-text&quot;&gt;./src/styles/tailwind.css&lt;/code&gt;&lt;/b&gt;&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;3. Add tailwindcss directives to &lt;code class=&quot;language-text&quot;&gt;./src/styles/tailwind.css&lt;/code&gt;&lt;/strong&gt;&lt;/p&gt;
 &lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;css&quot;&gt;&lt;pre class=&quot;language-css&quot;&gt;&lt;code class=&quot;language-css&quot;&gt;&lt;span class=&quot;token comment&quot;&gt;/* ./src/styles/tailwind.css */&lt;/span&gt;
 &lt;span class=&quot;token atrule&quot;&gt;&lt;span class=&quot;token rule&quot;&gt;@tailwind&lt;/span&gt; base
 &lt;span class=&quot;token rule&quot;&gt;@tailwind&lt;/span&gt; utilities&lt;span class=&quot;token punctuation&quot;&gt;;&lt;/span&gt;&lt;/span&gt;
 &lt;span class=&quot;token atrule&quot;&gt;&lt;span class=&quot;token rule&quot;&gt;@tailwind&lt;/span&gt; components&lt;span class=&quot;token punctuation&quot;&gt;;&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 &lt;/br&gt;
-&lt;p&gt;&lt;b&gt;4. Add tailwindcss globally by importing it in &lt;code class=&quot;language-text&quot;&gt;gatsby-browser.js&lt;/code&gt;&lt;/b&gt;&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;4. Add tailwindcss globally by importing it in &lt;code class=&quot;language-text&quot;&gt;gatsby-browser.js&lt;/code&gt;&lt;/strong&gt;&lt;/p&gt;
 &lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;javascript&quot;&gt;&lt;pre class=&quot;language-javascript&quot;&gt;&lt;code class=&quot;language-javascript&quot;&gt;&lt;span class=&quot;token comment&quot;&gt;// ./gatsby-browser.js&lt;/span&gt;
 
 &lt;span class=&quot;token keyword&quot;&gt;import&lt;/span&gt; &lt;span class=&quot;token string&quot;&gt;&quot;./src/styles/tailwind.css&quot;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 &lt;/br&gt;
-&lt;p&gt;&lt;b&gt;5. Add a tailwind style to a an item in &lt;code class=&quot;language-text&quot;&gt;./src/pages/index.js&lt;/code&gt; to test that its working&lt;/b&gt;&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;5. Add a tailwind style to a an item in &lt;code class=&quot;language-text&quot;&gt;./src/pages/index.js&lt;/code&gt; to test that its working&lt;/strong&gt;&lt;/p&gt;
 &lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;javascript&quot;&gt;&lt;pre class=&quot;language-javascript&quot;&gt;&lt;code class=&quot;language-javascript&quot;&gt;&lt;span class=&quot;token comment&quot;&gt;// ./src/pages/index.js&lt;/span&gt;
 
 &lt;span class=&quot;token comment&quot;&gt;// Above code omitted for brevity&lt;/span&gt;
 &lt;span class=&quot;token operator&quot;&gt;&amp;lt;&lt;/span&gt;h1 className&lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;token string&quot;&gt;&quot;bg-red-500&quot;&lt;/span&gt;&lt;span class=&quot;token operator&quot;&gt;&gt;&lt;/span&gt;Hi people&lt;span class=&quot;token operator&quot;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&quot;token operator&quot;&gt;/&lt;/span&gt;h1&lt;span class=&quot;token operator&quot;&gt;&gt;&lt;/span&gt;
 &lt;span class=&quot;token comment&quot;&gt;// Below code omitted for brevity&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 &lt;/br&gt;
-&lt;p&gt;&lt;b&gt;6. Start up your server&lt;/b&gt;&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;6. Start up your server&lt;/strong&gt;&lt;/p&gt;
 &lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;bash&quot;&gt;&lt;pre class=&quot;language-bash&quot;&gt;&lt;code class=&quot;language-bash&quot;&gt;gatsby develop&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 &lt;/br&gt;
-&lt;p&gt;&lt;b&gt;7. Navigate to &lt;code class=&quot;language-text&quot;&gt;localhost:8000&lt;/code&gt; to see if Tailwind is working. That’s it!&lt;/b&gt;&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;7. Navigate to &lt;code class=&quot;language-text&quot;&gt;localhost:8000&lt;/code&gt; to see if Tailwind is working. That’s it!&lt;/strong&gt;&lt;/p&gt;
 &lt;h2 id=&quot;full-tutorial&gt; Full tutorial&lt;/h2&gt;
 &lt;p&gt;If you already have a Gatsby project feel free to skip ahead to the
 &lt;a href=&quot;#adding-to-an-existing-project&quot;&gt;Adding to an existing project section&lt;/a&gt;&lt;/p&gt;
-&lt;p&gt;&lt;b&gt;1. First, start by creating a new Gatsby project. The easiest way to do so is:&lt;/b&gt;&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;1. First, start by creating a new Gatsby project. The easiest way to do so is:&lt;/strong&gt;&lt;/p&gt;
 &lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;bash&quot;&gt;&lt;pre class=&quot;language-bash&quot;&gt;&lt;code class=&quot;language-bash&quot;&gt;&lt;span class=&quot;token function&quot;&gt;npm&lt;/span&gt; &lt;span class=&quot;token function&quot;&gt;install&lt;/span&gt; --global gatsby-cli&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 &lt;/br&gt;
-&lt;p&gt;&lt;b&gt;2. Then to create a new project:&lt;/b&gt;&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;2. Then to create a new project:&lt;/strong&gt;&lt;/p&gt;
 &lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;bash&quot;&gt;&lt;pre class=&quot;language-bash&quot;&gt;&lt;code class=&quot;language-bash&quot;&gt;gatsby new tailwind-gatsby-project&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 &lt;/br&gt;
 &lt;p&gt;This will create a new Gatsby project called &lt;code class=&quot;language-text&quot;&gt;tailwind-gatsby-project&lt;/code&gt;&lt;/p&gt;
-&lt;p&gt;&lt;b&gt;3. Now, navigate into the project directory:&lt;/b&gt;&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;3. Now, navigate into the project directory:&lt;/strong&gt;&lt;/p&gt;
 &lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;bash&quot;&gt;&lt;pre class=&quot;language-bash&quot;&gt;&lt;code class=&quot;language-bash&quot;&gt;&lt;span class=&quot;token builtin class-name&quot;&gt;cd&lt;/span&gt; tailwind-gatsby-project&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 &lt;/br&gt;
 &lt;p&gt;Make sure running &lt;code class=&quot;language-text&quot;&gt;gatsby develop&lt;/code&gt; works before moving on.&lt;/p&gt;
 &lt;h2 id=&quot;adding-to-an-existing-project&quot;&gt; Adding to an existing project&lt;/h2&gt;
-&lt;p&gt;&lt;b&gt;4. Add &lt;a href=&quot;https://www.gatsbyjs.org/packages/gatsby-plugin-postcss/&quot;&gt;gatsby-plugin-postcss&lt;/a&gt; package&lt;/b&gt;&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;4. Add &lt;a href=&quot;https://www.gatsbyjs.org/packages/gatsby-plugin-postcss/&quot;&gt;gatsby-plugin-postcss&lt;/a&gt; package&lt;/strong&gt;&lt;/p&gt;
 &lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;bash&quot;&gt;&lt;pre class=&quot;language-bash&quot;&gt;&lt;code class=&quot;language-bash&quot;&gt;&lt;span class=&quot;token function&quot;&gt;npm&lt;/span&gt; &lt;span class=&quot;token function&quot;&gt;install&lt;/span&gt; gatsby-plugin-postcss&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 &lt;/br&gt;
-&lt;p&gt;&lt;b&gt;5. Add gatsby-postcss-plugin to &lt;code class=&quot;language-text&quot;&gt;gatsby-config.js&lt;/code&gt;&lt;/b&gt;&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;5. Add gatsby-postcss-plugin to &lt;code class=&quot;language-text&quot;&gt;gatsby-config.js&lt;/code&gt;&lt;/strong&gt;&lt;/p&gt;
 &lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;javascript&quot;&gt;&lt;pre class=&quot;language-javascript&quot;&gt;&lt;code class=&quot;language-javascript&quot;&gt;&lt;span class=&quot;token comment&quot;&gt;// ./gatsby-config.js&lt;/span&gt;
 module&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;exports &lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;token punctuation&quot;&gt;{&lt;/span&gt;
   &lt;span class=&quot;token comment&quot;&gt;// Above code omitted for brevity&lt;/span&gt;
@@ -755,10 +902,10 @@ module&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;exports &lt;
   &lt;span class=&quot;token punctuation&quot;&gt;]&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt;
 &lt;span class=&quot;token punctuation&quot;&gt;}&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 &lt;/br&gt;
-&lt;p&gt;&lt;b&gt;6. Create a &lt;code class=&quot;language-text&quot;&gt;postcss.config.js&lt;/code&gt; file in the root directory&lt;/b&gt;&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;6. Create a &lt;code class=&quot;language-text&quot;&gt;postcss.config.js&lt;/code&gt; file in the root directory&lt;/strong&gt;&lt;/p&gt;
 &lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;bash&quot;&gt;&lt;pre class=&quot;language-bash&quot;&gt;&lt;code class=&quot;language-bash&quot;&gt;&lt;span class=&quot;token function&quot;&gt;touch&lt;/span&gt; postcss.config.js&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 &lt;/br&gt;
-&lt;p&gt;&lt;b&gt;7. Add the following content to &lt;code class=&quot;language-text&quot;&gt;postcss.config.js&lt;/code&gt;:&lt;/b&gt;&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;7. Add the following content to &lt;code class=&quot;language-text&quot;&gt;postcss.config.js&lt;/code&gt;:&lt;/strong&gt;&lt;/p&gt;
 &lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;javascript&quot;&gt;&lt;pre class=&quot;language-javascript&quot;&gt;&lt;code class=&quot;language-javascript&quot;&gt;&lt;span class=&quot;token comment&quot;&gt;// ./postcss.config.js&lt;/span&gt;
 
 &lt;span class=&quot;token keyword&quot;&gt;const&lt;/span&gt; tailwindcss &lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;token function&quot;&gt;require&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;token template-string&quot;&gt;&lt;span class=&quot;token template-punctuation string&quot;&gt;`&lt;/span&gt;&lt;span class=&quot;token string&quot;&gt;tailwindcss&lt;/span&gt;&lt;span class=&quot;token template-punctuation string&quot;&gt;`&lt;/span&gt;&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;
@@ -767,35 +914,35 @@ module&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;exports &lt;
   plugins&lt;span class=&quot;token operator&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;token punctuation&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;token function&quot;&gt;tailwindcss&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;token template-string&quot;&gt;&lt;span class=&quot;token template-punctuation string&quot;&gt;`&lt;/span&gt;&lt;span class=&quot;token string&quot;&gt;./tailwind.config.js&lt;/span&gt;&lt;span class=&quot;token template-punctuation string&quot;&gt;`&lt;/span&gt;&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;token function&quot;&gt;require&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;token string&quot;&gt;&quot;autoprefixer&quot;&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;]&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt;
 &lt;span class=&quot;token punctuation&quot;&gt;}&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 &lt;/br&gt;
-&lt;p&gt;&lt;b&gt;8. Add the &lt;a href=&quot;https://tailwindcss.com/docs/installation&quot;&gt;TailwindCSS&lt;/a&gt; package&lt;/b&gt;&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;8. Add the &lt;a href=&quot;https://tailwindcss.com/docs/installation&quot;&gt;TailwindCSS&lt;/a&gt; package&lt;/strong&gt;&lt;/p&gt;
 &lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;bash&quot;&gt;&lt;pre class=&quot;language-bash&quot;&gt;&lt;code class=&quot;language-bash&quot;&gt;&lt;span class=&quot;token function&quot;&gt;npm&lt;/span&gt; &lt;span class=&quot;token function&quot;&gt;install&lt;/span&gt; --save-dev tailwindcss&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 &lt;/br&gt;
-&lt;p&gt;&lt;b&gt;9. Create a directory called in &lt;code class=&quot;language-text&quot;&gt;styles&lt;/code&gt; in the &lt;code class=&quot;language-text&quot;&gt;src&lt;/code&gt; directory&lt;/b&gt;&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;9. Create a directory called in &lt;code class=&quot;language-text&quot;&gt;styles&lt;/code&gt; in the &lt;code class=&quot;language-text&quot;&gt;src&lt;/code&gt; directory&lt;/strong&gt;&lt;/p&gt;
 &lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;bash&quot;&gt;&lt;pre class=&quot;language-bash&quot;&gt;&lt;code class=&quot;language-bash&quot;&gt;&lt;span class=&quot;token function&quot;&gt;mkdir&lt;/span&gt; src/styles&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 &lt;/br&gt;
-&lt;p&gt;&lt;b&gt;10. Create a stylesheet called &lt;code class=&quot;language-text&quot;&gt;tailwind.css&lt;/code&gt; in the &lt;code class=&quot;language-text&quot;&gt;src/styles&lt;/code&gt; directory&lt;/b&gt;&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;10. Create a stylesheet called &lt;code class=&quot;language-text&quot;&gt;tailwind.css&lt;/code&gt; in the &lt;code class=&quot;language-text&quot;&gt;src/styles&lt;/code&gt; directory&lt;/strong&gt;&lt;/p&gt;
 &lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;bash&quot;&gt;&lt;pre class=&quot;language-bash&quot;&gt;&lt;code class=&quot;language-bash&quot;&gt;&lt;span class=&quot;token function&quot;&gt;touch&lt;/span&gt; src/styles/tailwind.css&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 &lt;/br&gt;
-&lt;p&gt;&lt;b&gt;11. Add the following content:&lt;/b&gt;&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;11. Add the following content:&lt;/strong&gt;&lt;/p&gt;
 &lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;css&quot;&gt;&lt;pre class=&quot;language-css&quot;&gt;&lt;code class=&quot;language-css&quot;&gt;&lt;span class=&quot;token comment&quot;&gt;/* ./src/styles/tailwind.css */&lt;/span&gt;
 
 &lt;span class=&quot;token atrule&quot;&gt;&lt;span class=&quot;token rule&quot;&gt;@tailwind&lt;/span&gt; base&lt;span class=&quot;token punctuation&quot;&gt;;&lt;/span&gt;&lt;/span&gt;
 &lt;span class=&quot;token atrule&quot;&gt;&lt;span class=&quot;token rule&quot;&gt;@tailwind&lt;/span&gt; components&lt;span class=&quot;token punctuation&quot;&gt;;&lt;/span&gt;&lt;/span&gt;
 &lt;span class=&quot;token atrule&quot;&gt;&lt;span class=&quot;token rule&quot;&gt;@tailwind&lt;/span&gt; utilities&lt;span class=&quot;token punctuation&quot;&gt;;&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 &lt;/br&gt;
-&lt;p&gt;&lt;b&gt;12. To add tailwind styles globally, import it in &lt;code class=&quot;language-text&quot;&gt;gatsby-browser.js&lt;/code&gt;&lt;/b&gt;&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;12. To add tailwind styles globally, import it in &lt;code class=&quot;language-text&quot;&gt;gatsby-browser.js&lt;/code&gt;&lt;/strong&gt;&lt;/p&gt;
 &lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;javascript&quot;&gt;&lt;pre class=&quot;language-javascript&quot;&gt;&lt;code class=&quot;language-javascript&quot;&gt;&lt;span class=&quot;token keyword&quot;&gt;import&lt;/span&gt; &lt;span class=&quot;token string&quot;&gt;&quot;./src/styles/tailwind.css&quot;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 &lt;/br&gt;
 &lt;p&gt;Everything should now be working! However, we currently have no way of telling.
 Lets add a tailwind style to the index page.&lt;/p&gt;
-&lt;p&gt;&lt;b&gt;13. Add a tailwind style to the &lt;code class=&quot;language-text&quot;&gt;&amp;lt;h1&amp;gt;&amp;lt;/h1&amp;gt;&lt;/code&gt; tag in &lt;code class=&quot;language-text&quot;&gt;src/pages/index.js&lt;/code&gt;&lt;/b&gt;&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;13. Add a tailwind style to the &lt;code class=&quot;language-text&quot;&gt;&amp;lt;h1&amp;gt;&amp;lt;/h1&amp;gt;&lt;/code&gt; tag in &lt;code class=&quot;language-text&quot;&gt;src/pages/index.js&lt;/code&gt;&lt;/strong&gt;&lt;/p&gt;
 &lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;javascript&quot;&gt;&lt;pre class=&quot;language-javascript&quot;&gt;&lt;code class=&quot;language-javascript&quot;&gt;&lt;span class=&quot;token comment&quot;&gt;// ./src/pages/index.js&lt;/span&gt;
 
 &lt;span class=&quot;token comment&quot;&gt;// Above code omitted for brevity&lt;/span&gt;
 &lt;span class=&quot;token operator&quot;&gt;&amp;lt;&lt;/span&gt;h1 className&lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;token string&quot;&gt;&quot;bg-red-500&quot;&lt;/span&gt;&lt;span class=&quot;token operator&quot;&gt;&gt;&lt;/span&gt;Hi people&lt;span class=&quot;token operator&quot;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&quot;token operator&quot;&gt;/&lt;/span&gt;h1&lt;span class=&quot;token operator&quot;&gt;&gt;&lt;/span&gt;
 &lt;span class=&quot;token comment&quot;&gt;// Below code omitted for brevity&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 &lt;/br&gt;
-&lt;p&gt;&lt;b&gt;14. Run &lt;code class=&quot;language-text&quot;&gt;gatsby-develop&lt;/code&gt;&lt;/b&gt;&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;14. Run &lt;code class=&quot;language-text&quot;&gt;gatsby-develop&lt;/code&gt;&lt;/strong&gt;&lt;/p&gt;
 &lt;p&gt;You should now see a red background for the text that says “Hi people”. This
 lets you know tailwind is working as expected! Hope this worked for you getting
 TailwindCSS setup in Gatsby.&lt;/p&gt;
