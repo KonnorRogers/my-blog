@@ -203,7 +203,7 @@ Github](https://github.com/ParamagicDev/getting-started-with-rails-6/blob/prior-
 version: '3'
 services:
   db:
-    image: postgres:12
+    image: postgres:12.2
     volumes:
       - ./tmp/db:/var/lib/postgresql/data
   web:
@@ -707,7 +707,7 @@ CMD ["rails", "server", "-b", "0.0.0.0"]
 version: '3'
 services:
   db:
-    image: postgres
+    image: postgres:12.2
     volumes:
       - ./tmp/db:/var/lib/postgresql/data
   web:
