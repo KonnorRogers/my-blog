@@ -17,7 +17,8 @@ I will also be using the [Docker Quickstart with Compose and Rails
 guide](https://docs.docker.com/compose/rails/)
 
 I will also be using Docker just to provide a consistent development
-environment.
+environment. Docker is not required, I used it simply to be able to
+provide a reproducible environment.
 
 <h2 id="table-of-contents">
   <a href="#table-of-contents">
@@ -25,11 +26,19 @@ environment.
   </a>
 </h2>
 
-
 * [Prerequisites](#prerequisites)
 * [Getting Started](#getting-started)
   * [Adding a Dockerfile](#adding-a-dockerfile)
   * [Adding a Gemfile](#adding-a-gemfile)
+  * [Adding entrypoint.sh](#adding-entrypoint-sh)
+  * [Adding docker-compose.yml](#adding-docker-compose-yml)
+* [Building the Container](#building-the-container)
+  * [Create the Rails app](#create-the-rails-app)
+    * [Ownership Issues](#ownership-issues)
+  * [Reference Repository Prior to Build](#reference-prior-to-build)
+* [Starting and Stopping the Application](#starting-and-stopping)
+  * [Stopping the Application](#stopping-the-application)
+  * [Starting the Application](#starting-the-application)
 * [Links](#links)
 
 <h2 id="prerequisites">
@@ -64,16 +73,20 @@ cd getting-started-with-rails-6
   <a href="#adding-a-dockerfile">Adding a Dockerfile</a>
 </h2>
 
-The next step is to create our `Dockerfile`. This step is optional, if you
-would like to skip this step feel free.
-
+The next step is to create our `Dockerfile`.
 The below `Dockerfile` is taken from the [Docker Quickstart
 Rails](https://docs.docker.com/compose/rails/)
+
+[Reference File on
+Github](https://github.com/ParamagicDev/getting-started-with-rails-6/blob/prior-to-rails-new/Dockerfile)
 
 ```yaml
 # Dockerfile
 FROM ruby:2.5
 RUN apt-get update -qq && apt-get install -y nodejs postgresql-client
+bash curl
+
+RUN curl -o- -L https://yarnpkg.com/install.sh | bash
 RUN mkdir /myapp
 WORKDIR /myapp
 COPY Gemfile /myapp/Gemfile
@@ -101,6 +114,9 @@ of using Rails 5 we'll use Rails 6.
 
 Create a `Gemfile` with the following contents:
 
+[Reference File on
+Github](https://github.com/ParamagicDev/getting-started-with-rails-6/blob/prior-to-rails-new/Gemfile)
+
 ```ruby
 # Gemfile
 source 'https://rubygems.org'
@@ -115,8 +131,17 @@ touch Gemfile.lock
 ```
 <br />
 
+<h3 id="adding-entrypoint-sh">
+  <a href="#adding-entrypoint-sh">
+    Adding entrypoint.sh
+  </a>
+</h3>
+
 Now lets create an `entrypoint.sh` script to fix a server issue with
 Rails.
+
+[Reference File on
+Github](https://github.com/ParamagicDev/getting-started-with-rails-6/blob/prior-to-rails-new/entrypoint.sh)
 
 ```bash
 #!/bin/bash
@@ -132,13 +157,16 @@ exec "$@"
 ```
 <br />
 
-<h3 id="adding-docker-compose">
-  <a href="#adding-docker-compose">
+<h3 id="adding-docker-compose-yml">
+  <a href="#adding-docker-compose-yml">
     Adding docker-compose.yml
   </a>
 </h3>
 
 Finally, lets add a `docker-compose.yml` with the following content:
+
+[Reference File on
+Github](https://github.com/ParamagicDev/getting-started-with-rails-6/blob/prior-to-rails-new/docker-compose.yml)
 
 ```yaml
 version: '3'
@@ -159,16 +187,340 @@ services:
       - "3000:3000"
 
     environment:
-      RAILS_ENV="development"
+      - RAILS_ENV=development
 
     depends_on:
       - db
 ```
+<br />
 
+<h3 id="Prebuild directory structure">
+  <a href="#prebuild-directory-structure">
+    Prebuild Directory Structure
+  </a>
+</h3>
+
+Your directory should look as follows:
+
+```bash
+.
+├── docker-compose.yml
+├── Dockerfile
+├── entrypoint.sh
+├── Gemfile
+└── Gemfile.lock
+```
+<br />
+
+For reference, I have created a Github branch to represent the file
+structure.
+
+<h3 id="prebuild-reference-repository">
+  <a href="https://github.com/ParamagicDev/getting-started-with-rails-6/tree/prior-to-rails-new">
+    Prebuild Reference Repository Branch
+  </a>
+</h3>
+
+<h2 id="building-the-project">
+  <a href="#building-the-project">
+    Building the Project
+  </a>
+</h2>
+
+<h3 id="building-the-docker-container">
+  <a href="#building-the-docker-container">
+    Building the Docker container
+  </a>
+</h3>
+
+Next, you have to build the docker container. The easiest way to do this
+is by running the following:
+
+```bash
+docker-compose build
+```
+<br />
+
+<h3 id="create-the-rails-app">
+  <a href="create-the-rails-app">
+    Create the Rails app
+  </a>
+</h3>
+
+After building the container, now you can create the Rails app.
+
+```bash
+docker-compose run web rails new . --force --no-deps --database=postgresql
+```
+<br />
+
+This will build a fresh Rails project for you using `PostgresQL` as the
+database adapter.
+
+Your Rails directory should look as follows:
+
+```bash
+.
+├── app
+├── bin
+├── config
+├── config.ru
+├── db
+├── docker-compose.yml
+├── Dockerfile
+├── entrypoint.sh
+├── Gemfile
+├── Gemfile.lock
+├── .git
+├── .gitignore
+├── lib
+├── log
+├── node_modules
+├── package.json
+├── public
+├── Rakefile
+├── README.md
+├── .ruby-version
+├── storage
+├── test
+├── tmp
+└── vendor
+```
+<br />
+
+<h4 id="ownership-issues">
+  <a href="#ownership-issues">
+    Ownership Issues
+  </a>
+</h4>
+
+If you are on a Linux system, run the following command to
+fix ownership issues:
+
+```bash
+sudo chown -R "$USER":"$USER" .
+```
+<br />
+
+And if you're feeling real crazy, you can setup an `alias` for this
+command. I have mine called `ownthis`
+
+```bash
+alias ownthis="sudo chown -R $USER:$USER ."
+```
+<br />
+
+
+<h3 id="connecting-the-database">
+  <a href="#connecting-the-database">
+    Connecting the Database
+  </a>
+</h3>
+
+In order to connect the Database to Rails, you have to tell Rails where
+to find the database. To do so, navigate to your `config/database.yml`
+file.
+
+Delete the contents of your `config/database.yml` and add the following:
+
+```yaml
+default: &default
+  adapter: postgresql
+  encoding: unicode
+  host: db
+  username: postgres
+  password:
+  pool: 5
+
+development:
+  <<: *default
+  database: myapp_development
+
+
+test:
+  <<: *default
+  database: myapp_test
+```
+<br />
+
+Now you can boot the app using the following command:
+
+```bash
+docker-compose up
+```
+<br />
+
+There is still one more step missing. You still need to create the
+database!
+
+In another terminal run the following command:
+
+```bash
+docker-compose exec web rails db:setup
+```
+<br />
+
+Congratulations! You have finished the setup portion of the application!
+
+Now you should be able to view your app by navigating to:
+
+`localhost:3000`
+
+in your browser's address bar. You should see a message congratulating
+you for using Rails.
+
+
+<h2 id="starting-and-stopping">
+  <a href="#starting-and-stopping">
+    Starting and Stopping the Application
+  </a>
+</h2>
+
+<h3 id="stopping-the-application">
+  <a href="#stopping-the-application">
+    Stopping the application
+  </a>
+</h3>
+
+To stop the application, in another terminal simply run:
+
+```bash
+docker-compose down
+```
+<br />
+
+<h3 id="starting-the-application">
+  <a href="#starting-the-application">
+    Starting the application
+  </a>
+</h3>
+
+To start the application there are two methods.
+
+If you have added anything to the `Gemfile`, in order to sync the
+changes, you must run the following:
+
+```bash
+docker-compose run web bundle install
+docker-compose up --build
+```
+<br />
+
+If you have not changed anything `Gemfile` related but you may have
+changed the `docker-compose.yml` file, you can simply run:
+
+```bash
+docker-compose up --build
+```
+
+However, if you do not need to rebuild, you can simply run:
+
+```bash
+docker-compose up
+```
+<br />
+
+<h2 id="building-the-project">
+  <a href="#building-the-project">
+    Building the Project
+  </a>
+</h2>
+
+In an effort to keep this blog post semi-short in length, I will refer
+you to the Rails guide for this part as nothing will be difference. Once
+you're finished going through the Rails guide, come back here and we
+will deploy to Heroku!
+
+[Ruby on Rails Guide to Getting
+Started](https://guides.rubyonrails.org/getting_started.html#say-hello-rails)
+
+You can skip to section 4.2 because everything prior to that we have
+just done above.
+
+<h2 id="extra-tips">
+  <a href="#extra-tips">
+    Extra Tips
+  </a>
+</h2>
+
+As a simple way to get you going, anytime you see
+
+```bash
+rails [command]
+```
+<br />
+
+simply prepend the following: 
+
+```bash
+docker-compose exec web rails [command]
+```
+<br />
+
+`docker-compose exec` is to be run if you have a container already
+running.
+
+`docker-compose run` is to be run if you do not have a container
+running.
+
+`docker-compose run --rm` will automatically remove the docker instance
+once the command finished
+
+<h2 id="collection-of-commands">
+  <a href="#collection-of-commands">
+    Collection of Useful Docker Commands
+  </a>
+</h2>
+
+```bash
+# builds a container
+docker-compose build
+
+# starts a container thats been built (equivalent to `rails server`)
+docker-compose up
+
+# starts and builds a container
+docker-compose up --build
+
+# runs a one-off instance
+docker-compose run --rm web [command]
+
+# runs a command inside of a running container
+# `docker-compose up` needs to be running in another terminal
+docker-compose exec web [command]
+
+# stops the application
+docker-compose down
+
+# Remove orphaned containers as well
+docker-compose down --remove-orphans
+```
+
+
+
+<h2 id="deployment">
+  <a href="#deployment">
+    Deployment to Heroku
+  </a>
+</h2>
 
 <h2 id="links">
   <a href="#links">Links</a>
 </h2>
+
+
+<h3 id="source-code">
+  <a href="https://github.com/ParamagicDev/getting-started-with-rails-6/tree/master">
+    Source Code on Github
+  </a>
+</h3>
+
+<h3 id="deployed-app">
+  <a href="#todo">
+    Deployed Application
+  </a>
+</h3>
+
 
 <h3 id="rails">
   <a href="#rails">Rails</a>
@@ -191,3 +543,11 @@ services:
 [PostgresQL Homepage](https://www.postgresql.org/)
 
 [Sqlite3 Homepage](https://www.sqlite.org/index.html)
+
+<h3 id="heroku">
+  Heroku
+</h3>
+
+[Heroku Homepage](https://heroku.com)
+[Heroku with Rails
+Deployment](https://devcenter.heroku.com/articles/getting-started-with-rails6)
