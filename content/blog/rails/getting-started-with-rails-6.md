@@ -27,6 +27,7 @@ provide a reproducible environment.
 </h2>
 
 * [Prerequisites](#prerequisites)
+* [Main Technologies](#technologies)
 * [Getting Started](#getting-started)
   * [Adding a Dockerfile](#adding-a-dockerfile)
   * [Adding a Gemfile](#adding-a-gemfile)
@@ -59,11 +60,21 @@ provide a reproducible environment.
   </a>
 </h2>
 
-- Ruby >= 2.5.0
-- Rails >= 6
-- PostgresQL (or Sqlite3)
-- Docker
-- Docker Compose
+- [Docker](https://docs.docker.com/get-docker/)
+- [Docker Compose](https://docs.docker.com/compose/install/)
+
+Make sure to install both Docker and Docker Compose prior to starting
+this tutorial.
+
+<h2 id="technologies">
+  <a href="#technologies">
+    Main Technologies
+  </a>
+</h2>
+
+- Ruby 2.5.8
+- Rails 6.0.2
+- PostgresQL 11.6
 
 <h2 id="getting-started">
   <a href="#getting-started">
@@ -86,7 +97,7 @@ cd getting-started-with-rails-6
 </h3>
 
 The next step is to create our `Dockerfile`.
-The below `Dockerfile` is taken from the [Docker Quickstart
+The below `Dockerfile` is slightly modified from the [Docker Quickstart
 Rails](https://docs.docker.com/compose/rails/)
 
 [Reference File on
@@ -94,7 +105,7 @@ Github](https://github.com/ParamagicDev/getting-started-with-rails-6/blob/prior-
 
 ```yaml
 # Dockerfile
-FROM ruby:2.5
+FROM ruby:2.5.8
 
 # Adding NodeJS / Yarn
 RUN curl https://deb.nodesource.com/setup_12.x | bash
@@ -192,7 +203,7 @@ Github](https://github.com/ParamagicDev/getting-started-with-rails-6/blob/prior-
 version: '3'
 services:
   db:
-    image: postgres
+    image: postgres:12
     volumes:
       - ./tmp/db:/var/lib/postgresql/data
   web:
@@ -326,7 +337,7 @@ alias ownthis="sudo chown -R $USER:$USER ."
   </a>
 </h3>
 
-Next, you have to rebuild the docker container with the new Rails dependencies 
+Next, you have to rebuild the docker container with the new Rails dependencies
 in the Gemfile. The easiest way to do this is by running the following:
 
 ```bash
@@ -476,7 +487,7 @@ rails [command]
 ```
 <br />
 
-simply prepend the following: 
+simply prepend the following:
 
 ```bash
 docker-compose run --rm web rails [command]
@@ -658,7 +669,7 @@ touch Dockerfile docker-compose.yml entrypoint.sh Gemfile Gemfile.lock
 
 ```yaml
 # Dockerfile
-FROM ruby:2.5
+FROM ruby:2.5.8
 
 # Adding NodeJS / Yarn
 RUN curl https://deb.nodesource.com/setup_12.x | bash
