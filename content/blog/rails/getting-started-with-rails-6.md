@@ -531,6 +531,11 @@ docker-compose down
 
 # Remove orphaned containers as well
 docker-compose down --remove-orphans
+
+# run a bash instance inside of the docker-compose container
+# now you can simply run commands like `rails db:migrate` without
+# adding `docker-compose run web` before every command
+docker-compose run --rm web /bin/bash
 ```
 <br />
 
@@ -633,12 +638,10 @@ To fix the issue.
 [Docker Compose with Rails](https://docs.docker.com/compose/rails/)
 
 <h3 id="databases">
-  <a href="#databases">Databases</a>
+  <a href="#databases">PostgresQL</a>
 </h3>
 
 [PostgresQL Homepage](https://www.postgresql.org/)
-
-[Sqlite3 Homepage](https://www.sqlite.org/index.html)
 
 <h3 id="heroku">
   <a href="#heroku">
