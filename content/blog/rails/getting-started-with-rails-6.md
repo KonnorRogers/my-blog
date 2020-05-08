@@ -31,6 +31,7 @@ provide a reproducible environment.
 * [Getting Started](#getting-started)
   * [Adding a Dockerfile](#adding-a-dockerfile)
   * [Adding a Gemfile](#adding-a-gemfile)
+  * [Adding a package.json](#adding-a-package.json)
   * [Adding entrypoint.sh](#adding-entrypoint-sh)
   * [Adding docker-compose.yml](#adding-docker-compose-yml)
   * [Prebuild Directory Structure](#prebuild-directory-structure)
@@ -89,7 +90,6 @@ named mine `getting-started-with-rails-6`
 mkdir getting-started-with-rails-6
 cd getting-started-with-rails-6
 ```
-<br />
 
 
 <h3 id="adding-a-dockerfile">
@@ -108,20 +108,22 @@ Github](https://github.com/ParamagicDev/getting-started-with-rails-6/blob/prior-
 FROM ruby:2.5.8
 
 # Adding NodeJS / Yarn
-RUN curl https://deb.nodesource.com/setup_12.x | bash
-RUN curl https://dl.yarnpkg.com/debian/pubkey.gpg | apt-key add -
-RUN echo "deb https://dl.yarnpkg.com/debian/ stable main" | tee /etc/apt/sources.list.d/yarn.list
+RUN curl https://deb.nodesource.com/setup_12.x | bash \
+    && curl https://dl.yarnpkg.com/debian/pubkey.gpg | apt-key add - \
+    && echo "deb https://dl.yarnpkg.com/debian/ stable main" | tee /etc/apt/sources.list.d/yarn.list
 
 RUN apt-get update -qq && apt-get install -y \
-  postgresql-client build-essential yarn nodejs
-
+  postgresql-client build-essential yarn nodejs \
+  && rm -rf /var/lib/apt/lists/*
 
 RUN mkdir /myapp
 WORKDIR /myapp
 COPY Gemfile* /myapp/
 RUN bundle install
-COPY . /myapp
+COPY package.json /myapp/
+COPY yarn.lock /myapp/
 RUN yarn install --check-files
+COPY . .
 
 # Add a script to be executed every time the container starts.
 COPY entrypoint.sh /usr/bin/
@@ -132,7 +134,7 @@ EXPOSE 3000
 # Start the main process.
 CMD ["rails", "server", "-b", "0.0.0.0"]
 ```
-<br />
+
 
 <h3 id="adding-a-gemfile">
   <a href="#adding-a-gemfile">
@@ -153,14 +155,56 @@ Github](https://github.com/ParamagicDev/getting-started-with-rails-6/blob/prior-
 source 'https://rubygems.org'
 gem 'rails', '~> 6'
 ```
-<br />
+
 
 Then add an empty `Gemfile.lock`
 
 ```bash
 touch Gemfile.lock
 ```
-<br />
+
+<h3 id="adding-a-package-json">
+  <a href="#adding-a-package-json">
+    Adding a package.json
+  </a>
+</h3>
+
+There are a few options to generate your `package.json`
+
+The first is to run:
+
+```bash
+yarn init --yes
+```
+
+which will auto generate a `package.json` for you.
+
+Optionally, you can run:
+
+```bash
+yarn init
+```
+
+And answer the questions provided.
+
+If you do not have yarn on your machine, you can simply copy my `package.json`
+
+```json
+// package.json
+{
+  "name": "practice-rails-6",
+  "version": "1.0.0",
+  "main": "index.js",
+  "license": "MIT"
+}
+```
+
+Also, add an empty `yarn.lock` because Rails uses yarn by default.
+
+```bash
+touch yarn.lock
+```
+
 
 <h3 id="adding-entrypoint-sh">
   <a href="#adding-entrypoint-sh">
@@ -186,7 +230,7 @@ rm -f /myapp/tmp/pids/server.pid
 # Then exec the container's main process (what's set as CMD in the Dockerfile).
 exec "$@"
 ```
-<br />
+
 
 <h3 id="adding-docker-compose-yml">
   <a href="#adding-docker-compose-yml">
@@ -200,12 +244,16 @@ Finally, lets add a `docker-compose.yml` with the following content:
 Github](https://github.com/ParamagicDev/getting-started-with-rails-6/blob/prior-to-rails-new/docker-compose.yml)
 
 ```yaml
+# docker-compose.yml
+
 version: '3'
 services:
   db:
     image: postgres:12.2
     volumes:
       - ./tmp/db:/var/lib/postgresql/data
+    environment:
+      - POSTGRES_PASSWORD=example
   web:
     build: .
     command: bash -c "rm -f tmp/pids/server.pid && bundle exec rails s -p 3000 -b '0.0.0.0'"
@@ -218,12 +266,27 @@ services:
       - "3000:3000"
 
     environment:
+      - POSTGRES_PASSWORD=example
       - RAILS_ENV=development
+      - WEBPACKER_DEV_SERVER_HOST=webpacker
 
     depends_on:
       - db
+      - webpacker
+
+  webpacker:
+    build: .
+    environment:
+      - NODE_ENV=development
+      - RAILS_ENV=development
+      - WEBPACKER_DEV_SERVER_HOST=0.0.0.0
+    command: "./bin/webpack-dev-server --hot --port 3035"
+    volumes:
+      - .:/webpacker
+    ports:
+      - "3035:3035"
 ```
-<br />
+
 
 <h3 id="prebuild-directory-structure">
   <a href="#prebuild-directory-structure">
@@ -239,18 +302,21 @@ Your directory should look as follows:
 ├── Dockerfile
 ├── entrypoint.sh
 ├── Gemfile
-└── Gemfile.lock
+├── Gemfile.lock
+├── package.json
+└── yarn.lock
 ```
-<br />
+
 
 For reference, I have created a Github branch to represent the file
 structure.
 
-<h3 id="prebuild-reference-repository">
+<h3 style="margin-top: 0" id="prebuild-reference-repository">
   <a href="https://github.com/ParamagicDev/getting-started-with-rails-6/tree/prior-to-rails-new">
     Prebuild Reference Repository Branch
   </a>
 </h3>
+
 <br />
 
 <h2 id="building-the-project">
@@ -273,7 +339,7 @@ directory.
 ```bash
 docker-compose run web rails new . --force --no-deps --database=postgresql
 ```
-<br />
+
 
 This will build a fresh Rails project for you using `PostgresQL` as the
 database adapter.
@@ -283,7 +349,9 @@ Your Rails directory should look as follows:
 ```bash
 .
 ├── app
+├── babel.config.js
 ├── bin
+├── .browserslistrc
 ├── config
 ├── config.ru
 ├── db
@@ -298,6 +366,7 @@ Your Rails directory should look as follows:
 ├── log
 ├── node_modules
 ├── package.json
+├── postcss.config.js
 ├── public
 ├── Rakefile
 ├── README.md
@@ -305,9 +374,10 @@ Your Rails directory should look as follows:
 ├── storage
 ├── test
 ├── tmp
-└── vendor
+├── vendor
+└── yarn.lock
 ```
-<br />
+
 
 <h4 id="ownership-issues">
   <a href="#ownership-issues">
@@ -321,7 +391,7 @@ fix ownership issues:
 ```bash
 sudo chown -R "$USER":"$USER" .
 ```
-<br />
+
 
 And if you're feeling real crazy, you can setup an `alias` for this
 command. I have mine called `ownthis`
@@ -329,7 +399,7 @@ command. I have mine called `ownthis`
 ```bash
 alias ownthis="sudo chown -R $USER:$USER ."
 ```
-<br />
+
 
 <h3 id="building-the-docker-container">
   <a href="#building-the-docker-container">
@@ -343,7 +413,7 @@ in the Gemfile. The easiest way to do this is by running the following:
 ```bash
 docker-compose build
 ```
-<br />
+
 
 <h3 id="installing-webpacker">
   <a href="#installing-webpacker">
@@ -358,7 +428,7 @@ To do so, run the following command:
 ```bash
 docker-compose run --rm web rails webpacker:install
 ```
-<br />
+
 
 Now you have `Webpacker` enabled in your Rails app!
 
@@ -375,12 +445,14 @@ file.
 Delete the contents of your `config/database.yml` and add the following:
 
 ```yaml
+# config/database.yml
+
 default: &default
   adapter: postgresql
   encoding: unicode
   host: db
   username: postgres
-  password:
+  password: <%= ENV['POSTGRES_PASSWORD'] %>
   pool: 5
 
 development:
@@ -391,15 +463,20 @@ development:
 test:
   <<: *default
   database: myapp_test
+
+
+test:
+  <<: *default
+  database: myapp_test
 ```
-<br />
+
 
 Now you can boot the app using the following command:
 
 ```bash
 docker-compose up
 ```
-<br />
+
 
 There is still one more step missing. You still need to create the
 database! You have told Rails 'how' to create the database, but you have
@@ -411,7 +488,7 @@ server, run the following command:
 ```bash
 docker-compose run --rm web rails db:migrate
 ```
-<br />
+
 
 Congratulations! You have finished the setup portion of the application!
 
@@ -440,7 +517,7 @@ To stop the application, in another terminal simply run:
 ```bash
 docker-compose down
 ```
-<br />
+
 
 <h3 id="starting-the-application">
   <a href="#starting-the-application">
@@ -457,7 +534,7 @@ changes, you must run the following:
 docker-compose run web bundle install
 docker-compose up --build
 ```
-<br />
+
 
 If you have not changed anything `Gemfile` related but you may have
 changed the `docker-compose.yml` file, you can simply run:
@@ -465,14 +542,14 @@ changed the `docker-compose.yml` file, you can simply run:
 ```bash
 docker-compose up --build
 ```
-<br />
+
 
 However, if you do not need to rebuild, you can simply run:
 
 ```bash
 docker-compose up
 ```
-<br />
+
 
 <h2 id="extra-tips">
   <a href="#extra-tips">
@@ -485,14 +562,14 @@ As a simple way to get you going, anytime you see
 ```bash
 rails [command]
 ```
-<br />
+
 
 simply prepend the following:
 
 ```bash
 docker-compose run --rm web rails [command]
 ```
-<br />
+
 
 `docker-compose exec` is to be run if you have a container already
 running.
@@ -537,7 +614,7 @@ docker-compose down --remove-orphans
 # adding `docker-compose run web` before every command
 docker-compose run --rm web /bin/bash
 ```
-<br />
+
 
 
 <h2 id="adding-additional-functionality">
@@ -574,7 +651,7 @@ Problems with ownership?
 ```bash
 sudo chown -R "$USER":"$USER" .
 ```
-<br />
+
 
 Things not working as expected?
 
@@ -582,7 +659,7 @@ Things not working as expected?
 docker-compose down --remove-orphans
 docker-compose up --build
 ```
-<br />
+
 
 Tired of the `yarn install --check-files` issues?
 Disable it!
@@ -666,29 +743,31 @@ This will move quickly and is meant more as a reference.
 ```bash
 mkdir -p new-rails-app
 cd new-rails-app
-touch Dockerfile docker-compose.yml entrypoint.sh Gemfile Gemfile.lock
+touch Dockerfile docker-compose.yml entrypoint.sh Gemfile Gemfile.lock yarn.lock package.json
 ```
-<br />
+
 
 ```yaml
 # Dockerfile
 FROM ruby:2.5.8
 
 # Adding NodeJS / Yarn
-RUN curl https://deb.nodesource.com/setup_12.x | bash
-RUN curl https://dl.yarnpkg.com/debian/pubkey.gpg | apt-key add -
-RUN echo "deb https://dl.yarnpkg.com/debian/ stable main" | tee /etc/apt/sources.list.d/yarn.list
+RUN curl https://deb.nodesource.com/setup_12.x | bash \
+    && curl https://dl.yarnpkg.com/debian/pubkey.gpg | apt-key add - \
+    && echo "deb https://dl.yarnpkg.com/debian/ stable main" | tee /etc/apt/sources.list.d/yarn.list
 
 RUN apt-get update -qq && apt-get install -y \
-  postgresql-client build-essential yarn nodejs
-
+  postgresql-client build-essential yarn nodejs \
+  && rm -rf /var/lib/apt/lists/*
 
 RUN mkdir /myapp
 WORKDIR /myapp
 COPY Gemfile* /myapp/
 RUN bundle install
-COPY . /myapp
+COPY package.json /myapp/
+COPY yarn.lock /myapp/
 RUN yarn install --check-files
+COPY . .
 
 # Add a script to be executed every time the container starts.
 COPY entrypoint.sh /usr/bin/
@@ -699,7 +778,7 @@ EXPOSE 3000
 # Start the main process.
 CMD ["rails", "server", "-b", "0.0.0.0"]
 ```
-<br />
+
 
 ```yaml
 # docker-compose.yml
@@ -710,6 +789,8 @@ services:
     image: postgres:12.2
     volumes:
       - ./tmp/db:/var/lib/postgresql/data
+    environment:
+      - POSTGRES_PASSWORD=example
   web:
     build: .
     command: bash -c "rm -f tmp/pids/server.pid && bundle exec rails s -p 3000 -b '0.0.0.0'"
@@ -722,12 +803,27 @@ services:
       - "3000:3000"
 
     environment:
+      - POSTGRES_PASSWORD=example
       - RAILS_ENV=development
+      - WEBPACKER_DEV_SERVER_HOST=webpacker
 
     depends_on:
       - db
+      - webpacker
+
+  webpacker:
+    build: .
+    environment:
+      - NODE_ENV=development
+      - RAILS_ENV=development
+      - WEBPACKER_DEV_SERVER_HOST=0.0.0.0
+    command: "./bin/webpack-dev-server --hot --port 3035"
+    volumes:
+      - .:/webpacker
+    ports:
+      - "3035:3035"
 ```
-<br />
+
 
 ```bash
 #!/bin/bash
@@ -741,7 +837,7 @@ rm -f /myapp/tmp/pids/server.pid
 # Then exec the container's main process (what's set as CMD in the Dockerfile).
 exec "$@"
 ```
-<br />
+
 
 ```ruby
 # Gemfile
@@ -749,28 +845,39 @@ exec "$@"
 source 'https://rubygems.org'
 gem 'rails', '~> 6'
 ```
-<br />
+
+
+```json
+// package.json
+{
+  "name": "practice-rails-6",
+  "version": "1.0.0",
+  "main": "index.js",
+  "license": "MIT"
+}
+```
+
 
 After setting up the above files, then run:
 
 ```bash
 docker-compose run web rails new . --force --no-deps --database=postgresql
 ```
-<br />
+
 
 Now run:
 
 ```bash
 docker-compose build
 ```
-<br />
+
 
 After building the image, then install webpacker:
 
 ```bash
 docker-compose run --rm web rails webpacker:install
 ```
-<br />
+
 
 This will provide you with a base for webpacker.
 
@@ -784,7 +891,7 @@ default: &default
   encoding: unicode
   host: db
   username: postgres
-  password:
+  password: <%= ENV['POSTGRES_PASSWORD'] %>
   pool: 5
 
 development:
@@ -795,21 +902,26 @@ development:
 test:
   <<: *default
   database: myapp_test
+
+
+test:
+  <<: *default
+  database: myapp_test
 ```
-<br />
+
 
 Next connect the database.
 
 ```bash
 docker-compose run --rm web rails db:migrate
 ```
-<br />
+
 
 Finally, start the app:
 
 ```bash
 docker-compose up
 ```
-<br />
+
 
 Now you can view it on `localhost:3000`
