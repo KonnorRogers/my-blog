@@ -31,7 +31,7 @@ provide a reproducible environment.
 * [Getting Started](#getting-started)
   * [Adding a Dockerfile](#adding-a-dockerfile)
   * [Adding a Gemfile](#adding-a-gemfile)
-  * [Adding a package.json](#adding-a-package.json)
+  * [Adding a package.json](#adding-a-package-json)
   * [Adding entrypoint.sh](#adding-entrypoint-sh)
   * [Adding docker-compose.yml](#adding-docker-compose-yml)
   * [Prebuild Directory Structure](#prebuild-directory-structure)
@@ -66,6 +66,16 @@ provide a reproducible environment.
 
 Make sure to install both Docker and Docker Compose prior to starting
 this tutorial.
+
+To verify run the following:
+
+```bash
+docker -v
+# Docker version 19.03.8
+
+docker-compose -v
+# docker-compose version 1.25.0
+```
 
 <h2 id="technologies">
   <a href="#technologies">
@@ -486,6 +496,7 @@ In another terminal with the other terminal still running your rails
 server, run the following command:
 
 ```bash
+docker-compose run --rm web rails db:create
 docker-compose run --rm web rails db:migrate
 ```
 
@@ -494,10 +505,15 @@ Congratulations! You have finished the setup portion of the application!
 
 Now you should be able to view your app by navigating to:
 
-`localhost:3000`
+`localhost:3000` in your browser's address bar.
 
-in your browser's address bar. You should see a message congratulating
-you for using Rails.
+You should see a message congratulating you for using Rails.
+
+<h3 style="margin-top: 0;" id="prior-to-adding-functionality-branch">
+  <a href="https://github.com/ParamagicDev/getting-started-with-rails-6/tree/prior-to-adding-functionality">
+    Github Branch Prior to adding additional functionality
+  </a>
+<h3>
 
 
 <h2 id="starting-and-stopping">
@@ -910,7 +926,13 @@ test:
 ```
 
 
-Next connect the database.
+Next create the database.
+
+```bash
+docker-compose run --rm web rails db:create
+```
+
+Now migrate the database.
 
 ```bash
 docker-compose run --rm web rails db:migrate
