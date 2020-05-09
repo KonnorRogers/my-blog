@@ -4,7 +4,7 @@ module.exports = {
     title: `Konnor's Blog`,
     author: `Konnor Rogers`,
     description: `A blog documentating my various processes`,
-    siteUrl: `https://gatsby-starter-blog-demo.netlify.com/`,
+    siteUrl: `https://paramagicdev.github.io/my-blog`,
   },
   plugins: [
     {

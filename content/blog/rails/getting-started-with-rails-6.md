@@ -26,34 +26,34 @@ provide a reproducible environment.
   </a>
 </h2>
 
-* [Prerequisites](#prerequisites)
-* [Main Technologies](#technologies)
-* [Getting Started](#getting-started)
-  * [Adding a Dockerfile](#adding-a-dockerfile)
-  * [Adding a Gemfile](#adding-a-gemfile)
-  * [Adding a package.json](#adding-a-package.json)
-  * [Adding entrypoint.sh](#adding-entrypoint-sh)
-  * [Adding docker-compose.yml](#adding-docker-compose-yml)
-  * [Prebuild Directory Structure](#prebuild-directory-structure)
-  * [Prebuild Reference Repository](#prebuild-reference-repository)
-* [Building the Project](#building-the-project)
-  * [Create the Rails app](#create-the-rails-app)
-    * [Ownership Issues](#ownership-issues)
-  * [Building the Docker Container](#building-the-docker-container)
-  * [Installing Webpacker](#installing-webpacker)
-  * [Connecting the Database](#connecting-the-database)
-* [Starting and Stopping the Application](#starting-and-stopping)
-  * [Stopping the Application](#stopping-the-application)
-  * [Starting the Application](#starting-the-application)
-* [Extra Tips](#extra-tips)
-* [Useful Commands](#useful-commands)
-* [Adding additional functionality](#adding-additional-functionality)
-* [Deployment](#deployment)
-* [Issues](#issues)
-* [Links](#links)
-  * [Github Source Code](#source-code)
-  * [Deployed app on Heroku](#deployed-app)
-* [I know what I'm doing](#i-know-what-im-doing)
+- [Prerequisites](#prerequisites)
+- [Main Technologies](#technologies)
+- [Getting Started](#getting-started)
+  - [Adding a Dockerfile](#adding-a-dockerfile)
+  - [Adding a Gemfile](#adding-a-gemfile)
+  - [Adding a package.json](#adding-a-package.json)
+  - [Adding entrypoint.sh](#adding-entrypoint-sh)
+  - [Adding docker-compose.yml](#adding-docker-compose-yml)
+  - [Prebuild Directory Structure](#prebuild-directory-structure)
+  - [Prebuild Reference Repository](#prebuild-reference-repository)
+- [Building the Project](#building-the-project)
+  - [Create the Rails app](#create-the-rails-app)
+    - [Ownership Issues](#ownership-issues)
+  - [Building the Docker Container](#building-the-docker-container)
+  - [Installing Webpacker](#installing-webpacker)
+  - [Connecting the Database](#connecting-the-database)
+- [Starting and Stopping the Application](#starting-and-stopping)
+  - [Stopping the Application](#stopping-the-application)
+  - [Starting the Application](#starting-the-application)
+- [Extra Tips](#extra-tips)
+- [Useful Commands](#useful-commands)
+- [Adding additional functionality](#adding-additional-functionality)
+- [Deployment](#deployment)
+- [Issues](#issues)
+- [Links](#links)
+  - [Github Source Code](#source-code)
+  - [Deployed app on Heroku](#deployed-app)
+- [I know what I'm doing](#i-know-what-im-doing)
 
 <h2 id="prerequisites">
   <a href="#prerequisites">
@@ -90,7 +90,6 @@ named mine `getting-started-with-rails-6`
 mkdir getting-started-with-rails-6
 cd getting-started-with-rails-6
 ```
-
 
 <h3 id="adding-a-dockerfile">
   <a href="#adding-a-dockerfile">Adding a Dockerfile</a>
@@ -135,7 +134,6 @@ EXPOSE 3000
 CMD ["rails", "server", "-b", "0.0.0.0"]
 ```
 
-
 <h3 id="adding-a-gemfile">
   <a href="#adding-a-gemfile">
     Adding a Gemfile
@@ -155,7 +153,6 @@ Github](https://github.com/ParamagicDev/getting-started-with-rails-6/blob/prior-
 source 'https://rubygems.org'
 gem 'rails', '~> 6'
 ```
-
 
 Then add an empty `Gemfile.lock`
 
@@ -205,7 +202,6 @@ Also, add an empty `yarn.lock` because Rails uses yarn by default.
 touch yarn.lock
 ```
 
-
 <h3 id="adding-entrypoint-sh">
   <a href="#adding-entrypoint-sh">
     Adding entrypoint.sh
@@ -231,7 +227,6 @@ rm -f /myapp/tmp/pids/server.pid
 exec "$@"
 ```
 
-
 <h3 id="adding-docker-compose-yml">
   <a href="#adding-docker-compose-yml">
     Adding docker-compose.yml
@@ -246,7 +241,7 @@ Github](https://github.com/ParamagicDev/getting-started-with-rails-6/blob/prior-
 ```yaml
 # docker-compose.yml
 
-version: '3'
+version: "3"
 services:
   db:
     image: postgres:12.2
@@ -287,7 +282,6 @@ services:
       - "3035:3035"
 ```
 
-
 <h3 id="prebuild-directory-structure">
   <a href="#prebuild-directory-structure">
     Prebuild Directory Structure
@@ -307,7 +301,6 @@ Your directory should look as follows:
 └── yarn.lock
 ```
 
-
 For reference, I have created a Github branch to represent the file
 structure.
 
@@ -325,7 +318,6 @@ structure.
   </a>
 </h2>
 
-
 <h3 id="create-the-rails-app">
   <a href="create-the-rails-app">
     Create the Rails app
@@ -339,7 +331,6 @@ directory.
 ```bash
 docker-compose run web rails new . --force --no-deps --database=postgresql
 ```
-
 
 This will build a fresh Rails project for you using `PostgresQL` as the
 database adapter.
@@ -378,7 +369,6 @@ Your Rails directory should look as follows:
 └── yarn.lock
 ```
 
-
 <h4 id="ownership-issues">
   <a href="#ownership-issues">
     Ownership Issues
@@ -392,14 +382,12 @@ fix ownership issues:
 sudo chown -R "$USER":"$USER" .
 ```
 
-
 And if you're feeling real crazy, you can setup an `alias` for this
 command. I have mine called `ownthis`
 
 ```bash
 alias ownthis="sudo chown -R $USER:$USER ."
 ```
-
 
 <h3 id="building-the-docker-container">
   <a href="#building-the-docker-container">
@@ -414,7 +402,6 @@ in the Gemfile. The easiest way to do this is by running the following:
 docker-compose build
 ```
 
-
 <h3 id="installing-webpacker">
   <a href="#installing-webpacker">
     Installing Webpacker
@@ -428,7 +415,6 @@ To do so, run the following command:
 ```bash
 docker-compose run --rm web rails webpacker:install
 ```
-
 
 Now you have `Webpacker` enabled in your Rails app!
 
@@ -470,13 +456,11 @@ test:
   database: myapp_test
 ```
 
-
 Now you can boot the app using the following command:
 
 ```bash
 docker-compose up
 ```
-
 
 There is still one more step missing. You still need to create the
 database! You have told Rails 'how' to create the database, but you have
@@ -489,7 +473,6 @@ server, run the following command:
 docker-compose run --rm web rails db:migrate
 ```
 
-
 Congratulations! You have finished the setup portion of the application!
 
 Now you should be able to view your app by navigating to:
@@ -498,7 +481,6 @@ Now you should be able to view your app by navigating to:
 
 in your browser's address bar. You should see a message congratulating
 you for using Rails.
-
 
 <h2 id="starting-and-stopping">
   <a href="#starting-and-stopping">
@@ -518,7 +500,6 @@ To stop the application, in another terminal simply run:
 docker-compose down
 ```
 
-
 <h3 id="starting-the-application">
   <a href="#starting-the-application">
     Starting the application
@@ -535,7 +516,6 @@ docker-compose run web bundle install
 docker-compose up --build
 ```
 
-
 If you have not changed anything `Gemfile` related but you may have
 changed the `docker-compose.yml` file, you can simply run:
 
@@ -543,13 +523,11 @@ changed the `docker-compose.yml` file, you can simply run:
 docker-compose up --build
 ```
 
-
 However, if you do not need to rebuild, you can simply run:
 
 ```bash
 docker-compose up
 ```
-
 
 <h2 id="extra-tips">
   <a href="#extra-tips">
@@ -563,13 +541,11 @@ As a simple way to get you going, anytime you see
 rails [command]
 ```
 
-
 simply prepend the following:
 
 ```bash
 docker-compose run --rm web rails [command]
 ```
-
 
 `docker-compose exec` is to be run if you have a container already
 running.
@@ -615,8 +591,6 @@ docker-compose down --remove-orphans
 docker-compose run --rm web /bin/bash
 ```
 
-
-
 <h2 id="adding-additional-functionality">
   <a href="#adding-additional-functionality">
     Adding additional functionality
@@ -652,7 +626,6 @@ Problems with ownership?
 sudo chown -R "$USER":"$USER" .
 ```
 
-
 Things not working as expected?
 
 ```bash
@@ -660,16 +633,15 @@ docker-compose down --remove-orphans
 docker-compose up --build
 ```
 
-
 Tired of the `yarn install --check-files` issues?
 Disable it!
 
 ```yaml
 # config/webpacker.yml
 
-  # ...
-  check_yarn_integrity: false
-  # ...
+# ...
+check_yarn_integrity: false
+# ...
 ```
 
 Alternatively, run:
@@ -680,10 +652,13 @@ docker-compose run --rm web yarn install --check-files
 
 To fix the issue.
 
+No space left on device??
+
+[https://success.docker.com/article/error-message-no-space-left-on-device-in-default-machine](https://success.docker.com/article/error-message-no-space-left-on-device-in-default-machine)
+
 <h2 id="links">
   <a href="#links">Links</a>
 </h2>
-
 
 <h3 id="source-code">
   <a href="https://github.com/ParamagicDev/getting-started-with-rails-6/tree/master">
@@ -696,7 +671,6 @@ To fix the issue.
     Deployed Application
   </a>
 </h3>
-
 
 <h3 id="rails">
   <a href="#rails">Rails</a>
@@ -746,7 +720,6 @@ cd new-rails-app
 touch Dockerfile docker-compose.yml entrypoint.sh Gemfile Gemfile.lock yarn.lock package.json
 ```
 
-
 ```yaml
 # Dockerfile
 FROM ruby:2.5.8
@@ -779,11 +752,10 @@ EXPOSE 3000
 CMD ["rails", "server", "-b", "0.0.0.0"]
 ```
 
-
 ```yaml
 # docker-compose.yml
 
-version: '3'
+version: "3"
 services:
   db:
     image: postgres:12.2
@@ -824,7 +796,6 @@ services:
       - "3035:3035"
 ```
 
-
 ```bash
 #!/bin/bash
 # entrypoint.sh
@@ -838,14 +809,12 @@ rm -f /myapp/tmp/pids/server.pid
 exec "$@"
 ```
 
-
 ```ruby
 # Gemfile
 
 source 'https://rubygems.org'
 gem 'rails', '~> 6'
 ```
-
 
 ```json
 // package.json
@@ -857,13 +826,11 @@ gem 'rails', '~> 6'
 }
 ```
 
-
 After setting up the above files, then run:
 
 ```bash
 docker-compose run web rails new . --force --no-deps --database=postgresql
 ```
-
 
 Now run:
 
@@ -871,13 +838,11 @@ Now run:
 docker-compose build
 ```
 
-
 After building the image, then install webpacker:
 
 ```bash
 docker-compose run --rm web rails webpacker:install
 ```
-
 
 This will provide you with a base for webpacker.
 
@@ -909,19 +874,16 @@ test:
   database: myapp_test
 ```
 
-
 Next connect the database.
 
 ```bash
 docker-compose run --rm web rails db:migrate
 ```
 
-
 Finally, start the app:
 
 ```bash
 docker-compose up
 ```
-
 
 Now you can view it on `localhost:3000`
