@@ -589,6 +589,9 @@ docker-compose down --remove-orphans
 # now you can simply run commands like `rails db:migrate` without
 # adding `docker-compose run web` before every command
 docker-compose run --rm web /bin/bash
+
+# Things are totally jacked up? Remove all images and containers.
+docker rm $(docker ps -q -a) -f && docker rmi $(docker images -q) -f
 ```
 
 <h2 id="adding-additional-functionality">
