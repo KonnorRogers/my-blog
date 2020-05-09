@@ -34,8 +34,11 @@ provide a reproducible environment.
   - [Adding a package.json](#adding-a-package.json)
   - [Adding entrypoint.sh](#adding-entrypoint-sh)
   - [Adding docker-compose.yml](#adding-docker-compose-yml)
+  - [Adding a .env file](#adding-a-dot-env-file)
   - [Prebuild Directory Structure](#prebuild-directory-structure)
   - [Prebuild Reference Repository](#prebuild-reference-repository)
+  - [Postbuild Directory Structure](#postbuild-directory-structure)
+  - [Postbuild Reference Repository](#postbuild-reference-repository)
 - [Building the Project](#building-the-project)
   - [Create the Rails app](#create-the-rails-app)
     - [Ownership Issues](#ownership-issues)
@@ -96,43 +99,74 @@ cd getting-started-with-rails-6
 </h3>
 
 The next step is to create our `Dockerfile`.
-The below `Dockerfile` is slightly modified from the [Docker Quickstart
+The below `Dockerfile` is modified from the [Docker Quickstart
 Rails](https://docs.docker.com/compose/rails/)
 
-[Reference File on
-Github](https://github.com/ParamagicDev/getting-started-with-rails-6/blob/prior-to-rails-new/Dockerfile)
 
 ```yaml
 # Dockerfile
-FROM ruby:2.5.8
+# Pre setup stuff
+FROM ruby:2.5.8 as builder
 
-# Adding NodeJS / Yarn
+# Add Yarn to the repository
 RUN curl https://deb.nodesource.com/setup_12.x | bash \
     && curl https://dl.yarnpkg.com/debian/pubkey.gpg | apt-key add - \
     && echo "deb https://dl.yarnpkg.com/debian/ stable main" | tee /etc/apt/sources.list.d/yarn.list
 
+# Install system dependencies & clean them up
 RUN apt-get update -qq && apt-get install -y \
   postgresql-client build-essential yarn nodejs \
   && rm -rf /var/lib/apt/lists/*
 
-RUN mkdir /myapp
-WORKDIR /myapp
-COPY Gemfile* /myapp/
-RUN bundle install
-COPY package.json /myapp/
-COPY yarn.lock /myapp/
-RUN yarn install --check-files
-COPY . .
 
-# Add a script to be executed every time the container starts.
+# This is where we build the rails app
+FROM builder as rails-app
+
+# This is to fix an issue on Linux with permissions issues
+ARG USER_ID=1000
+ARG GROUP_ID=1000
+
+# Create a non-root user
+RUN groupadd --gid $GROUP_ID user
+RUN useradd --no-log-init --uid $USER_ID --gid $GROUP_ID user --create-home
+
+# Remove existing running server
 COPY entrypoint.sh /usr/bin/
 RUN chmod +x /usr/bin/entrypoint.sh
-ENTRYPOINT ["entrypoint.sh"]
+
+RUN mkdir -p /myapp && mkdir -p /myapp/tmp/db
+WORKDIR /myapp
+
+# Install rails related dependencies
+COPY Gemfile* /myapp/
+COPY package.json /myapp/
+COPY yarn.lock /myapp/
+
+
+RUN chown --changes --silent --no-dereference --recursive \
+    --from=0:0 ${USER_ID}:${GROUP_ID} \
+      /myapp
+
+# Define the user running the container
+USER user
+
+RUN bundle install
+RUN yarn install --check-files
+
+# Copy over all files
+COPY --chown=${USER_ID}:${GROUP_ID} . .
+
+ENTRYPOINT ["/usr/bin/entrypoint.sh"]
+
+# Allow access to port 3000
 EXPOSE 3000
 
 # Start the main process.
 CMD ["rails", "server", "-b", "0.0.0.0"]
 ```
+
+[Reference File on
+Github](https://github.com/ParamagicDev/getting-started-with-rails-6/blob/prior-to-rails-new/Dockerfile)
 
 <h3 id="adding-a-gemfile">
   <a href="#adding-a-gemfile">
@@ -145,14 +179,14 @@ of using Rails 5 we'll use Rails 6.
 
 Create a `Gemfile` with the following contents:
 
-[Reference File on
-Github](https://github.com/ParamagicDev/getting-started-with-rails-6/blob/prior-to-rails-new/Gemfile)
 
 ```ruby
 # Gemfile
 source 'https://rubygems.org'
 gem 'rails', '~> 6'
 ```
+
+[Reference File on Github](https://github.com/ParamagicDev/getting-started-with-rails-6/blob/prior-to-rails-new/Gemfile)
 
 Then add an empty `Gemfile.lock`
 
@@ -166,25 +200,8 @@ touch Gemfile.lock
   </a>
 </h3>
 
-There are a few options to generate your `package.json`
-
-The first is to run:
-
-```bash
-yarn init --yes
-```
-
-which will auto generate a `package.json` for you.
-
-Optionally, you can run:
-
-```bash
-yarn init
-```
-
-And answer the questions provided.
-
-If you do not have yarn on your machine, you can simply copy my `package.json`
+There are a few options to generate your `package.json` so lets keep it
+simple, create a file with the following settings:
 
 ```json
 // package.json
@@ -195,6 +212,9 @@ If you do not have yarn on your machine, you can simply copy my `package.json`
   "license": "MIT"
 }
 ```
+
+[Reference File on
+Github](https://github.com/ParamagicDev/getting-started-with-rails-6/blob/prior-to-rails-new/package.json)
 
 Also, add an empty `yarn.lock` because Rails uses yarn by default.
 
@@ -282,6 +302,35 @@ services:
       - "3035:3035"
 ```
 
+<h3 id="adding-a-dot-env-file">
+  <a href="#adding-a-dot-env-file">
+    Adding a .env file
+  </a>
+</h3>
+
+```
+# .env
+
+# Fixing permissions issues on Linux
+# Find this by running: echo $(id -u $USER)
+USER_ID=1000
+
+# Find this by running: echo $(id -g $USER)
+GROUP_ID=1000
+
+# Postgres
+POSTGRES_USER=user
+POSTGRES_PASSWORD=example
+
+# Rails, Node, Webpacker
+NODE_ENV=development
+RAILS_ENV=development
+WEBPACKER_DEV_SERVER_HOST=0.0.0.0
+```
+
+[Reference File on
+Github](https://github.com/ParamagicDev/getting-started-with-rails-6/blob/prior-to-rails-new/.env)
+
 <h3 id="prebuild-directory-structure">
   <a href="#prebuild-directory-structure">
     Prebuild Directory Structure
@@ -295,9 +344,12 @@ Your directory should look as follows:
 ├── docker-compose.yml
 ├── Dockerfile
 ├── entrypoint.sh
+├── .env
 ├── Gemfile
 ├── Gemfile.lock
+├── .git
 ├── package.json
+├── README.md
 └── yarn.lock
 ```
 
@@ -329,11 +381,17 @@ structure. To do so, run the command below inside of your Rails project
 directory.
 
 ```bash
-docker-compose run web rails new . --force --no-deps --database=postgresql
+docker-compose run --rm --no-deps web rails new . --force --no-deps --database=postgresql
 ```
 
 This will build a fresh Rails project for you using `PostgresQL` as the
 database adapter.
+
+<h3 id="postbuild-directory-structure">
+  <a href="#postbuild-directory-structure">
+    Postbuild Directory Structure
+  </a>
+</h3>
 
 Your Rails directory should look as follows:
 
@@ -345,17 +403,16 @@ Your Rails directory should look as follows:
 ├── .browserslistrc
 ├── config
 ├── config.ru
-├── db
 ├── docker-compose.yml
 ├── Dockerfile
 ├── entrypoint.sh
+├── .env
 ├── Gemfile
 ├── Gemfile.lock
 ├── .git
 ├── .gitignore
 ├── lib
 ├── log
-├── node_modules
 ├── package.json
 ├── postcss.config.js
 ├── public
@@ -368,6 +425,12 @@ Your Rails directory should look as follows:
 ├── vendor
 └── yarn.lock
 ```
+
+<h3 style="margin-top: 0" id="postbuild-reference-repository">
+  <a href="https://github.com/ParamagicDev/getting-started-with-rails-6/tree/before-making-blog">
+    Directory Structure after Rails new
+  </a>
+</h3>
 
 <h4 id="ownership-issues">
   <a href="#ownership-issues">
@@ -437,19 +500,13 @@ default: &default
   adapter: postgresql
   encoding: unicode
   host: db
-  username: postgres
+  username: <%= ENV['POSTGRES_USER'] %>
   password: <%= ENV['POSTGRES_PASSWORD'] %>
   pool: 5
 
 development:
   <<: *default
   database: myapp_development
-
-
-test:
-  <<: *default
-  database: myapp_test
-
 
 test:
   <<: *default
@@ -467,9 +524,10 @@ database! You have told Rails 'how' to create the database, but you have
 not explicitly told Rails to 'create' the database.
 
 In another terminal with the other terminal still running your rails
-server, run the following command:
+server, run the following commands:
 
 ```bash
+docker-compose run --rm web rails db:create
 docker-compose run --rm web rails db:migrate
 ```
 
