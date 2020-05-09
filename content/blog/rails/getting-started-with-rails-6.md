@@ -480,7 +480,9 @@ Now you should be able to view your app by navigating to:
 `localhost:3000`
 
 in your browser's address bar. You should see a message congratulating
-you for using Rails.
+you for using Rails. It should look like the following:
+
+![You're on Rails 6](../../assets/youre-on-rails.png)
 
 <h2 id="starting-and-stopping">
   <a href="#starting-and-stopping">
@@ -591,6 +593,7 @@ docker-compose down --remove-orphans
 docker-compose run --rm web /bin/bash
 
 # Things are totally jacked up? Remove all images and containers.
+# https://stackoverflow.com/questions/50090012/how-do-i-run-rails-in-docker-pgconnectionbad-could-not-translate-host-name-p
 docker rm $(docker ps -q -a) -f && docker rmi $(docker images -q) -f
 ```
 
