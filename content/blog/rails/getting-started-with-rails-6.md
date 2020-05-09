@@ -45,11 +45,12 @@ provide a reproducible environment.
   - [Building the Docker Container](#building-the-docker-container)
   - [Installing Webpacker](#installing-webpacker)
   - [Connecting the Database](#connecting-the-database)
-- [Starting and Stopping the Application](#starting-and-stopping)
+- [Using Docker](#using-docker)
   - [Stopping the Application](#stopping-the-application)
   - [Starting the Application](#starting-the-application)
-- [Extra Tips](#extra-tips)
-- [Useful Commands](#useful-commands)
+  - [Extra Tips](#extra-tips)
+  - [Useful Commands](#useful-commands)
+
 - [Adding additional functionality](#adding-additional-functionality)
 - [Deployment](#deployment)
 - [Issues](#issues)
@@ -542,9 +543,9 @@ you for using Rails. It should look like the following:
 
 ![You're on Rails 6](../../assets/youre-on-rails.png)
 
-<h2 id="starting-and-stopping">
-  <a href="#starting-and-stopping">
-    Starting and Stopping the Application
+<h2 id="using-docker">
+  <a href="#using-docker">
+    Using Docker
   </a>
 </h2>
 
