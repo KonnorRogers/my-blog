@@ -34,7 +34,7 @@ provide a reproducible environment.
   - [Adding a package.json](#adding-a-package.json)
   - [Adding entrypoint.sh](#adding-entrypoint-sh)
   - [Adding docker-compose.yml](#adding-docker-compose-yml)
-  - [Adding a .env file](#adding-a-dot-env-file)
+  - [Adding a .env.development file](#adding-a-dot-env-file)
   - [Adding a .dockerignore file](#adding-a-dot-docker-ignore-file)
   - [Prebuild Directory Structure](#prebuild-directory-structure)
   - [Prebuild Reference Repository](#prebuild-reference-repository)
@@ -289,14 +289,14 @@ version: '3'
 services:
   db:
     env_file:
-      - ./.env
+      - ./.env.development
     image: postgres:12.2
     volumes:
       - ./tmp/data:/var/lib/postgresql/data
 
   web:
     env_file:
-      - ./.env
+      - ./.env.development
     user: ${USER_ID:-1000}:${GROUP_ID:-1000}
     build:
       context: .
@@ -318,17 +318,19 @@ services:
       - db
 ```
 
-<h3 id="adding-a-dot-env-file">
-  <a href="#adding-a-dot-env-file">
-    Adding a .env file
-  </a>
-</h3>
-
 [Reference File on
 Github](https://github.com/ParamagicDev/getting-started-with-rails-6/blob/prior-to-rails-new/docker-compose.yml)
 
+
+<h3 id="adding-a-dot-env-file">
+  <a href="#adding-a-dot-env-file">
+    Adding a .env.development file
+  </a>
+</h3>
+
+
 ```
-# .env
+# .env.development
 
 # Fixing permissions issues on Linux
 # Find this by running: echo $(id -u $USER)
@@ -352,7 +354,7 @@ WEBPACKER_DEV_SERVER_HOST=0.0.0.0
 ```
 
 [Reference File on
-Github](https://github.com/ParamagicDev/getting-started-with-rails-6/blob/prior-to-rails-new/.env)
+Github](https://github.com/ParamagicDev/getting-started-with-rails-6/blob/prior-to-rails-new/.env.development)
 
 <h3 id="adding-a-dot-docker-ignore-file">
   <a href="#adding-a-dot-docker-ignore-file">
@@ -416,7 +418,7 @@ Your directory should look as follows:
 ├── .dockerignore
 ├── Dockerfile
 ├── entrypoint.sh
-├── .env
+├── .env.development
 ├── Gemfile
 ├── Gemfile.lock
 ├── package.json
@@ -477,7 +479,7 @@ Your Rails directory should look as follows:
 ├── .dockerignore
 ├── Dockerfile
 ├── entrypoint.sh
-├── .env
+├── .env.development
 ├── Gemfile
 ├── Gemfile.lock
 ├── .git
@@ -930,14 +932,14 @@ version: '3'
 services:
   db:
     env_file:
-      - ./.env
+      - ./.env.development
     image: postgres:12.2
     volumes:
       - ./tmp/data:/var/lib/postgresql/data
 
   web:
     env_file:
-      - ./.env
+      - ./.env.development
     user: ${USER_ID:-1000}:${GROUP_ID:-1000}
     build:
       context: .
@@ -990,7 +992,7 @@ gem 'rails', '~> 6'
 ```
 
 ```bash
-# .env
+# .env.development
 
 # Fixing permissions issues on Linux
 # Find this by running: echo $(id -u $USER)
