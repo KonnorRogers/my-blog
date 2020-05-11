@@ -117,31 +117,75 @@ Rails](https://docs.docker.com/compose/rails/)
 ```yaml
 # Dockerfile
 
-FROM ruby:2.5.8
+# Pre setup stuff
+FROM ruby:2.5.8 as builder
 
-# Adding NodeJS / Yarn
+# Add Yarn to the repository
 RUN curl https://deb.nodesource.com/setup_12.x | bash \
     && curl https://dl.yarnpkg.com/debian/pubkey.gpg | apt-key add - \
     && echo "deb https://dl.yarnpkg.com/debian/ stable main" | tee /etc/apt/sources.list.d/yarn.list
 
+# Install system dependencies & clean them up
 RUN apt-get update -qq && apt-get install -y \
   postgresql-client build-essential yarn nodejs \
   && rm -rf /var/lib/apt/lists/*
 
-RUN mkdir /myapp
-WORKDIR /myapp
-COPY Gemfile* /myapp/
-RUN bundle install
-COPY package.json /myapp/
-COPY yarn.lock /myapp/
-RUN yarn install --check-files
-COPY . .
+# This is where we build the rails app
+FROM builder as rails-app
 
-# Add a script to be executed every time the container starts.
+# Allow access to port 3000
+EXPOSE 3000
+
+# This is to fix an issue on Linux with permissions issues
+ARG USER_ID=1000
+ARG GROUP_ID=1000
+
+# Create a non-root user
+RUN groupadd --gid $GROUP_ID user
+RUN useradd --no-log-init --uid $USER_ID --gid $GROUP_ID user --create-home
+
+# Remove existing running server
 COPY entrypoint.sh /usr/bin/
 RUN chmod +x /usr/bin/entrypoint.sh
-ENTRYPOINT ["entrypoint.sh"]
-EXPOSE 3000
+
+ENV APP_DIR /home/user/myapp
+
+# Permissions crap
+RUN mkdir -p $APP_DIR
+RUN chown -R $USER_ID:$GROUP_ID $APP_DIR
+
+# Define the user running the container
+USER $USER_ID:$GROUP_ID
+
+
+# Workaround for permissions
+# RUN mkdir -p $APP_DIR/public/packs && \
+#     mkdir -p $APP_DIR/tmp/db && \
+#     mkdir -p $APP_DIR/tmp/cache && \
+#     mkdir -p $APP_DIR/node_modules && \
+#     mkdir -p $APP_DIR/log && \
+#     mkdir -p $APP_DIR/storage && \
+#     mkdir -p /usr/local/bundle
+
+
+WORKDIR $APP_DIR
+
+# Install rails related dependencies
+COPY --chown=$USER_ID:$GROUP_ID Gemfile* $APP_DIR/
+
+# For webpacker / node_modules
+COPY --chown=$USER_ID:$GROUP_ID package.json $APP_DIR
+COPY --chown=$USER_ID:$GROUP_ID yarn.lock $APP_DIR
+
+RUN bundle install
+
+# Copy over all files
+COPY --chown=$USER_ID:$GROUP_ID . .
+
+RUN yarn install --check-files
+
+
+ENTRYPOINT ["/usr/bin/entrypoint.sh"]
 
 # Start the main process.
 CMD ["rails", "server", "-b", "0.0.0.0"]
@@ -248,7 +292,7 @@ services:
       - ./.env
     image: postgres:12.2
     volumes:
-      - db_data:/var/lib/postgresql/data
+      - ./tmp/data:/var/lib/postgresql/data
 
   web:
     env_file:
@@ -272,9 +316,6 @@ services:
 
     depends_on:
       - db
-
-volumes:
-  db_data:
 ```
 
 <h3 id="adding-a-dot-env-file">
@@ -297,7 +338,7 @@ USER_ID=1000
 GROUP_ID=1000
 
 # where you have your directory in your Dockerfile
-APP_DIR=/myapp
+APP_DIR=/home/user/myapp
 
 # Postgres
 POSTGRES_USER=user
@@ -839,41 +880,42 @@ RUN useradd --no-log-init --uid $USER_ID --gid $GROUP_ID user --create-home
 COPY entrypoint.sh /usr/bin/
 RUN chmod +x /usr/bin/entrypoint.sh
 
-ENV APP_DIR /myapp/
+ENV APP_DIR /home/user/myapp
+
+# Permissions crap
+RUN mkdir -p $APP_DIR
+RUN chown -R $USER_ID:$GROUP_ID $APP_DIR
+
+# Define the user running the container
+USER $USER_ID:$GROUP_ID
+
 
 # Workaround for permissions
-RUN mkdir -p $APP_DIR/public/packs && \
-    mkdir -p $APP_DIR/tmp/db && \
-    mkdir -p $APP_DIR/tmp/cache && \
-    mkdir -p $APP_DIR/node_modules && \
-    mkdir -p $APP_DIR/log && \
-    mkdir -p $APP_DIR/storage && \
-    mkdir -p /usr/local/bundle
+# RUN mkdir -p $APP_DIR/public/packs && \
+#     mkdir -p $APP_DIR/tmp/db && \
+#     mkdir -p $APP_DIR/tmp/cache && \
+#     mkdir -p $APP_DIR/node_modules && \
+#     mkdir -p $APP_DIR/log && \
+#     mkdir -p $APP_DIR/storage && \
+#     mkdir -p /usr/local/bundle
 
 
 WORKDIR $APP_DIR
 
 # Install rails related dependencies
-COPY Gemfile* $APP_DIR
+COPY --chown=$USER_ID:$GROUP_ID Gemfile* $APP_DIR/
 
 # For webpacker / node_modules
-COPY package.json $APP_DIR
-COPY yarn.lock $APP_DIR
+COPY --chown=$USER_ID:$GROUP_ID package.json $APP_DIR
+COPY --chown=$USER_ID:$GROUP_ID yarn.lock $APP_DIR
 
 RUN bundle install
-RUN chown -R $USER_ID:$GROUP_ID /usr/local/bundle/cache
-
 
 # Copy over all files
-COPY . .
-
-# Permissions crap
-RUN chown -R $USER_ID:$GROUP_ID $APP_DIR
+COPY --chown=$USER_ID:$GROUP_ID . .
 
 RUN yarn install --check-files
 
-# Define the user running the container
-USER $USER_ID:$GROUP_ID
 
 ENTRYPOINT ["/usr/bin/entrypoint.sh"]
 
@@ -891,7 +933,7 @@ services:
       - ./.env
     image: postgres:12.2
     volumes:
-      - db_data:/var/lib/postgresql/data
+      - ./tmp/data:/var/lib/postgresql/data
 
   web:
     env_file:
@@ -915,9 +957,6 @@ services:
 
     depends_on:
       - db
-
-volumes:
-  db_data:
 ```
 
 ```bash
@@ -949,6 +988,31 @@ gem 'rails', '~> 6'
   "license": "MIT"
 }
 ```
+
+```bash
+# .env
+
+# Fixing permissions issues on Linux
+# Find this by running: echo $(id -u $USER)
+USER_ID=1000
+
+# Find this by running: echo $(id -g $USER)
+GROUP_ID=1000
+
+# where you have your directory in your Dockerfile
+APP_DIR=/home/user/myapp
+
+# Postgres
+POSTGRES_USER=user
+POSTGRES_PASSWORD=example
+
+# Rails, Node, Webpacker
+NODE_ENV=development
+RAILS_ENV=development
+WEBPACKER_DEV_SERVER_HOST=0.0.0.0
+
+```
+
 
 ```bash
 # .dockerignore
