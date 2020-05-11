@@ -295,6 +295,8 @@ services:
       GROUP_ID: 1000
       #### END FOR LINUX USERS
 
+      APP_DIR: /home/user/myapp
+
       # Rails, Node, Webpacker
       NODE_ENV: development
       RAILS_ENV: development
@@ -902,6 +904,8 @@ services:
       # found by running $(id -g $USER)
       GROUP_ID: 1000
       #### END FOR LINUX USERS
+
+      APP_DIR: /home/user/myapp
 
       # Rails, Node, Webpacker
       NODE_ENV: development
