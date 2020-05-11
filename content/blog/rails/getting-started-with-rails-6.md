@@ -7,14 +7,16 @@ description: A guide to getting setup with Rails 6 using Docker
 ## Purpose
 
 The purpose of this is to have a reusable source for setting up a Rails
-project.
+6 project.
 
-I will be following the [Getting Started with Rails
+I will be using the [Getting Started with Rails
 Guide](https://guides.rubyonrails.org/getting_started.html) to setup a
 new Rails projects.
 
-I will also be using the [Docker Quickstart with Compose and Rails
-guide](https://docs.docker.com/compose/rails/)
+Initially I used [Docker Quickstart with Compose and Rails
+guide](https://docs.docker.com/compose/rails/) but quickly realized I
+had other needs for Rails 6. My docker setup is the result of multiple
+resources.
 
 I will also be using Docker just to provide a consistent development
 environment. Docker is not required, I used it simply to be able to
@@ -97,6 +99,9 @@ docker-compose -v
   </a>
 </h2>
 
+If you don't want any explanations, skip to the [I know what I'm doing](#i-know-what-im-doing)
+sections of this post.
+
 Alright first lets create our directory where we want the Rails app. I
 named mine `getting-started-with-rails-6`
 
@@ -156,17 +161,6 @@ RUN chown -R $USER_ID:$GROUP_ID $APP_DIR
 
 # Define the user running the container
 USER $USER_ID:$GROUP_ID
-
-
-# Workaround for permissions
-# RUN mkdir -p $APP_DIR/public/packs && \
-#     mkdir -p $APP_DIR/tmp/db && \
-#     mkdir -p $APP_DIR/tmp/cache && \
-#     mkdir -p $APP_DIR/node_modules && \
-#     mkdir -p $APP_DIR/log && \
-#     mkdir -p $APP_DIR/storage && \
-#     mkdir -p /usr/local/bundle
-
 
 WORKDIR $APP_DIR
 
@@ -890,17 +884,6 @@ RUN chown -R $USER_ID:$GROUP_ID $APP_DIR
 
 # Define the user running the container
 USER $USER_ID:$GROUP_ID
-
-
-# Workaround for permissions
-# RUN mkdir -p $APP_DIR/public/packs && \
-#     mkdir -p $APP_DIR/tmp/db && \
-#     mkdir -p $APP_DIR/tmp/cache && \
-#     mkdir -p $APP_DIR/node_modules && \
-#     mkdir -p $APP_DIR/log && \
-#     mkdir -p $APP_DIR/storage && \
-#     mkdir -p /usr/local/bundle
-
 
 WORKDIR $APP_DIR
 
