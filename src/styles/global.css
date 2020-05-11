@@ -2,10 +2,30 @@
   margin-bottom: 3.5rem;
 }
 
-.gatsby-code-button-container {}
-.gatsby-code-button {}
-.gatsby-code-button-icon {}
-.gatsby-code-button-toaster {}
+.gatsby-code-button-container {
+  top: 3.75rem;
+  right: 1rem;
+}
+.gatsby-code-button {
+  filter: invert(1);
+}
+.gatsby-code-button[data-tooltip]:after {
+  font-size: .75rem;
+  top: -5px;
+  right: 2rem;
+}
+
+.gatsby-code-button-icon {
+}
+.gatsby-code-button-toaster {
+  margin: auto;
+  min-width: 15rem;
+  width: 20%;
+
+}
 .gatsby-code-button-toaster-text {
-  font-size: 1rem;
+  font-size: 1.25rem;
+  background: slategray;
+  border-radius: 1rem;
+  color: white;
 }

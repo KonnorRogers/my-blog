@@ -37,7 +37,6 @@ module.exports = {
             resolve: `gatsby-remark-code-buttons`,
             options: {
               buttonContainerClass: `customButtonContainerClass`,
-              buttonText: `copy`,
               tooltipText: `Copy to clipboard`,
               toasterText: "Copied to clipboard!",
               toasterDuration: 5000,

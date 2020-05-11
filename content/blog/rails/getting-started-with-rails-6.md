@@ -35,6 +35,7 @@ provide a reproducible environment.
   - [Adding entrypoint.sh](#adding-entrypoint-sh)
   - [Adding docker-compose.yml](#adding-docker-compose-yml)
   - [Adding a .env file](#adding-a-dot-env-file)
+  - [Adding a .dockerignore file](#adding-a-dot-docker-ignore-file)
   - [Prebuild Directory Structure](#prebuild-directory-structure)
   - [Prebuild Reference Repository](#prebuild-reference-repository)
   - [Postbuild Directory Structure](#postbuild-directory-structure)
@@ -43,7 +44,6 @@ provide a reproducible environment.
   - [Create the Rails app](#create-the-rails-app)
     - [Ownership Issues](#ownership-issues)
   - [Building the Docker Container](#building-the-docker-container)
-  - [Installing Webpacker](#installing-webpacker)
   - [Connecting the Database](#connecting-the-database)
 - [Using Docker](#using-docker)
   - [Stopping the Application](#stopping-the-application)
@@ -116,62 +116,32 @@ Rails](https://docs.docker.com/compose/rails/)
 
 ```yaml
 # Dockerfile
-# Pre setup stuff
-FROM ruby:2.5.8 as builder
 
-# Add Yarn to the repository
+FROM ruby:2.5.8
+
+# Adding NodeJS / Yarn
 RUN curl https://deb.nodesource.com/setup_12.x | bash \
     && curl https://dl.yarnpkg.com/debian/pubkey.gpg | apt-key add - \
     && echo "deb https://dl.yarnpkg.com/debian/ stable main" | tee /etc/apt/sources.list.d/yarn.list
 
-# Install system dependencies & clean them up
 RUN apt-get update -qq && apt-get install -y \
   postgresql-client build-essential yarn nodejs \
   && rm -rf /var/lib/apt/lists/*
 
-# This is where we build the rails app
-FROM builder as rails-app
-
-# Allow access to port 3000
-EXPOSE 3000
-
-# This is to fix an issue on Linux with permissions issues
-ARG USER_ID=1000
-ARG GROUP_ID=1000
-
-# Create a non-root user
-RUN groupadd --gid $GROUP_ID user
-RUN useradd --no-log-init --uid $USER_ID --gid $GROUP_ID user --create-home
-
-# Remove existing running server
-COPY entrypoint.sh /usr/bin/
-RUN chmod +x /usr/bin/entrypoint.sh
-
-ENV APP_DIR /myapp/
-
-RUN mkdir -p $APP_DIR
-WORKDIR $APP_DIR
-
-# Install rails related dependencies
-COPY Gemfile* $APP_DIR
-
-# For webpacker / node_modules
-COPY package.json $APP_DIR
-COPY yarn.lock $APP_DIR
-
+RUN mkdir /myapp
+WORKDIR /myapp
+COPY Gemfile* /myapp/
 RUN bundle install
-
-# Copy over all files
+COPY package.json /myapp/
+COPY yarn.lock /myapp/
+RUN yarn install --check-files
 COPY . .
 
-# Permissions crap
-RUN chown -R $USER_ID:$GROUP_ID $APP_DIR
-RUN yarn install --check-files
-
-# Define the user running the container
-USER $USER_ID:$GROUP_ID
-
-ENTRYPOINT ["/usr/bin/entrypoint.sh"]
+# Add a script to be executed every time the container starts.
+COPY entrypoint.sh /usr/bin/
+RUN chmod +x /usr/bin/entrypoint.sh
+ENTRYPOINT ["entrypoint.sh"]
+EXPOSE 3000
 
 # Start the main process.
 CMD ["rails", "server", "-b", "0.0.0.0"]
@@ -242,8 +212,6 @@ touch yarn.lock
 Now lets create an `entrypoint.sh` script to fix a server issue with
 Rails.
 
-[Reference File on
-Github](https://github.com/ParamagicDev/getting-started-with-rails-6/blob/prior-to-rails-new/entrypoint.sh)
 
 ```bash
 #!/bin/bash
@@ -258,6 +226,9 @@ rm -f /myapp/tmp/pids/server.pid
 exec "$@"
 ```
 
+[Reference File on
+Github](https://github.com/ParamagicDev/getting-started-with-rails-6/blob/prior-to-rails-new/entrypoint.sh)
+
 <h3 id="adding-docker-compose-yml">
   <a href="#adding-docker-compose-yml">
     Adding docker-compose.yml
@@ -266,8 +237,6 @@ exec "$@"
 
 Finally, lets add a `docker-compose.yml` with the following content:
 
-[Reference File on
-Github](https://github.com/ParamagicDev/getting-started-with-rails-6/blob/prior-to-rails-new/docker-compose.yml)
 
 ```yaml
 # docker-compose.yml
@@ -296,10 +265,6 @@ services:
                       bundle exec rails server -p 3000 -b '0.0.0.0'"
     volumes:
       - .:${APP_DIR}
-      - tmp:${APP_DIR}/tmp
-      - node_modules:${APP_DIR}/node_modules
-      - public:${APP_DIR}/public
-      - packs:${APP_DIR}/public/packs
 
     ports:
       - "3000:3000"
@@ -310,10 +275,6 @@ services:
 
 volumes:
   db_data:
-  tmp:
-  node_modules:
-  public:
-  packs:
 ```
 
 <h3 id="adding-a-dot-env-file">
@@ -321,6 +282,9 @@ volumes:
     Adding a .env file
   </a>
 </h3>
+
+[Reference File on
+Github](https://github.com/ParamagicDev/getting-started-with-rails-6/blob/prior-to-rails-new/docker-compose.yml)
 
 ```
 # .env
@@ -349,6 +313,54 @@ WEBPACKER_DEV_SERVER_HOST=0.0.0.0
 [Reference File on
 Github](https://github.com/ParamagicDev/getting-started-with-rails-6/blob/prior-to-rails-new/.env)
 
+<h3 id="adding-a-dot-docker-ignore-file">
+  <a href="#adding-a-dot-docker-ignore-file">
+    Adding a .dockerignore file
+  </a>
+</h3>
+
+The `.dockerignore` file will closely resemble the `.gitignore` from a
+new rails app.
+
+Create a `.dockerignore` file with the following contents:
+
+```bash
+# .dockerignore
+
+# Ignore bundler config.
+/.bundle
+
+# Ignore all logfiles and tempfiles.
+/log/*
+/tmp/*
+!/log/.keep
+!/tmp/.keep
+
+# Ignore pidfiles, but keep the directory.
+/tmp/pids/*
+!/tmp/pids/
+!/tmp/pids/.keep
+
+# Ignore uploaded files in development.
+/storage/*
+!/storage/.keep
+
+/public/assets
+.byebug_history
+
+# Ignore master key for decrypting credentials and more.
+/config/master.key
+
+/public/packs
+/public/packs-test
+/node_modules
+/yarn-error.log
+yarn-debug.log*
+```
+
+[Reference File on
+Github](https://github.com/ParamagicDev/getting-started-with-rails-6/blob/prior-to-rails-new/.dockerignore)
+
 <h3 id="prebuild-directory-structure">
   <a href="#prebuild-directory-structure">
     Prebuild Directory Structure
@@ -360,6 +372,7 @@ Your directory should look as follows:
 ```bash
 .
 ├── docker-compose.yml
+├── .dockerignore
 ├── Dockerfile
 ├── entrypoint.sh
 ├── .env
@@ -420,6 +433,7 @@ Your Rails directory should look as follows:
 ├── config
 ├── config.ru
 ├── docker-compose.yml
+├── .dockerignore
 ├── Dockerfile
 ├── entrypoint.sh
 ├── .env
@@ -454,8 +468,8 @@ Your Rails directory should look as follows:
   </a>
 </h4>
 
-If you are on a Linux system, run the following command to
-fix ownership issues:
+You may run into ownership issues on Linux. I did my best to fix this.
+In case anything still lingers, run the following:
 
 ```bash
 sudo chown -R "$USER":"$USER" .
@@ -480,22 +494,6 @@ in the Gemfile. The easiest way to do this is by running the following:
 ```bash
 docker-compose build
 ```
-
-<h3 id="installing-webpacker">
-  <a href="#installing-webpacker">
-    Installing Webpacker
-  </a>
-</h3>
-
-Rails 6 comes bundled with Webpacker by default. As a result we need to
-install webpacker since this is our first time running it on this repo.
-To do so, run the following command:
-
-```bash
-docker-compose run --rm web rails webpacker:install
-```
-
-Now you have `Webpacker` enabled in your Rails app!
 
 <h3 id="connecting-the-database">
   <a href="#connecting-the-database">
@@ -558,7 +556,7 @@ You should see a message congratulating you for using Rails.
 ![You're on Rails 6](assets/youre-on-rails.png)
 
 <h3 style="margin-top: 0;" id="prior-to-adding-functionality-branch">
-  <a href="https://github.com/ParamagicDev/getting-started-with-rails-6/tree/prior-to-adding-functionality">
+  <a href="https://github.com/ParamagicDev/getting-started-with-rails-6/tree/prior-to-adding-stuff">
     Github Branch Prior to adding additional functionality
   </a>
 <h3>
@@ -803,36 +801,81 @@ This will move quickly and is meant more as a reference.
 ```bash
 mkdir -p new-rails-app
 cd new-rails-app
-touch Dockerfile docker-compose.yml entrypoint.sh Gemfile Gemfile.lock yarn.lock package.json
+touch Dockerfile docker-compose.yml entrypoint.sh \
+      Gemfile Gemfile.lock yarn.lock package.json \
+      .dockerignore
 ```
 
 ```yaml
 # Dockerfile
-FROM ruby:2.5.8
+# Pre setup stuff
+FROM ruby:2.5.8 as builder
 
-# Adding NodeJS / Yarn
+# Add Yarn to the repository
 RUN curl https://deb.nodesource.com/setup_12.x | bash \
     && curl https://dl.yarnpkg.com/debian/pubkey.gpg | apt-key add - \
     && echo "deb https://dl.yarnpkg.com/debian/ stable main" | tee /etc/apt/sources.list.d/yarn.list
 
+# Install system dependencies & clean them up
 RUN apt-get update -qq && apt-get install -y \
   postgresql-client build-essential yarn nodejs \
   && rm -rf /var/lib/apt/lists/*
 
-RUN mkdir /myapp
-WORKDIR /myapp
-COPY Gemfile* /myapp/
-RUN bundle install
-COPY package.json /myapp/
-COPY yarn.lock /myapp/
-RUN yarn install --check-files
-COPY . .
+# This is where we build the rails app
+FROM builder as rails-app
 
-# Add a script to be executed every time the container starts.
+# Allow access to port 3000
+EXPOSE 3000
+
+# This is to fix an issue on Linux with permissions issues
+ARG USER_ID=1000
+ARG GROUP_ID=1000
+
+# Create a non-root user
+RUN groupadd --gid $GROUP_ID user
+RUN useradd --no-log-init --uid $USER_ID --gid $GROUP_ID user --create-home
+
+# Remove existing running server
 COPY entrypoint.sh /usr/bin/
 RUN chmod +x /usr/bin/entrypoint.sh
-ENTRYPOINT ["entrypoint.sh"]
-EXPOSE 3000
+
+ENV APP_DIR /myapp/
+
+# Workaround for permissions
+RUN mkdir -p $APP_DIR/public/packs && \
+    mkdir -p $APP_DIR/tmp/db && \
+    mkdir -p $APP_DIR/tmp/cache && \
+    mkdir -p $APP_DIR/node_modules && \
+    mkdir -p $APP_DIR/log && \
+    mkdir -p $APP_DIR/storage && \
+    mkdir -p /usr/local/bundle
+
+
+WORKDIR $APP_DIR
+
+# Install rails related dependencies
+COPY Gemfile* $APP_DIR
+
+# For webpacker / node_modules
+COPY package.json $APP_DIR
+COPY yarn.lock $APP_DIR
+
+RUN bundle install
+RUN chown -R $USER_ID:$GROUP_ID /usr/local/bundle/cache
+
+
+# Copy over all files
+COPY . .
+
+# Permissions crap
+RUN chown -R $USER_ID:$GROUP_ID $APP_DIR
+
+RUN yarn install --check-files
+
+# Define the user running the container
+USER $USER_ID:$GROUP_ID
+
+ENTRYPOINT ["/usr/bin/entrypoint.sh"]
 
 # Start the main process.
 CMD ["rails", "server", "-b", "0.0.0.0"]
@@ -841,45 +884,40 @@ CMD ["rails", "server", "-b", "0.0.0.0"]
 ```yaml
 # docker-compose.yml
 
-version: "3"
+version: '3'
 services:
   db:
+    env_file:
+      - ./.env
     image: postgres:12.2
     volumes:
-      - ./tmp/db:/var/lib/postgresql/data
-    environment:
-      - POSTGRES_PASSWORD=example
-  web:
-    build: .
-    command: bash -c "rm -f tmp/pids/server.pid && bundle exec rails s -p 3000 -b '0.0.0.0'"
+      - db_data:/var/lib/postgresql/data
 
+  web:
+    env_file:
+      - ./.env
+    user: ${USER_ID:-1000}:${GROUP_ID:-1000}
+    build:
+      context: .
+      args:
+        GROUP_ID: ${GROUP_ID:-1000}
+        USER_ID: ${USER_ID:-1000}
+
+    command: bash -c "rm -f tmp/pids/server.pid &&
+                      ./bin/webpack-dev-server --hot --port 3035 &
+                      bundle exec rails server -p 3000 -b '0.0.0.0'"
     volumes:
-      - .:/myapp
-      - /myapp/node_modules
+      - .:${APP_DIR}
 
     ports:
       - "3000:3000"
-
-    environment:
-      - POSTGRES_PASSWORD=example
-      - RAILS_ENV=development
-      - WEBPACKER_DEV_SERVER_HOST=webpacker
+      - "3035:3035"
 
     depends_on:
       - db
-      - webpacker
 
-  webpacker:
-    build: .
-    environment:
-      - NODE_ENV=development
-      - RAILS_ENV=development
-      - WEBPACKER_DEV_SERVER_HOST=0.0.0.0
-    command: "./bin/webpack-dev-server --hot --port 3035"
-    volumes:
-      - .:/webpacker
-    ports:
-      - "3035:3035"
+volumes:
+  db_data:
 ```
 
 ```bash
@@ -912,10 +950,46 @@ gem 'rails', '~> 6'
 }
 ```
 
+```bash
+# .dockerignore
+
+# .dockerignore
+
+# Ignore bundler config.
+/.bundle
+
+# Ignore all logfiles and tempfiles.
+/log/*
+/tmp/*
+!/log/.keep
+!/tmp/.keep
+
+# Ignore pidfiles, but keep the directory.
+/tmp/pids/*
+!/tmp/pids/
+!/tmp/pids/.keep
+
+# Ignore uploaded files in development.
+/storage/*
+!/storage/.keep
+
+/public/assets
+.byebug_history
+
+# Ignore master key for decrypting credentials and more.
+/config/master.key
+
+/public/packs
+/public/packs-test
+/node_modules
+/yarn-error.log
+yarn-debug.log*
+```
+
 After setting up the above files, then run:
 
 ```bash
-docker-compose run web rails new . --force --no-deps --database=postgresql
+docker-compose run --rm --no-deps web rails new . --force --no-deps --database=postgresql
 ```
 
 Now run:
@@ -941,19 +1015,13 @@ default: &default
   adapter: postgresql
   encoding: unicode
   host: db
-  username: postgres
+  username: <%= ENV['POSTGRES_USER'] %>
   password: <%= ENV['POSTGRES_PASSWORD'] %>
   pool: 5
 
 development:
   <<: *default
   database: myapp_development
-
-
-test:
-  <<: *default
-  database: myapp_test
-
 
 test:
   <<: *default
