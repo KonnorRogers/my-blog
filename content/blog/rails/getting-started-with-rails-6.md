@@ -26,35 +26,6 @@ provide a reproducible environment.
   </a>
 </h2>
 
-<<<<<<< HEAD
-* [Prerequisites](#prerequisites)
-* [Main Technologies](#technologies)
-* [Getting Started](#getting-started)
-  * [Adding a Dockerfile](#adding-a-dockerfile)
-  * [Adding a Gemfile](#adding-a-gemfile)
-  * [Adding a package.json](#adding-a-package-json)
-  * [Adding entrypoint.sh](#adding-entrypoint-sh)
-  * [Adding docker-compose.yml](#adding-docker-compose-yml)
-  * [Prebuild Directory Structure](#prebuild-directory-structure)
-  * [Prebuild Reference Repository](#prebuild-reference-repository)
-* [Building the Project](#building-the-project)
-  * [Create the Rails app](#create-the-rails-app)
-    * [Ownership Issues](#ownership-issues)
-  * [Building the Docker Container](#building-the-docker-container)
-  * [Installing Webpacker](#installing-webpacker)
-  * [Connecting the Database](#connecting-the-database)
-* [Starting and Stopping the Application](#starting-and-stopping)
-  * [Stopping the Application](#stopping-the-application)
-  * [Starting the Application](#starting-the-application)
-* [Extra Tips](#extra-tips)
-* [Useful Commands](#useful-commands)
-* [Adding additional functionality](#adding-additional-functionality)
-* [Deployment](#deployment)
-* [Issues](#issues)
-* [Links](#links)
-  * [Github Source Code](#source-code)
-  * [Deployed app on Heroku](#deployed-app)
-* [I know what I'm doing](#i-know-what-im-doing)
 - [Prerequisites](#prerequisites)
 - [Main Technologies](#technologies)
 - [Getting Started](#getting-started)
@@ -158,9 +129,11 @@ RUN apt-get update -qq && apt-get install -y \
   postgresql-client build-essential yarn nodejs \
   && rm -rf /var/lib/apt/lists/*
 
-
 # This is where we build the rails app
 FROM builder as rails-app
+
+# Allow access to port 3000
+EXPOSE 3000
 
 # This is to fix an issue on Linux with permissions issues
 ARG USER_ID=1000
@@ -174,32 +147,31 @@ RUN useradd --no-log-init --uid $USER_ID --gid $GROUP_ID user --create-home
 COPY entrypoint.sh /usr/bin/
 RUN chmod +x /usr/bin/entrypoint.sh
 
-RUN mkdir -p /myapp && mkdir -p /myapp/tmp/db
-WORKDIR /myapp
+ENV APP_DIR /myapp/
+
+RUN mkdir -p $APP_DIR
+WORKDIR $APP_DIR
 
 # Install rails related dependencies
-COPY Gemfile* /myapp/
-COPY package.json /myapp/
-COPY yarn.lock /myapp/
+COPY Gemfile* $APP_DIR
 
-
-RUN chown --changes --silent --no-dereference --recursive \
-    --from=0:0 ${USER_ID}:${GROUP_ID} \
-      /myapp
-
-# Define the user running the container
-USER user
+# For webpacker / node_modules
+COPY package.json $APP_DIR
+COPY yarn.lock $APP_DIR
 
 RUN bundle install
-RUN yarn install --check-files
 
 # Copy over all files
-COPY --chown=${USER_ID}:${GROUP_ID} . .
+COPY . .
+
+# Permissions crap
+RUN chown -R $USER_ID:$GROUP_ID $APP_DIR
+RUN yarn install --check-files
+
+# Define the user running the container
+USER $USER_ID:$GROUP_ID
 
 ENTRYPOINT ["/usr/bin/entrypoint.sh"]
-
-# Allow access to port 3000
-EXPOSE 3000
 
 # Start the main process.
 CMD ["rails", "server", "-b", "0.0.0.0"]
@@ -246,10 +218,9 @@ simple, create a file with the following settings:
 ```json
 // package.json
 {
-  "name": "practice-rails-6",
-  "version": "1.0.0",
-  "main": "index.js",
-  "license": "MIT"
+  "name": "myapp",
+  "private": true,
+  "version": "0.1.0"
 }
 ```
 
@@ -301,45 +272,48 @@ Github](https://github.com/ParamagicDev/getting-started-with-rails-6/blob/prior-
 ```yaml
 # docker-compose.yml
 
-version: "3"
+version: '3'
 services:
   db:
+    env_file:
+      - ./.env
     image: postgres:12.2
     volumes:
-      - ./tmp/db:/var/lib/postgresql/data
-    environment:
-      - POSTGRES_PASSWORD=example
-  web:
-    build: .
-    command: bash -c "rm -f tmp/pids/server.pid && bundle exec rails s -p 3000 -b '0.0.0.0'"
+      - db_data:/var/lib/postgresql/data
 
+  web:
+    env_file:
+      - ./.env
+    user: ${USER_ID:-1000}:${GROUP_ID:-1000}
+    build:
+      context: .
+      args:
+        GROUP_ID: ${GROUP_ID:-1000}
+        USER_ID: ${USER_ID:-1000}
+
+    command: bash -c "rm -f tmp/pids/server.pid &&
+                      ./bin/webpack-dev-server --hot --port 3035 &
+                      bundle exec rails server -p 3000 -b '0.0.0.0'"
     volumes:
-      - .:/myapp
-      - /myapp/node_modules
+      - .:${APP_DIR}
+      - tmp:${APP_DIR}/tmp
+      - node_modules:${APP_DIR}/node_modules
+      - public:${APP_DIR}/public
+      - packs:${APP_DIR}/public/packs
 
     ports:
       - "3000:3000"
-
-    environment:
-      - POSTGRES_PASSWORD=example
-      - RAILS_ENV=development
-      - WEBPACKER_DEV_SERVER_HOST=webpacker
+      - "3035:3035"
 
     depends_on:
       - db
-      - webpacker
 
-  webpacker:
-    build: .
-    environment:
-      - NODE_ENV=development
-      - RAILS_ENV=development
-      - WEBPACKER_DEV_SERVER_HOST=0.0.0.0
-    command: "./bin/webpack-dev-server --hot --port 3035"
-    volumes:
-      - .:/webpacker
-    ports:
-      - "3035:3035"
+volumes:
+  db_data:
+  tmp:
+  node_modules:
+  public:
+  packs:
 ```
 
 <h3 id="adding-a-dot-env-file">
@@ -358,6 +332,9 @@ USER_ID=1000
 # Find this by running: echo $(id -g $USER)
 GROUP_ID=1000
 
+# where you have your directory in your Dockerfile
+APP_DIR=/myapp
+
 # Postgres
 POSTGRES_USER=user
 POSTGRES_PASSWORD=example
@@ -366,6 +343,7 @@ POSTGRES_PASSWORD=example
 NODE_ENV=development
 RAILS_ENV=development
 WEBPACKER_DEV_SERVER_HOST=0.0.0.0
+
 ```
 
 [Reference File on
