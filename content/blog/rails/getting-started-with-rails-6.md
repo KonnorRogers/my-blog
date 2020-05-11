@@ -365,9 +365,7 @@ Your directory should look as follows:
 ├── .env
 ├── Gemfile
 ├── Gemfile.lock
-├── .git
 ├── package.json
-├── README.md
 └── yarn.lock
 ```
 
@@ -557,7 +555,7 @@ Now you should be able to view your app by navigating to:
 
 You should see a message congratulating you for using Rails.
 
-![You're on Rails 6](../../assets/youre-on-rails.png)
+![You're on Rails 6](assets/youre-on-rails.png)
 
 <h3 style="margin-top: 0;" id="prior-to-adding-functionality-branch">
   <a href="https://github.com/ParamagicDev/getting-started-with-rails-6/tree/prior-to-adding-functionality">
