@@ -36,7 +36,6 @@ provide a reproducible environment.
   - [Adding a package.json](#adding-a-package.json)
   - [Adding entrypoint.sh](#adding-entrypoint-sh)
   - [Adding docker-compose.yml](#adding-docker-compose-yml)
-  - [Adding a .env.development file](#adding-a-dot-env-file)
   - [Adding a .dockerignore file](#adding-a-dot-docker-ignore-file)
   - [Prebuild Directory Structure](#prebuild-directory-structure)
   - [Prebuild Reference Repository](#prebuild-reference-repository)
@@ -100,7 +99,7 @@ docker-compose -v
 </h2>
 
 If you don't want any explanations, skip to the [I know what I'm doing](#i-know-what-im-doing)
-sections of this post.
+section of this post.
 
 Alright first lets create our directory where we want the Rails app. I
 named mine `getting-started-with-rails-6`
@@ -126,14 +125,10 @@ Rails](https://docs.docker.com/compose/rails/)
 FROM ruby:2.5.8 as builder
 
 # Add Yarn to the repository
-RUN curl https://deb.nodesource.com/setup_12.x | bash \
-    && curl https://dl.yarnpkg.com/debian/pubkey.gpg | apt-key add - \
-    && echo "deb https://dl.yarnpkg.com/debian/ stable main" | tee /etc/apt/sources.list.d/yarn.list
+RUN curl https://deb.nodesource.com/setup_12.x | bash     && curl https://dl.yarnpkg.com/debian/pubkey.gpg | apt-key add -     && echo "deb https://dl.yarnpkg.com/debian/ stable main" | tee /etc/apt/sources.list.d/yarn.list
 
 # Install system dependencies & clean them up
-RUN apt-get update -qq && apt-get install -y \
-  postgresql-client build-essential yarn nodejs \
-  && rm -rf /var/lib/apt/lists/*
+RUN apt-get update -qq && apt-get install -y   postgresql-client build-essential yarn nodejs   && rm -rf /var/lib/apt/lists/*
 
 # This is where we build the rails app
 FROM builder as rails-app
@@ -144,6 +139,7 @@ EXPOSE 3000
 # This is to fix an issue on Linux with permissions issues
 ARG USER_ID=1000
 ARG GROUP_ID=1000
+ARG APP_DIR=/home/user/myapp
 
 # Create a non-root user
 RUN groupadd --gid $GROUP_ID user
@@ -152,8 +148,6 @@ RUN useradd --no-log-init --uid $USER_ID --gid $GROUP_ID user --create-home
 # Remove existing running server
 COPY entrypoint.sh /usr/bin/
 RUN chmod +x /usr/bin/entrypoint.sh
-
-ENV APP_DIR /home/user/myapp
 
 # Permissions crap
 RUN mkdir -p $APP_DIR
@@ -183,6 +177,7 @@ ENTRYPOINT ["/usr/bin/entrypoint.sh"]
 
 # Start the main process.
 CMD ["rails", "server", "-b", "0.0.0.0"]
+
 ```
 
 [Reference File on
@@ -224,8 +219,8 @@ There are a few options to generate your `package.json` so lets keep it
 simple, create a file with the following settings:
 
 ```json
-// package.json
 {
+  // package.json
   "name": "myapp",
   "private": true,
   "version": "0.1.0"
@@ -282,21 +277,36 @@ Finally, lets add a `docker-compose.yml` with the following content:
 version: '3'
 services:
   db:
-    env_file:
-      - ./.env.development
+    environment:
+      POSTGRES_USER: user
+      POSTGRES_PASSWORD: example
+
     image: postgres:12.2
     volumes:
       - ./tmp/data:/var/lib/postgresql/data
 
   web:
-    env_file:
-      - ./.env.development
+    environment:
+      #### FOR LINUX USERS
+      # found by running $(id -u $USER)
+      USER_ID: 1000
+
+      # found by running $(id -g $USER)
+      GROUP_ID: 1000
+      #### END FOR LINUX USERS
+
+      # Rails, Node, Webpacker
+      NODE_ENV: development
+      RAILS_ENV: development
+      WEBPACKER_DEV_SERVER_HOST: 0.0.0.0
+
     user: ${USER_ID:-1000}:${GROUP_ID:-1000}
     build:
       context: .
       args:
         GROUP_ID: ${GROUP_ID:-1000}
         USER_ID: ${USER_ID:-1000}
+        APP_DIR: ${APP_DIR:-/home/user/myapp}
 
     command: bash -c "rm -f tmp/pids/server.pid &&
                       ./bin/webpack-dev-server --hot --port 3035 &
@@ -316,48 +326,15 @@ services:
 Github](https://github.com/ParamagicDev/getting-started-with-rails-6/blob/prior-to-rails-new/docker-compose.yml)
 
 
-<h3 id="adding-a-dot-env-file">
-  <a href="#adding-a-dot-env-file">
-    Adding a .env.development file
-  </a>
-</h3>
-
-
-```
-# .env.development
-
-# Fixing permissions issues on Linux
-# Find this by running: echo $(id -u $USER)
-USER_ID=1000
-
-# Find this by running: echo $(id -g $USER)
-GROUP_ID=1000
-
-# where you have your directory in your Dockerfile
-APP_DIR=/home/user/myapp
-
-# Postgres
-POSTGRES_USER=user
-POSTGRES_PASSWORD=example
-
-# Rails, Node, Webpacker
-NODE_ENV=development
-RAILS_ENV=development
-WEBPACKER_DEV_SERVER_HOST=0.0.0.0
-
-```
-
-[Reference File on
-Github](https://github.com/ParamagicDev/getting-started-with-rails-6/blob/prior-to-rails-new/.env.development)
-
 <h3 id="adding-a-dot-docker-ignore-file">
   <a href="#adding-a-dot-docker-ignore-file">
     Adding a .dockerignore file
   </a>
 </h3>
 
-The `.dockerignore` file will closely resemble the `.gitignore` from a
-new rails app.
+Finally, its good practice to add a `.dockerignore` file. The
+`.dockerignore` is very similar to `.gitignore` and this one will very
+closely resemble your `.gitignore` that Rails will generate.
 
 Create a `.dockerignore` file with the following contents:
 
@@ -412,7 +389,6 @@ Your directory should look as follows:
 ├── .dockerignore
 ├── Dockerfile
 ├── entrypoint.sh
-├── .env.development
 ├── Gemfile
 ├── Gemfile.lock
 ├── package.json
@@ -473,7 +449,6 @@ Your Rails directory should look as follows:
 ├── .dockerignore
 ├── Dockerfile
 ├── entrypoint.sh
-├── .env.development
 ├── Gemfile
 ├── Gemfile.lock
 ├── .git
@@ -845,18 +820,15 @@ touch Dockerfile docker-compose.yml entrypoint.sh \
 
 ```yaml
 # Dockerfile
+
 # Pre setup stuff
 FROM ruby:2.5.8 as builder
 
 # Add Yarn to the repository
-RUN curl https://deb.nodesource.com/setup_12.x | bash \
-    && curl https://dl.yarnpkg.com/debian/pubkey.gpg | apt-key add - \
-    && echo "deb https://dl.yarnpkg.com/debian/ stable main" | tee /etc/apt/sources.list.d/yarn.list
+RUN curl https://deb.nodesource.com/setup_12.x | bash     && curl https://dl.yarnpkg.com/debian/pubkey.gpg | apt-key add -     && echo "deb https://dl.yarnpkg.com/debian/ stable main" | tee /etc/apt/sources.list.d/yarn.list
 
 # Install system dependencies & clean them up
-RUN apt-get update -qq && apt-get install -y \
-  postgresql-client build-essential yarn nodejs \
-  && rm -rf /var/lib/apt/lists/*
+RUN apt-get update -qq && apt-get install -y   postgresql-client build-essential yarn nodejs   && rm -rf /var/lib/apt/lists/*
 
 # This is where we build the rails app
 FROM builder as rails-app
@@ -867,6 +839,7 @@ EXPOSE 3000
 # This is to fix an issue on Linux with permissions issues
 ARG USER_ID=1000
 ARG GROUP_ID=1000
+ARG APP_DIR=/home/user/myapp
 
 # Create a non-root user
 RUN groupadd --gid $GROUP_ID user
@@ -875,8 +848,6 @@ RUN useradd --no-log-init --uid $USER_ID --gid $GROUP_ID user --create-home
 # Remove existing running server
 COPY entrypoint.sh /usr/bin/
 RUN chmod +x /usr/bin/entrypoint.sh
-
-ENV APP_DIR /home/user/myapp
 
 # Permissions crap
 RUN mkdir -p $APP_DIR
@@ -914,21 +885,36 @@ CMD ["rails", "server", "-b", "0.0.0.0"]
 version: '3'
 services:
   db:
-    env_file:
-      - ./.env.development
+    environment:
+      POSTGRES_USER: user
+      POSTGRES_PASSWORD: example
+
     image: postgres:12.2
     volumes:
       - ./tmp/data:/var/lib/postgresql/data
 
   web:
-    env_file:
-      - ./.env.development
+    environment:
+      #### FOR LINUX USERS
+      # found by running $(id -u $USER)
+      USER_ID: 1000
+
+      # found by running $(id -g $USER)
+      GROUP_ID: 1000
+      #### END FOR LINUX USERS
+
+      # Rails, Node, Webpacker
+      NODE_ENV: development
+      RAILS_ENV: development
+      WEBPACKER_DEV_SERVER_HOST: 0.0.0.0
+
     user: ${USER_ID:-1000}:${GROUP_ID:-1000}
     build:
       context: .
       args:
         GROUP_ID: ${GROUP_ID:-1000}
         USER_ID: ${USER_ID:-1000}
+        APP_DIR: ${APP_DIR:-/home/user/myapp}
 
     command: bash -c "rm -f tmp/pids/server.pid &&
                       ./bin/webpack-dev-server --hot --port 3035 &
@@ -965,39 +951,13 @@ gem 'rails', '~> 6'
 ```
 
 ```json
-// package.json
 {
-  "name": "practice-rails-6",
+  // package.json
+  "name": "myapp",
+  "private": true,
   "version": "1.0.0",
-  "main": "index.js",
-  "license": "MIT"
 }
 ```
-
-```bash
-# .env.development
-
-# Fixing permissions issues on Linux
-# Find this by running: echo $(id -u $USER)
-USER_ID=1000
-
-# Find this by running: echo $(id -g $USER)
-GROUP_ID=1000
-
-# where you have your directory in your Dockerfile
-APP_DIR=/home/user/myapp
-
-# Postgres
-POSTGRES_USER=user
-POSTGRES_PASSWORD=example
-
-# Rails, Node, Webpacker
-NODE_ENV=development
-RAILS_ENV=development
-WEBPACKER_DEV_SERVER_HOST=0.0.0.0
-
-```
-
 
 ```bash
 # .dockerignore
