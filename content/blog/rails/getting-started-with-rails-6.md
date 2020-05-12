@@ -288,6 +288,7 @@ services:
       NODE_ENV: development
       RAILS_ENV: development
       WEBPACK_DEV_SERVER_HOST: "0.0.0.0"
+      POSTGRES_USER: postgres
       POSTGRES_PASSWORD: example
 
     build:
@@ -297,7 +298,6 @@ services:
         GROUP_ID: 1000
         APP_DIR: /home/user/myapp
 
-    # user: ${USER_ID}:${GROUP_ID}
     command: bash -c "rm -f tmp/pids/server.pid &&
                       ./bin/webpack-dev-server --hot --port 3035 &
                       bundle exec rails server -p 3000 -b '0.0.0.0'"
@@ -877,6 +877,7 @@ services:
       NODE_ENV: development
       RAILS_ENV: development
       WEBPACK_DEV_SERVER_HOST: "0.0.0.0"
+      POSTGRES_USER: postgres
       POSTGRES_PASSWORD: example
 
     build:
@@ -886,7 +887,6 @@ services:
         GROUP_ID: 1000
         APP_DIR: /home/user/myapp
 
-    # user: ${USER_ID}:${GROUP_ID}
     command: bash -c "rm -f tmp/pids/server.pid &&
                       ./bin/webpack-dev-server --hot --port 3035 &
                       bundle exec rails server -p 3000 -b '0.0.0.0'"
@@ -895,7 +895,7 @@ services:
       # make sure this lines up with APP_DIR above
       - .:/home/user/myapp
 
-    ports:
+      ports:
       - "3000:3000"
       - "3035:3035"
 
