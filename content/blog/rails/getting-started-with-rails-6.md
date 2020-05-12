@@ -177,7 +177,6 @@ ENTRYPOINT ["/usr/bin/entrypoint.sh"]
 
 # Start the main process.
 CMD ["rails", "server", "-b", "0.0.0.0"]
-
 ```
 
 [Reference File on
@@ -275,46 +274,37 @@ Finally, lets add a `docker-compose.yml` with the following content:
 # docker-compose.yml
 
 version: '3'
+
 services:
   db:
-    environment:
-      POSTGRES_USER: user
-      POSTGRES_PASSWORD: example
-
     image: postgres:12.2
+    environment:
+      POSTGRES_PASSWORD: example
     volumes:
-      - ./tmp/data:/var/lib/postgresql/data
+      - db_data:/var/lib/postgresql/data
 
   web:
     environment:
-      #### FOR LINUX USERS
-      # found by running $(id -u $USER)
-      USER_ID: 1000
-
-      # found by running $(id -g $USER)
-      GROUP_ID: 1000
-      #### END FOR LINUX USERS
-
-      APP_DIR: /home/user/myapp
-
-      # Rails, Node, Webpacker
       NODE_ENV: development
       RAILS_ENV: development
-      WEBPACKER_DEV_SERVER_HOST: 0.0.0.0
+      WEBPACK_DEV_SERVER_HOST: "0.0.0.0"
+      POSTGRES_PASSWORD: example
 
-    user: ${USER_ID:-1000}:${GROUP_ID:-1000}
     build:
       context: .
       args:
-        GROUP_ID: ${GROUP_ID:-1000}
-        USER_ID: ${USER_ID:-1000}
-        APP_DIR: ${APP_DIR:-/home/user/myapp}
+        USER_ID: 1000
+        GROUP_ID: 1000
+        APP_DIR: /home/user/myapp
 
+    # user: ${USER_ID}:${GROUP_ID}
     command: bash -c "rm -f tmp/pids/server.pid &&
                       ./bin/webpack-dev-server --hot --port 3035 &
                       bundle exec rails server -p 3000 -b '0.0.0.0'"
+
     volumes:
-      - .:${APP_DIR}
+      # make sure this lines up with APP_DIR above
+      - .:/home/user/myapp
 
     ports:
       - "3000:3000"
@@ -322,6 +312,9 @@ services:
 
     depends_on:
       - db
+
+volumes:
+  db_data:
 ```
 
 [Reference File on
@@ -496,18 +489,6 @@ command. I have mine called `ownthis`
 alias ownthis="sudo chown -R $USER:$USER ."
 ```
 
-<h3 id="building-the-docker-container">
-  <a href="#building-the-docker-container">
-    Building the Docker container
-  </a>
-</h3>
-
-Next, you have to rebuild the docker container with the new Rails dependencies
-in the Gemfile. The easiest way to do this is by running the following:
-
-```bash
-docker-compose build
-```
 
 <h3 id="connecting-the-database">
   <a href="#connecting-the-database">
@@ -547,10 +528,6 @@ Now you can boot the app using the following command:
 docker-compose up
 ```
 
-There is still one more step missing. You still need to create the
-database! You have told Rails 'how' to create the database, but you have
-not explicitly told Rails to 'create' the database.
-
 In another terminal with the other terminal still running your rails
 server, run the following commands:
 
@@ -567,7 +544,7 @@ Now you should be able to view your app by navigating to:
 
 You should see a message congratulating you for using Rails.
 
-![You're on Rails 6](assets/youre-on-rails.png)
+![You're on Rails 6](../../assets/youre-on-rails.png)
 
 <h3 style="margin-top: 0;" id="prior-to-adding-functionality-branch">
   <a href="https://github.com/ParamagicDev/getting-started-with-rails-6/tree/prior-to-adding-stuff">
@@ -843,6 +820,7 @@ ARG USER_ID=1000
 ARG GROUP_ID=1000
 ARG APP_DIR=/home/user/myapp
 
+
 # Create a non-root user
 RUN groupadd --gid $GROUP_ID user
 RUN useradd --no-log-init --uid $USER_ID --gid $GROUP_ID user --create-home
@@ -885,46 +863,37 @@ CMD ["rails", "server", "-b", "0.0.0.0"]
 # docker-compose.yml
 
 version: '3'
+
 services:
   db:
-    environment:
-      POSTGRES_USER: user
-      POSTGRES_PASSWORD: example
-
     image: postgres:12.2
+    environment:
+      POSTGRES_PASSWORD: example
     volumes:
-      - ./tmp/data:/var/lib/postgresql/data
+      - db_data:/var/lib/postgresql/data
 
   web:
     environment:
-      #### FOR LINUX USERS
-      # found by running $(id -u $USER)
-      USER_ID: 1000
-
-      # found by running $(id -g $USER)
-      GROUP_ID: 1000
-      #### END FOR LINUX USERS
-
-      APP_DIR: /home/user/myapp
-
-      # Rails, Node, Webpacker
       NODE_ENV: development
       RAILS_ENV: development
-      WEBPACKER_DEV_SERVER_HOST: 0.0.0.0
+      WEBPACK_DEV_SERVER_HOST: "0.0.0.0"
+      POSTGRES_PASSWORD: example
 
-    user: ${USER_ID:-1000}:${GROUP_ID:-1000}
     build:
       context: .
       args:
-        GROUP_ID: ${GROUP_ID:-1000}
-        USER_ID: ${USER_ID:-1000}
-        APP_DIR: ${APP_DIR:-/home/user/myapp}
+        USER_ID: 1000
+        GROUP_ID: 1000
+        APP_DIR: /home/user/myapp
 
+    # user: ${USER_ID}:${GROUP_ID}
     command: bash -c "rm -f tmp/pids/server.pid &&
                       ./bin/webpack-dev-server --hot --port 3035 &
                       bundle exec rails server -p 3000 -b '0.0.0.0'"
+
     volumes:
-      - .:${APP_DIR}
+      # make sure this lines up with APP_DIR above
+      - .:/home/user/myapp
 
     ports:
       - "3000:3000"
@@ -932,6 +901,9 @@ services:
 
     depends_on:
       - db
+
+volumes:
+  db_data:
 ```
 
 ```bash
