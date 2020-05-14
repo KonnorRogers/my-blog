@@ -219,7 +219,7 @@ simple, create a file with the following settings:
 
 ```json
 {
-  // package.json
+  "_filename": "package.json",
   "name": "myapp",
   "private": true,
   "version": "0.1.0"
@@ -525,11 +525,10 @@ test:
 Now you can boot the app using the following command:
 
 ```bash
-docker-compose up
+docker-compose up --build
 ```
 
-In another terminal with the other terminal still running your rails
-server, run the following commands:
+In another terminal, run the following commands:
 
 ```bash
 docker-compose run --rm web rails db:create
@@ -662,7 +661,8 @@ docker-compose down --remove-orphans
 docker-compose run --rm web /bin/bash
 
 # Things are totally jacked up? Remove all images and containers.
-# https://stackoverflow.com/questions/50090012/how-do-i-run-rails-in-docker-pgconnectionbad-could-not-translate-host-name-p
+# https://stackoverflow.com/a/52179797
+
 docker rm $(docker ps -q -a) -f && docker rmi $(docker images -q) -f
 ```
 
@@ -719,33 +719,42 @@ check_yarn_integrity: false
 # ...
 ```
 
-Alternatively, run:
+Alternatively, run the following to fix this issue:
 
 ```bash
 docker-compose run --rm web yarn install --check-files
 ```
 
-To fix the issue.
-
 No space left on device??
 
 [https://success.docker.com/article/error-message-no-space-left-on-device-in-default-machine](https://success.docker.com/article/error-message-no-space-left-on-device-in-default-machine)
+
+<br />
+
+Postgres not updating a new name / passsword? You must first delete its
+volume to tell postgres to rebuild it.
+
+```bash
+docker volume ls # lists the volumes
+docker volume rm <volume-name> # removes the volume
+docker volume prune [--force] # remove all unused volumes
+```
 
 <h2 id="links">
   <a href="#links">Links</a>
 </h2>
 
-<h3 id="source-code">
-  <a href="https://github.com/ParamagicDev/getting-started-with-rails-6/tree/master">
+<p>
+  <a style="font-size: 1.1rem;" href="https://github.com/ParamagicDev/getting-started-with-rails-6/tree/master" id="source-code">
     Source Code on Github
   </a>
-</h3>
+</p>
 
-<h3 id="deployed-app">
-  <a href="#todo">
+<p>
+  <a style="font-size: 1.1rem;" href="#todo" id="deployed-app">
     Deployed Application
   </a>
-</h3>
+</p>
 
 <h3 id="rails">
   <a href="#rails">Rails</a>
@@ -928,7 +937,7 @@ gem 'rails', '~> 6'
 
 ```json
 {
-  // package.json
+  "_filename": "package.json",
   "name": "myapp",
   "private": true,
   "version": "1.0.0",
@@ -1016,11 +1025,7 @@ test:
 Next create the database.
 
 ```bash
-docker-compose run --rm web rails db:create
-```
-
-```bash
-docker-compose run --rm web rails db:migrate
+docker-compose run --rm web bash -c "rails db:create && rails db:migrate"
 ```
 
 Finally, start the app:
