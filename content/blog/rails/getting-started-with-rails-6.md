@@ -47,6 +47,7 @@ provide a reproducible environment.
   - [Building the Docker Container](#building-the-docker-container)
   - [Connecting the Database](#connecting-the-database)
 - [Using Docker](#using-docker)
+
   - [Stopping the Application](#stopping-the-application)
   - [Starting the Application](#starting-the-application)
   - [Extra Tips](#extra-tips)
@@ -55,10 +56,10 @@ provide a reproducible environment.
 - [Adding additional functionality](#adding-additional-functionality)
 - [Deployment](#deployment)
 - [Issues](#issues)
+- [I know what I'm doing](#i-know-what-im-doing)
 - [Links](#links)
   - [Github Source Code](#source-code)
   - [Deployed app on Heroku](#deployed-app)
-- [I know what I'm doing](#i-know-what-im-doing)
 
 <h2 id="prerequisites">
   <a href="#prerequisites">
@@ -116,7 +117,6 @@ cd getting-started-with-rails-6
 The next step is to create our `Dockerfile`.
 The below `Dockerfile` is modified from the [Docker Quickstart
 Rails](https://docs.docker.com/compose/rails/)
-
 
 ```yaml
 # Dockerfile
@@ -193,7 +193,6 @@ of using Rails 5 we'll use Rails 6.
 
 Create a `Gemfile` with the following contents:
 
-
 ```ruby
 # Gemfile
 source 'https://rubygems.org'
@@ -244,7 +243,6 @@ touch yarn.lock
 Now lets create an `entrypoint.sh` script to fix a server issue with
 Rails.
 
-
 ```bash
 #!/bin/bash
 # entrypoint.sh
@@ -269,11 +267,10 @@ Github](https://github.com/ParamagicDev/getting-started-with-rails-6/blob/prior-
 
 Finally, lets add a `docker-compose.yml` with the following content:
 
-
 ```yaml
 # docker-compose.yml
 
-version: '3'
+version: "3"
 
 services:
   db:
@@ -299,8 +296,8 @@ services:
         APP_DIR: /home/user/myapp
 
     command: bash -c "rm -f tmp/pids/server.pid &&
-                      ./bin/webpack-dev-server --hot --port 3035 &
-                      bundle exec rails server -p 3000 -b '0.0.0.0'"
+      ./bin/webpack-dev-server --hot --port 3035 &
+      bundle exec rails server -p 3000 -b '0.0.0.0'"
 
     volumes:
       # make sure this lines up with APP_DIR above
@@ -319,7 +316,6 @@ volumes:
 
 [Reference File on
 Github](https://github.com/ParamagicDev/getting-started-with-rails-6/blob/prior-to-rails-new/docker-compose.yml)
-
 
 <h3 id="adding-a-dot-docker-ignore-file">
   <a href="#adding-a-dot-docker-ignore-file">
@@ -489,7 +485,6 @@ command. I have mine called `ownthis`
 alias ownthis="sudo chown -R $USER:$USER ."
 ```
 
-
 <h3 id="connecting-the-database">
   <a href="#connecting-the-database">
     Connecting the Database
@@ -550,7 +545,6 @@ You should see a message congratulating you for using Rails.
     Github Branch Prior to adding additional functionality
   </a>
 <h3>
-
 
 <h2 id="using-docker">
   <a href="#using-docker">
@@ -740,55 +734,6 @@ docker volume rm <volume-name> # removes the volume
 docker volume prune [--force] # remove all unused volumes
 ```
 
-<h2 id="links">
-  <a href="#links">Links</a>
-</h2>
-
-<p>
-  <a style="font-size: 1.1rem;" href="https://github.com/ParamagicDev/getting-started-with-rails-6/tree/master" id="source-code">
-    Source Code on Github
-  </a>
-</p>
-
-<p>
-  <a style="font-size: 1.1rem;" href="#todo" id="deployed-app">
-    Deployed Application
-  </a>
-</p>
-
-<h3 id="rails">
-  <a href="#rails">Rails</a>
-</h3>
-
-[Ruby on Rails Homepage](https://rubyonrails.org/)
-
-[Ruby on Rails Getting Started Guide](https://guides.rubyonrails.org/getting_started.html)
-
-[Webpacker Gem](https://github.com/rails/webpacker)
-
-<h3 id="docker">
-  <a href="#docker">Docker</a>
-</h3>
-
-[Docker Compose with Rails](https://docs.docker.com/compose/rails/)
-
-<h3 id="databases">
-  <a href="#databases">PostgresQL</a>
-</h3>
-
-[PostgresQL Homepage](https://www.postgresql.org/)
-
-<h3 id="heroku">
-  <a href="#heroku">
-    Heroku
-  </a>
-</h3>
-
-[Heroku Homepage](https://heroku.com)
-
-[Heroku with Rails
-Deployment](https://devcenter.heroku.com/articles/getting-started-with-rails6)
-
 <h2 id="i-know-what-im-doing">
   <a href="#i-know-what-im-doing">
     I know what I'm doing.
@@ -797,6 +742,9 @@ Deployment](https://devcenter.heroku.com/articles/getting-started-with-rails6)
 
 This section is meant to be the TLDR version of the above.
 This will move quickly and is meant more as a reference.
+To skip this section, click on the below link:
+
+[Links sections](#links)
 
 ```bash
 mkdir -p new-rails-app
@@ -940,7 +888,7 @@ gem 'rails', '~> 6'
   "_filename": "package.json",
   "name": "myapp",
   "private": true,
-  "version": "1.0.0",
+  "version": "1.0.0"
 }
 ```
 
@@ -1035,3 +983,52 @@ docker-compose up
 ```
 
 Now you can view it on `localhost:3000`
+
+<h2 id="links">
+  <a href="#links">Links</a>
+</h2>
+
+<p>
+  <a style="font-size: 1.1rem;" href="https://github.com/ParamagicDev/getting-started-with-rails-6/tree/master" id="source-code">
+    Source Code on Github
+  </a>
+</p>
+
+<p>
+  <a style="font-size: 1.1rem;" href="#todo" id="deployed-app">
+    Deployed Application
+  </a>
+</p>
+
+<h3 id="rails">
+  <a href="#rails">Rails</a>
+</h3>
+
+[Ruby on Rails Homepage](https://rubyonrails.org/)
+
+[Ruby on Rails Getting Started Guide](https://guides.rubyonrails.org/getting_started.html)
+
+[Webpacker Gem](https://github.com/rails/webpacker)
+
+<h3 id="docker">
+  <a href="#docker">Docker</a>
+</h3>
+
+[Docker Compose with Rails](https://docs.docker.com/compose/rails/)
+
+<h3 id="databases">
+  <a href="#databases">PostgresQL</a>
+</h3>
+
+[PostgresQL Homepage](https://www.postgresql.org/)
+
+<h3 id="heroku">
+  <a href="#heroku">
+    Heroku
+  </a>
+</h3>
+
+[Heroku Homepage](https://heroku.com)
+
+[Heroku with Rails
+Deployment](https://devcenter.heroku.com/articles/getting-started-with-rails6)
