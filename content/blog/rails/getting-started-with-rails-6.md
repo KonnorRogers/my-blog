@@ -1,7 +1,8 @@
 ---
 title: Getting Started with Rails 6
 date: "2020-05-03T17:56:32"
-description: A guide to getting setup with Rails 6 using Docker
+description: A step-by-step guide to getting setup with Rails 6 using Docker
+  and deploying to Heroku.
 ---
 
 ## Purpose
@@ -25,12 +26,11 @@ environment.
   </a>
 </h2>
 
-
-* [Prerequisites](#prerequisites)
-* [Getting Started](#getting-started)
-  * [Adding a Dockerfile](#adding-a-dockerfile)
-  * [Adding a Gemfile](#adding-a-gemfile)
-* [Links](#links)
+- [Prerequisites](#prerequisites)
+- [Getting Started](#getting-started)
+  - [Adding a Dockerfile](#adding-a-dockerfile)
+  - [Adding a Gemfile](#adding-a-gemfile)
+- [Links](#links)
 
 <h2 id="prerequisites">
   <a href="#prerequisites">
@@ -57,8 +57,8 @@ named mine `getting-started-with-rails-6`
 mkdir getting-started-with-rails-6
 cd getting-started-with-rails-6
 ```
-<br />
 
+<br />
 
 <h2 id="adding-a-dockerfile">
   <a href="#adding-a-dockerfile">Adding a Dockerfile</a>
@@ -90,6 +90,7 @@ EXPOSE 3000
 # Start the main process.
 CMD ["rails", "server", "-b", "0.0.0.0"]
 ```
+
 <br />
 
 <h3 id="adding-a-gemfile">
@@ -106,6 +107,7 @@ Create a `Gemfile` with the following contents:
 source 'https://rubygems.org'
 gem 'rails', '~>6'
 ```
+
 <br />
 
 Then add an empty `Gemfile.lock`
@@ -113,6 +115,7 @@ Then add an empty `Gemfile.lock`
 ```bash
 touch Gemfile.lock
 ```
+
 <br />
 
 Now lets create an `entrypoint.sh` script to fix a server issue with
@@ -130,6 +133,7 @@ rm -f /myapp/tmp/pids/server.pid
 # Then exec the container's main process (what's set as CMD in the Dockerfile).
 exec "$@"
 ```
+
 <br />
 
 <h3 id="adding-docker-compose">
@@ -141,7 +145,7 @@ exec "$@"
 Finally, lets add a `docker-compose.yml` with the following content:
 
 ```yaml
-version: '3'
+version: "3"
 services:
   db:
     image: postgres
@@ -158,13 +162,11 @@ services:
     ports:
       - "3000:3000"
 
-    environment:
-      RAILS_ENV="development"
+    environment: RAILS_ENV="development"
 
     depends_on:
       - db
 ```
-
 
 <h2 id="links">
   <a href="#links">Links</a>
