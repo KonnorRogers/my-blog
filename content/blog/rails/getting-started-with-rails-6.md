@@ -128,13 +128,16 @@ FROM ruby:2.5.8 as builder
 RUN curl https://deb.nodesource.com/setup_12.x | bash     && curl https://dl.yarnpkg.com/debian/pubkey.gpg | apt-key add -     && echo "deb https://dl.yarnpkg.com/debian/ stable main" | tee /etc/apt/sources.list.d/yarn.list
 
 # Install system dependencies & clean them up
-RUN apt-get update -qq && apt-get install -y   postgresql-client build-essential yarn nodejs   && rm -rf /var/lib/apt/lists/*
+RUN apt-get update -qq && apt-get install -y \
+    postgresql-client build-essential yarn nodejs inotify-tools && \
+    rm -rf /var/lib/apt/lists/*
 
 # This is where we build the rails app
 FROM builder as rails-app
 
 # Allow access to port 3000
 EXPOSE 3000
+EXPOSE 3035
 
 # This is to fix an issue on Linux with permissions issues
 ARG USER_ID=1000
@@ -152,6 +155,7 @@ RUN chmod +x /usr/bin/entrypoint.sh
 # Permissions crap
 RUN mkdir -p $APP_DIR
 RUN chown -R $USER_ID:$GROUP_ID $APP_DIR
+
 
 # Define the user running the container
 USER $USER_ID:$GROUP_ID
@@ -273,18 +277,9 @@ Finally, lets add a `docker-compose.yml` with the following content:
 version: "3"
 
 services:
-  db:
-    image: postgres:12.2
-    environment:
-      POSTGRES_PASSWORD: example
-    volumes:
-      - db_data:/var/lib/postgresql/data
-
   web:
     environment:
-      NODE_ENV: development
-      RAILS_ENV: development
-      WEBPACK_DEV_SERVER_HOST: "0.0.0.0"
+      WEBPACKER_DEV_SERVER_HOST: 0.0.0.0
       POSTGRES_USER: postgres
       POSTGRES_PASSWORD: example
 
@@ -296,7 +291,6 @@ services:
         APP_DIR: /home/user/myapp
 
     command: bash -c "rm -f tmp/pids/server.pid &&
-      ./bin/webpack-dev-server --hot --port 3035 --host '0.0.0.0' &
       bundle exec rails server -p 3000 -b '0.0.0.0'"
 
     volumes:
@@ -305,10 +299,29 @@ services:
 
     ports:
       - "3000:3000"
-      - "3035:3035"
 
     depends_on:
       - db
+      - webpacker
+
+  webpacker:
+    build: .
+    environment:
+      NODE_ENV: development
+      RAILS_ENV: development
+      WEBPACKER_DEV_SERVER_HOST: 0.0.0.0
+    command: "./bin/webpack-dev-server"
+    volumes:
+      - .:/home/user/myapp
+    ports:
+      - "3035:3035"
+
+  db:
+    image: postgres:12.2
+    environment:
+      POSTGRES_PASSWORD: example
+    volumes:
+      - db_data:/var/lib/postgresql/data
 
 volumes:
   db_data:
@@ -764,19 +777,21 @@ FROM ruby:2.5.8 as builder
 RUN curl https://deb.nodesource.com/setup_12.x | bash     && curl https://dl.yarnpkg.com/debian/pubkey.gpg | apt-key add -     && echo "deb https://dl.yarnpkg.com/debian/ stable main" | tee /etc/apt/sources.list.d/yarn.list
 
 # Install system dependencies & clean them up
-RUN apt-get update -qq && apt-get install -y   postgresql-client build-essential yarn nodejs   && rm -rf /var/lib/apt/lists/*
+RUN apt-get update -qq && apt-get install -y \
+    postgresql-client build-essential yarn nodejs inotify-tools && \
+    rm -rf /var/lib/apt/lists/*
 
 # This is where we build the rails app
 FROM builder as rails-app
 
 # Allow access to port 3000
 EXPOSE 3000
+EXPOSE 3035
 
 # This is to fix an issue on Linux with permissions issues
 ARG USER_ID=1000
 ARG GROUP_ID=1000
 ARG APP_DIR=/home/user/myapp
-
 
 # Create a non-root user
 RUN groupadd --gid $GROUP_ID user
@@ -789,6 +804,7 @@ RUN chmod +x /usr/bin/entrypoint.sh
 # Permissions crap
 RUN mkdir -p $APP_DIR
 RUN chown -R $USER_ID:$GROUP_ID $APP_DIR
+
 
 # Define the user running the container
 USER $USER_ID:$GROUP_ID
@@ -819,21 +835,12 @@ CMD ["rails", "server", "-b", "0.0.0.0"]
 ```yaml
 # docker-compose.yml
 
-version: '3'
+version: "3"
 
 services:
-  db:
-    image: postgres:12.2
-    environment:
-      POSTGRES_PASSWORD: example
-    volumes:
-      - db_data:/var/lib/postgresql/data
-
   web:
     environment:
-      NODE_ENV: development
-      RAILS_ENV: development
-      WEBPACK_DEV_SERVER_HOST: "0.0.0.0"
+      WEBPACKER_DEV_SERVER_HOST: 0.0.0.0
       POSTGRES_USER: postgres
       POSTGRES_PASSWORD: example
 
@@ -845,19 +852,37 @@ services:
         APP_DIR: /home/user/myapp
 
     command: bash -c "rm -f tmp/pids/server.pid &&
-                      ./bin/webpack-dev-server --hot --port 3035 --host '0.0.0.0' &
-                      bundle exec rails server -p 3000 -b '0.0.0.0'"
+      bundle exec rails server -p 3000 -b '0.0.0.0'"
 
     volumes:
       # make sure this lines up with APP_DIR above
       - .:/home/user/myapp
 
-      ports:
+    ports:
       - "3000:3000"
-      - "3035:3035"
 
     depends_on:
       - db
+      - webpacker
+
+  webpacker:
+    build: .
+    environment:
+      NODE_ENV: development
+      RAILS_ENV: development
+      WEBPACKER_DEV_SERVER_HOST: 0.0.0.0
+    command: "./bin/webpack-dev-server"
+    volumes:
+      - .:/home/user/myapp
+    ports:
+      - "3035:3035"
+
+  db:
+    image: postgres:12.2
+    environment:
+      POSTGRES_PASSWORD: example
+    volumes:
+      - db_data:/var/lib/postgresql/data
 
 volumes:
   db_data:
