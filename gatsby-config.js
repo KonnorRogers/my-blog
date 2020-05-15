@@ -4,7 +4,7 @@ module.exports = {
     title: `Konnor's Blog`,
     author: `Konnor Rogers`,
     description: `A blog documentating my various processes`,
-    siteUrl: `https://gatsby-starter-blog-demo.netlify.com/`,
+    siteUrl: `https://paramagicdev.github.io/my-blog`,
   },
   plugins: [
     {
@@ -34,6 +34,15 @@ module.exports = {
       options: {
         plugins: [
           {
+            resolve: `gatsby-remark-code-buttons`,
+            options: {
+              buttonContainerClass: `customButtonContainerClass`,
+              tooltipText: `Copy to clipboard`,
+              toasterText: "Copied to clipboard!",
+              toasterDuration: 5000,
+            },
+          },
+          {
             resolve: `gatsby-remark-images`,
             options: {
               maxWidth: 590,
@@ -45,8 +54,8 @@ module.exports = {
               wrapperStyle: `margin-bottom: 1.0725rem`,
             },
           },
+          "gatsby-remark-copy-linked-files",
           `gatsby-remark-prismjs`,
-          `gatsby-remark-copy-linked-files`,
           `gatsby-remark-smartypants`,
         ],
       },

@@ -36,11 +36,11 @@ and React-testing-library to an existing project.
   - [ESLint](#eslint)
   - [Starter Repo](#starter-repo)
 
-<br />
+
 
 I will be going through adding the above items based on using the
 [Gatsby Default Starter](https://www.gatsbyjs.org/starters/gatsbyjs/gatsby-starter-default/)
-<br />
+
 This is essentially a guide to adding the above technologies to an existing Gatsby
 project.
 
@@ -62,8 +62,6 @@ In addition, we must now add typescript to Gatsby.
 npm install gatsby-plugin-typescript
 ```
 
-<br />
-
 Now lets add it to our `gatsby-config.js` file.
 
 ```javascript
@@ -76,8 +74,6 @@ modules.exports = {
   ],
 }
 ```
-
-<br />
 
 Lets now configure ESLint to work with typescript
 to lint our files.
@@ -143,8 +139,6 @@ module.exports = {
 }
 ```
 
-<br />
-
 Add an `.eslintignore` with the following config:
 
 ```javascript
@@ -182,8 +176,6 @@ We will also have to define a `tsconfig.json` file.
 }
 ```
 
-<br />
-
 Next, install the packages required to get ESlint to work.
 
 ```bash
@@ -192,7 +184,7 @@ npm install --save-dev eslint @typescript-eslint/parser \
 eslint-plugin-prettier eslint-import-resolver-alias
 ```
 
-<br />
+
 
 We save these as dev dependencies because they are not needed for runtime files.
 
@@ -212,7 +204,7 @@ To confirm its working from the command line, let's add some scripts to our `pac
 }
 ```
 
-<br />
+
 
 Now we can run:
 
@@ -270,7 +262,7 @@ babel-jest react-test-renderer \
 babel-preset-gatsby identity-obj-proxy
 ```
 
-<br />
+
 
 Just a quick note, ts-jest runs typechecking which jest does not run by default.
 
@@ -314,8 +306,6 @@ module.exports = {
 }
 ```
 
-<br />
-
 Now create a `jest-preprocess.js` with the following content:
 
 ```javascript
@@ -327,7 +317,7 @@ const babelOptions = {
 module.exports = require("babel-jest").createTransformer(babelOptions)
 ```
 
-<br />
+
 
 Now, we need to add a `__mocks__` directory with a `file-mock.js` file.
 
@@ -336,7 +326,7 @@ Now, we need to add a `__mocks__` directory with a `file-mock.js` file.
 module.exports = "test-file-stub"
 ```
 
-<br />
+
 
 We'll also add a gatsby mock file `__mocks__/gatsby.js`.
 
@@ -371,7 +361,7 @@ module.exports = {
 }
 ```
 
-<br />
+
 
 Then we add a `loadershim.js` file.
 
@@ -382,7 +372,7 @@ global.___loader = {
 }
 ```
 
-<br />
+
 
 <h3 id="adding-emotion-testing">
   <a href="#adding-emotion-testing">
@@ -397,7 +387,7 @@ so we can have meaningful snapshot testing.
 npm install --save-dev jest-emotion babel-plugin-emotion
 ```
 
-<br />
+
 
 Now, we must add this to our `jest-preprocess.js` file.
 
@@ -415,7 +405,7 @@ const babelOptions = {
 module.exports = require("babel-jest").createTransformer(babelOptions)
 ```
 
-<br />
+
 
 Now we must create a `setup-test-env.js` file to be able to add the snapshot serialization.
 
@@ -427,7 +417,7 @@ import * as emotion from "@emotion/core"
 expect.addSnapshotSerializer(createSerializer(emotion))
 ```
 
-<br />
+
 
 Finally, tell your `jest.config.js` to setup this file.
 
@@ -442,7 +432,7 @@ modules.exports = {
 }
 ```
 
-<br />
+
 
 Phew, that was a lot of work simply to add testing. No wonder why no one bothers
 testing anything! you could stop here if you'd like, but I really enjoy
@@ -459,7 +449,7 @@ npm install --save-dev react-testing @testing-library/react \
 @testing-library/jest-dom @types/testing-library__react
 ```
 
-<br />
+
 
 Now add the line `import "@testing-library/jest-dom/extend-expect"` to your `setup-test-env.js` file.
 
@@ -472,7 +462,7 @@ import "@testing-library/jest-dom/extend-expect"
 expect.addSnapshotSerializer(createSerializer(emotion))
 ```
 
-<br />
+
 
 Writing the first test
 
