@@ -696,7 +696,12 @@ just done above.
   </a>
 </h2>
 
-The first step is to install the Heroku CLI.
+First, lets create a Heroku account. To do so, head on over to their
+signup page.
+
+[https://signup.heroku.com/](https://signup.heroku.com/)
+
+After creating an account, install the Heroku CLI.
 
 [Installation instructions can be found
 here.](https://devcenter.heroku.com/articles/heroku-cli#download-and-install)
@@ -1069,6 +1074,17 @@ docker-compose up
 ```
 
 Now you can view it on `localhost:3000`
+
+Now, to deploy the app, simply do the following:
+
+```bash
+heroku login
+heroku apps:create <App-name>
+git push heroku master
+heroku run rails db:migrate
+```
+
+And thats it ! Were all set and deployed.
 
 <h2 id="links">
   <a href="#links">Links</a>
