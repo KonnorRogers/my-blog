@@ -696,6 +696,67 @@ just done above.
   </a>
 </h2>
 
+The first step is to install the Heroku CLI.
+
+[Installation instructions can be found
+here.](https://devcenter.heroku.com/articles/heroku-cli#download-and-install)
+
+Now that you have Heroku CLI installed you can login via terminal.
+
+```bash
+heroku login
+# heroku: Enter your Heroku credentials
+# Email: schneems@example.com
+# Password:
+# Could not find an existing public key.
+# Would you like to generate one? [Yn]
+# Generating new SSH public key.
+# Uploading ssh public key /Users/adam/.ssh/id_rsa.pub
+```
+
+After you have logged in, you can now create a Heroku `dyno`. Basically
+what this means is they will provision a server for you to host your
+site. To do this, simply run the following:
+
+```bash
+heroku apps:create <Your-app-name>
+# Creating ⬢ <Your-app-name>... done
+# https://<Your-app-name>.herokuapp.com/ |
+https://git.heroku.com/<Your-app-name>.git
+```
+
+Now deployment is as simple as:
+
+```bash
+git push heroku master
+```
+
+After waiting a little bit you should see something like the following:
+
+```bash
+remote: -----> Launching...
+remote:        Released v6
+remote:        https://<Your-app-name>.herokuapp.com/ deployed to Heroku
+```
+
+To visit your site, simply run:
+
+```bash
+heroku open
+```
+
+However, youre not done yet! If you got to your site and go visit the
+`/articles` section, you will run into an error. This is because you
+have not migrated the database on Heroku. To do so, run the following:
+
+```bash
+heroku run rails db:migrate
+```
+
+Now you're done! Good luck with everything and I hope this was helpful!
+
+[Helpful Links below](#links)
+
 <h2 id="issues">
   <a href="#issues">
     Issues
