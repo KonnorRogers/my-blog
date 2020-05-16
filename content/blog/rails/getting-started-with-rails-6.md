@@ -138,7 +138,8 @@ RUN curl https://deb.nodesource.com/setup_12.x | bash     && curl https://dl.yar
 
 # Install system dependencies & clean them up
 RUN apt-get update -qq && apt-get install -y \
-    postgresql-client build-essential yarn nodejs inotify-tools && \
+    postgresql-client build-essential yarn nodejs \
+    libnotify-dev && \
     rm -rf /var/lib/apt/lists/*
 
 # This is where we build the rails app
@@ -288,6 +289,8 @@ version: "3"
 services:
   web:
     environment:
+      NODE_ENV: development
+      RAILS_ENV: development
       WEBPACKER_DEV_SERVER_HOST: 0.0.0.0
       POSTGRES_USER: postgres
       POSTGRES_PASSWORD: example
@@ -300,6 +303,7 @@ services:
         APP_DIR: /home/user/myapp
 
     command: bash -c "rm -f tmp/pids/server.pid &&
+      ./bin/webpack-dev-server &
       bundle exec rails server -p 3000 -b '0.0.0.0'"
 
     volumes:
@@ -308,22 +312,10 @@ services:
 
     ports:
       - "3000:3000"
+      - "3035:3035"
 
     depends_on:
       - db
-      - webpacker
-
-  webpacker:
-    build: .
-    environment:
-      NODE_ENV: development
-      RAILS_ENV: development
-      WEBPACKER_DEV_SERVER_HOST: 0.0.0.0
-    command: "./bin/webpack-dev-server"
-    volumes:
-      - .:/home/user/myapp
-    ports:
-      - "3035:3035"
 
   db:
     image: postgres:12.2
@@ -853,7 +845,8 @@ RUN curl https://deb.nodesource.com/setup_12.x | bash     && curl https://dl.yar
 
 # Install system dependencies & clean them up
 RUN apt-get update -qq && apt-get install -y \
-    postgresql-client build-essential yarn nodejs inotify-tools && \
+    postgresql-client build-essential yarn nodejs \
+    libnotify-dev && \
     rm -rf /var/lib/apt/lists/*
 
 # This is where we build the rails app
@@ -915,6 +908,8 @@ version: "3"
 services:
   web:
     environment:
+      NODE_ENV: development
+      RAILS_ENV: development
       WEBPACKER_DEV_SERVER_HOST: 0.0.0.0
       POSTGRES_USER: postgres
       POSTGRES_PASSWORD: example
@@ -927,6 +922,7 @@ services:
         APP_DIR: /home/user/myapp
 
     command: bash -c "rm -f tmp/pids/server.pid &&
+      ./bin/webpack-dev-server &
       bundle exec rails server -p 3000 -b '0.0.0.0'"
 
     volumes:
@@ -935,22 +931,10 @@ services:
 
     ports:
       - "3000:3000"
+      - "3035:3035"
 
     depends_on:
       - db
-      - webpacker
-
-  webpacker:
-    build: .
-    environment:
-      NODE_ENV: development
-      RAILS_ENV: development
-      WEBPACKER_DEV_SERVER_HOST: 0.0.0.0
-    command: "./bin/webpack-dev-server"
-    volumes:
-      - .:/home/user/myapp
-    ports:
-      - "3035:3035"
 
   db:
     image: postgres:12.2
