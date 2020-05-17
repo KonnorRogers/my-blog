@@ -99,7 +99,7 @@ this tutorial.</p>
 <p>To verify run the following:</p>
 <div
               class="gatsby-code-button-container customButtonContainerClass"
-              data-toaster-id="3199143725102949000"
+              data-toaster-id="76579511813474100000"
               data-toaster-class="gatsby-code-button-toaster"
               data-toaster-text-class="gatsby-code-button-toaster-text"
               data-toaster-text="Copied to clipboard!"
@@ -108,7 +108,7 @@ this tutorial.</p>
 # Docker version 19.03.8
 
 docker-compose -v
-# docker-compose version 1.25.0`, `3199143725102949000`)"
+# docker-compose version 1.25.0`, `76579511813474100000`)"
             >
               <div
                 class="gatsby-code-button"
@@ -143,13 +143,13 @@ section of this post.</p>
 named mine <code class="language-text">getting-started-with-rails-6</code></p>
 <div
               class="gatsby-code-button-container customButtonContainerClass"
-              data-toaster-id="71024659945240920000"
+              data-toaster-id="15120236031487488000"
               data-toaster-class="gatsby-code-button-toaster"
               data-toaster-text-class="gatsby-code-button-toaster-text"
               data-toaster-text="Copied to clipboard!"
               data-toaster-duration="5000"
               onClick="copyToClipboard(`mkdir getting-started-with-rails-6
-cd getting-started-with-rails-6`, `71024659945240920000`)"
+cd getting-started-with-rails-6`, `15120236031487488000`)"
             >
               <div
                 class="gatsby-code-button"
@@ -168,7 +168,7 @@ The below <code class="language-text">Dockerfile</code> is modified from the <a 
 Rails</a></p>
 <div
               class="gatsby-code-button-container customButtonContainerClass"
-              data-toaster-id="27456660285549896000"
+              data-toaster-id="38210344531153890000"
               data-toaster-class="gatsby-code-button-toaster"
               data-toaster-text-class="gatsby-code-button-toaster-text"
               data-toaster-text="Copied to clipboard!"
@@ -183,7 +183,8 @@ RUN curl https://deb.nodesource.com/setup_12.x | bash     && curl https://dl.yar
 
 # Install system dependencies & clean them up
 RUN apt-get update -qq && apt-get install -y \
-    postgresql-client build-essential yarn nodejs inotify-tools && \
+    postgresql-client build-essential yarn nodejs \
+    libnotify-dev && \
     rm -rf /var/lib/apt/lists/*
 
 # This is where we build the rails app
@@ -234,7 +235,7 @@ RUN yarn install --check-files
 ENTRYPOINT [&quot;/usr/bin/entrypoint.sh&quot;]
 
 # Start the main process.
-CMD [&quot;rails&quot;, &quot;server&quot;, &quot;-b&quot;, &quot;0.0.0.0&quot;]`, `27456660285549896000`)"
+CMD [&quot;rails&quot;, &quot;server&quot;, &quot;-b&quot;, &quot;0.0.0.0&quot;]`, `38210344531153890000`)"
             >
               <div
                 class="gatsby-code-button"
@@ -253,7 +254,8 @@ RUN curl https<span class="token punctuation">:</span>//deb.nodesource.com/setup
 
 <span class="token comment"># Install system dependencies &amp; clean them up</span>
 RUN apt<span class="token punctuation">-</span>get update <span class="token punctuation">-</span>qq &amp;&amp; apt<span class="token punctuation">-</span>get install <span class="token punctuation">-</span>y \
-    postgresql<span class="token punctuation">-</span>client build<span class="token punctuation">-</span>essential yarn nodejs inotify<span class="token punctuation">-</span>tools &amp;&amp; \
+    postgresql<span class="token punctuation">-</span>client build<span class="token punctuation">-</span>essential yarn nodejs \
+    libnotify<span class="token punctuation">-</span>dev &amp;&amp; \
     rm <span class="token punctuation">-</span>rf /var/lib/apt/lists/*
 
 <span class="token comment"># This is where we build the rails app</span>
@@ -317,14 +319,14 @@ of using Rails 5 we’ll use Rails 6.</p>
 <p>Create a <code class="language-text">Gemfile</code> with the following contents:</p>
 <div
               class="gatsby-code-button-container customButtonContainerClass"
-              data-toaster-id="62525110664497000000"
+              data-toaster-id="95957347892600800000"
               data-toaster-class="gatsby-code-button-toaster"
               data-toaster-text-class="gatsby-code-button-toaster-text"
               data-toaster-text="Copied to clipboard!"
               data-toaster-duration="5000"
               onClick="copyToClipboard(`# Gemfile
 source 'https://rubygems.org'
-gem 'rails', '~> 6'`, `62525110664497000000`)"
+gem 'rails', '~> 6'`, `95957347892600800000`)"
             >
               <div
                 class="gatsby-code-button"
@@ -340,12 +342,12 @@ gem <span class="token string">'rails'</span><span class="token punctuation">,</
 <p>Then add an empty <code class="language-text">Gemfile.lock</code></p>
 <div
               class="gatsby-code-button-container customButtonContainerClass"
-              data-toaster-id="24999199470308598000"
+              data-toaster-id="9336286744456323000"
               data-toaster-class="gatsby-code-button-toaster"
               data-toaster-text-class="gatsby-code-button-toaster-text"
               data-toaster-text="Copied to clipboard!"
               data-toaster-duration="5000"
-              onClick="copyToClipboard(`touch Gemfile.lock`, `24999199470308598000`)"
+              onClick="copyToClipboard(`touch Gemfile.lock`, `9336286744456323000`)"
             >
               <div
                 class="gatsby-code-button"
@@ -364,7 +366,7 @@ gem <span class="token string">'rails'</span><span class="token punctuation">,</
 simple, create a file with the following settings:</p>
 <div
               class="gatsby-code-button-container customButtonContainerClass"
-              data-toaster-id="97792322854233670000"
+              data-toaster-id="92387889562305500000"
               data-toaster-class="gatsby-code-button-toaster"
               data-toaster-text-class="gatsby-code-button-toaster-text"
               data-toaster-text="Copied to clipboard!"
@@ -374,7 +376,7 @@ simple, create a file with the following settings:</p>
   &quot;name&quot;: &quot;myapp&quot;,
   &quot;private&quot;: true,
   &quot;version&quot;: &quot;0.1.0&quot;
-}`, `97792322854233670000`)"
+}`, `92387889562305500000`)"
             >
               <div
                 class="gatsby-code-button"
@@ -394,12 +396,12 @@ Github</a></p>
 <p>Also, add an empty <code class="language-text">yarn.lock</code> because Rails uses yarn by default.</p>
 <div
               class="gatsby-code-button-container customButtonContainerClass"
-              data-toaster-id="38782052340152930000"
+              data-toaster-id="3002067866146562600"
               data-toaster-class="gatsby-code-button-toaster"
               data-toaster-text-class="gatsby-code-button-toaster-text"
               data-toaster-text="Copied to clipboard!"
               data-toaster-duration="5000"
-              onClick="copyToClipboard(`touch yarn.lock`, `38782052340152930000`)"
+              onClick="copyToClipboard(`touch yarn.lock`, `3002067866146562600`)"
             >
               <div
                 class="gatsby-code-button"
@@ -418,7 +420,7 @@ Github</a></p>
 Rails.</p>
 <div
               class="gatsby-code-button-container customButtonContainerClass"
-              data-toaster-id="46816290334158260000"
+              data-toaster-id="6272732404905778000"
               data-toaster-class="gatsby-code-button-toaster"
               data-toaster-text-class="gatsby-code-button-toaster-text"
               data-toaster-text="Copied to clipboard!"
@@ -432,7 +434,7 @@ set -e
 rm -f /myapp/tmp/pids/server.pid
 
 # Then exec the container's main process (what's set as CMD in the Dockerfile).
-exec &quot;\$@&quot;`, `46816290334158260000`)"
+exec &quot;\$@&quot;`, `6272732404905778000`)"
             >
               <div
                 class="gatsby-code-button"
@@ -461,7 +463,7 @@ Github</a></p>
 <p>Finally, lets add a <code class="language-text">docker-compose.yml</code> with the following content:</p>
 <div
               class="gatsby-code-button-container customButtonContainerClass"
-              data-toaster-id="45182640930912910000"
+              data-toaster-id="71940150182553820000"
               data-toaster-class="gatsby-code-button-toaster"
               data-toaster-text-class="gatsby-code-button-toaster-text"
               data-toaster-text="Copied to clipboard!"
@@ -473,6 +475,8 @@ version: &quot;3&quot;
 services:
   web:
     environment:
+      NODE_ENV: development
+      RAILS_ENV: development
       WEBPACKER_DEV_SERVER_HOST: 0.0.0.0
       POSTGRES_USER: postgres
       POSTGRES_PASSWORD: example
@@ -485,6 +489,7 @@ services:
         APP_DIR: /home/user/myapp
 
     command: bash -c &quot;rm -f tmp/pids/server.pid &&
+      ./bin/webpack-dev-server &
       bundle exec rails server -p 3000 -b '0.0.0.0'&quot;
 
     volumes:
@@ -493,22 +498,10 @@ services:
 
     ports:
       - &quot;3000:3000&quot;
+      - &quot;3035:3035&quot;
 
     depends_on:
       - db
-      - webpacker
-
-  webpacker:
-    build: .
-    environment:
-      NODE_ENV: development
-      RAILS_ENV: development
-      WEBPACKER_DEV_SERVER_HOST: 0.0.0.0
-    command: &quot;./bin/webpack-dev-server&quot;
-    volumes:
-      - .:/home/user/myapp
-    ports:
-      - &quot;3035:3035&quot;
 
   db:
     image: postgres:12.2
@@ -518,7 +511,7 @@ services:
       - db_data:/var/lib/postgresql/data
 
 volumes:
-  db_data:`, `45182640930912910000`)"
+  db_data:`, `71940150182553820000`)"
             >
               <div
                 class="gatsby-code-button"
@@ -534,6 +527,8 @@ volumes:
 <span class="token key atrule">services</span><span class="token punctuation">:</span>
   <span class="token key atrule">web</span><span class="token punctuation">:</span>
     <span class="token key atrule">environment</span><span class="token punctuation">:</span>
+      <span class="token key atrule">NODE_ENV</span><span class="token punctuation">:</span> development
+      <span class="token key atrule">RAILS_ENV</span><span class="token punctuation">:</span> development
       <span class="token key atrule">WEBPACKER_DEV_SERVER_HOST</span><span class="token punctuation">:</span> 0.0.0.0
       <span class="token key atrule">POSTGRES_USER</span><span class="token punctuation">:</span> postgres
       <span class="token key atrule">POSTGRES_PASSWORD</span><span class="token punctuation">:</span> example
@@ -546,6 +541,7 @@ volumes:
         <span class="token key atrule">APP_DIR</span><span class="token punctuation">:</span> /home/user/myapp
 
     <span class="token key atrule">command</span><span class="token punctuation">:</span> bash <span class="token punctuation">-</span>c "rm <span class="token punctuation">-</span>f tmp/pids/server.pid &amp;&amp;
+      ./bin/webpack<span class="token punctuation">-</span>dev<span class="token punctuation">-</span>server &amp;
       bundle exec rails server <span class="token punctuation">-</span>p 3000 <span class="token punctuation">-</span>b '0.0.0.0'"
 
     <span class="token key atrule">volumes</span><span class="token punctuation">:</span>
@@ -554,22 +550,10 @@ volumes:
 
     <span class="token key atrule">ports</span><span class="token punctuation">:</span>
       <span class="token punctuation">-</span> <span class="token string">"3000:3000"</span>
+      <span class="token punctuation">-</span> <span class="token string">"3035:3035"</span>
 
     <span class="token key atrule">depends_on</span><span class="token punctuation">:</span>
       <span class="token punctuation">-</span> db
-      <span class="token punctuation">-</span> webpacker
-
-  <span class="token key atrule">webpacker</span><span class="token punctuation">:</span>
-    <span class="token key atrule">build</span><span class="token punctuation">:</span> .
-    <span class="token key atrule">environment</span><span class="token punctuation">:</span>
-      <span class="token key atrule">NODE_ENV</span><span class="token punctuation">:</span> development
-      <span class="token key atrule">RAILS_ENV</span><span class="token punctuation">:</span> development
-      <span class="token key atrule">WEBPACKER_DEV_SERVER_HOST</span><span class="token punctuation">:</span> 0.0.0.0
-    <span class="token key atrule">command</span><span class="token punctuation">:</span> <span class="token string">"./bin/webpack-dev-server"</span>
-    <span class="token key atrule">volumes</span><span class="token punctuation">:</span>
-      <span class="token punctuation">-</span> .<span class="token punctuation">:</span>/home/user/myapp
-    <span class="token key atrule">ports</span><span class="token punctuation">:</span>
-      <span class="token punctuation">-</span> <span class="token string">"3035:3035"</span>
 
   <span class="token key atrule">db</span><span class="token punctuation">:</span>
     <span class="token key atrule">image</span><span class="token punctuation">:</span> postgres<span class="token punctuation">:</span><span class="token number">12.2</span>
@@ -593,7 +577,7 @@ closely resemble your <code class="language-text">.gitignore</code> that Rails w
 <p>Create a <code class="language-text">.dockerignore</code> file with the following contents:</p>
 <div
               class="gatsby-code-button-container customButtonContainerClass"
-              data-toaster-id="48961192574302314000"
+              data-toaster-id="80912866042477510000"
               data-toaster-class="gatsby-code-button-toaster"
               data-toaster-text-class="gatsby-code-button-toaster-text"
               data-toaster-text="Copied to clipboard!"
@@ -628,7 +612,7 @@ closely resemble your <code class="language-text">.gitignore</code> that Rails w
 /public/packs-test
 /node_modules
 /yarn-error.log
-yarn-debug.log*`, `48961192574302314000`)"
+yarn-debug.log*`, `80912866042477510000`)"
             >
               <div
                 class="gatsby-code-button"
@@ -678,7 +662,7 @@ Github</a></p>
 <p>Your directory should look as follows:</p>
 <div
               class="gatsby-code-button-container customButtonContainerClass"
-              data-toaster-id="73704316482492140000"
+              data-toaster-id="5098878707332033000"
               data-toaster-class="gatsby-code-button-toaster"
               data-toaster-text-class="gatsby-code-button-toaster-text"
               data-toaster-text="Copied to clipboard!"
@@ -691,7 +675,7 @@ Github</a></p>
 ├── Gemfile
 ├── Gemfile.lock
 ├── package.json
-└── yarn.lock`, `73704316482492140000`)"
+└── yarn.lock`, `5098878707332033000`)"
             >
               <div
                 class="gatsby-code-button"
@@ -732,12 +716,12 @@ structure. To do so, run the command below inside of your Rails project
 directory.</p>
 <div
               class="gatsby-code-button-container customButtonContainerClass"
-              data-toaster-id="62593679177972630000"
+              data-toaster-id="47250178396500050000"
               data-toaster-class="gatsby-code-button-toaster"
               data-toaster-text-class="gatsby-code-button-toaster-text"
               data-toaster-text="Copied to clipboard!"
               data-toaster-duration="5000"
-              onClick="copyToClipboard(`docker-compose run --rm --no-deps web rails new . --force --no-deps --database=postgresql`, `62593679177972630000`)"
+              onClick="copyToClipboard(`docker-compose run --rm --no-deps web rails new . --force --no-deps --database=postgresql`, `47250178396500050000`)"
             >
               <div
                 class="gatsby-code-button"
@@ -757,7 +741,7 @@ database adapter.</p>
 <p>Your Rails directory should look as follows:</p>
 <div
               class="gatsby-code-button-container customButtonContainerClass"
-              data-toaster-id="59654219023943590000"
+              data-toaster-id="11702588902613375000"
               data-toaster-class="gatsby-code-button-toaster"
               data-toaster-text-class="gatsby-code-button-toaster-text"
               data-toaster-text="Copied to clipboard!"
@@ -789,7 +773,7 @@ database adapter.</p>
 ├── test
 ├── tmp
 ├── vendor
-└── yarn.lock`, `59654219023943590000`)"
+└── yarn.lock`, `11702588902613375000`)"
             >
               <div
                 class="gatsby-code-button"
@@ -840,12 +824,12 @@ database adapter.</p>
 In case anything still lingers, run the following:</p>
 <div
               class="gatsby-code-button-container customButtonContainerClass"
-              data-toaster-id="20092107062472930000"
+              data-toaster-id="46518074800775650000"
               data-toaster-class="gatsby-code-button-toaster"
               data-toaster-text-class="gatsby-code-button-toaster-text"
               data-toaster-text="Copied to clipboard!"
               data-toaster-duration="5000"
-              onClick="copyToClipboard(`sudo chown -R &quot;\$USER&quot;:&quot;\$USER&quot; .`, `20092107062472930000`)"
+              onClick="copyToClipboard(`sudo chown -R &quot;\$USER&quot;:&quot;\$USER&quot; .`, `46518074800775650000`)"
             >
               <div
                 class="gatsby-code-button"
@@ -859,12 +843,12 @@ In case anything still lingers, run the following:</p>
 command. I have mine called <code class="language-text">ownthis</code></p>
 <div
               class="gatsby-code-button-container customButtonContainerClass"
-              data-toaster-id="13882059703447114000"
+              data-toaster-id="97769586642517740000"
               data-toaster-class="gatsby-code-button-toaster"
               data-toaster-text-class="gatsby-code-button-toaster-text"
               data-toaster-text="Copied to clipboard!"
               data-toaster-duration="5000"
-              onClick="copyToClipboard(`alias ownthis=&quot;sudo chown -R \$USER:\$USER .&quot;`, `13882059703447114000`)"
+              onClick="copyToClipboard(`alias ownthis=&quot;sudo chown -R \$USER:\$USER .&quot;`, `97769586642517740000`)"
             >
               <div
                 class="gatsby-code-button"
@@ -885,7 +869,7 @@ file.</p>
 <p>Delete the contents of your <code class="language-text">config/database.yml</code> and add the following:</p>
 <div
               class="gatsby-code-button-container customButtonContainerClass"
-              data-toaster-id="70838460040234660000"
+              data-toaster-id="21415509879478780000"
               data-toaster-class="gatsby-code-button-toaster"
               data-toaster-text-class="gatsby-code-button-toaster-text"
               data-toaster-text="Copied to clipboard!"
@@ -906,7 +890,7 @@ development:
 
 test:
   <<: *default
-  database: myapp_test`, `70838460040234660000`)"
+  database: myapp_test`, `21415509879478780000`)"
             >
               <div
                 class="gatsby-code-button"
@@ -935,12 +919,12 @@ test:
 <p>Now you can boot the app using the following command:</p>
 <div
               class="gatsby-code-button-container customButtonContainerClass"
-              data-toaster-id="24853848629390307000"
+              data-toaster-id="66800182029741160000"
               data-toaster-class="gatsby-code-button-toaster"
               data-toaster-text-class="gatsby-code-button-toaster-text"
               data-toaster-text="Copied to clipboard!"
               data-toaster-duration="5000"
-              onClick="copyToClipboard(`docker-compose up --build`, `24853848629390307000`)"
+              onClick="copyToClipboard(`docker-compose up --build`, `66800182029741160000`)"
             >
               <div
                 class="gatsby-code-button"
@@ -953,13 +937,13 @@ test:
 <p>In another terminal, run the following commands:</p>
 <div
               class="gatsby-code-button-container customButtonContainerClass"
-              data-toaster-id="66526572290351596000"
+              data-toaster-id="13050036442251067000"
               data-toaster-class="gatsby-code-button-toaster"
               data-toaster-text-class="gatsby-code-button-toaster-text"
               data-toaster-text="Copied to clipboard!"
               data-toaster-duration="5000"
               onClick="copyToClipboard(`docker-compose run --rm web rails db:create
-docker-compose run --rm web rails db:migrate`, `66526572290351596000`)"
+docker-compose run --rm web rails db:migrate`, `13050036442251067000`)"
             >
               <div
                 class="gatsby-code-button"
@@ -1016,12 +1000,12 @@ docker-compose run --rm web rails db:migrate</code></pre></div>
 <p>To stop the application, in another terminal simply run:</p>
 <div
               class="gatsby-code-button-container customButtonContainerClass"
-              data-toaster-id="12079866823431651000"
+              data-toaster-id="45709777210748895000"
               data-toaster-class="gatsby-code-button-toaster"
               data-toaster-text-class="gatsby-code-button-toaster-text"
               data-toaster-text="Copied to clipboard!"
               data-toaster-duration="5000"
-              onClick="copyToClipboard(`docker-compose down`, `12079866823431651000`)"
+              onClick="copyToClipboard(`docker-compose down`, `45709777210748895000`)"
             >
               <div
                 class="gatsby-code-button"
@@ -1041,13 +1025,13 @@ docker-compose run --rm web rails db:migrate</code></pre></div>
 changes, you must run the following:</p>
 <div
               class="gatsby-code-button-container customButtonContainerClass"
-              data-toaster-id="75261058690601400000"
+              data-toaster-id="99086996407133220000"
               data-toaster-class="gatsby-code-button-toaster"
               data-toaster-text-class="gatsby-code-button-toaster-text"
               data-toaster-text="Copied to clipboard!"
               data-toaster-duration="5000"
               onClick="copyToClipboard(`docker-compose run web bundle install
-docker-compose up --build`, `75261058690601400000`)"
+docker-compose up --build`, `99086996407133220000`)"
             >
               <div
                 class="gatsby-code-button"
@@ -1062,12 +1046,12 @@ docker-compose up --build</code></pre></div>
 changed the <code class="language-text">docker-compose.yml</code> file, you can simply run:</p>
 <div
               class="gatsby-code-button-container customButtonContainerClass"
-              data-toaster-id="62758564991745460000"
+              data-toaster-id="84951516209199890000"
               data-toaster-class="gatsby-code-button-toaster"
               data-toaster-text-class="gatsby-code-button-toaster-text"
               data-toaster-text="Copied to clipboard!"
               data-toaster-duration="5000"
-              onClick="copyToClipboard(`docker-compose up --build`, `62758564991745460000`)"
+              onClick="copyToClipboard(`docker-compose up --build`, `84951516209199890000`)"
             >
               <div
                 class="gatsby-code-button"
@@ -1080,12 +1064,12 @@ changed the <code class="language-text">docker-compose.yml</code> file, you can 
 <p>However, if you do not need to rebuild, you can simply run:</p>
 <div
               class="gatsby-code-button-container customButtonContainerClass"
-              data-toaster-id="16388767578300522000"
+              data-toaster-id="28055259916275667000"
               data-toaster-class="gatsby-code-button-toaster"
               data-toaster-text-class="gatsby-code-button-toaster-text"
               data-toaster-text="Copied to clipboard!"
               data-toaster-duration="5000"
-              onClick="copyToClipboard(`docker-compose up`, `16388767578300522000`)"
+              onClick="copyToClipboard(`docker-compose up`, `28055259916275667000`)"
             >
               <div
                 class="gatsby-code-button"
@@ -1103,12 +1087,12 @@ changed the <code class="language-text">docker-compose.yml</code> file, you can 
 <p>As a simple way to get you going, anytime you see</p>
 <div
               class="gatsby-code-button-container customButtonContainerClass"
-              data-toaster-id="83733657734031080000"
+              data-toaster-id="37810849486365210000"
               data-toaster-class="gatsby-code-button-toaster"
               data-toaster-text-class="gatsby-code-button-toaster-text"
               data-toaster-text="Copied to clipboard!"
               data-toaster-duration="5000"
-              onClick="copyToClipboard(`rails [command]`, `83733657734031080000`)"
+              onClick="copyToClipboard(`rails [command]`, `37810849486365210000`)"
             >
               <div
                 class="gatsby-code-button"
@@ -1121,12 +1105,12 @@ changed the <code class="language-text">docker-compose.yml</code> file, you can 
 <p>simply prepend the following:</p>
 <div
               class="gatsby-code-button-container customButtonContainerClass"
-              data-toaster-id="80232776676235100000"
+              data-toaster-id="12400245416957788000"
               data-toaster-class="gatsby-code-button-toaster"
               data-toaster-text-class="gatsby-code-button-toaster-text"
               data-toaster-text="Copied to clipboard!"
               data-toaster-duration="5000"
-              onClick="copyToClipboard(`docker-compose run --rm web rails [command]`, `80232776676235100000`)"
+              onClick="copyToClipboard(`docker-compose run --rm web rails [command]`, `12400245416957788000`)"
             >
               <div
                 class="gatsby-code-button"
@@ -1149,7 +1133,7 @@ once the command finished</p>
 </h2>
 <div
               class="gatsby-code-button-container customButtonContainerClass"
-              data-toaster-id="73214865938650096000"
+              data-toaster-id="16505454039806745000"
               data-toaster-class="gatsby-code-button-toaster"
               data-toaster-text-class="gatsby-code-button-toaster-text"
               data-toaster-text="Copied to clipboard!"
@@ -1184,7 +1168,7 @@ docker-compose run --rm web /bin/bash
 # Things are totally jacked up? Remove all images and containers.
 # https://stackoverflow.com/a/52179797
 
-docker rm \$(docker ps -q -a) -f && docker rmi \$(docker images -q) -f`, `73214865938650096000`)"
+docker rm \$(docker ps -q -a) -f && docker rmi \$(docker images -q) -f`, `16505454039806745000`)"
             >
               <div
                 class="gatsby-code-button"
@@ -1251,7 +1235,7 @@ here.</a></p>
 <p>Now that you have Heroku CLI installed you can login via terminal.</p>
 <div
               class="gatsby-code-button-container customButtonContainerClass"
-              data-toaster-id="44763248915925670000"
+              data-toaster-id="81390062280875490000"
               data-toaster-class="gatsby-code-button-toaster"
               data-toaster-text-class="gatsby-code-button-toaster-text"
               data-toaster-text="Copied to clipboard!"
@@ -1263,7 +1247,7 @@ here.</a></p>
 # Could not find an existing public key.
 # Would you like to generate one? [Yn]
 # Generating new SSH public key.
-# Uploading ssh public key /Users/adam/.ssh/id_rsa.pub`, `44763248915925670000`)"
+# Uploading ssh public key /Users/adam/.ssh/id_rsa.pub`, `81390062280875490000`)"
             >
               <div
                 class="gatsby-code-button"
@@ -1285,7 +1269,7 @@ what this means is they will provision a server for you to host your
 site. To do this, simply run the following:</p>
 <div
               class="gatsby-code-button-container customButtonContainerClass"
-              data-toaster-id="83272491452548970000"
+              data-toaster-id="57174356922659710000"
               data-toaster-class="gatsby-code-button-toaster"
               data-toaster-text-class="gatsby-code-button-toaster-text"
               data-toaster-text="Copied to clipboard!"
@@ -1293,7 +1277,7 @@ site. To do this, simply run the following:</p>
               onClick="copyToClipboard(`heroku apps:create <Your-app-name>
 # Creating ⬢ <Your-app-name>... done
 # https://<Your-app-name>.herokuapp.com/ |
-https://git.heroku.com/<Your-app-name>.git`, `83272491452548970000`)"
+https://git.heroku.com/<Your-app-name>.git`, `57174356922659710000`)"
             >
               <div
                 class="gatsby-code-button"
@@ -1309,12 +1293,12 @@ https://git.heroku.com/<span class="token operator">&lt;</span>Your-app-name<spa
 <p>Now deployment is as simple as:</p>
 <div
               class="gatsby-code-button-container customButtonContainerClass"
-              data-toaster-id="48052062126904920000"
+              data-toaster-id="6138024077459336000"
               data-toaster-class="gatsby-code-button-toaster"
               data-toaster-text-class="gatsby-code-button-toaster-text"
               data-toaster-text="Copied to clipboard!"
               data-toaster-duration="5000"
-              onClick="copyToClipboard(`git push heroku master`, `48052062126904920000`)"
+              onClick="copyToClipboard(`git push heroku master`, `6138024077459336000`)"
             >
               <div
                 class="gatsby-code-button"
@@ -1327,14 +1311,14 @@ https://git.heroku.com/<span class="token operator">&lt;</span>Your-app-name<spa
 <p>After waiting a little bit you should see something like the following:</p>
 <div
               class="gatsby-code-button-container customButtonContainerClass"
-              data-toaster-id="20091193022541144000"
+              data-toaster-id="994700057736741500"
               data-toaster-class="gatsby-code-button-toaster"
               data-toaster-text-class="gatsby-code-button-toaster-text"
               data-toaster-text="Copied to clipboard!"
               data-toaster-duration="5000"
               onClick="copyToClipboard(`remote: -----> Launching...
 remote:        Released v6
-remote:        https://<Your-app-name>.herokuapp.com/ deployed to Heroku`, `20091193022541144000`)"
+remote:        https://<Your-app-name>.herokuapp.com/ deployed to Heroku`, `994700057736741500`)"
             >
               <div
                 class="gatsby-code-button"
@@ -1349,12 +1333,12 @@ remote:        https://<span class="token operator">&lt;</span>Your-app-name<spa
 <p>To visit your site, simply run:</p>
 <div
               class="gatsby-code-button-container customButtonContainerClass"
-              data-toaster-id="19551902589171520000"
+              data-toaster-id="7339237648212959000"
               data-toaster-class="gatsby-code-button-toaster"
               data-toaster-text-class="gatsby-code-button-toaster-text"
               data-toaster-text="Copied to clipboard!"
               data-toaster-duration="5000"
-              onClick="copyToClipboard(`heroku open`, `19551902589171520000`)"
+              onClick="copyToClipboard(`heroku open`, `7339237648212959000`)"
             >
               <div
                 class="gatsby-code-button"
@@ -1369,12 +1353,12 @@ remote:        https://<span class="token operator">&lt;</span>Your-app-name<spa
 have not migrated the database on Heroku. To do so, run the following:</p>
 <div
               class="gatsby-code-button-container customButtonContainerClass"
-              data-toaster-id="54646093402214620000"
+              data-toaster-id="4998712433819042000"
               data-toaster-class="gatsby-code-button-toaster"
               data-toaster-text-class="gatsby-code-button-toaster-text"
               data-toaster-text="Copied to clipboard!"
               data-toaster-duration="5000"
-              onClick="copyToClipboard(`heroku run rails db:migrate`, `54646093402214620000`)"
+              onClick="copyToClipboard(`heroku run rails db:migrate`, `4998712433819042000`)"
             >
               <div
                 class="gatsby-code-button"
@@ -1394,12 +1378,12 @@ have not migrated the database on Heroku. To do so, run the following:</p>
 <p>Problems with ownership?</p>
 <div
               class="gatsby-code-button-container customButtonContainerClass"
-              data-toaster-id="49578486537594850000"
+              data-toaster-id="14567278419633367000"
               data-toaster-class="gatsby-code-button-toaster"
               data-toaster-text-class="gatsby-code-button-toaster-text"
               data-toaster-text="Copied to clipboard!"
               data-toaster-duration="5000"
-              onClick="copyToClipboard(`sudo chown -R &quot;\$USER&quot;:&quot;\$USER&quot; .`, `49578486537594850000`)"
+              onClick="copyToClipboard(`sudo chown -R &quot;\$USER&quot;:&quot;\$USER&quot; .`, `14567278419633367000`)"
             >
               <div
                 class="gatsby-code-button"
@@ -1412,13 +1396,13 @@ have not migrated the database on Heroku. To do so, run the following:</p>
 <p>Things not working as expected?</p>
 <div
               class="gatsby-code-button-container customButtonContainerClass"
-              data-toaster-id="28542753008226040000"
+              data-toaster-id="77346845784972640000"
               data-toaster-class="gatsby-code-button-toaster"
               data-toaster-text-class="gatsby-code-button-toaster-text"
               data-toaster-text="Copied to clipboard!"
               data-toaster-duration="5000"
               onClick="copyToClipboard(`docker-compose down --remove-orphans
-docker-compose up --build`, `28542753008226040000`)"
+docker-compose up --build`, `77346845784972640000`)"
             >
               <div
                 class="gatsby-code-button"
@@ -1433,7 +1417,7 @@ docker-compose up --build</code></pre></div>
 Disable it!</p>
 <div
               class="gatsby-code-button-container customButtonContainerClass"
-              data-toaster-id="74424869345643660000"
+              data-toaster-id="96771607842269740000"
               data-toaster-class="gatsby-code-button-toaster"
               data-toaster-text-class="gatsby-code-button-toaster-text"
               data-toaster-text="Copied to clipboard!"
@@ -1442,7 +1426,7 @@ Disable it!</p>
 
 # ...
 check_yarn_integrity: false
-# ...`, `74424869345643660000`)"
+# ...`, `96771607842269740000`)"
             >
               <div
                 class="gatsby-code-button"
@@ -1459,12 +1443,12 @@ check_yarn_integrity: false
 <p>Alternatively, run the following to fix this issue:</p>
 <div
               class="gatsby-code-button-container customButtonContainerClass"
-              data-toaster-id="91633754487709830000"
+              data-toaster-id="75252621368212490000"
               data-toaster-class="gatsby-code-button-toaster"
               data-toaster-text-class="gatsby-code-button-toaster-text"
               data-toaster-text="Copied to clipboard!"
               data-toaster-duration="5000"
-              onClick="copyToClipboard(`docker-compose run --rm web yarn install --check-files`, `91633754487709830000`)"
+              onClick="copyToClipboard(`docker-compose run --rm web yarn install --check-files`, `75252621368212490000`)"
             >
               <div
                 class="gatsby-code-button"
@@ -1481,14 +1465,14 @@ check_yarn_integrity: false
 volume to tell postgres to rebuild it.</p>
 <div
               class="gatsby-code-button-container customButtonContainerClass"
-              data-toaster-id="8952580630536366000"
+              data-toaster-id="82235698980325600000"
               data-toaster-class="gatsby-code-button-toaster"
               data-toaster-text-class="gatsby-code-button-toaster-text"
               data-toaster-text="Copied to clipboard!"
               data-toaster-duration="5000"
               onClick="copyToClipboard(`docker volume ls # lists the volumes
 docker volume rm <volume-name> # removes the volume
-docker volume prune [--force] # remove all unused volumes`, `8952580630536366000`)"
+docker volume prune [--force] # remove all unused volumes`, `82235698980325600000`)"
             >
               <div
                 class="gatsby-code-button"
@@ -1511,7 +1495,7 @@ To skip this section, click on the below link:</p>
 <p><a href="#links">Links sections</a></p>
 <div
               class="gatsby-code-button-container customButtonContainerClass"
-              data-toaster-id="62343334354144035000"
+              data-toaster-id="70346398631645600000"
               data-toaster-class="gatsby-code-button-toaster"
               data-toaster-text-class="gatsby-code-button-toaster-text"
               data-toaster-text="Copied to clipboard!"
@@ -1520,7 +1504,7 @@ To skip this section, click on the below link:</p>
 cd new-rails-app
 touch Dockerfile docker-compose.yml entrypoint.sh \
       Gemfile Gemfile.lock yarn.lock package.json \
-      .dockerignore`, `62343334354144035000`)"
+      .dockerignore`, `70346398631645600000`)"
             >
               <div
                 class="gatsby-code-button"
@@ -1536,7 +1520,7 @@ touch Dockerfile docker-compose.yml entrypoint.sh \
       .dockerignore</code></pre></div>
 <div
               class="gatsby-code-button-container customButtonContainerClass"
-              data-toaster-id="80180307917374460000"
+              data-toaster-id="47239409173157210000"
               data-toaster-class="gatsby-code-button-toaster"
               data-toaster-text-class="gatsby-code-button-toaster-text"
               data-toaster-text="Copied to clipboard!"
@@ -1551,7 +1535,8 @@ RUN curl https://deb.nodesource.com/setup_12.x | bash     && curl https://dl.yar
 
 # Install system dependencies & clean them up
 RUN apt-get update -qq && apt-get install -y \
-    postgresql-client build-essential yarn nodejs inotify-tools && \
+    postgresql-client build-essential yarn nodejs \
+    libnotify-dev && \
     rm -rf /var/lib/apt/lists/*
 
 # This is where we build the rails app
@@ -1602,7 +1587,7 @@ RUN yarn install --check-files
 ENTRYPOINT [&quot;/usr/bin/entrypoint.sh&quot;]
 
 # Start the main process.
-CMD [&quot;rails&quot;, &quot;server&quot;, &quot;-b&quot;, &quot;0.0.0.0&quot;]`, `80180307917374460000`)"
+CMD [&quot;rails&quot;, &quot;server&quot;, &quot;-b&quot;, &quot;0.0.0.0&quot;]`, `47239409173157210000`)"
             >
               <div
                 class="gatsby-code-button"
@@ -1621,7 +1606,8 @@ RUN curl https<span class="token punctuation">:</span>//deb.nodesource.com/setup
 
 <span class="token comment"># Install system dependencies &amp; clean them up</span>
 RUN apt<span class="token punctuation">-</span>get update <span class="token punctuation">-</span>qq &amp;&amp; apt<span class="token punctuation">-</span>get install <span class="token punctuation">-</span>y \
-    postgresql<span class="token punctuation">-</span>client build<span class="token punctuation">-</span>essential yarn nodejs inotify<span class="token punctuation">-</span>tools &amp;&amp; \
+    postgresql<span class="token punctuation">-</span>client build<span class="token punctuation">-</span>essential yarn nodejs \
+    libnotify<span class="token punctuation">-</span>dev &amp;&amp; \
     rm <span class="token punctuation">-</span>rf /var/lib/apt/lists/*
 
 <span class="token comment"># This is where we build the rails app</span>
@@ -1675,7 +1661,7 @@ ENTRYPOINT <span class="token punctuation">[</span><span class="token string">"/
 CMD <span class="token punctuation">[</span><span class="token string">"rails"</span><span class="token punctuation">,</span> <span class="token string">"server"</span><span class="token punctuation">,</span> <span class="token string">"-b"</span><span class="token punctuation">,</span> <span class="token string">"0.0.0.0"</span><span class="token punctuation">]</span></code></pre></div>
 <div
               class="gatsby-code-button-container customButtonContainerClass"
-              data-toaster-id="40000953139172090000"
+              data-toaster-id="2484855695973032000"
               data-toaster-class="gatsby-code-button-toaster"
               data-toaster-text-class="gatsby-code-button-toaster-text"
               data-toaster-text="Copied to clipboard!"
@@ -1687,6 +1673,8 @@ version: &quot;3&quot;
 services:
   web:
     environment:
+      NODE_ENV: development
+      RAILS_ENV: development
       WEBPACKER_DEV_SERVER_HOST: 0.0.0.0
       POSTGRES_USER: postgres
       POSTGRES_PASSWORD: example
@@ -1699,6 +1687,7 @@ services:
         APP_DIR: /home/user/myapp
 
     command: bash -c &quot;rm -f tmp/pids/server.pid &&
+      ./bin/webpack-dev-server &
       bundle exec rails server -p 3000 -b '0.0.0.0'&quot;
 
     volumes:
@@ -1707,22 +1696,10 @@ services:
 
     ports:
       - &quot;3000:3000&quot;
+      - &quot;3035:3035&quot;
 
     depends_on:
       - db
-      - webpacker
-
-  webpacker:
-    build: .
-    environment:
-      NODE_ENV: development
-      RAILS_ENV: development
-      WEBPACKER_DEV_SERVER_HOST: 0.0.0.0
-    command: &quot;./bin/webpack-dev-server&quot;
-    volumes:
-      - .:/home/user/myapp
-    ports:
-      - &quot;3035:3035&quot;
 
   db:
     image: postgres:12.2
@@ -1732,7 +1709,7 @@ services:
       - db_data:/var/lib/postgresql/data
 
 volumes:
-  db_data:`, `40000953139172090000`)"
+  db_data:`, `2484855695973032000`)"
             >
               <div
                 class="gatsby-code-button"
@@ -1748,6 +1725,8 @@ volumes:
 <span class="token key atrule">services</span><span class="token punctuation">:</span>
   <span class="token key atrule">web</span><span class="token punctuation">:</span>
     <span class="token key atrule">environment</span><span class="token punctuation">:</span>
+      <span class="token key atrule">NODE_ENV</span><span class="token punctuation">:</span> development
+      <span class="token key atrule">RAILS_ENV</span><span class="token punctuation">:</span> development
       <span class="token key atrule">WEBPACKER_DEV_SERVER_HOST</span><span class="token punctuation">:</span> 0.0.0.0
       <span class="token key atrule">POSTGRES_USER</span><span class="token punctuation">:</span> postgres
       <span class="token key atrule">POSTGRES_PASSWORD</span><span class="token punctuation">:</span> example
@@ -1760,6 +1739,7 @@ volumes:
         <span class="token key atrule">APP_DIR</span><span class="token punctuation">:</span> /home/user/myapp
 
     <span class="token key atrule">command</span><span class="token punctuation">:</span> bash <span class="token punctuation">-</span>c "rm <span class="token punctuation">-</span>f tmp/pids/server.pid &amp;&amp;
+      ./bin/webpack<span class="token punctuation">-</span>dev<span class="token punctuation">-</span>server &amp;
       bundle exec rails server <span class="token punctuation">-</span>p 3000 <span class="token punctuation">-</span>b '0.0.0.0'"
 
     <span class="token key atrule">volumes</span><span class="token punctuation">:</span>
@@ -1768,22 +1748,10 @@ volumes:
 
     <span class="token key atrule">ports</span><span class="token punctuation">:</span>
       <span class="token punctuation">-</span> <span class="token string">"3000:3000"</span>
+      <span class="token punctuation">-</span> <span class="token string">"3035:3035"</span>
 
     <span class="token key atrule">depends_on</span><span class="token punctuation">:</span>
       <span class="token punctuation">-</span> db
-      <span class="token punctuation">-</span> webpacker
-
-  <span class="token key atrule">webpacker</span><span class="token punctuation">:</span>
-    <span class="token key atrule">build</span><span class="token punctuation">:</span> .
-    <span class="token key atrule">environment</span><span class="token punctuation">:</span>
-      <span class="token key atrule">NODE_ENV</span><span class="token punctuation">:</span> development
-      <span class="token key atrule">RAILS_ENV</span><span class="token punctuation">:</span> development
-      <span class="token key atrule">WEBPACKER_DEV_SERVER_HOST</span><span class="token punctuation">:</span> 0.0.0.0
-    <span class="token key atrule">command</span><span class="token punctuation">:</span> <span class="token string">"./bin/webpack-dev-server"</span>
-    <span class="token key atrule">volumes</span><span class="token punctuation">:</span>
-      <span class="token punctuation">-</span> .<span class="token punctuation">:</span>/home/user/myapp
-    <span class="token key atrule">ports</span><span class="token punctuation">:</span>
-      <span class="token punctuation">-</span> <span class="token string">"3035:3035"</span>
 
   <span class="token key atrule">db</span><span class="token punctuation">:</span>
     <span class="token key atrule">image</span><span class="token punctuation">:</span> postgres<span class="token punctuation">:</span><span class="token number">12.2</span>
@@ -1796,7 +1764,7 @@ volumes:
   db_data<span class="token punctuation">:</span></code></pre></div>
 <div
               class="gatsby-code-button-container customButtonContainerClass"
-              data-toaster-id="14551573199533530000"
+              data-toaster-id="29656997244380025000"
               data-toaster-class="gatsby-code-button-toaster"
               data-toaster-text-class="gatsby-code-button-toaster-text"
               data-toaster-text="Copied to clipboard!"
@@ -1810,7 +1778,7 @@ set -e
 rm -f /myapp/tmp/pids/server.pid
 
 # Then exec the container's main process (what's set as CMD in the Dockerfile).
-exec &quot;\$@&quot;`, `14551573199533530000`)"
+exec &quot;\$@&quot;`, `29656997244380025000`)"
             >
               <div
                 class="gatsby-code-button"
@@ -1831,7 +1799,7 @@ exec &quot;\$@&quot;`, `14551573199533530000`)"
 <span class="token builtin class-name">exec</span> <span class="token string">"<span class="token variable">$@</span>"</span></code></pre></div>
 <div
               class="gatsby-code-button-container customButtonContainerClass"
-              data-toaster-id="93274951838427350000"
+              data-toaster-id="25376151519185420000"
               data-toaster-class="gatsby-code-button-toaster"
               data-toaster-text-class="gatsby-code-button-toaster-text"
               data-toaster-text="Copied to clipboard!"
@@ -1839,7 +1807,7 @@ exec &quot;\$@&quot;`, `14551573199533530000`)"
               onClick="copyToClipboard(`# Gemfile
 
 source 'https://rubygems.org'
-gem 'rails', '~> 6'`, `93274951838427350000`)"
+gem 'rails', '~> 6'`, `25376151519185420000`)"
             >
               <div
                 class="gatsby-code-button"
@@ -1854,7 +1822,7 @@ source <span class="token string">'https://rubygems.org'</span>
 gem <span class="token string">'rails'</span><span class="token punctuation">,</span> <span class="token string">'~> 6'</span></code></pre></div>
 <div
               class="gatsby-code-button-container customButtonContainerClass"
-              data-toaster-id="24197858147854844000"
+              data-toaster-id="27105726719151080000"
               data-toaster-class="gatsby-code-button-toaster"
               data-toaster-text-class="gatsby-code-button-toaster-text"
               data-toaster-text="Copied to clipboard!"
@@ -1864,7 +1832,7 @@ gem <span class="token string">'rails'</span><span class="token punctuation">,</
   &quot;name&quot;: &quot;myapp&quot;,
   &quot;private&quot;: true,
   &quot;version&quot;: &quot;1.0.0&quot;
-}`, `24197858147854844000`)"
+}`, `27105726719151080000`)"
             >
               <div
                 class="gatsby-code-button"
@@ -1881,7 +1849,7 @@ gem <span class="token string">'rails'</span><span class="token punctuation">,</
 <span class="token punctuation">}</span></code></pre></div>
 <div
               class="gatsby-code-button-container customButtonContainerClass"
-              data-toaster-id="47474233152221300000"
+              data-toaster-id="23681298236222046000"
               data-toaster-class="gatsby-code-button-toaster"
               data-toaster-text-class="gatsby-code-button-toaster-text"
               data-toaster-text="Copied to clipboard!"
@@ -1918,7 +1886,7 @@ gem <span class="token string">'rails'</span><span class="token punctuation">,</
 /public/packs-test
 /node_modules
 /yarn-error.log
-yarn-debug.log*`, `47474233152221300000`)"
+yarn-debug.log*`, `23681298236222046000`)"
             >
               <div
                 class="gatsby-code-button"
@@ -1963,12 +1931,12 @@ yarn-debug.log*</code></pre></div>
 <p>After setting up the above files, then run:</p>
 <div
               class="gatsby-code-button-container customButtonContainerClass"
-              data-toaster-id="85123852953030020000"
+              data-toaster-id="64546435071400590000"
               data-toaster-class="gatsby-code-button-toaster"
               data-toaster-text-class="gatsby-code-button-toaster-text"
               data-toaster-text="Copied to clipboard!"
               data-toaster-duration="5000"
-              onClick="copyToClipboard(`docker-compose run --rm --no-deps web rails new . --force --no-deps --database=postgresql`, `85123852953030020000`)"
+              onClick="copyToClipboard(`docker-compose run --rm --no-deps web rails new . --force --no-deps --database=postgresql`, `64546435071400590000`)"
             >
               <div
                 class="gatsby-code-button"
@@ -1981,12 +1949,12 @@ yarn-debug.log*</code></pre></div>
 <p>Now run:</p>
 <div
               class="gatsby-code-button-container customButtonContainerClass"
-              data-toaster-id="81019026522328060000"
+              data-toaster-id="63881513743976220000"
               data-toaster-class="gatsby-code-button-toaster"
               data-toaster-text-class="gatsby-code-button-toaster-text"
               data-toaster-text="Copied to clipboard!"
               data-toaster-duration="5000"
-              onClick="copyToClipboard(`docker-compose build`, `81019026522328060000`)"
+              onClick="copyToClipboard(`docker-compose build`, `63881513743976220000`)"
             >
               <div
                 class="gatsby-code-button"
@@ -1999,12 +1967,12 @@ yarn-debug.log*</code></pre></div>
 <p>After building the image, then install webpacker:</p>
 <div
               class="gatsby-code-button-container customButtonContainerClass"
-              data-toaster-id="22088977998925087000"
+              data-toaster-id="43958634950454690000"
               data-toaster-class="gatsby-code-button-toaster"
               data-toaster-text-class="gatsby-code-button-toaster-text"
               data-toaster-text="Copied to clipboard!"
               data-toaster-duration="5000"
-              onClick="copyToClipboard(`docker-compose run --rm web rails webpacker:install`, `22088977998925087000`)"
+              onClick="copyToClipboard(`docker-compose run --rm web rails webpacker:install`, `43958634950454690000`)"
             >
               <div
                 class="gatsby-code-button"
@@ -2018,7 +1986,7 @@ yarn-debug.log*</code></pre></div>
 <p>Now setup the database in the <code class="language-text">config/database.yml</code></p>
 <div
               class="gatsby-code-button-container customButtonContainerClass"
-              data-toaster-id="58437171919711610000"
+              data-toaster-id="29850300297773250000"
               data-toaster-class="gatsby-code-button-toaster"
               data-toaster-text-class="gatsby-code-button-toaster-text"
               data-toaster-text="Copied to clipboard!"
@@ -2039,7 +2007,7 @@ development:
 
 test:
   <<: *default
-  database: myapp_test`, `58437171919711610000`)"
+  database: myapp_test`, `29850300297773250000`)"
             >
               <div
                 class="gatsby-code-button"
@@ -2068,12 +2036,12 @@ test:
 <p>Next create the database.</p>
 <div
               class="gatsby-code-button-container customButtonContainerClass"
-              data-toaster-id="68035309974396084000"
+              data-toaster-id="54707847015916070000"
               data-toaster-class="gatsby-code-button-toaster"
               data-toaster-text-class="gatsby-code-button-toaster-text"
               data-toaster-text="Copied to clipboard!"
               data-toaster-duration="5000"
-              onClick="copyToClipboard(`docker-compose run --rm web bash -c &quot;rails db:create && rails db:migrate&quot;`, `68035309974396084000`)"
+              onClick="copyToClipboard(`docker-compose run --rm web bash -c &quot;rails db:create && rails db:migrate&quot;`, `54707847015916070000`)"
             >
               <div
                 class="gatsby-code-button"
@@ -2086,12 +2054,12 @@ test:
 <p>Finally, start the app:</p>
 <div
               class="gatsby-code-button-container customButtonContainerClass"
-              data-toaster-id="14069641456191360000"
+              data-toaster-id="54618224977025480000"
               data-toaster-class="gatsby-code-button-toaster"
               data-toaster-text-class="gatsby-code-button-toaster-text"
               data-toaster-text="Copied to clipboard!"
               data-toaster-duration="5000"
-              onClick="copyToClipboard(`docker-compose up`, `14069641456191360000`)"
+              onClick="copyToClipboard(`docker-compose up`, `54618224977025480000`)"
             >
               <div
                 class="gatsby-code-button"
@@ -2105,7 +2073,7 @@ test:
 <p>Now, to deploy the app, simply do the following:</p>
 <div
               class="gatsby-code-button-container customButtonContainerClass"
-              data-toaster-id="33957837533383970000"
+              data-toaster-id="1615333459330492400"
               data-toaster-class="gatsby-code-button-toaster"
               data-toaster-text-class="gatsby-code-button-toaster-text"
               data-toaster-text="Copied to clipboard!"
@@ -2113,7 +2081,7 @@ test:
               onClick="copyToClipboard(`heroku login
 heroku apps:create <App-name>
 git push heroku master
-heroku run rails db:migrate`, `33957837533383970000`)"
+heroku run rails db:migrate`, `1615333459330492400`)"
             >
               <div
                 class="gatsby-code-button"
