@@ -43,3 +43,16 @@ For example, we want our `first_name`, `last_name`, `blog_site`,
 `github_profile`, `linkedin_profile`, `portfolio_site` and whatever else
 you can think of to be easily pulled down and easily changed should
 something change in the future.
+
+So where do we go to set site data?
+
+According to [Bridgetown
+Docs](https://www.bridgetownrb.com/docs/datafiles) you set up your
+static data inside of the `./_data/` directory. You can use one `YAML`,
+`JSON`, or `CSV` files. I prefer `YAML` myself.
+
+So lets add the data. Navigate to the `_data` directory.
+
+```
+
+```
