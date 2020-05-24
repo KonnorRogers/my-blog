@@ -6,16 +6,18 @@ description: Getting started building with Bridgetown by dockerizing it. I'll wa
 
 <h2 align="center"> What is Bridgetownrb? </h2>
 
-<p align="center">
+<p align="center" style="background: #F0FFF0; border-radius: 16px; padding: 1rem;">
   <a href="https://bridgetownrb.com">
     Bridgetownrb
   </a>
-  is "A Webpack-aware,
+  is a "Webpack-aware,
   <br />
   Ruby-powered static site generator
   <br />
   for the modern Jamstack era."
 </p>
+
+<br />
 
 So what does this mean? To me it means it is a
 static site generator that uses Webpack under the hood and can source
@@ -742,7 +744,7 @@ This is a reference post to point people back to.
 So stay tuned for the next part of building with bridgetown.
 
 And if you dont feel like waiting, go check out their documentation.
-
+<br />
 [Bridgetown Documentation](https://www.bridgetownrb.com/docs/)
 
 Good luck building with [Bridgetown](https://bridgetownrb.com) and I hope this was useful!
