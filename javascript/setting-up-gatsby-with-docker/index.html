@@ -19,14 +19,14 @@
 create a new git directory for you)</p>
 <div
               class="gatsby-code-button-container customButtonContainerClass"
-              data-toaster-id="23368139249880236000"
+              data-toaster-id="14267665844381794000"
               data-toaster-class="gatsby-code-button-toaster"
               data-toaster-text-class="gatsby-code-button-toaster-text"
               data-toaster-text="Copied to clipboard!"
               data-toaster-duration="5000"
               onClick="copyToClipboard(`mkdir my-new-gatsby-project
 cd my-new-gatsby-project
-touch Dockerfile.dev docker-compose.yml package.json yarn.lock`, `23368139249880236000`)"
+touch Dockerfile.dev docker-compose.yml package.json yarn.lock`, `14267665844381794000`)"
             >
               <div
                 class="gatsby-code-button"
@@ -47,7 +47,7 @@ some values to get Docker to run appropriately. Run the command below to fill in
 a temporary <code class="language-text">package.json</code> file.</p>
 <div
               class="gatsby-code-button-container customButtonContainerClass"
-              data-toaster-id="44681398455299990000"
+              data-toaster-id="21854703574770820000"
               data-toaster-class="gatsby-code-button-toaster"
               data-toaster-text-class="gatsby-code-button-toaster-text"
               data-toaster-text="Copied to clipboard!"
@@ -63,7 +63,7 @@ a temporary <code class="language-text">package.json</code> file.</p>
   &quot;author&quot;: &quot;paramagicdev <konnor5456@gmail.com>&quot;,
   &quot;license&quot;: &quot;MIT&quot;,
   &quot;private&quot;: true
-}`, `44681398455299990000`)"
+}`, `21854703574770820000`)"
             >
               <div
                 class="gatsby-code-button"
@@ -88,7 +88,7 @@ a temporary <code class="language-text">package.json</code> file.</p>
 <p>Then, we’ll fill in the Dockerfile.dev with the following values.</p>
 <div
               class="gatsby-code-button-container customButtonContainerClass"
-              data-toaster-id="36541188882902897000"
+              data-toaster-id="34356740459556057000"
               data-toaster-class="gatsby-code-button-toaster"
               data-toaster-text-class="gatsby-code-button-toaster-text"
               data-toaster-text="Copied to clipboard!"
@@ -112,7 +112,7 @@ COPY ./yarn.lock /myapp
 
 RUN yarn install && yarn cache clean
 COPY . /myapp
-CMD [&quot;gatsby&quot;, &quot;develop&quot;, &quot;-H&quot;, &quot;0.0.0.0&quot; ]`, `36541188882902897000`)"
+CMD [&quot;gatsby&quot;, &quot;develop&quot;, &quot;-H&quot;, &quot;0.0.0.0&quot; ]`, `34356740459556057000`)"
             >
               <div
                 class="gatsby-code-button"
@@ -148,7 +148,7 @@ but it makes commands a lot more verbose by having to include volumes and ports
 and various other things. Docker-compose simply streamlines the process.</p>
 <div
               class="gatsby-code-button-container customButtonContainerClass"
-              data-toaster-id="60328037365860150000"
+              data-toaster-id="51243452617763774000"
               data-toaster-class="gatsby-code-button-toaster"
               data-toaster-text-class="gatsby-code-button-toaster-text"
               data-toaster-text="Copied to clipboard!"
@@ -168,7 +168,7 @@ services:
       - .:/myapp
     environment:
       - NODE_ENV=development
-      - GATSBY_WEBPACK_PUBLICPATH=/`, `60328037365860150000`)"
+      - GATSBY_WEBPACK_PUBLICPATH=/`, `51243452617763774000`)"
             >
               <div
                 class="gatsby-code-button"
@@ -196,7 +196,7 @@ services:
 <p>Your file structure should at least contain the following when running <code class="language-text">tree .</code>:</p>
 <div
               class="gatsby-code-button-container customButtonContainerClass"
-              data-toaster-id="74889868442870460000"
+              data-toaster-id="85007146687264000000"
               data-toaster-class="gatsby-code-button-toaster"
               data-toaster-text-class="gatsby-code-button-toaster-text"
               data-toaster-text="Copied to clipboard!"
@@ -205,7 +205,7 @@ services:
 ├── docker-compose.yml
 ├── Dockerfile.dev
 ├── package.json
-└── yarn.lock`, `74889868442870460000`)"
+└── yarn.lock`, `85007146687264000000`)"
             >
               <div
                 class="gatsby-code-button"
@@ -224,13 +224,13 @@ services:
 respectively, then run the following commands:</p>
 <div
               class="gatsby-code-button-container customButtonContainerClass"
-              data-toaster-id="10699033945462944000"
+              data-toaster-id="20615665520180660000"
               data-toaster-class="gatsby-code-button-toaster"
               data-toaster-text-class="gatsby-code-button-toaster-text"
               data-toaster-text="Copied to clipboard!"
               data-toaster-duration="5000"
               onClick="copyToClipboard(`# Unfortunately, yarn does not have a similar command to npx
-docker-compose run --rm web npx degit https://github.com/gatsbyjs/gatsby-starter-default . --force`, `10699033945462944000`)"
+docker-compose run --rm web npx degit https://github.com/gatsbyjs/gatsby-starter-default . --force`, `20615665520180660000`)"
             >
               <div
                 class="gatsby-code-button"
@@ -244,12 +244,12 @@ docker-compose run --rm web npx degit https://github.com/gatsbyjs/gatsby-starter
 <p>Your gatsby project is now ready to dev on! Simply run the following:</p>
 <div
               class="gatsby-code-button-container customButtonContainerClass"
-              data-toaster-id="15852031566282387000"
+              data-toaster-id="26724016886492996000"
               data-toaster-class="gatsby-code-button-toaster"
               data-toaster-text-class="gatsby-code-button-toaster-text"
               data-toaster-text="Copied to clipboard!"
               data-toaster-duration="5000"
-              onClick="copyToClipboard(`docker-compose up --build`, `15852031566282387000`)"
+              onClick="copyToClipboard(`docker-compose up --build`, `26724016886492996000`)"
             >
               <div
                 class="gatsby-code-button"
@@ -270,12 +270,12 @@ subsequent instances of docker-compose with simple <code class="language-text">d
 the <code class="language-text">package-lock.json</code> generated by degit when pulling in the gatsby starter</p>
 <div
               class="gatsby-code-button-container customButtonContainerClass"
-              data-toaster-id="58578473611998880000"
+              data-toaster-id="16416005420896184000"
               data-toaster-class="gatsby-code-button-toaster"
               data-toaster-text-class="gatsby-code-button-toaster-text"
               data-toaster-text="Copied to clipboard!"
               data-toaster-duration="5000"
-              onClick="copyToClipboard(`rm package-lock.json`, `58578473611998880000`)"
+              onClick="copyToClipboard(`rm package-lock.json`, `16416005420896184000`)"
             >
               <div
                 class="gatsby-code-button"
@@ -292,7 +292,7 @@ managers.</p>
 as follows.</p>
 <div
               class="gatsby-code-button-container customButtonContainerClass"
-              data-toaster-id="59724441227371995000"
+              data-toaster-id="59132989708495610000"
               data-toaster-class="gatsby-code-button-toaster"
               data-toaster-text-class="gatsby-code-button-toaster-text"
               data-toaster-text="Copied to clipboard!"
@@ -301,7 +301,7 @@ as follows.</p>
 docker-compose run --rm web yarn upgrade-interactive
 
 # Non-interactive
-docker-compose run --rm web yarn upgrade`, `59724441227371995000`)"
+docker-compose run --rm web yarn upgrade`, `59132989708495610000`)"
             >
               <div
                 class="gatsby-code-button"
@@ -327,14 +327,14 @@ you can run the following command:</li>
 </ol>
 <div
               class="gatsby-code-button-container customButtonContainerClass"
-              data-toaster-id="82929812847687700000"
+              data-toaster-id="24810365821110870000"
               data-toaster-class="gatsby-code-button-toaster"
               data-toaster-text-class="gatsby-code-button-toaster-text"
               data-toaster-text="Copied to clipboard!"
               data-toaster-duration="5000"
               onClick="copyToClipboard(`npx create-docz-app my-docz-app
 # or
-yarn create docz-app my-docz-app`, `82929812847687700000`)"
+yarn create docz-app my-docz-app`, `24810365821110870000`)"
             >
               <div
                 class="gatsby-code-button"
@@ -354,7 +354,7 @@ Gatsby project.</li>
 <p><a href="https://github.com/ParamagicDev/docker-with-gatsby">Gatsby Initial Setup</a></p>
 <div
               class="gatsby-code-button-container customButtonContainerClass"
-              data-toaster-id="24684858133563027000"
+              data-toaster-id="87161883234322900000"
               data-toaster-class="gatsby-code-button-toaster"
               data-toaster-text-class="gatsby-code-button-toaster-text"
               data-toaster-text="Copied to clipboard!"
@@ -375,7 +375,7 @@ Gatsby project.</li>
 ├── public
 ├── README.md
 ├── src
-└── yarn.lock`, `24684858133563027000`)"
+└── yarn.lock`, `87161883234322900000`)"
             >
               <div
                 class="gatsby-code-button"
@@ -404,12 +404,12 @@ Gatsby project.</li>
 <p>Next, run the following:</p>
 <div
               class="gatsby-code-button-container customButtonContainerClass"
-              data-toaster-id="9774241870481215000"
+              data-toaster-id="70952070559074090000"
               data-toaster-class="gatsby-code-button-toaster"
               data-toaster-text-class="gatsby-code-button-toaster-text"
               data-toaster-text="Copied to clipboard!"
               data-toaster-duration="5000"
-              onClick="copyToClipboard(`yarn add docz`, `9774241870481215000`)"
+              onClick="copyToClipboard(`yarn add docz`, `70952070559074090000`)"
             >
               <div
                 class="gatsby-code-button"
@@ -426,12 +426,12 @@ for documentation and won’t be using anything else, all my <code class="langua
 <code class="language-text">./gatsby-config.js</code> and to your <code class="language-text">./package.json</code> file like so:</p>
 <div
               class="gatsby-code-button-container customButtonContainerClass"
-              data-toaster-id="51598598118169400000"
+              data-toaster-id="79023884904639940000"
               data-toaster-class="gatsby-code-button-toaster"
               data-toaster-text-class="gatsby-code-button-toaster-text"
               data-toaster-text="Copied to clipboard!"
               data-toaster-duration="5000"
-              onClick="copyToClipboard(`docker-compose run --rm web yarn add gatsby-theme-docz`, `51598598118169400000`)"
+              onClick="copyToClipboard(`docker-compose run --rm web yarn add gatsby-theme-docz`, `79023884904639940000`)"
             >
               <div
                 class="gatsby-code-button"
@@ -445,14 +445,14 @@ for documentation and won’t be using anything else, all my <code class="langua
 <p>Then, you must add it to your <code class="language-text">./gatsby-config.js</code> file.</p>
 <div
               class="gatsby-code-button-container customButtonContainerClass"
-              data-toaster-id="78135557359577560000"
+              data-toaster-id="5258026395466242000"
               data-toaster-class="gatsby-code-button-toaster"
               data-toaster-text-class="gatsby-code-button-toaster-text"
               data-toaster-text="Copied to clipboard!"
               data-toaster-duration="5000"
               onClick="copyToClipboard(`module.exports = {
   plugins: [&quot;gatsby-theme-docz&quot;],
-}`, `78135557359577560000`)"
+}`, `5258026395466242000`)"
             >
               <div
                 class="gatsby-code-button"
@@ -472,12 +472,12 @@ created by Degit will be owned by the root user. Run the following to fix
 any permissions errors from the root directory:</p>
 <div
               class="gatsby-code-button-container customButtonContainerClass"
-              data-toaster-id="8712718614552450000"
+              data-toaster-id="47371802287603780000"
               data-toaster-class="gatsby-code-button-toaster"
               data-toaster-text-class="gatsby-code-button-toaster-text"
               data-toaster-text="Copied to clipboard!"
               data-toaster-duration="5000"
-              onClick="copyToClipboard(`sudo chown -R &quot;\$USER&quot;:&quot;\$USER&quot; .`, `8712718614552450000`)"
+              onClick="copyToClipboard(`sudo chown -R &quot;\$USER&quot;:&quot;\$USER&quot; .`, `47371802287603780000`)"
             >
               <div
                 class="gatsby-code-button"
