@@ -52,9 +52,12 @@ const Bio = () => {
       />
       <p>
         Written by <strong>{author}</strong> who lives in Providence, RI.
-        <br /></br>
+        <br />
+        <br />
         <strong>{author}</strong> currently works as a Paramedic. Currently
-        trying to become a full-time software developer.<br /></br>
+        trying to become a full-time software developer.
+        <br />
+        <br />
         Feel free to contact me: &nbsp;
         <a href="mailto:konnor7414@gmail.com">konnor7414@gmail.com</a>
         {` `}

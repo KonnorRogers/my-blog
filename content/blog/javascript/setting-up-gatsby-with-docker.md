@@ -16,7 +16,7 @@ cd my-new-gatsby-project
 touch Dockerfile.dev docker-compose.yml package.json yarn.lock
 ```
 
-</br>
+<br />
 
 Next step, we must fill in the `package.json` file.
 
@@ -42,7 +42,7 @@ a temporary `package.json` file.
 }
 ```
 
-</br>
+<br />
 
 Then, we'll fill in the Dockerfile.dev with the following values.
 
@@ -69,7 +69,7 @@ COPY . /myapp
 CMD ["gatsby", "develop", "-H", "0.0.0.0" ]
 ```
 
-</br>
+<br />
 
 After finishing with the Dockerfile, well build a `docker-compose.yml` to bring
 everything together. Technically, you could run the whole project without docker-compose
@@ -218,7 +218,7 @@ Additionally, you must add the `gatsby-theme-doz` plugin in both your
 docker-compose run --rm web yarn add gatsby-theme-docz
 ```
 
-</br>
+<br />
 
 Then, you must add it to your `./gatsby-config.js` file.
 
@@ -254,20 +254,20 @@ as close to my host machine as possible.
 ### Gatsby
 
 [Gatsby Home](https://gatsbyjs.org)
-</br>
+<br />
 [Gatsby Starter Github page](https://github.com/gatsbyjs/gatsby-starter-default)
-</br>
+<br />
 
 ### Degit
 
 > I actually learned about Degit when browsing the Svelte documentation
-> </br>
+> <br />
 
 [Degit Source Code](https://github.com/Rich-Harris/degit)
-</br>
+<br />
 
 ### Docz
 
 [Docz Homepage](https://www.docz.site)
-</br>
+<br />
 [Docz Getting Started](https://www.docz.site/docs/getting-started)

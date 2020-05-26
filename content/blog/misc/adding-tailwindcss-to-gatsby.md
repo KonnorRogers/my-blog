@@ -6,9 +6,9 @@ description: Details on how to add tailwindcss to a Gatsby project.
 
 ## Prerequisites
 
-Node (preferably 8+, I used 11.15.0)</br>
-Npm (I used 6.7.0)</br>
-Git (Gatsby requires Git to pull in starters)</br>
+Node (preferably 8+, I used 11.15.0)<br />
+Npm (I used 6.7.0)<br />
+Git (Gatsby requires Git to pull in starters)<br />
 
 ## Note to windows users
 
@@ -40,7 +40,7 @@ mkdir src/styles
 touch src/styles/tailwind.css
 ```
 
-</br>
+<br />
 
 <strong>
   1. Add gatsby-postcss-plugin to `./gatsby-config.js`
@@ -65,7 +65,7 @@ module.exports = {
 }
 ```
 
-</br>
+<br />
 
 <strong>2. Add the following values to `./postcss.config.js`</strong>
 
@@ -79,7 +79,7 @@ module.exports = {
 }
 ```
 
-</br>
+<br />
 
 <strong>3. Add tailwindcss directives to `./src/styles/tailwind.css`</strong>
 
@@ -90,7 +90,7 @@ module.exports = {
 @tailwind components;
 ```
 
-</br>
+<br />
 
 <strong>4. Add tailwindcss globally by importing it in `gatsby-browser.js`</strong>
 
@@ -100,7 +100,7 @@ module.exports = {
 import "./src/styles/tailwind.css"
 ```
 
-</br>
+<br />
 
 <strong>5. Add a tailwind style to a an item in `./src/pages/index.js` to test that its working</strong>
 
@@ -112,7 +112,7 @@ import "./src/styles/tailwind.css"
 // Below code omitted for brevity
 ```
 
-</br>
+<br />
 
 <strong>6. Start up your server</strong>
 
@@ -120,7 +120,7 @@ import "./src/styles/tailwind.css"
 gatsby develop
 ```
 
-</br>
+<br />
 
 <strong>7. Navigate to `localhost:8000` to see if Tailwind is working. That's it!</strong>
 
@@ -135,7 +135,7 @@ If you already have a Gatsby project feel free to skip ahead to the
 npm install --global gatsby-cli
 ```
 
-</br>
+<br />
 
 <strong>2. Then to create a new project:</strong>
 
@@ -143,7 +143,7 @@ npm install --global gatsby-cli
 gatsby new tailwind-gatsby-project
 ```
 
-</br>
+<br />
 
 This will create a new Gatsby project called `tailwind-gatsby-project`
 
@@ -153,7 +153,7 @@ This will create a new Gatsby project called `tailwind-gatsby-project`
 cd tailwind-gatsby-project
 ```
 
-</br>
+<br />
 
 Make sure running `gatsby develop` works before moving on.
 
@@ -165,7 +165,7 @@ Make sure running `gatsby develop` works before moving on.
 npm install gatsby-plugin-postcss
 ```
 
-</br>
+<br />
 
 <strong>5. Add gatsby-postcss-plugin to `gatsby-config.js`</strong>
 
@@ -188,7 +188,7 @@ module.exports = {
 }
 ```
 
-</br>
+<br />
 
 <strong>6. Create a `postcss.config.js` file in the root directory</strong>
 
@@ -196,7 +196,7 @@ module.exports = {
 touch postcss.config.js
 ```
 
-</br>
+<br />
 
 <strong>7. Add the following content to `postcss.config.js`:</strong>
 
@@ -210,7 +210,7 @@ module.exports = {
 }
 ```
 
-</br>
+<br />
 
 <strong>8. Add the [TailwindCSS](https://tailwindcss.com/docs/installation) package</strong>
 
@@ -218,7 +218,7 @@ module.exports = {
 npm install --save-dev tailwindcss
 ```
 
-</br>
+<br />
 
 <strong>9. Create a directory called in `styles` in the `src` directory</strong>
 
@@ -226,7 +226,7 @@ npm install --save-dev tailwindcss
 mkdir src/styles
 ```
 
-</br>
+<br />
 
 <strong>10. Create a stylesheet called `tailwind.css` in the `src/styles` directory</strong>
 
@@ -234,7 +234,7 @@ mkdir src/styles
 touch src/styles/tailwind.css
 ```
 
-</br>
+<br />
 
 <strong>11. Add the following content:</strong>
 
@@ -246,7 +246,7 @@ touch src/styles/tailwind.css
 @tailwind utilities;
 ```
 
-</br>
+<br />
 
 <strong>12. To add tailwind styles globally, import it in `gatsby-browser.js`</strong>
 
@@ -254,7 +254,7 @@ touch src/styles/tailwind.css
 import "./src/styles/tailwind.css"
 ```
 
-</br>
+<br />
 
 Everything should now be working! However, we currently have no way of telling.
 Lets add a tailwind style to the index page.
@@ -269,7 +269,7 @@ Lets add a tailwind style to the index page.
 // Below code omitted for brevity
 ```
 
-</br>
+<br />
 
 <strong>14. Run `gatsby-develop`</strong>
 
@@ -288,11 +288,11 @@ restart it.
 
 ### Gatsby
 
-[Gatsby](https://www.gatsbyjs.org)</br>
-[Gatsby + Tailwind tutorial](https://www.gatsbyjs.org/docs/tailwind-css/)</br>
-[Using CSS in Gatsby](https://www.gatsbyjs.org/tutorial/part-two/#creating-global-styles-with-standard-css-files)</br>
+[Gatsby](https://www.gatsbyjs.org)<br />
+[Gatsby + Tailwind tutorial](https://www.gatsbyjs.org/docs/tailwind-css/)<br />
+[Using CSS in Gatsby](https://www.gatsbyjs.org/tutorial/part-two/#creating-global-styles-with-standard-css-files)<br />
 
 ### Tailwind
 
-[TailwindCSS](https://tailwindcss.com/)</br>
-[TailwindCSS Installation](https://tailwindcss.com/docs/installation)</br>
+[TailwindCSS](https://tailwindcss.com/)<br />
+[TailwindCSS Installation](https://tailwindcss.com/docs/installation)<br />
