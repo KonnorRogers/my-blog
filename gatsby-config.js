@@ -1,10 +1,9 @@
 module.exports = {
-  pathPrefix: `/blog`,
   siteMetadata: {
     title: `Konnor's Blog`,
     author: `Konnor Rogers`,
     description: `A blog documentating my various processes`,
-    siteUrl: `https://konnorrogers.xyz/blog`,
+    siteUrl: `https://blog.konnor.site`,
   },
   plugins: [
     {
@@ -38,16 +37,8 @@ module.exports = {
     {
       resolve: `gatsby-plugin-mdx`,
       options: {
-        defaultLayout: {
-          default: require.resolve("./src/components/layout.js"),
-        },
-        extensions: [".mdx", ".md"],
-      },
-    },
-    {
-      resolve: `gatsby-transformer-remark`,
-      options: {
-        plugins: [
+        extensions: [`.mdx`, `.md`],
+        gatsbyRemarkPlugins: [
           {
             resolve: `gatsby-remark-code-buttons`,
             options: {
@@ -77,7 +68,7 @@ module.exports = {
     },
     `gatsby-transformer-sharp`,
     `gatsby-plugin-sharp`,
-    `gatsby-plugin-feed`,
+    `gatsby-plugin-feed-mdx`,
     {
       resolve: `gatsby-plugin-manifest`,
       options: {
