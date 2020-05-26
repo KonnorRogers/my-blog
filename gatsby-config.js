@@ -35,7 +35,14 @@ module.exports = {
         path: `${__dirname}/content/blog`,
       },
     },
-    `gatsby-plugin-mdx`,
+    {
+      resolve: `gatsby-plugin-mdx`,
+      options: {
+        defaultLayout: {
+          default: require.resolve("./src/components/layout.js"),
+        },
+      },
+    },
     {
       resolve: `gatsby-transformer-remark`,
       options: {
