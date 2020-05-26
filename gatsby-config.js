@@ -28,12 +28,12 @@ module.exports = {
         name: `assets`,
       },
     },
-    // {
-    //   resolve: "gatsby-plugin-page-creator",
-    //   options: {
-    //     path: `${__dirname}/content/blog`,
-    //   },
-    // },
+    {
+      resolve: "gatsby-plugin-page-creator",
+      options: {
+        path: `${__dirname}/content/blog`,
+      },
+    },
     {
       resolve: `gatsby-plugin-mdx`,
       options: {
