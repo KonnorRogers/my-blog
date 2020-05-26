@@ -1,10 +1,10 @@
 module.exports = {
-  pathPrefix: `/my-blog`,
+  pathPrefix: `/blog`,
   siteMetadata: {
     title: `Konnor's Blog`,
     author: `Konnor Rogers`,
     description: `A blog documentating my various processes`,
-    siteUrl: `https://paramagicdev.github.io/my-blog`,
+    siteUrl: `https://konnorrogers.xyz/blog`,
   },
   plugins: [
     {
