@@ -30,6 +30,13 @@ module.exports = {
       },
     },
     {
+      resolve: "gatsby-plugin-page-creator",
+      options: {
+        path: `${__dirname}/content/blog`,
+      },
+    },
+    `gatsby-plugin-mdx`,
+    {
       resolve: `gatsby-transformer-remark`,
       options: {
         plugins: [
