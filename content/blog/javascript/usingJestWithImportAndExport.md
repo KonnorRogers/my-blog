@@ -7,8 +7,8 @@ description: Using jest with import and export statements is not easy.
 
 # Purpose
 
-When using new tools I like to create my own documentation of setup.<br>
-In this case we will be looking at: [Jest](https://jestjs.io)<br>
+When using new tools I like to create my own documentation of setup.<br />
+In this case we will be looking at: [Jest](https://jestjs.io)<br />
 
 Jest is a simple testing framework for javascript that uses
 very similar syntax to RSpec. In fact, it even supports the \*.spec.js file extension.
@@ -89,7 +89,7 @@ Now, all your tests will go into a `__tests__/` directory and you can name them
 
 ## The longer, more in depth guide
 
-As with all projects using javascript, start with creating your package.json.<br>
+As with all projects using javascript, start with creating your package.json.<br />
 
 ```bash
 npm init
@@ -101,9 +101,9 @@ that I will not get into in this guide.
 
 ### Installing Jest
 
-[Jest Getting Started](https://jestjs.io/docs/en/22.x/getting-started.html)<br>
+[Jest Getting Started](https://jestjs.io/docs/en/22.x/getting-started.html)<br />
 
-Jest's documentation is quite good. And I quite enjoyed reading it, I recommend you check it out<br>
+Jest's documentation is quite good. And I quite enjoyed reading it, I recommend you check it out<br />
 
 To start run the following:
 
@@ -191,14 +191,14 @@ test("adds 1 + 2 to equal 3", () => {
 
 So why does this work?
 
-Well, Babel essentially takes your import statement: <br>
-`import sum from "../src/sum.js";` <br>
-And turns it into<br>
+Well, Babel essentially takes your import statement: <br />
+`import sum from "../src/sum.js";` <br />
+And turns it into<br />
 `const sum = require('../src/sum.js');`
 
-And takes your export statement: <br>
-`export default function sum(a, b) {`<br>
-and turns it into<br>
+And takes your export statement: <br />
+`export default function sum(a, b) {`<br />
+and turns it into<br />
 
 ```javascript
 function sum(a, b) {

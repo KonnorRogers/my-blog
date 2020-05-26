@@ -7,7 +7,7 @@ description: "Lets look into classes in PHP. Classes are the building blocks
 
 # Part 7
 
-[Laracasts main site](https://laracasts.com)<br>
+[Laracasts main site](https://laracasts.com)<br />
 [Laracasts - PHP for beginners](https://laracasts.com/series/php-for-beginners)
 
 ## Chapters covered
@@ -16,7 +16,7 @@ description: "Lets look into classes in PHP. Classes are the building blocks
 
 ### Chapter 12 - Classes 101
 
-What is a class? Well, according to Wikipedia, this is what a programming class is:<br>
+What is a class? Well, according to Wikipedia, this is what a programming class is:<br />
 In object-oriented programming, a class is an extensible program-code-template for creating objects, providing initial values for state (member variables) and implementations of behavior (member functions or methods)
 
 What does that mean? A class is very simply a way of packaging variables and functions
@@ -51,16 +51,16 @@ class Task {
 This is a very basic example and intro to classes.
 Lets break it down now.
 
-`class Task` Define the class name<br>
-`protected $description;` initialize the variable $description<br>
-`public function __construct($description)` This is a special 'constructor' function.<br>
+`class Task` Define the class name<br />
+`protected $description;` initialize the variable $description<br />
+`public function __construct($description)` This is a special 'constructor' function.<br />
 This means that when a class is 'instantiated', to run the following code. Or in other
-words when you create a 'new' class, do the run the following code.<br>
+words when you create a 'new' class, do the run the following code.<br />
 `$this->$description;` ahhhh yes. The magical '$this'. In some languages it may just
-be `this` or `self`. This is a tough term to wrap your head around so let's keep it simple.<br>
+be `this` or `self`. This is a tough term to wrap your head around so let's keep it simple.<br />
 
 In this case `$this` means, for THIS instance of Task, set the value provided in the constructor to
-this instance's $description variable<br>
+this instance's $description variable<br />
 
 So what the heck does that above statment even mean? Well let's continue on. Examples
 explain this better than I can. Lets instantiate a the class Task now.
@@ -107,7 +107,7 @@ class Task {
 
 $task = new Task("Go to the store");
 ```
-<br>
+<br />
 The above defines the class Task. Now lets see how we would access values.
 
 ```php
@@ -121,7 +121,7 @@ $task->setDescription("Go to grandma's house");
 var_dump($task->getDescription();
 // Will now var_dump "Go to grandma's house" instead of "go to store"
 ```
-<br>
+<br />
 
 Now what if we want to make multiple tasks and store them in an array?
 Simple:
@@ -139,6 +139,6 @@ var_dump($tasks);
 
 ## Links
 
-<strong>[Follow along with my repo](https://github.com/ParamagicDev/php-for-beginners)<br></strong>
-[Laracasts main site](https://laracasts.com)<br>
-[PHP for beginners](https://laracasts.com/series/php-for-beginners)<br>
+<strong>[Follow along with my repo](https://github.com/ParamagicDev/php-for-beginners)<br /></strong>
+[Laracasts main site](https://laracasts.com)<br />
+[PHP for beginners](https://laracasts.com/series/php-for-beginners)<br />

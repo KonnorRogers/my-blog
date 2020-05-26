@@ -6,7 +6,7 @@ description: "Lets learn some basics of SQL based databases, in this case, MySQL
 
 # Part 6
 
-[Laracasts main site](https://laracasts.com)<br>
+[Laracasts main site](https://laracasts.com)<br />
 [Laracasts - PHP for beginners](https://laracasts.com/series/php-for-beginners)
 
 ## Chapters covered
@@ -36,7 +36,7 @@ sudo apt update
 sudo apt install -y mysql-server # installs mysql
 sudo mysql_secure_installation # will provide various prompts
 ```
-<br>
+<br />
 
 Ensure its working:
 
@@ -48,7 +48,7 @@ sudo service mysql stop
 sudo service mysql start
 sudo service mysql status
 ```
-<br>
+<br />
 
 <em>If you are having permission issues: <a href="#issues">Check this out</a></em>
 
@@ -77,23 +77,23 @@ mysql
  -> show tables;
  -> describe todos;
 ```
-<br>
+<br />
 
 I'm not going to get too in depth with the above commands, but I will touch on the
 following query.
 
-Here's the command:<br><br>
+Here's the command:<br /><br />
 `CREATE TABLE todos (id integer PRIMARY KEY AUTO_INCREMENT, description text NOT NULL,
-completed boolean NOT NULL);`<br>
+completed boolean NOT NULL);`<br />
 
 Here's what it's doing:
 
-`CREATE TABLE todos();` Create the table called 'todos'<br>
+`CREATE TABLE todos();` Create the table called 'todos'<br />
 `id integer PRIMARY KEY AUTO_INCREMENT`: The first field will be the `id` field,
 this field will accept an `INTEGER`. This field will also be the `PRIMARY KEY`.
 This means that the `id` will be the unique identifier for whatever data is stored.
 `AUTO_INCREMENT` means the user does not have to supply the id integer. Instead, the
-database will automatically set the id starting from 1.<br>
+database will automatically set the id starting from 1.<br />
 
 
 #### Manipulating a tables data
@@ -109,28 +109,28 @@ mysql
 
 #### Summarizing
 
-`mysql` Start mysql<br>
-`-> create database <database>;` Create the database with \<database>.<br>
-`-> use database <database>;` Set the current database to query to \<database>.<br>
+`mysql` Start mysql<br />
+`-> create database <database>;` Create the database with \<database>.<br />
+`-> use database <database>;` Set the current database to query to \<database>.<br />
 `-> CREATE TABLE <table> (<fields>);` Create a table within the database with a name of \<table>
-and has the following \<fields>.<br>
-`-> show tables;` List the tables in your database.<br>
+and has the following \<fields>.<br />
+`-> show tables;` List the tables in your database.<br />
 `-> describe <table>;` Shows the fields of the given \<table>.
 
-Simple manipulation:<br>
-`-> INSERT INTO <table>(<field1>, <field2>) VALUES(<value1>, <value2>);`<br> Insert the following
-values into the specified \<field> for the given table name. Order is important.<br><br>
-`-> SELECT * FROM <table>;`<br>
+Simple manipulation:<br />
+`-> INSERT INTO <table>(<field1>, <field2>) VALUES(<value1>, <value2>);`<br /> Insert the following
+values into the specified \<field> for the given table name. Order is important.<br /><br />
+`-> SELECT * FROM <table>;`<br />
 Allows you to view all columns and their data from the given
-\<table>.<br><br>
-`-> SELECT * FROM <table> WHERE id = 1;`<br>
+\<table>.<br /><br />
+`-> SELECT * FROM <table> WHERE id = 1;`<br />
 Select all columns from \<table> but only where the id is equal to 1.
 
 
 
 #### Installing a MySQL GUI - [MySQL-Workbench](https://dev.mysql.com/doc/workbench/en/)
 
-Now using the command line for everything is not very fun. You can simply google:<br>
+Now using the command line for everything is not very fun. You can simply google:<br />
 'mysql database GUI tools'
 
 I decided to use the officially supported mysql-workbench.
@@ -165,7 +165,7 @@ chowning ~/.mysql
 sudo chown $USER:$USER ~/.mysql
 mysql-workbench
 ```
-<br>
+<br />
 
 I'll let you figure out other configurations with mysql-workbench. Play around with
 it. Don't rush, find other commands. Have fun! Ill see you in the next part about
@@ -173,10 +173,10 @@ classes.
 
 ## Links
 
-<strong>[Follow along with my repo](https://github.com/ParamagicDev/php-for-beginners)<br></strong>
-[Laracasts main site](https://laracasts.com)<br>
-[PHP for beginners](https://laracasts.com/series/php-for-beginners)<br>
-[MySQL downloads page](https://www.mysql.com/downloads/)<br>
-[DigitalOcean Guide to MySQL](https://www.digitalocean.com/community/tutorials/how-to-install-mysql-on-ubuntu-18-04).<br>
-[MySQL-Workbench](https://dev.mysql.com/doc/workbench/en/)<br>
+<strong>[Follow along with my repo](https://github.com/ParamagicDev/php-for-beginners)<br /></strong>
+[Laracasts main site](https://laracasts.com)<br />
+[PHP for beginners](https://laracasts.com/series/php-for-beginners)<br />
+[MySQL downloads page](https://www.mysql.com/downloads/)<br />
+[DigitalOcean Guide to MySQL](https://www.digitalocean.com/community/tutorials/how-to-install-mysql-on-ubuntu-18-04).<br />
+[MySQL-Workbench](https://dev.mysql.com/doc/workbench/en/)<br />
 

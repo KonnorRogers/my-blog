@@ -32,4 +32,4 @@ try {
 require 'index.view.php';
 ```
 
-<br><br>
+<br /><br />

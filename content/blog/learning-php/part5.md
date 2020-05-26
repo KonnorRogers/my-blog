@@ -6,7 +6,7 @@ description: "Lets learn a little bit about functions"
 
 # Part 5
 
-[Laracasts main site](https://laracasts.com)<br>
+[Laracasts main site](https://laracasts.com)<br />
 [Laracasts - PHP for beginners](https://laracasts.com/series/php-for-beginners)
 
 ## Chapters covered:
@@ -31,20 +31,20 @@ function dumper($one, $two, $three){
 
 Lets break it down.
 
-`function` : This tells the PHP interpreter youre defining a function<br>
-`dumper()` : 'dumper' is the name of the function when you call it<br>
+`function` : This tells the PHP interpreter youre defining a function<br />
+`dumper()` : 'dumper' is the name of the function when you call it<br />
 `($one, $two, $three)` : These are whats called "arguments" or
-"parameters". These are what are passed into the function, this can be blank.<br>
+"parameters". These are what are passed into the function, this can be blank.<br />
 ```php
 {
   var_dump($one, $two, $three);
 }
 ```
-<br>
+<br />
 
 This calls the function:
-[var_dump()](https://www.php.net/manual/en/function.var-dump.php)<br>
-This will output your variables onto the page.<br>
+[var_dump()](https://www.php.net/manual/en/function.var-dump.php)<br />
+This will output your variables onto the page.<br />
 
 Lets get a little bit more advanced. Lets create a dd() function.
 
@@ -66,16 +66,16 @@ dd('hello world');
 dd('hi there');
 ```
 
-Lets look at what `dd($val)` is doing.<br>
+Lets look at what `dd($val)` is doing.<br />
 
-So first, it defines the function dd, then it will take in a 1 variable argument.<br>
+So first, it defines the function dd, then it will take in a 1 variable argument.<br />
 Next, it will wrap the value of `die(var_dump($val)` inside of \<pre>\</pre> tags.
 Finally, it will kill the execution of the php program. Equivalent to `exit`.
 
 #### Homework
 
 Assume you own a night club. Only allow people 21 or older inside and print a message
-telling them if they're allowed to come in.<br>
+telling them if they're allowed to come in.<br />
 
 My solution:
 
@@ -107,8 +107,8 @@ echoOldEnough(20); // is not allowed inside
 ```
 
 I'm not going to go too in depth, but basically `echoOldEnough()` is a wrapper around
-`isOldEnough()`. This allows you to print a readable message on the webpage.<br>
-This function is imported into 'index.php' when you run: <br>
+`isOldEnough()`. This allows you to print a readable message on the webpage.<br />
+This function is imported into 'index.php' when you run: <br />
 `require 'functions.php';`
 
 Lets go to Chapter 11 in the next part.
@@ -117,6 +117,6 @@ Lets go to Chapter 11 in the next part.
 
 
 ## Links
-<strong>[Follow along with my repo](https://github.com/ParamagicDev/php-for-beginners)<br></strong>
-[Laracasts main site](https://laracasts.com)<br>
-[PHP for beginners](https://laracasts.com/series/php-for-beginners)<br>
+<strong>[Follow along with my repo](https://github.com/ParamagicDev/php-for-beginners)<br /></strong>
+[Laracasts main site](https://laracasts.com)<br />
+[PHP for beginners](https://laracasts.com/series/php-for-beginners)<br />

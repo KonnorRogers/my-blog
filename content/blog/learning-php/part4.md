@@ -6,12 +6,12 @@ description: Dealing with conditionals and booleans
 
 # Part 4
 
-[Laracasts main site](https://laracasts.com)<br>
+[Laracasts main site](https://laracasts.com)<br />
 [Laracasts - PHP for beginners](https://laracasts.com/series/php-for-beginners)
 
 ## Chapters covered:
 
-[Chapter 8 - Booleans](https://laracasts.com/series/php-for-beginners/episodes/8)<br>
+[Chapter 8 - Booleans](https://laracasts.com/series/php-for-beginners/episodes/8)<br />
 [Chapter 9 - Conditionals](https://laracasts.com/series/php-for-beginners/episodes/9)
 
 ## Chapter 8 - Booleans
@@ -36,7 +36,7 @@ in the next chapter. The code is as follows:
 </ul>
 <!-- Below HTML omitted for brevity -->
 ```
-<br>
+<br />
 
 Yes, I know it looks like a lot but lets highlight the keypart:
 
@@ -46,24 +46,24 @@ Yes, I know it looks like a lot but lets highlight the keypart:
 }; ?>
 ```
 
-<strong>Line 1: </strong> `<?php if ($key == 'completed') {` <br>
+<strong>Line 1: </strong> `<?php if ($key == 'completed') {` <br />
 If the current key equal to the string 'completed', then move to
 the next line, if it's not equal to 'completed', then move past
-the curly braces.<br>
+the curly braces.<br />
 
-<strong>Line 2: </strong> `$value = ($value) ? 'Completed' : 'Incomplete';`<br>
+<strong>Line 2: </strong> `$value = ($value) ? 'Completed' : 'Incomplete';`<br />
 set $value equal to 'Completed' if TRUE
 set $value equal to 'Incomplete' if FALSE
-'Incomplete'<br>
-This is called the "ternary operator" should you want to read more<br>
+'Incomplete'<br />
+This is called the "ternary operator" should you want to read more<br />
 
 
-<strong>Line 3: </strong> `}; ?>`<br>
+<strong>Line 3: </strong> `}; ?>`<br />
 End the block, continue to the end
 
-<strong><em>Note: </em></strong><br> I cannot find any definitive documentation as to whether to use:<br>
-`True vs TRUE vs true`<br>
-`False vs FALSE vs false`<br>
+<strong><em>Note: </em></strong><br /> I cannot find any definitive documentation as to whether to use:<br />
+`True vs TRUE vs true`<br />
+`False vs FALSE vs false`<br />
 All of the above are booleans.
 
 I found this article [PHP The Right Way Keyword & Type](https://www.php-fig.org/psr/psr-12/#25-keywords-and-types)
@@ -84,7 +84,7 @@ if (condition) {
 };
 
 ```
-<br>
+<br />
 
 If statements that drop down to plain html to make it more readable:
 
@@ -99,7 +99,7 @@ If statements that drop down to plain html to make it more readable:
 
 <!-- more HTML -->
 ```
-<br>
+<br />
 
 Checking if something is NOT true:
 
@@ -120,7 +120,7 @@ This is all I got for chapter 9. Lets move to chapter 10.
 
 ## Links
 
-<strong>[Follow along with my repo](https://github.com/ParamagicDev/php-for-beginners)<br></strong>
-[Laracasts main site](https://laracasts.com)<br>
-[PHP for beginners](https://laracasts.com/series/php-for-beginners)<br>
+<strong>[Follow along with my repo](https://github.com/ParamagicDev/php-for-beginners)<br /></strong>
+[Laracasts main site](https://laracasts.com)<br />
+[PHP for beginners](https://laracasts.com/series/php-for-beginners)<br />
 [PHP The Right Way](https://phptherightway.com)

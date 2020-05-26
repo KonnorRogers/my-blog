@@ -32,7 +32,7 @@ aggregating the appropriate data.
 ## Data aggregation
 
 Data aggregation seems to be the biggest challenge, thankfully someone has already
-somewhat solved this problem.<br>
+somewhat solved this problem.<br />
 [https://hifld-geoplatform.opendata.arcgis.com/datasets/hospitals](https://hifld-geoplatform.opendata.arcgis.com/datasets/hospitals)
 The Homeland Infrastructure Foundation has aggregated all hospitals in the 50 states
 via each individual state department. They even have an easy to use API as well
@@ -49,9 +49,9 @@ should this project gain any traction.
 ## Geocoding
 
 What is geocoding? Geocoding and geolocation a way of quantifying a longitude
-and latitude location for any given location.<br>
+and latitude location for any given location.<br />
 Geocoding and geolocation will be the basis of using a user's current location and searching the radius
-for the closest appropriate facility. This is a big part of this project<br>
+for the closest appropriate facility. This is a big part of this project<br />
 
 Again, this is another solved problem. Initially I had thought Google Maps was the only option,
 on further review there is a lovely RubyGem called [Geocoder](https://github.com/alexreisner/geocoder)

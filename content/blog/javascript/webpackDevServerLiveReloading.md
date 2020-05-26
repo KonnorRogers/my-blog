@@ -138,7 +138,7 @@ This is telling me, if I open up `http://localhost:8080` it will automatically
 display `'/index.html'` for me. Webpack output is set to `/bundle.js` Both files
 will have `dist/` prepended to them because that is the directory that we are opening.
 
-Yes. I know. Confusing.<br><br>
+Yes. I know. Confusing.<br /><br />
 Play around with my repo, play with the config.
-Read the [webpack-dev-server documentation](https://webpack.js.org/configuration/dev-server/). Eventually it will click. Best of luck learning webpack!<br><br>
+Read the [webpack-dev-server documentation](https://webpack.js.org/configuration/dev-server/). Eventually it will click. Best of luck learning webpack!<br /><br />
 If you have any questions feel free to email me: Konnor7414@gmail.com

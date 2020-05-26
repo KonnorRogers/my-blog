@@ -12,7 +12,7 @@ Setting up a database for the first time is never any fun. In this short post I 
 
 #### WARNING:
 
-This will change all instances of /etc/postgresql/\*/main/pg_hba.conf auth options to 'trust' <br>
+This will change all instances of /etc/postgresql/\*/main/pg_hba.conf auth options to 'trust' <br />
 
 Proceed with caution:
 
@@ -77,16 +77,16 @@ sudo mkdir -p "$pg_data" \
   && sudo chmod 777 "$pg_data"bash
 ```
 
-Basically, this script says:<br>
+Basically, this script says:<br />
 
 1. Download postgres from the apt repository (default debian based package manager)
-   <br>
+   <br />
 
 2. Then after downloading postgres, create a user for the postgres database named "postgres"
-   <br>
+   <br />
 
 3. Create the appropriate directories and change the read / write / execute properties of each directory based on the offical PostgresQL Dockerfile.
-   <br>
+   <br />
 
 In a nutshell, thats all that the script does.
 

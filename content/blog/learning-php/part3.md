@@ -6,13 +6,13 @@ description: Lets dive deep into arrays and associative arrays
 
 # Part 3
 
-[Laracasts main site](https://laracasts.com)<br>
+[Laracasts main site](https://laracasts.com)<br />
 [Laracasts - PHP for beginners](https://laracasts.com/series/php-for-beginners)
 
 ## Chapters covered:
 
-[Chapter 6 - Understanding Arrays](https://laracasts.com/series/php-for-beginners/episodes/6)<br>
-[Chapter 7 - Associative Arrays](https://laracasts.com/series/php-for-beginners/episodes/7)<br>
+[Chapter 6 - Understanding Arrays](https://laracasts.com/series/php-for-beginners/episodes/6)<br />
+[Chapter 7 - Associative Arrays](https://laracasts.com/series/php-for-beginners/episodes/7)<br />
 
 ## Chapter 6 - Understanding Arrays
 
@@ -30,7 +30,7 @@ foreach ($names as $name) {
 
 // Outputs: Bob, Billy, Jimmy,
 ```
-<br>
+<br />
 
 Alright, now lets break it out to the view and create a list:
 
@@ -62,7 +62,7 @@ $names = ['Bob', 'Billy', 'Jimmy'];
   <?php endforeach; ?>
 </ul>
 ```
-<br>
+<br />
 
 This will produce the following:
 
@@ -203,6 +203,6 @@ $task = [
 ```
 ## Links
 
-<strong>[Follow along with my repo](https://github.com/ParamagicDev/php-for-beginners)<br></strong>
-[Laracasts main site](https://laracasts.com)<br>
-[PHP for beginners](https://laracasts.com/series/php-for-beginners)<br>
+<strong>[Follow along with my repo](https://github.com/ParamagicDev/php-for-beginners)<br /></strong>
+[Laracasts main site](https://laracasts.com)<br />
+[PHP for beginners](https://laracasts.com/series/php-for-beginners)<br />
