@@ -36,6 +36,7 @@ sudo apt update
 sudo apt install -y mysql-server # installs mysql
 sudo mysql_secure_installation # will provide various prompts
 ```
+
 <br />
 
 Ensure its working:
@@ -48,9 +49,12 @@ sudo service mysql stop
 sudo service mysql start
 sudo service mysql status
 ```
+
 <br />
 
-<em>If you are having permission issues: <a href="#issues">Check this out</a></em>
+<em>
+  If you are having permission issues: <a href="#issues">Check this out</a>
+</em>
 
 There are additional configs to add users, but thats a little
 too advanced for what were doing here.
@@ -77,14 +81,14 @@ mysql
  -> show tables;
  -> describe todos;
 ```
+
 <br />
 
 I'm not going to get too in depth with the above commands, but I will touch on the
 following query.
 
 Here's the command:<br /><br />
-`CREATE TABLE todos (id integer PRIMARY KEY AUTO_INCREMENT, description text NOT NULL,
-completed boolean NOT NULL);`<br />
+`CREATE TABLE todos (id integer PRIMARY KEY AUTO_INCREMENT, description text NOT NULL, completed boolean NOT NULL);`<br />
 
 Here's what it's doing:
 
@@ -94,7 +98,6 @@ this field will accept an `INTEGER`. This field will also be the `PRIMARY KEY`.
 This means that the `id` will be the unique identifier for whatever data is stored.
 `AUTO_INCREMENT` means the user does not have to supply the id integer. Instead, the
 database will automatically set the id starting from 1.<br />
-
 
 #### Manipulating a tables data
 
@@ -126,8 +129,6 @@ Allows you to view all columns and their data from the given
 `-> SELECT * FROM <table> WHERE id = 1;`<br />
 Select all columns from \<table> but only where the id is equal to 1.
 
-
-
 #### Installing a MySQL GUI - [MySQL-Workbench](https://dev.mysql.com/doc/workbench/en/)
 
 Now using the command line for everything is not very fun. You can simply google:<br />
@@ -142,22 +143,20 @@ mysql-workbench
 
 Easy, simple, I like it.
 
-<h3 id='issues'>Issues</h3>
+<h3 id="issues">Issues</h3>
 
 #### Running mysql without sudo
 
 <strong>Note: </strong> I ran into the issue of having to run mysql without sudo.
 I found this guide: [DigitalOcean Guide to MySQL](https://www.digitalocean.com/community/tutorials/how-to-install-mysql-on-ubuntu-18-04).
-```bash
-sudo mysql
--> ALTER USER 'root'@'localhost' IDENTIFIED WITH mysql_native_password BY 'password';
--> FLUSH PRIVILEGES;
-```
+```bash sudo mysql -> ALTER USER 'root'@'localhost' IDENTIFIED WITH mysql_native_password
+BY 'password'; -> FLUSH PRIVILEGES; ```
 
 Yes, you can create a new user and then provide privileges that way. Again, beyond
 the scope of this, and this wont be used in production either.
 
 #### Running mysql-workbench without sudo
+
 I also had an issue running mysql-workbench without sudo. I solved this by
 chowning ~/.mysql
 
@@ -165,6 +164,7 @@ chowning ~/.mysql
 sudo chown $USER:$USER ~/.mysql
 mysql-workbench
 ```
+
 <br />
 
 I'll let you figure out other configurations with mysql-workbench. Play around with
@@ -173,10 +173,17 @@ classes.
 
 ## Links
 
-<strong>[Follow along with my repo](https://github.com/ParamagicDev/php-for-beginners)<br /></strong>
-[Laracasts main site](https://laracasts.com)<br />
-[PHP for beginners](https://laracasts.com/series/php-for-beginners)<br />
-[MySQL downloads page](https://www.mysql.com/downloads/)<br />
-[DigitalOcean Guide to MySQL](https://www.digitalocean.com/community/tutorials/how-to-install-mysql-on-ubuntu-18-04).<br />
-[MySQL-Workbench](https://dev.mysql.com/doc/workbench/en/)<br />
-
+<strong>
+  [Follow along with my repo](https://github.com/ParamagicDev/php-for-beginners)
+  <br />
+</strong>
+[Laracasts main site](https://laracasts.com)
+<br />
+[PHP for beginners](https://laracasts.com/series/php-for-beginners)
+<br />
+[MySQL downloads page](https://www.mysql.com/downloads/)
+<br />
+[DigitalOcean Guide to MySQL](https://www.digitalocean.com/community/tutorials/how-to-install-mysql-on-ubuntu-18-04).
+<br />
+[MySQL-Workbench](https://dev.mysql.com/doc/workbench/en/)
+<br />

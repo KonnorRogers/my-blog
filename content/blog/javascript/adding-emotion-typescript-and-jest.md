@@ -10,9 +10,7 @@ The purpose of this is to detail how to add Emotion, Typescript, Jest,
 and React-testing-library to an existing project.
 
 <h3 id="table-of-contents">
-  <a href="#table-of-contents">
-  Table of Contents
-  </a>
+  <a href="#table-of-contents">Table of Contents</a>
 </h3>
 
 - #### [Step by Step additions](#guide-start)
@@ -43,9 +41,7 @@ This is essentially a guide to adding the above technologies to an existing Gats
 project.
 
 <h3 id="adding-typescript">
-  <a href="#adding-typescript">
-    Adding Typescript
-  </a>
+  <a href="#adding-typescript">Adding Typescript</a>
 </h3>
 
 ```bash
@@ -77,9 +73,7 @@ Lets now configure ESLint to work with typescript
 to lint our files.
 
 <h3 id="adding-eslint">
-  <a href="#adding-eslint">
-      Adding ESLint
-  </a>
+  <a href="#adding-eslint">Adding ESLint</a>
 </h3>
 
 The Gatsby default comes with a `.prettierrc` file defined.
@@ -211,9 +205,7 @@ So now, we are able to change our `.js` files to `.tsx` files. I won't go over i
 but I will have the corrected `.tsx` files in my gatsby starter.
 
 <h3 id="adding-emotion">
-  <a href="#adding-emotion">
-    Adding Emotion
-  </a>
+  <a href="#adding-emotion">Adding Emotion</a>
 </h3>
 
 What is emotion? Emotion is a CSS-in-JS solution similar to styled components.
@@ -242,9 +234,7 @@ module.exports = {
 Now, you're all set to add emotion to your files. Again, I won't go over that here, but the updated files will be in my starter.
 
 <h2 id="adding-jest">
-  <a href="#adding-jest">
-    Adding Jest
-  </a>
+  <a href="#adding-jest">Adding Jest</a>
 </h2>
 
 Now, lets add unit testing.
@@ -359,9 +349,7 @@ global.___loader = {
 ```
 
 <h3 id="adding-emotion-testing">
-  <a href="#adding-emotion-testing">
-    Adding Emotion Snapshot Testing
-  </a>
+  <a href="#adding-emotion-testing">Adding Emotion Snapshot Testing</a>
 </h3>
 
 By default, jest does not know how to serialize the css provided by Emotion. Lets change this
@@ -415,9 +403,7 @@ testing anything! you could stop here if you'd like, but I really enjoy
 working with [React-Testing-Library](https://github.com/testing-library/react-testing-library) So lets add that next.
 
 <h3 id="adding-rtl">
-  <a href="#adding-rtl">
-    Adding React-Testing-Library
-  </a>
+  <a href="#adding-rtl">Adding React-Testing-Library</a>
 </h3>
 
 ```bash
@@ -439,9 +425,7 @@ expect.addSnapshotSerializer(createSerializer(emotion))
 Writing the first test
 
 <h3 id="first-test">
-  <a href="#first-test">
-    Writing your first test
-  </a>
+  <a href="#first-test">Writing your first test</a>
 </h3>
 
 There are many ways to add tests, I prefer having a top level `__tests__` directory.
@@ -494,9 +478,7 @@ And that's it! You should be up and running using Jest / React-testing-library.
 This was much longer than expected so I may add another post about adding Cypress for E2E testing.
 
 <h3 id="quick-start">
-  <a href="#quick-start">
-  Quick Start
-  </a>
+  <a href="#quick-start">Quick Start</a>
 </h3>
 
 If you've done this before, if you know what you're doing, and feel confident,
@@ -505,10 +487,8 @@ if you don't have prior experience implementing Gatsby, Typescript, Emotion, and
 Proceed at your own risk.
 
 <h4 id="i-know-what-im-doing">
-  <a href="#i-know-what-im-doing">
-    I know what I'm doing - Let's do this
-  </a>
-</h3>
+  <a href="#i-know-what-im-doing">I know what I'm doing - Let's do this</a>
+</h4>
 
 ```bash
 # Create directories
@@ -730,42 +710,32 @@ module.exports = {
 ```
 
 <h3 id="resources">
-  <a href="#resources">
-    Useful Resources / Resources used
-  </a>
+  <a href="#resources">Useful Resources / Resources used</a>
 </h3>
 
 <h4 id="jest">
-  <a href="#jest">
-    Jest
-  </a>
+  <a href="#jest">Jest</a>
 </h4>
 
 - [http://jestjs.io/](http://jestjs.io/)
 - [https://www.gatsbyjs.org/docs/unit-testing/](https://www.gatsbyjs.org/docs/unit-testing/)
 
 <h4 id="rtl">
-  <a href="#rtl">
-    React-Testing-Library
-  </a>
+  <a href="#rtl">React-Testing-Library</a>
 </h4>
 
 - [https://www.gatsbyjs.org/docs/testing-react-components/](https://www.gatsbyjs.org/docs/testing-react-components/)
 - [https://www.gatsbyjs.org/docs/testing-css-in-js/](https://www.gatsbyjs.org/docs/testing-css-in-js/)
 
 <h4 id="typescript">
-  <a href="#typescript">
-    Typescript
-  </a>
+  <a href="#typescript">Typescript</a>
 </h4>
 
 - [https://www.typescriptlang.org/](https://www.typescriptlang.org/)
 - [https://www.gatsbyjs.org/packages/gatsby-plugin-typescript/](https://www.gatsbyjs.org/packages/gatsby-plugin-typescript/)
 
 <h4 id="emotion">
-  <a href="#emotion">
-    Emotion
-  </a>
+  <a href="#emotion">Emotion</a>
 </h4>
 
 - [https://emotion.sh/docs/introduction](https://emotion.sh/docs/introduction)
@@ -773,9 +743,7 @@ module.exports = {
 - [https://www.gatsbyjs.org/packages/gatsby-plugin-emotion/](https://www.gatsbyjs.org/docs/emotion/)
 
 <h4 id="eslint">
-  <a href="#eslint">
-    Eslint
-  </a>
+  <a href="#eslint">Eslint</a>
 </h4>
 
 - [https://github.com/typescript-eslint/typescript-eslint/blob/master/docs/getting-started/linting/README.md](https://github.com/typescript-eslint/typescript-eslint/blob/master/docs/getting-started/linting/README.md)

@@ -6,10 +6,11 @@ description: Getting started building with Bridgetown by dockerizing it. I'll wa
 
 <h2 align="center"> What is Bridgetownrb? </h2>
 
-<p align="center" style="background: #F0FFF0; border-radius: 16px; padding: 1rem;">
-  <a href="https://bridgetownrb.com">
-    Bridgetownrb
-  </a>
+<p
+  align="center"
+  style="background: #F0FFF0; border-radius: 16px; padding: 1rem;"
+>
+  <a href="https://bridgetownrb.com">Bridgetownrb</a>
   is a "Webpack-aware,
   <br />
   Ruby-powered static site generator
@@ -25,9 +26,7 @@ data from other places like a CMS or markdown files just like other static site 
 [Gatsby](https://gatsbyjs.org) or [Gridsome](https://gridsome.org/)
 
 <h2 id="table-of-contents">
-  <a href="#table-of-contents">
-    Table Of Contents
-  </a>
+  <a href="#table-of-contents">Table Of Contents</a>
 </h2>
 
 - [Prerequisites](#prerequisites)
@@ -59,9 +58,7 @@ If you would like to skip straight to building without explanations feel
 free to go to the [I know what I'm doing](#i-know) section.
 
 <h2 id="prerequisites">
-  <a href="#prerequisites">
-    Prerequisites
-  </a>
+  <a href="#prerequisites">Prerequisites</a>
 </h2>
 
 There are only 2 prerequisites for this project.
@@ -77,10 +74,8 @@ docker-compose -v
 ```
 
 <h2 id="create-directory">
-  <a href="#create-directory">
-  Create a new directory
-  </a>
-</h3>
+  <a href="#create-directory">Create a new directory</a>
+</h2>
 
 Now that we've confirmed Docker and Docker Compose are installed, lets
 setup the initial structure for Docker to pull down Bridgetownrb so we
@@ -92,15 +87,11 @@ cd bridgetown-project
 ```
 
 <h2 id="docker-files">
-  <a href="#docker-files">
-    Docker Files
-  </a>
+  <a href="#docker-files">Docker Files</a>
 </h2>
 
 <h3 id="adding-dockerfile">
-  <a href="#adding-dockerfile">
-    Adding a Dockerfile
-  </a>
+  <a href="#adding-dockerfile">Adding a Dockerfile</a>
 </h3>
 
 I'm not goin to go too in depth into this Dockerfile, but the point of
@@ -167,9 +158,7 @@ CMD ["yarn", "start"]
 Github](https://github.com/ParamagicDev/getting-started-with-bridgetown/blob/prior-bridgetown-new/Dockerfile)
 
 <h3 id="adding-docker-compose">
-  <a href="#adding-docker-compose">
-    Adding a docker-compose.yml
-  </a>
+  <a href="#adding-docker-compose">Adding a docker-compose.yml</a>
 </h3>
 
 Now that we have a Dockerfile as our base, lets make it easy to call the
@@ -214,9 +203,7 @@ volumes:
 Github](https://github.com/ParamagicDev/getting-started-with-bridgetown/blob/master/docker-compose.yml)
 
 <h3 id="adding-docker-env">
-  <a href="#adding-docker-env">
-    Adding docker.env
-  </a>
+  <a href="#adding-docker-env">Adding docker.env</a>
 </h3>
 
 You'll notice above that theres a bunch of ENV variables being used to
@@ -255,9 +242,7 @@ _should_ be fine to run without this script. It has not been tested
 however.
 
 <h3 id="adding-docker-ignore">
-  <a href="#adding-docker-ignore">
-    Adding .dockerignore
-  </a>
+  <a href="#adding-docker-ignore">Adding .dockerignore</a>
 </h3>
 
 The final piece to this Docker puzzle is to create a `.dockerignore`. I stole the `.gitignore` provided by Bridgetownrb for this. It looks as follows:
@@ -308,15 +293,11 @@ yarn-debug.log*
 Github](https://github.com/ParamagicDev/getting-started-with-bridgetown/blob/prior-bridgetown-new/.dockerignore)
 
 <h2 id="dep-files">
-  <a href="#dep-files">
-    Dependency Files
-  </a>
+  <a href="#dep-files">Dependency Files</a>
 </h2>
 
 <h3 id="adding-gemfile">
-  <a href="#adding-gemfile">
-    Adding a Gemfile
-  </a>
+  <a href="#adding-gemfile">Adding a Gemfile</a>
 </h3>
 
 Alright, with the Docker setup above, we can now specify our
@@ -334,9 +315,7 @@ gem "bridgetown", "~> 0.14.0"
 This will tell `bundler` to install `bridgetown` from Rubygems.org
 
 <h3 id="adding-package-json">
-  <a href="#adding-package-json">
-    Adding a package.json
-  </a>
+  <a href="#adding-package-json">Adding a package.json</a>
 </h3>
 
 Create a `package.json` structured similarly to the one below:
@@ -351,9 +330,7 @@ Create a `package.json` structured similarly to the one below:
 ```
 
 <h3 id="adding-lockfiles">
-  <a href="#adding-lockfiles">
-    Adding lockfiles
-  </a>
+  <a href="#adding-lockfiles">Adding lockfiles</a>
 </h3>
 
 Almost done with the setup I promise!
@@ -367,15 +344,11 @@ touch yarn.lock Gemfile.lock
 ```
 
 <h2 id="generating-a-project">
-  <a href="#generating-a-project">
-    Generating a project
-  </a>
+  <a href="#generating-a-project">Generating a project</a>
 </h2>
 
 <h3 id="prior-to-new">
-  <a href="#prior-to-new">
-    File structure prior to generation
-  </a>
+  <a href="#prior-to-new">File structure prior to generation</a>
 </h3>
 
 Your file structure should look as follows if you followed the above
@@ -399,9 +372,7 @@ tree -L 1 -a .
 Github](https://github.com/ParamagicDev/getting-started-with-bridgetown/tree/prior-bridgetown-new)
 
 <h3 id="generation-command">
-  <a href="#generation-command">
-    Running the Generation Command
-  </a>
+  <a href="#generation-command">Running the Generation Command</a>
 </h3>
 
 ```bash
@@ -411,9 +382,7 @@ source ./docker.env && docker-compose run --rm bridgetown new . --force
 This will generate a new project for `bridgetown`
 
 <h3 id="post-new">
-  <a href="#post-new">
-    File Structure After Generation
-  </a>
+  <a href="#post-new">File Structure After Generation</a>
 </h3>
 
 ```bash
@@ -452,15 +421,11 @@ source ./docker.env && docker-compose up --build
 This will allow you to view Bridgetown welcome screen on `localhost:4000`
 
 <h2 id="commands">
-  <a href="#commands">
-    Useful Commands
-  </a>
+  <a href="#commands">Useful Commands</a>
 </h2>
 
 <h3 id="starting-the-server">
-  <a href="#starting-the-server">
-    Starting the server
-  </a>
+  <a href="#starting-the-server">Starting the server</a>
 </h3>
 
 If it's your first time since generating the project, run
@@ -476,9 +441,7 @@ source ./docker.env && docker-compose up
 ```
 
 <h3 id="stopping-the-server">
-  <a href="#stopping-the-server">
-    Stopping the server
-  </a>
+  <a href="#stopping-the-server">Stopping the server</a>
 </h3>
 
 In another terminal to stop the server you can simply run:
@@ -488,22 +451,23 @@ docker-compose down --remove-orphans
 ```
 
 <h3 id="other-commands">
-  <a href="#other-commands">
-    Other commands
-  </a>
+  <a href="#other-commands">Other commands</a>
 </h3>
 
 Sourcing ENV variables
+
 <br />
 This is only technically required once in a running terminal.
 <br />
 `source ./docker.env`
 
 Run a command in an already running container:
+
 <br />
 `docker-compose exec web [command]`
 
 Run a one-off command:
+
 <br />
 `docker-compose run --rm web [command]`
 
@@ -533,14 +497,13 @@ docker-compose up --build
 
 The below is a TLDR / reference version of the above.
 To skip to the links sections click the link below.
+
 <br />
 
 [Links section](#links)
 
 <h2 id="i-know">
-  <a href="#i-know">
-    I know what I'm doing
-  </a>
+  <a href="#i-know">I know what I'm doing</a>
 </h2>
 
 ```bash
@@ -715,9 +678,7 @@ docker-compose up --build
 Navigate to `localhost:4000` and bam! up and running!
 
 <h2 id="links">
-  <a href="#links">
-    Links
-  </a>
+  <a href="#links">Links</a>
 </h2>
 
 ### Bridgetown
@@ -732,9 +693,7 @@ Navigate to `localhost:4000` and bam! up and running!
 Repo](https://github.com/ParamagicDev/getting-started-with-bridgetown)
 
 <h2 id="going-forward">
-  <a href="#going-forward">
-    Going Forward
-  </a>
+  <a href="#going-forward">Going Forward</a>
 </h2>
 
 This blog post was merely a setup blog post. My next blog post will
@@ -744,6 +703,7 @@ This is a reference post to point people back to.
 So stay tuned for the next part of building with bridgetown.
 
 And if you dont feel like waiting, go check out their documentation.
+
 <br />
 [Bridgetown Documentation](https://www.bridgetownrb.com/docs/)
 

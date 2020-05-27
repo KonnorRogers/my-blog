@@ -30,6 +30,7 @@ foreach ($names as $name) {
 
 // Outputs: Bob, Billy, Jimmy,
 ```
+
 <br />
 
 Alright, now lets break it out to the view and create a list:
@@ -62,18 +63,19 @@ $names = ['Bob', 'Billy', 'Jimmy'];
   <?php endforeach; ?>
 </ul>
 ```
+
 <br />
 
 This will produce the following:
 
 ---
 
-> * bob
-> * billy
-> * jimmy
-> * bob
-> * billy
-> * jimmy
+> - bob
+> - billy
+> - jimmy
+> - bob
+> - billy
+> - jimmy
 
 ---
 
@@ -111,9 +113,9 @@ This will produce the following:
 
 ---
 
-> * <strong>age: </strong>23
-> * <strong>hair: </strong>blonde
-> * <strong>career: </strong>web developer
+> - <strong>age: </strong>23
+> - <strong>hair: </strong>blonde
+> - <strong>career: </strong>web developer
 
 ---
 
@@ -141,6 +143,7 @@ $animals[] = 'zebra';
 ```
 
 ### Printing Arrays
+
 ```php
 // index.php
 <?php
@@ -186,8 +189,6 @@ unset($person['hair']);
 */
 ```
 
-
-
 ### Homework
 
 ```php
@@ -201,8 +202,14 @@ $task = [
   'completed' => True
 ];
 ```
+
 ## Links
 
-<strong>[Follow along with my repo](https://github.com/ParamagicDev/php-for-beginners)<br /></strong>
-[Laracasts main site](https://laracasts.com)<br />
-[PHP for beginners](https://laracasts.com/series/php-for-beginners)<br />
+<strong>
+  [Follow along with my repo](https://github.com/ParamagicDev/php-for-beginners)
+  <br />
+</strong>
+[Laracasts main site](https://laracasts.com)
+<br />
+[PHP for beginners](https://laracasts.com/series/php-for-beginners)
+<br />

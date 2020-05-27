@@ -80,9 +80,11 @@ sudo mkdir -p "$pg_data" \
 Basically, this script says:<br />
 
 1. Download postgres from the apt repository (default debian based package manager)
+
    <br />
 
 2. Then after downloading postgres, create a user for the postgres database named "postgres"
+
    <br />
 
 3. Create the appropriate directories and change the read / write / execute properties of each directory based on the offical PostgresQL Dockerfile.

@@ -2,7 +2,7 @@
 title: PHP for beginners - Part 7 - Classes?...Like school?
 date: "2019-08-26T06:31:03"
 description: "Lets look into classes in PHP. Classes are the building blocks
-              of Object Oriented Programming"
+  of Object Oriented Programming"
 ---
 
 # Part 7
@@ -37,7 +37,6 @@ class Task {
 Wow thats it? Yes, technically this is all a class needs, however this isnt very
 dynamic, so lets extend it a little.
 
-
 ```php
 class Task {
   protected $description;
@@ -52,15 +51,15 @@ This is a very basic example and intro to classes.
 Lets break it down now.
 
 `class Task` Define the class name<br />
-`protected $description;` initialize the variable $description<br />
+`protected $description;` initialize the variable \$description<br />
 `public function __construct($description)` This is a special 'constructor' function.<br />
 This means that when a class is 'instantiated', to run the following code. Or in other
 words when you create a 'new' class, do the run the following code.<br />
-`$this->$description;` ahhhh yes. The magical '$this'. In some languages it may just
+`$this->$description;` ahhhh yes. The magical '\$this'. In some languages it may just
 be `this` or `self`. This is a tough term to wrap your head around so let's keep it simple.<br />
 
 In this case `$this` means, for THIS instance of Task, set the value provided in the constructor to
-this instance's $description variable<br />
+this instance's \$description variable<br />
 
 So what the heck does that above statment even mean? Well let's continue on. Examples
 explain this better than I can. Lets instantiate a the class Task now.
@@ -107,6 +106,7 @@ class Task {
 
 $task = new Task("Go to the store");
 ```
+
 <br />
 The above defines the class Task. Now lets see how we would access values.
 
@@ -121,6 +121,7 @@ $task->setDescription("Go to grandma's house");
 var_dump($task->getDescription();
 // Will now var_dump "Go to grandma's house" instead of "go to store"
 ```
+
 <br />
 
 Now what if we want to make multiple tasks and store them in an array?
@@ -139,6 +140,11 @@ var_dump($tasks);
 
 ## Links
 
-<strong>[Follow along with my repo](https://github.com/ParamagicDev/php-for-beginners)<br /></strong>
-[Laracasts main site](https://laracasts.com)<br />
-[PHP for beginners](https://laracasts.com/series/php-for-beginners)<br />
+<strong>
+  [Follow along with my repo](https://github.com/ParamagicDev/php-for-beginners)
+  <br />
+</strong>
+[Laracasts main site](https://laracasts.com)
+<br />
+[PHP for beginners](https://laracasts.com/series/php-for-beginners)
+<br />

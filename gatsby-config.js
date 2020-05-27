@@ -29,12 +29,6 @@ module.exports = {
       },
     },
     {
-      resolve: "gatsby-plugin-page-creator",
-      options: {
-        path: `${__dirname}/content/blog`,
-      },
-    },
-    {
       resolve: `gatsby-plugin-mdx`,
       options: {
         extensions: [`.mdx`, `.md`],
@@ -60,9 +54,9 @@ module.exports = {
               wrapperStyle: `margin-bottom: 1.0725rem`,
             },
           },
-          "gatsby-remark-copy-linked-files",
-          `gatsby-remark-prismjs`,
-          `gatsby-remark-smartypants`,
+          { resolve: "gatsby-remark-copy-linked-files" },
+          { resolve: `gatsby-remark-prismjs` },
+          { resolve: `gatsby-remark-smartypants` },
         ],
       },
     },

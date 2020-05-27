@@ -16,7 +16,6 @@ description: Learn php with me! Part 2
 [Chapter 4 - PHP and HTML](https://laracasts.com/series/php-for-beginners/episodes/4)<br />
 [Chapter 5 - Seperation of PHP logic](https://laracasts.com/series/php-for-beginners/episodes/5)
 
-
 ## Hello World
 
 Are you really learning a new program if you don't create a simple hello world?
@@ -28,6 +27,7 @@ Are you really learning a new program if you don't create a simple hello world?
 echo 'Hello World';
 
 ```
+
 <br />
 
 In a terminal run:
@@ -35,9 +35,11 @@ In a terminal run:
 ```bash
 php hello-world.php
 ```
+
 <br />
 
 Should echo 'Hello World' to the command line.
+
 <strong>Note: </strong>Also of note, when in a plain php file, `<?php` without the closing `?>` is best
 practice due to parsing errors if you add extra lines after `?>`
 
@@ -57,6 +59,7 @@ echo 'Hello' . $name;
 // Or
 echo "Hello {$name}";
 ```
+
 <br />
 
 ## HTML + PHP
@@ -73,8 +76,8 @@ $name = htmlspecialchars($_GET['name']);
 echo "Hello, " . $name;
 // localhost:8888/?name=konnor #=> Hello, Konnor
 ```
-<br />
 
+<br />
 
 `htmlspecialchars();` Will convert special characters as the name suggests so
 people cannot inject malicious links, scripts, etc
@@ -98,14 +101,18 @@ require 'index.view.php';
 // Optionally, you can use: include 'index.view.php';
 // Read the note below about the difference
 ```
+
 <br />
 
 <strong>Note: </strong> After perusing some documentation, `include` and `require`
 do essentially the same thing. They pull in variables and other data @ the level
-it is called. The only difference is the following:<br />
+it is called. The only difference is the following:
+<br />
 `include` <em>will not cause</em> a compilation error if the file does not exist
-or is unreadable. It will only send a compilation warning.<br />
-`require` <em>will cause</em> a compilation error if the file does not exist or is unreadable
+or is unreadable. It will only send a compilation warning.
+<br />
+`require` <em>will cause</em> a compilation error if the file does not exist or is
+unreadable
 
 ```php
 // index.view.php
@@ -128,12 +135,18 @@ or is unreadable. It will only send a compilation warning.<br />
   </body>
 </html>
 ```
+
 <br />
 
 `<?= ?> is the same as <?php echo "string" ?>`
 
 ## Links
 
-<strong>[Follow along with my repo](https://github.com/ParamagicDev/php-for-beginners)</strong><br />
-[Laracasts main site](https://laracasts.com)<br />
-[PHP for beginners](https://laracasts.com/series/php-for-beginners)<br />
+<strong>
+  [Follow along with my repo](https://github.com/ParamagicDev/php-for-beginners)
+</strong>
+<br />
+[Laracasts main site](https://laracasts.com)
+<br />
+[PHP for beginners](https://laracasts.com/series/php-for-beginners)
+<br />

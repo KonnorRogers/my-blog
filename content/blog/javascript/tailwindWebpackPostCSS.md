@@ -58,7 +58,8 @@ module.exports = {
 }
 ```
 
-<br /><br />
+<br />
+<br />
 
 If you don't want to use webpack-dev-server you don't have to. Personally, I like
 it for live-reloading in my browser. All I can really say about this is just pay
@@ -98,7 +99,8 @@ module.exports = {
 }
 ```
 
-<br /><br />
+<br />
+<br />
 
 Feel free to add PurgeCSS, postcss-nested, postcss-import, etc here.
 For the simplicity of this guide, I will not include it here.
@@ -113,7 +115,8 @@ module.exports = {
 }
 ```
 
-<br /><br />
+<br />
+<br />
 
 Use basic tailwind directives, this is where you would import your own
 components, utilities, and base css.
@@ -128,7 +131,8 @@ components, utilities, and base css.
 @tailwind utilities;
 ```
 
-<br /><br />
+<br />
+<br />
 
 <b> This is incredibly important </b>
 
@@ -140,7 +144,8 @@ and everything you just did above will not even run.
 import "./styles.css"
 ```
 
-<br /><br />
+<br />
+<br />
 
 Just a simple html template to play around with
 

@@ -35,11 +35,13 @@ Lets break it down.
 `dumper()` : 'dumper' is the name of the function when you call it<br />
 `($one, $two, $three)` : These are whats called "arguments" or
 "parameters". These are what are passed into the function, this can be blank.<br />
+
 ```php
 {
   var_dump($one, $two, $three);
 }
 ```
+
 <br />
 
 This calls the function:
@@ -113,10 +115,13 @@ This function is imported into 'index.php' when you run: <br />
 
 Lets go to Chapter 11 in the next part.
 
-
-
-
 ## Links
-<strong>[Follow along with my repo](https://github.com/ParamagicDev/php-for-beginners)<br /></strong>
-[Laracasts main site](https://laracasts.com)<br />
-[PHP for beginners](https://laracasts.com/series/php-for-beginners)<br />
+
+<strong>
+  [Follow along with my repo](https://github.com/ParamagicDev/php-for-beginners)
+  <br />
+</strong>
+[Laracasts main site](https://laracasts.com)
+<br />
+[PHP for beginners](https://laracasts.com/series/php-for-beginners)
+<br />

@@ -31,9 +31,7 @@ Deployed application can be found here:
 [https://getting-started-with-rails-6.herokuapp.com/](https://getting-started-with-rails-6.herokuapp.com/)
 
 <h2 id="table-of-contents">
-  <a href="#table-of-contents">
-    Table Of Contents
-  </a>
+  <a href="#table-of-contents">Table Of Contents</a>
 </h2>
 
 - [Prerequisites](#prerequisites)
@@ -71,9 +69,7 @@ Deployed application can be found here:
   - [Found something wrong?](#submit-a-pull-request)
 
 <h2 id="prerequisites">
-  <a href="#prerequisites">
-    Prerequisites
-  </a>
+  <a href="#prerequisites">Prerequisites</a>
 </h2>
 
 - [Docker](https://docs.docker.com/get-docker/)
@@ -93,9 +89,7 @@ docker-compose -v
 ```
 
 <h2 id="technologies">
-  <a href="#technologies">
-    Main Technologies
-  </a>
+  <a href="#technologies">Main Technologies</a>
 </h2>
 
 - Ruby 2.5.8
@@ -103,9 +97,7 @@ docker-compose -v
 - PostgresQL 11.6
 
 <h2 id="getting-started">
-  <a href="#getting-started">
-    Getting Started
-  </a>
+  <a href="#getting-started">Getting Started</a>
 </h2>
 
 If you don't want any explanations, skip to the [I know what I'm doing](#i-know-what-im-doing)
@@ -197,9 +189,7 @@ CMD ["rails", "server", "-b", "0.0.0.0"]
 Github](https://github.com/ParamagicDev/getting-started-with-rails-6/blob/prior-to-rails-new/Dockerfile)
 
 <h3 id="adding-a-gemfile">
-  <a href="#adding-a-gemfile">
-    Adding a Gemfile
-  </a>
+  <a href="#adding-a-gemfile">Adding a Gemfile</a>
 </h3>
 
 Next we will deviate slightly from the above Docker quickstart. Instead
@@ -222,9 +212,7 @@ touch Gemfile.lock
 ```
 
 <h3 id="adding-a-package-json">
-  <a href="#adding-a-package-json">
-    Adding a package.json
-  </a>
+  <a href="#adding-a-package-json">Adding a package.json</a>
 </h3>
 
 There are a few options to generate your `package.json` so lets keep it
@@ -249,9 +237,7 @@ touch yarn.lock
 ```
 
 <h3 id="adding-entrypoint-sh">
-  <a href="#adding-entrypoint-sh">
-    Adding entrypoint.sh
-  </a>
+  <a href="#adding-entrypoint-sh">Adding entrypoint.sh</a>
 </h3>
 
 Now lets create an `entrypoint.sh` script to fix a server issue with
@@ -274,9 +260,7 @@ exec "$@"
 Github](https://github.com/ParamagicDev/getting-started-with-rails-6/blob/prior-to-rails-new/entrypoint.sh)
 
 <h3 id="adding-docker-compose-yml">
-  <a href="#adding-docker-compose-yml">
-    Adding docker-compose.yml
-  </a>
+  <a href="#adding-docker-compose-yml">Adding docker-compose.yml</a>
 </h3>
 
 Finally, lets add a `docker-compose.yml` with the following content:
@@ -332,9 +316,7 @@ volumes:
 Github](https://github.com/ParamagicDev/getting-started-with-rails-6/blob/prior-to-rails-new/docker-compose.yml)
 
 <h3 id="adding-a-dot-docker-ignore-file">
-  <a href="#adding-a-dot-docker-ignore-file">
-    Adding a .dockerignore file
-  </a>
+  <a href="#adding-a-dot-docker-ignore-file">Adding a .dockerignore file</a>
 </h3>
 
 Finally, its good practice to add a `.dockerignore` file. The
@@ -381,9 +363,7 @@ yarn-debug.log*
 Github](https://github.com/ParamagicDev/getting-started-with-rails-6/blob/prior-to-rails-new/.dockerignore)
 
 <h3 id="prebuild-directory-structure">
-  <a href="#prebuild-directory-structure">
-    Prebuild Directory Structure
-  </a>
+  <a href="#prebuild-directory-structure">Prebuild Directory Structure</a>
 </h3>
 
 Your directory should look as follows:
@@ -412,15 +392,11 @@ structure.
 <br />
 
 <h2 id="building-the-project">
-  <a href="#building-the-project">
-    Building the Project
-  </a>
+  <a href="#building-the-project">Building the Project</a>
 </h2>
 
 <h3 id="create-the-rails-app">
-  <a href="create-the-rails-app">
-    Create the Rails app
-  </a>
+  <a href="create-the-rails-app">Create the Rails app</a>
 </h3>
 
 Prior to building the docker container, you have to create the Rails app
@@ -435,9 +411,7 @@ This will build a fresh Rails project for you using `PostgresQL` as the
 database adapter.
 
 <h3 id="postbuild-directory-structure">
-  <a href="#postbuild-directory-structure">
-    Postbuild Directory Structure
-  </a>
+  <a href="#postbuild-directory-structure">Postbuild Directory Structure</a>
 </h3>
 
 Your Rails directory should look as follows:
@@ -480,9 +454,7 @@ Your Rails directory should look as follows:
 </h3>
 
 <h4 id="ownership-issues">
-  <a href="#ownership-issues">
-    Ownership Issues
-  </a>
+  <a href="#ownership-issues">Ownership Issues</a>
 </h4>
 
 You may run into ownership issues on Linux. I did my best to fix this.
@@ -500,9 +472,7 @@ alias ownthis="sudo chown -R $USER:$USER ."
 ```
 
 <h3 id="connecting-the-database">
-  <a href="#connecting-the-database">
-    Connecting the Database
-  </a>
+  <a href="#connecting-the-database">Connecting the Database</a>
 </h3>
 
 In order to connect the Database to Rails, you have to tell Rails where
@@ -561,15 +531,11 @@ You should see a message congratulating you for using Rails.
 <h3>
 
 <h2 id="using-docker">
-  <a href="#using-docker">
-    Using Docker
-  </a>
+  <a href="#using-docker">Using Docker</a>
 </h2>
 
 <h3 id="stopping-the-application">
-  <a href="#stopping-the-application">
-    Stopping the application
-  </a>
+  <a href="#stopping-the-application">Stopping the application</a>
 </h3>
 
 To stop the application, in another terminal simply run:
@@ -579,9 +545,7 @@ docker-compose down
 ```
 
 <h3 id="starting-the-application">
-  <a href="#starting-the-application">
-    Starting the application
-  </a>
+  <a href="#starting-the-application">Starting the application</a>
 </h3>
 
 To start the application there are two methods.
@@ -608,9 +572,7 @@ docker-compose up
 ```
 
 <h2 id="extra-tips">
-  <a href="#extra-tips">
-    Extra Tips
-  </a>
+  <a href="#extra-tips">Extra Tips</a>
 </h2>
 
 As a simple way to get you going, anytime you see
@@ -635,9 +597,7 @@ running.
 once the command finished
 
 <h2 id="useful-commands">
-  <a href="#useful-commands">
-    Useful Commands
-  </a>
+  <a href="#useful-commands">Useful Commands</a>
 </h2>
 
 ```bash
@@ -675,9 +635,7 @@ docker rm $(docker ps -q -a) -f && docker rmi $(docker images -q) -f
 ```
 
 <h2 id="adding-additional-functionality">
-  <a href="#adding-additional-functionality">
-    Adding additional functionality
-  </a>
+  <a href="#adding-additional-functionality">Adding additional functionality</a>
 </h2>
 
 In an effort to keep this blog post semi-short in length, I will refer
@@ -692,9 +650,7 @@ You can skip to section 4.2 because everything prior to that we have
 just done above.
 
 <h2 id="deployment">
-  <a href="#deployment">
-    Deployment to Heroku
-  </a>
+  <a href="#deployment">Deployment to Heroku</a>
 </h2>
 
 First, lets create a Heroku account. To do so, head on over to their
@@ -764,9 +720,7 @@ Now you're done! Good luck with everything and I hope this was helpful!
 [Helpful Links below](#links)
 
 <h2 id="issues">
-  <a href="#issues">
-    Issues
-  </a>
+  <a href="#issues">Issues</a>
 </h2>
 
 Problems with ownership?
@@ -815,9 +769,7 @@ docker volume prune [--force] # remove all unused volumes
 ```
 
 <h2 id="i-know-what-im-doing">
-  <a href="#i-know-what-im-doing">
-    I know what I'm doing.
-  </a>
+  <a href="#i-know-what-im-doing">I know what I'm doing.</a>
 </h2>
 
 This section is meant to be the TLDR version of the above.
@@ -1084,7 +1036,11 @@ And thats it ! Were all set and deployed.
 </h2>
 
 <p>
-  <a style="font-size: 1.1rem;" href="https://github.com/ParamagicDev/getting-started-with-rails-6/tree/master" id="source-code">
+  <a
+    style="font-size: 1.1rem;"
+    href="https://github.com/ParamagicDev/getting-started-with-rails-6/tree/master"
+    id="source-code"
+  >
     Source Code on Github
   </a>
 </p>
@@ -1118,9 +1074,7 @@ And thats it ! Were all set and deployed.
 [PostgresQL Homepage](https://www.postgresql.org/)
 
 <h3 id="heroku">
-  <a href="#heroku">
-    Heroku
-  </a>
+  <a href="#heroku">Heroku</a>
 </h3>
 
 [Heroku Homepage](https://heroku.com)

@@ -254,6 +254,7 @@ as close to my host machine as possible.
 ### Gatsby
 
 [Gatsby Home](https://gatsbyjs.org)
+
 <br />
 [Gatsby Starter Github page](https://github.com/gatsbyjs/gatsby-starter-default)
 <br />
@@ -261,13 +262,16 @@ as close to my host machine as possible.
 ### Degit
 
 > I actually learned about Degit when browsing the Svelte documentation
+>
 > <br />
 
 [Degit Source Code](https://github.com/Rich-Harris/degit)
+
 <br />
 
 ### Docz
 
 [Docz Homepage](https://www.docz.site)
+
 <br />
 [Docz Getting Started](https://www.docz.site/docs/getting-started)
