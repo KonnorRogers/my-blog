@@ -524,11 +524,11 @@ You should see a message congratulating you for using Rails.
 
 ![You're on Rails 6](../../assets/youre-on-rails.png)
 
-<h3 style="margin-top: 0;" id="prior-to-adding-functionality-branch">
+<h3 style={{ marginTop: 0 }} id="prior-to-adding-functionality-branch">
   <a href="https://github.com/ParamagicDev/getting-started-with-rails-6/tree/prior-to-adding-stuff">
     Github Branch Prior to adding additional functionality
   </a>
-<h3>
+</h3>
 
 <h2 id="using-docker">
   <a href="#using-docker">Using Docker</a>

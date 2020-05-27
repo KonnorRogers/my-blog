@@ -94,7 +94,6 @@ php -v
 
 # PHP 7.3.8 ...
 
-```
 <br />
 
 [Link to VpsCli repository - lib/vps_cli/packages.rb](https://github.com/ParamagicDev/vps_cli/blob/master/lib/vps_cli/packages.rb)<br /><br />
@@ -110,9 +109,10 @@ Now, let's start building!
 
 ## Links
 
-<strong>[Follow along with my repo](https://github.com/ParamagicDev/php-for-beginners)</strong><br />
+<strong><a href="https://github.com/ParamagicDev/php-for-beginners">Follow along with my repo</a></strong>
+
 [Laracasts main site](https://laracasts.com)<br />
-[PHP for beginners](https://laracasts.com/series/php-for-beginners)<br />
-[PHPENV github](https://github.com/phpenv/phpenv)<br />
+[PHP for beginners](https://laracasts.com/series/php-for-beginners)<br
+/>
+[PHPENV github](https://github.com/phpenv/phpenv) <br />
 [PHPENV-INSTALLER - github](https://github.com/phpenv/phpenv-installer)
-```

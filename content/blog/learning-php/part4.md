@@ -47,10 +47,11 @@ Yes, I know it looks like a lot but lets highlight the keypart:
 }; ?>
 ```
 
-<strong>Line 1: </strong> `<?php if ($key == 'completed') {` <br />
+<strong>Line 1: </strong> <pre>&lt;?php if (\$key == 'completed')</pre>
+
 If the current key equal to the string 'completed', then move to
 the next line, if it's not equal to 'completed', then move past
-the curly braces.<br />
+the curly braces.
 
 <strong>Line 2: </strong> `$value = ($value) ? 'Completed' : 'Incomplete';`
 <br />
@@ -60,7 +61,7 @@ set $value equal to 'Completed' if TRUE set $value equal to 'Incomplete' if FALS
 This is called the "ternary operator" should you want to read more
 <br />
 
-<strong>Line 3: </strong> `}; ?>`
+<strong>Line 3: </strong> `}; ?\>`
 <br />
 End the block, continue to the end
 
@@ -132,9 +133,10 @@ This is all I got for chapter 9. Lets move to chapter 10.
 ## Links
 
 <strong>
-  [Follow along with my repo](https://github.com/ParamagicDev/php-for-beginners)
+  <a href="https://github.com/ParamagicDev/php-for-beginners)">Follow along with my repo</a>
   <br />
 </strong>
+
 [Laracasts main site](https://laracasts.com)
 <br />
 [PHP for beginners](https://laracasts.com/series/php-for-beginners)

@@ -112,26 +112,38 @@ mysql
 
 #### Summarizing
 
-`mysql` Start mysql<br />
-`-> create database <database>;` Create the database with \<database>.<br />
-`-> use database <database>;` Set the current database to query to \<database>.<br />
-`-> CREATE TABLE <table> (<fields>);` Create a table within the database with a name of \<table>
-and has the following \<fields>.<br />
-`-> show tables;` List the tables in your database.<br />
-`-> describe <table>;` Shows the fields of the given \<table>.
-
-Simple manipulation:<br />
-`-> INSERT INTO <table>(<field1>, <field2>) VALUES(<value1>, <value2>);`<br /> Insert the following
-values into the specified \<field> for the given table name. Order is important.<br /><br />
-`-> SELECT * FROM <table>;`<br />
-Allows you to view all columns and their data from the given
-\<table>.<br /><br />
-`-> SELECT * FROM <table> WHERE id = 1;`<br />
-Select all columns from \<table> but only where the id is equal to 1.
-
 #### Installing a MySQL GUI - [MySQL-Workbench](https://dev.mysql.com/doc/workbench/en/)
 
-Now using the command line for everything is not very fun. You can simply google:<br />
+`mysql` Start mysql
+
+`-> create database \<database\>;` Create the database with \<database\>.
+
+`-> use database <\database\>;` Set the current database to query to \<database\>.
+
+`-> CREATE TABLE \<table\>(<\fields\>);` Create a table within the database with a name of \<table\>
+and has the following \<fields\>.
+
+`-> show tables;` List the tables in your database.
+
+`-> describe <\table\>;` Shows the fields of the given \<table\>.
+
+Simple manipulation:
+
+`-> INSERT INTO <\table\>(<\field1\>, \<field2\>) VALUES(<\value1\>, <\value2\>);`
+Insert the following
+values into the specified \<field\> for the given table name. Order is important.
+
+`-> SELECT * FROM \<table\>;`
+
+Allows you to view all columns and their data from the given
+\<table\>.
+
+`-> SELECT * FROM \<table\>WHERE id = 1;`
+
+Select all columns from \<table\> but only where the id is equal to 1.
+
+Now using the command line for everything is not very fun. You can simply google:
+
 'mysql database GUI tools'
 
 I decided to use the officially supported mysql-workbench.
@@ -149,8 +161,11 @@ Easy, simple, I like it.
 
 <strong>Note: </strong> I ran into the issue of having to run mysql without sudo.
 I found this guide: [DigitalOcean Guide to MySQL](https://www.digitalocean.com/community/tutorials/how-to-install-mysql-on-ubuntu-18-04).
-```bash sudo mysql -> ALTER USER 'root'@'localhost' IDENTIFIED WITH mysql_native_password
-BY 'password'; -> FLUSH PRIVILEGES; ```
+
+```bash
+sudo mysql -> ALTER USER 'root'@'localhost' IDENTIFIED WITH mysql_native_password
+BY 'password'; -> FLUSH PRIVILEGES;
+```
 
 Yes, you can create a new user and then provide privileges that way. Again, beyond
 the scope of this, and this wont be used in production either.
@@ -174,7 +189,8 @@ classes.
 ## Links
 
 <strong>
-  [Follow along with my repo](https://github.com/ParamagicDev/php-for-beginners)
+  <a href="https://github.com/ParamagicDev/php-for-beginners">My repo
+  </a>
   <br />
 </strong>
 [Laracasts main site](https://laracasts.com)

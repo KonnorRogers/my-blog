@@ -129,7 +129,7 @@ gatsby develop
   7. Navigate to `localhost:8000` to see if Tailwind is working. That's it!
 </strong>
 
-<h2 id="full-tutorial> Full tutorial</h2>
+<h2 id="full-tutorial"> Full tutorial</h2>
 
 If you already have a Gatsby project feel free to skip ahead to the
 [Adding to an existing project section](#adding-to-an-existing-project)

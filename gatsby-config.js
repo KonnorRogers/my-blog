@@ -34,15 +34,6 @@ module.exports = {
         extensions: [`.mdx`, `.md`],
         gatsbyRemarkPlugins: [
           {
-            resolve: `gatsby-remark-code-buttons`,
-            options: {
-              buttonContainerClass: `customButtonContainerClass`,
-              tooltipText: `Copy to clipboard`,
-              toasterText: "Copied to clipboard!",
-              toasterDuration: 5000,
-            },
-          },
-          {
             resolve: `gatsby-remark-images`,
             options: {
               maxWidth: 590,

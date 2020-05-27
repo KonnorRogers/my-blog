@@ -40,8 +40,8 @@ php hello-world.php
 
 Should echo 'Hello World' to the command line.
 
-<strong>Note: </strong>Also of note, when in a plain php file, `<?php` without the closing `?>` is best
-practice due to parsing errors if you add extra lines after `?>`
+<strong>Note: </strong> Also of note, when in a plain php file, without the closing ?> it is best
+practice due to parsing errors if you add extra lines after ?>
 
 Easy win after the nightmare install process.
 
