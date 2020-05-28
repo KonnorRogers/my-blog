@@ -38,7 +38,6 @@ export const Code = ({
 
   React.useEffect(() => {
     const html = document.querySelector('html')
-    console.log(html)
     html.style.setProperty('--hover-bg', hoverBgColor)
     html.style.setProperty('--hover-color', hoverColor)
   }, [])
