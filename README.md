@@ -58,11 +58,21 @@ environment variable to pull down files from github.
 
 ```graphql
 query($repo_name:String!, $name:String!) {
-viewer {
-name
-repository(owner: $name; name: $repo_name) {
-id
-}
-}
+  repository(owner: $name; name: $repo_name) {
+    object(expression:<branch>:<path/to/folder>) {
+        ... on Tree {
+          entries {
+            oid
+            object {
+              ... on Blob {
+                text
+              }
+            }
+            name
+          }
+        }
+      }
+    }
+  }
 }
 ```
