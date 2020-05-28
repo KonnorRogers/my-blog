@@ -30,7 +30,7 @@
 .gatsby-code-meta-text {
   display: block;
   font-size: 0.75rem;
-  line-height: 1.9rem;
+  line-height: 1.95rem;
   margin: 0 0 0 auto;
   margin-right: -1px;
   height: 100%;
@@ -40,18 +40,19 @@
 
 
 .gatsby-code-meta-copy {
+  font-family: inherit;
+  font-size: 100%;
   display: block;
   border: none;
   background-color: inherit;
   cursor: pointer;
   width: 100%;
   padding: 0;
-  height: 100%;
   min-width: 5rem;
   color: inherit;
   border-left: 1px solid;
   border-color: inherit;
-  padding-top: 1px;
+  /* padding-top: -4px; */
 }
 
 .gatsby-code-meta-copy[disabled]:focus,
