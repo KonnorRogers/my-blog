@@ -1,6 +1,6 @@
 ---
 title: Building with Bridgetown - Portfolio
-date: "2020-05-24T09:54:47"
+date: '2020-05-24T09:54:47'
 description: In this post, I will be detailing how I built my portfolio
   site with Bridgetown along with TailwindCSS.
 ---
@@ -49,9 +49,7 @@ static data inside of the `./_data/` directory. You can use one `YAML`,
 So lets add the data. Navigate to the `_data/site_metadata.yml` file.
 For me, I filled in the following information:
 
-```yaml
-# _data/site_metadata.yml
-
+```yaml title=_data/site_metadata.yml
 title: Konnor's Portfolio
 email: konnor7414@gmail.com
 description: >- # this means to ignore newlines
@@ -68,9 +66,7 @@ Now, lets create a `_data/projects.yml` file. Here, we can do things
 like add links, descriptions, etc for each project that we plan on
 putting in. Heres what my `_data/projects.yml` file looks like.
 
-```yaml
-# _data/projects.yml
-
+```yaml title=_data/projects.yml
 ma_protocol_rewrite:
   source_code: https://github.com/ParamagicDev/ma-protocol-rewrite/tree/master
   deployed_app: https://inspiring-varahamihira-efb922.netlify.app/
@@ -86,9 +82,7 @@ ma_protocol_rewrite:
 
 Finally, lets add some links for people to find us:
 
-```yaml
-# _data/links.yml
-
+```yaml title=_data/links.yml
 blog: https://paramagicdev.github.io/my-blog
 linkedin: https://www.linkedin.com/in/konnor-rogers-78b120175/
 github: https://github.com/ParamagicDev
