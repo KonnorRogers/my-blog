@@ -1,6 +1,6 @@
 ---
 title: Dockerizing Bridgetown
-date: "2020-05-23T15:55:36"
+date: '2020-05-23T15:55:36'
 description: Getting started building with Bridgetown by dockerizing it. I'll walk through a Docker setup for Bridgetown using Alpine Linux.
 ---
 
@@ -11,7 +11,7 @@ description: Getting started building with Bridgetown by dockerizing it. I'll wa
   style="background: #F0FFF0; border-radius: 16px; padding: 1rem;"
 >
   <a href="https://bridgetownrb.com">Bridgetownrb</a>
-  is a "Webpack-aware,
+  &nbsp;is a "Webpack-aware,
   <br />
   Ruby-powered static site generator
   <br />
@@ -101,9 +101,7 @@ image small.
 
 Create a `Dockerfile` and add the following contents into it.
 
-```dockerfile
-# Dockerfile
-
+```dockerfile title=Dockerfile
 FROM ruby:2.6-alpine3.11 as builder
 
 RUN apk add --no-cache --virtual \\
@@ -169,7 +167,7 @@ Create a `docker-compose.yml` and add the following content:
 ```yaml
 # docker-compose.yml
 
-version: "3"
+version: '3'
 
 services:
   web:
@@ -185,10 +183,10 @@ services:
     command: bash -c "yarn start --host '0.0.0.0'"
 
     ports:
-      - "4000:4000"
+      - '4000:4000'
       # Not totally necessary to open 4001, but it is used, so lets make it discoverable
-      - "4001:4001"
-      - "4002:4002"
+      - '4001:4001'
+      - '4002:4002'
 
     volumes:
       - .:${APP_DIR:-/home/user/bridgetown-app}
@@ -568,7 +566,7 @@ CMD ["yarn", "start"]
 ```yaml
 # docker-compose.yml
 
-version: "3"
+version: '3'
 
 services:
   web:
@@ -584,10 +582,10 @@ services:
     command: bash -c "yarn start --host '0.0.0.0'"
 
     ports:
-      - "4000:4000"
+      - '4000:4000'
       # Not totally necessary to open 4001, but it is used, so lets make it discoverable
-      - "4001:4001"
-      - "4002:4002"
+      - '4001:4001'
+      - '4002:4002'
 
     volumes:
       - .:${APP_DIR:-/home/user/bridgetown-app}

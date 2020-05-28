@@ -1,46 +1,60 @@
-p + .gatsby-code-button-container + .gatsby-highlight {
-  margin-top: -2rem;
-}
-
-.gatsby-highlight {
-  margin-bottom: 3.5rem;
-}
-
-p + .gatsby-code-button-container {
-  top: 1.75rem;
-}
-
-.gatsby-code-button-container {
-  top: 3.75rem;
-  right: 1rem;
-}
-
-.gatsby-code-button {
-  filter: invert(1);
-}
-.gatsby-code-button[data-tooltip]:after {
-  font-size: .75rem;
-  top: -5px;
-  right: 2rem;
-}
-
-.gatsby-highlight + p > a {
-  display: block;
-  width: fit-content;
-  margin-top: -2.5rem;
+.prism-code {
   margin-bottom: 3rem;
+  overflow-x: auto;
+  padding: 2rem 1.5rem 1.5rem;
+  position: relative;
 }
-.gatsby-code-button-icon {
-}
-.gatsby-code-button-toaster {
-  margin: auto;
-  min-width: 15rem;
-  width: 20%;
 
+.prism-code > .token-line:first-of-type {
+  margin-top: 1.5rem;
 }
-.gatsby-code-button-toaster-text {
-  font-size: 1.25rem;
-  background: slategray;
-  border-radius: 1rem;
+
+.prism-code + .reference-file {
+  margin-top: -2rem;
+  margin-bottom: 2rem;
+}
+
+.gatsby-code-meta {
+  align-items: center;
+  justify-content: flex-end;
+  display: flex;
+  position: absolute;
+  margin-bottom: 1.5rem;
+  right: 0;
+  top: 0.5rem;
+}
+
+.gatsby-code-meta-text {
+  font-size: 0.75rem;
+  margin-top: -0.5rem;
+  padding: 0 0.5rem;
+  margin-right: -1px;
+  border-right: 1px solid transparent;
+  border-bottom: 1px solid transparent;
+  border-left: 1px solid transparent;
+  height: 2rem;
+}
+
+.gatsby-code-meta-copy {
+  margin: -0.25rem 0;
+  height: 2rem;
+  background-color: transparent;
+  border: none;
+  cursor: pointer;
+  min-width: 4rem;
+  color: inherit;
+}
+
+.gatsby-code-meta-copy[disabled] {
+  cursor: unset;
+}
+
+
+.gatsby-code-meta-copy:not([disabled]):hover {
+  background: purple;
   color: white;
+}
+
+.gatsby-code-meta-copy:active {
+
 }
