@@ -19,8 +19,9 @@
   padding-right: 2rem;
 }
 
-.prism-code * {
-  word-wrap: none;
+.prism-code > * {
+  display: flex;
+  flex: 1;
 }
 
 
