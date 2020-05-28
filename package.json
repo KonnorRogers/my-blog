@@ -1,7 +1,7 @@
 {
   "name": "Konnor's Blog",
   "private": true,
-  "description": "Konnor's Blog, a place he writes about programming related things.",
+  "description": "Konnor's Blog, a place he writes about programming related things",
   "version": "0.1.0",
   "author": "Konnor Rogers <konnor7414@gmail.com>",
   "bugs": {
@@ -55,7 +55,7 @@
   "main": "n/a",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/paramagicdev/my-blog"
+    "url": "git+https://github.com/paramagicdev/my-blog.git"
   },
   "scripts": {
     "dev": "gatsby develop",
