@@ -4,6 +4,16 @@
   box-sizing: border-box;
 }
 
+code {
+  display: inline-block;
+  font-size: 85%;
+  color: rgb(158, 254, 255);
+  background: rgb(45, 42, 85);
+  padding: 0 0.4rem;
+  margin: 0.2rem 0.1rem;
+  border-radius: 3px;
+}
+
 .prism-code {
   margin-bottom: 3rem;
   overflow-x: auto;
@@ -92,8 +102,8 @@
 
 .gatsby-code-meta-copy:not([disabled]):hover,
 .gatsby-code-meta-copy:not([disabled]):focus {
-  color: var(--hover-color);
-  background-color: var(--hover-bg);
+  color: var(--code-hover-color);
+  background-color: var(--code-hover-bg);
   padding: -1px;
 }
 

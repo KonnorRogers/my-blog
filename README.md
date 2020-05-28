@@ -50,3 +50,8 @@ this blog possible!
 [![Deploy to Netlify](https://www.netlify.com/img/deploy/button.svg)](https://app.netlify.com/start/deploy?repository=https://github.com/gatsbyjs/gatsby-starter-blog)
 
 <!-- AUTO-GENERATED-CONTENT:END -->
+
+## Adding a .env file
+
+Make sure to create a `.env` file so you can set the `GITHUB_API_TOKEN`
+environment variable to pull down files from github.

@@ -38,8 +38,8 @@ export const Code = ({
 
   React.useEffect(() => {
     const html = document.querySelector('html')
-    html.style.setProperty('--hover-bg', hoverBgColor)
-    html.style.setProperty('--hover-color', hoverColor)
+    html.style.setProperty('--copy-hover-bg', hoverBgColor)
+    html.style.setProperty('--copy-hover-color', hoverColor)
   }, [])
 
   const { title } = getParams(props.metastring)
