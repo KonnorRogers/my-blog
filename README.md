@@ -55,3 +55,14 @@ this blog possible!
 
 Make sure to create a `.env` file so you can set the `GITHUB_API_TOKEN`
 environment variable to pull down files from github.
+
+```graphql
+query($repo_name:String!, $name:String!) {
+viewer {
+name
+repository(owner: $name; name: $repo_name) {
+id
+}
+}
+}
+```
