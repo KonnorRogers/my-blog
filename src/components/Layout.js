@@ -1,58 +1,61 @@
 import React from 'react'
 import { Link } from 'gatsby'
-
+import { MDXProvider } from '@mdx-js/react'
+import { RemoteFile } from './remoteFile'
 import { rhythm, scale } from '../utils/typography'
 
-class Layout extends React.Component {
-  render() {
-    const { location, title, children } = this.props
-    const rootPath = `${__PATH_PREFIX__}/`
-    let header
+// const shortcodes = { RemoteFile }
 
-    if (location.pathname === rootPath) {
-      header = (
-        <h1
+export default function Layout({ location, title, children }) {
+  const rootPath = `${__PATH_PREFIX__}/`
+  let header
+
+  if (location.pathname === rootPath) {
+    header = (
+      <h1
+        style={{
+          ...scale(1.5),
+          marginBottom: rhythm(1.5),
+          marginTop: 0,
+        }}
+      >
+        <Link
           style={{
-            ...scale(1.5),
-            marginBottom: rhythm(1.5),
-            marginTop: 0,
+            boxShadow: `none`,
+            textDecoration: `none`,
+            color: `inherit`,
           }}
+          to={`/`}
         >
-          <Link
-            style={{
-              boxShadow: `none`,
-              textDecoration: `none`,
-              color: `inherit`,
-            }}
-            to={`/`}
-          >
-            {title}
-          </Link>
-        </h1>
-      )
-    } else {
-      header = (
-        <h3
+          {title}
+        </Link>
+      </h1>
+    )
+  } else {
+    header = (
+      <h3
+        style={{
+          fontFamily: `Montserrat, sans-serif`,
+          marginTop: 0,
+          marginBottom: rhythm(-1),
+        }}
+      >
+        <Link
           style={{
-            fontFamily: `Montserrat, sans-serif`,
-            marginTop: 0,
-            marginBottom: rhythm(-1),
+            boxShadow: `none`,
+            textDecoration: `none`,
+            color: `inherit`,
           }}
+          to={`/`}
         >
-          <Link
-            style={{
-              boxShadow: `none`,
-              textDecoration: `none`,
-              color: `inherit`,
-            }}
-            to={`/`}
-          >
-            {title}
-          </Link>
-        </h3>
-      )
-    }
-    return (
+          {title}
+        </Link>
+      </h3>
+    )
+  }
+
+  return (
+    <MDXProvider components={}>
       <div
         style={{
           marginLeft: `auto`,
@@ -69,8 +72,8 @@ class Layout extends React.Component {
           <a href="https://www.gatsbyjs.org">Gatsby</a>
         </footer>
       </div>
-    )
-  }
+    </MDXProvider>
+  )
 }
 
 export default Layout
