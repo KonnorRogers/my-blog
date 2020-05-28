@@ -38,6 +38,7 @@
   padding: 0 1px;
 }
 
+
 .gatsby-code-meta-copy {
   display: block;
   border: none;
@@ -52,17 +53,22 @@
   border-color: inherit;
 }
 
+.gatsby-code-meta-copy[disabled]:focus,
+.gatsby-code-meta-copy[disabled]:hover {
+  outline: none;
+}
+
 .gatsby-code-meta-copy[disabled] {
   cursor: unset;
 }
 
 
-.gatsby-code-meta-copy:not([disabled]):hover {
+.gatsby-code-meta-copy:not([disabled]):hover,
+.gatsby-code-meta-copy:not([disabled]):focus {
   color: var(--hover-color);
   background-color: var(--hover-bg);
-  border: none;
+  padding: -1px;
 }
 
 .gatsby-code-meta-copy:active {
-
 }
