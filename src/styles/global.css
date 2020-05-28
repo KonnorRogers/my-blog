@@ -51,6 +51,7 @@
   color: inherit;
   border-left: 1px solid;
   border-color: inherit;
+  margin-top: -1px;
 }
 
 .gatsby-code-meta-copy[disabled]:focus,
