@@ -30,35 +30,51 @@ export const Code = ({
     )
   }
 
+  const color = shadesOfPurple.styles[4].style.color
+  const borderColor = shadesOfPurple.styles[3].style.color
+
+  const hoverColor = shadesOfPurple.styles[4].style.color
+  const hoverBgColor = shadesOfPurple.styles[3].style.color
+
+  React.useEffect(() => {
+    const html = document.querySelector('html')
+    console.log(html)
+    html.style.setProperty('--hover-bg', hoverBgColor)
+    html.style.setProperty('--hover-color', hoverColor)
+  }, [])
+
   const { title } = getParams(props.metastring)
 
   return (
-    <Highlight
-      {...defaultProps}
-      code={codeString}
-      language={language}
-      theme={shadesOfPurple}
-    >
-      {({
-        className,
-        style,
-        tokens,
-        getLineProps,
-        getTokenProps,
-        ...defaultProps
-      }) => (
-        <React.Fragment>
+    <React.Fragment>
+      <div
+        className="gatsby-code-meta"
+        style={{ color: color, borderColor: borderColor }}
+      >
+        <div className="gatsby-code-meta-text">{title}</div>
+        <div className="gatsby-code-meta-text">
+          <Copy
+            className="gatsby-code-meta-copy"
+            content={codeString}
+            title={title}
+          />
+        </div>
+      </div>
+      <Highlight
+        {...defaultProps}
+        code={codeString}
+        language={language}
+        theme={shadesOfPurple}
+      >
+        {({
+          className,
+          style,
+          tokens,
+          getLineProps,
+          getTokenProps,
+          ...defaultProps
+        }) => (
           <pre className={className} style={style}>
-            <div className="gatsby-code-meta">
-              <div className="gatsby-code-meta-text">{title}</div>
-              <div className="gatsby-code-meta-text">
-                <Copy
-                  className="gatsby-code-meta-copy"
-                  content={codeString}
-                  title={title}
-                />
-              </div>
-            </div>
             {tokens.map((line, i) => (
               <div {...getLineProps({ line, key: i })}>
                 {line.map((token, key) => (
@@ -67,8 +83,8 @@ export const Code = ({
               </div>
             ))}
           </pre>
-        </React.Fragment>
-      )}
-    </Highlight>
+        )}
+      </Highlight>
+    </React.Fragment>
   )
 }

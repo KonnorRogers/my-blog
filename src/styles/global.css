@@ -16,33 +16,40 @@
 
 .gatsby-code-meta {
   align-items: center;
-  justify-content: flex-end;
   display: flex;
-  position: absolute;
-  margin-bottom: 1.5rem;
+  position: relative;
+  padding: 0;
+  margin: 0;
   right: 0;
-  top: 0.5rem;
+  top: 2rem;
+  border-bottom: 1px solid;
+  width: 100%;
+  z-index: 100;
 }
 
 .gatsby-code-meta-text {
+  display: block;
   font-size: 0.75rem;
-  margin-top: -0.5rem;
-  padding: 0 0.5rem;
+  line-height: 1.9rem;
+  margin: 0 0 0 auto;
   margin-right: -1px;
-  border-right: 1px solid transparent;
-  border-bottom: 1px solid transparent;
-  border-left: 1px solid transparent;
-  height: 2rem;
+  height: 100%;
+  border-color: inherit;
+  padding: 0 1px;
 }
 
 .gatsby-code-meta-copy {
-  margin: -0.25rem 0;
-  height: 2rem;
-  background-color: transparent;
+  display: block;
   border: none;
+  background-color: inherit;
   cursor: pointer;
-  min-width: 4rem;
+  width: 100%;
+  padding: 0;
+  height: 100%;
+  min-width: 5rem;
   color: inherit;
+  border-left: 1px solid;
+  border-color: inherit;
 }
 
 .gatsby-code-meta-copy[disabled] {
@@ -51,8 +58,9 @@
 
 
 .gatsby-code-meta-copy:not([disabled]):hover {
-  background: purple;
-  color: white;
+  color: var(--hover-color);
+  background-color: var(--hover-bg);
+  border: none;
 }
 
 .gatsby-code-meta-copy:active {
