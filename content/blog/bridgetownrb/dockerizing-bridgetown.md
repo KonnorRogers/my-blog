@@ -211,8 +211,7 @@ sourcing a file with ENV variables.
 
 To show you what this looks like lets create a 'docker.env' file.
 
-```bash
-# docker.env
+```bash title=docker.env
 
 # Assign and export seperately to avoid masking return values.
 USER_ID=$(id -u "$USER")
@@ -245,8 +244,7 @@ however.
 
 The final piece to this Docker puzzle is to create a `.dockerignore`. I stole the `.gitignore` provided by Bridgetownrb for this. It looks as follows:
 
-```bash
-# .dockerignore
+```bash title=.dockerignore
 
 # Bridgetown
 output
@@ -303,8 +301,8 @@ dependency files.
 
 The first step is to create a `Gemfile`. Create a Gemfile as follows:
 
-```ruby
-# Gemfile
+```ruby title=Gemfile
+
 
 source "https://rubygems.org"
 gem "bridgetown", "~> 0.14.0"
@@ -318,9 +316,8 @@ This will tell `bundler` to install `bridgetown` from Rubygems.org
 
 Create a `package.json` structured similarly to the one below:
 
-```json
+```json title=package.json
 {
-  "__filename": "package.json",
   "name": "bridgetown-site",
   "version": "1.0.0",
   "private": true
@@ -510,8 +507,7 @@ touch Gemfile Gemfile.lock package.json yarn.lock \\
       .dockerignore docker-compose.yml Dockerfile docker.env
 ```
 
-```dockerfile
-# Dockerfile
+```dockerfile title=Dockerfile
 
 FROM ruby:2.6-alpine3.11 as builder
 
@@ -563,9 +559,7 @@ RUN yarn install
 CMD ["yarn", "start"]
 ```
 
-```yaml
-# docker-compose.yml
-
+```yaml title=docker-compose.yml
 version: '3'
 
 services:
@@ -596,8 +590,8 @@ volumes:
   node_modules:
 ```
 
-```bash
-# docker.env
+```bash title=docker.env
+
 
 # Assign and export seperately to avoid masking return values.
 USER_ID=$(id -u "$USER")
@@ -609,8 +603,8 @@ export DOCKER_USER="user"
 export APP_DIR="/home/$DOCKER_USER/bridgetown"
 ```
 
-```bash
-# .dockerignore
+```bash title=.dockerignore
+
 
 # Bridgetown
 output
@@ -651,16 +645,15 @@ yarn-debug.log*
 .git
 ```
 
-```ruby
+```ruby title=Gemfile
 # Gemfile
 
 source "https://rubygems.org"
 gem "bridgetown", "~> 0.14.0"
 ```
 
-```json
+```json title=package.json
 {
-  "__filename": "package.json",
   "name": "bridgetown-site",
   "version": "1.0.0",
   "private": true
