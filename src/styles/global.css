@@ -1,9 +1,24 @@
 .prism-code {
   margin-bottom: 3rem;
-  overflow-x: auto;
+  overflow-x: scroll;
   padding: 2rem 1.5rem 1.5rem;
   position: relative;
+  display: block;
 }
+
+.token-line:after {
+  content: "";
+  width: 2rem;
+  position: absolute;
+  right: -2rem;
+  height: 0;
+}
+
+/* fix overflow scroll issue padding */
+.token:last-child {
+  padding-right: 2rem;
+}
+
 
 .prism-code > .token-line:first-of-type {
   margin-top: 1.5rem;
