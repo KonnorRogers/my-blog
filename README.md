@@ -57,22 +57,19 @@ Make sure to create a `.env` file so you can set the `GITHUB_API_TOKEN`
 environment variable to pull down files from github.
 
 ```graphql
-query($repo_name:String!, $name:String!) {
-  repository(owner: $name; name: $repo_name) {
-    object(expression:<branch>:<path/to/folder>) {
-        ... on Tree {
-          entries {
-            oid
-            object {
-              ... on Blob {
-                text
-              }
-            }
-            name
-          }
-        }
+query($repo_name: String!, $name: String!, $expression: String!) {
+  repository(owner: $name, name: $repo_name) {
+    object(expression: $expression) {
+      ... on Blob {
+        text
       }
     }
   }
+}
+
+variables {
+  "repo_name": "getting-started-with-bridgetown",
+  "name": "ParamagicDev",
+  "expression": "master:Dockerfile"
 }
 ```
