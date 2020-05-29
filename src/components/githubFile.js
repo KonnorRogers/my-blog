@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react'
+import { graphql, useStaticQuery } from 'gatsby'
 
 export default function GithubFile({
   owner = 'paramagicdev',
