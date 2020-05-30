@@ -19,8 +19,7 @@ could check out other `gatsby-source` plugins as well as check out
 </h2>
 
 - Gatsby (Obviously)
-- MDX (I used this repo for my blog
-  [https://www.gatsbyjs.org/starters/hagnerd/gatsby-starter-blog-mdx/](https://www.gatsbyjs.org/starters/hagnerd/gatsby-starter-blog-mdx/)
+- MDX (I used [this repo](https://www.gatsbyjs.org/starters/hagnerd/gatsby-starter-blog-mdx/) for my blog)
 
 <h2 id="assumptions">
   <a href="#assumptions">
@@ -42,11 +41,9 @@ Also, I will be using Yarn for this. Feel free to use NPM.
 
 Before we get too far, lets have a chat about ENV variables. The easiest
 way to source them is to use
-[dotenv](https://www.npmjs.com/package/dotenv). Optionally, you could
+. Optionally, you could
 set them manually / via a script. We'll use `dotenv` here for
 simplicity's sake. For further reading on ENV variables check out
-[Gatsby's guide to ENV
-variables](https://www.gatsbyjs.org/docs/environment-variables/)
 
 So let's install `dotenv`
 
@@ -66,24 +63,24 @@ yarn add gatsby-source-graphql
 
 Now, in your `gatsby-config.js` file add the following lines:
 
-```javascript file=gatsby-config.js
+```diff file=gatsby-config.js
 module.exports = {
   // ...
   plugins: [
     // ...
-    {
-      resolve: `gatsby-source-graphql`,
-      options: {
-        typeName: `GitHub`,
-        fieldName: `github`,
-        url: `https://api.github.com/graphql`,
-
-        // https://github.com/settings/tokens to obtain
-        headers: {
-          Authorization: process.env['GITHUB_API_TOKEN'],
-        },
-      },
-    },
++   {
++     resolve: `gatsby-source-graphql`,
++     options: {
++       typeName: `GitHub`,
++       fieldName: `github`,
++       url: `https://api.github.com/graphql`,
++
++       // https://github.com/settings/tokens to obtain
++       headers: {
++         Authorization: process.env.GITHUB_API_TOKEN,
++       },
++     },
++   },
   ],
   // ...
 }
@@ -95,3 +92,63 @@ so, you need a `GITHUB_API_TOKEN`. Tokens can be generated here
 
 Make sure to check the `repo` scope to allow you read from both public
 and private repositories.
+
+The next step is to provide a way for us to access this API token. We
+don't want everyone to see it so we store it in an ENV variable. Right
+now we have no way of accessing the ENV variable so lets pull in a
+package to read it for us.
+
+[Gatsby's guide to ENV
+variables](https://www.gatsbyjs.org/docs/environment-variables/)
+
+[dotenv](https://www.npmjs.com/package/dotenv) Provides us the ability
+to do just that.
+
+To install `dotenv` run the following:
+
+```bash
+yarn add dotenv
+```
+
+Now in your `gatsby-config.js` at the top of the file add the following:
+
+```diff file=gatsby-config.js
++ require("dotenv").config()
++
+module.exports = {
+  // ...
+}
+```
+
+This will source ENV variables from a file called `.env`.
+
+Now lets create a `.env` file at the root of our project.
+
+```sh
+GITHUB_API_TOKEN="<token>"
+```
+
+This will now allow Gatsby to read your API token at build time without
+exposing it in your source control.
+
+### Note:
+
+Make sure your `.env` file is in your `.gitignore`.
+
+<h2 id="building-the-component">
+  <a href="#building-the-component">
+    Building the component
+  </a>
+</h2>
+
+We have all the blocks in place to create a component to source our data
+from Github. Now lets build it!
+
+<h2 id="limitations">
+  <a href="#limitations">
+    Limitations
+  </a>
+</h2>
+
+This component does not support code diffs and doesnt support pulling
+based on lines of a file.

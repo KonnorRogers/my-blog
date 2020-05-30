@@ -67,7 +67,7 @@ query($repo_name: String!, $name: String!, $expression: String!) {
   }
 }
 
-variables {
+variables: {
   "repo_name": "getting-started-with-bridgetown",
   "name": "ParamagicDev",
   "expression": "master:Dockerfile"
