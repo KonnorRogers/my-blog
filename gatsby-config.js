@@ -148,6 +148,7 @@ module.exports = {
         typeName: `GitHub`,
         fieldName: `github`,
         url: `https://api.github.com/graphql`,
+        // https://github.com/settings/tokens
         headers: {
           Authorization: process.env['GITHUB_API_TOKEN'],
         },
