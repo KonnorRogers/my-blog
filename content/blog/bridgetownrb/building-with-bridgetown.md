@@ -23,7 +23,8 @@ git clone https://github.com/ParamagicDev/getting-started-with-bridgetown
 cd getting-started-with-bridgetown
 rm -rf .git
 git init
-source ./docker.env && docker-compose up --build
+# under the hood runs source ./docker.env && docker-compose [args]
+./compose.sh up --build
 ```
 
 And now you're completely caught up! Lets get building!
@@ -52,7 +53,8 @@ For me, I filled in the following information:
 ```yaml title=_data/site_metadata.yml
 title: Konnor's Portfolio
 email: konnor7414@gmail.com
-description: >- # this means to ignore newlines
+description: >-
+  # this means to ignore newlines and clip the final new line
   This is Konnor's portfolio site. It contains info about who he is, what
   projects he is working on / has worked on, as well as contact information.
 
@@ -70,11 +72,12 @@ putting in. Heres what my `_data/projects.yml` file looks like.
 ma_protocol_rewrite:
   source_code: https://github.com/ParamagicDev/ma-protocol-rewrite/tree/master
   deployed_app: https://inspiring-varahamihira-efb922.netlify.app/
-  description: ->
+  description: >-
     A rewrite of EMS protocols for the state of Massachusetts. The app
     is written in React / Gatsby and attempts to created a more
     navigable and searchable interface for reading the protocols. This is the
     current project im working on.
+
 # Below projects omitted for brevity
 ```
 
@@ -90,9 +93,7 @@ github: https://github.com/ParamagicDev
 
 So now, in various pages we can access our data via a simple:
 
-```md
-# Example Page
-
+```md title=ExamplePage
 {{ site.links.github }}
 https://github.com/ParamagicDev
 
