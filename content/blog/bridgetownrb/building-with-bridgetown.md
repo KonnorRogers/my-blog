@@ -18,13 +18,8 @@ Bridgetown](bridgetownrb/dockerizing-bridgetown/)
 Alternatively, to follow along you could simply do the following:
 
 ```bash
-git clone https://github.com/ParamagicDev/getting-started-with-bridgetown
-
-cd getting-started-with-bridgetown
-rm -rf .git
-git init
-# under the hood runs source ./docker.env && docker-compose [args]
-./compose.sh up --build
+gem install bridgetown -v '0.15.0.beta3'
+bridgetown new <mysite> --apply="https://github.com/paramagicdev/bridgetown-plugin-tailwindcss"
 ```
 
 And now you're completely caught up! Lets get building!
@@ -36,9 +31,10 @@ And now you're completely caught up! Lets get building!
 The first thing we want to do is setup some static data for us to pull
 in.
 
-For example, we want our `first_name`, `last_name`, `github_profile`, `linkedin_profile`, `portfolio_site` and whatever else
-you can think of to be easily pulled down and easily changed should
-something change in the future.
+For example, we want our `first_name`, `last_name`, `github_profile`,
+`linkedin_profile`, `portfolio_site` and whatever else you can think of
+to be easily pulled down and easily changed should something change in
+the future.
 
 So where do we go to set site data?
 
@@ -86,7 +82,7 @@ ma_protocol_rewrite:
 Finally, lets add some links for people to find us:
 
 ```yaml title=_data/links.yml
-blog: https://paramagicdev.github.io/my-blog
+blog: https://blog.konnor.site
 linkedin: https://www.linkedin.com/in/konnor-rogers-78b120175/
 github: https://github.com/ParamagicDev
 ```
@@ -94,12 +90,9 @@ github: https://github.com/ParamagicDev
 So now, in various pages we can access our data via a simple:
 
 ```md title=ExamplePage
-{{ site.links.github }}
-https://github.com/ParamagicDev
+{{ site.links.github }} # => https://github.com/ParamagicDev
 
-{{ site.projects.ma_protocol_rewrite[:source_code] }}
-https://github.com/ParamagicDev/ma-protocol-rewrite/tree/master
+{{ site.projects.ma_protocol_rewrite[:source_code] }} # => https://github.com/ParamagicDev/ma-protocol-rewrite/tree/master
 
-{{ site.site_metadata.first_name }}
-Konnor
+{{ site.site_metadata.first_name }} # => Konnor
 ```
