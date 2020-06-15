@@ -649,7 +649,7 @@ yarn-debug.log*
 # Gemfile
 
 source "https://rubygems.org"
-gem "bridgetown", "~> 0.14.0"
+gem "bridgetown", "~> 0.15.beta3"
 ```
 
 ```json title=package.json
