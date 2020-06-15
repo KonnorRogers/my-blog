@@ -305,7 +305,7 @@ The first step is to create a `Gemfile`. Create a Gemfile as follows:
 
 
 source "https://rubygems.org"
-gem "bridgetown", "~> 0.14.0"
+gem "bridgetown", "~> 0.15.0.beta3"
 ```
 
 This will tell `bundler` to install `bridgetown` from Rubygems.org
