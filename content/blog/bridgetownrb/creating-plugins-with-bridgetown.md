@@ -179,4 +179,3 @@ end
 ```
 
 [Check out the Gist here](https://gist.github.com/ParamagicDev/cd7bede36e3c19f2580ff1b5300fc2d1)
-
