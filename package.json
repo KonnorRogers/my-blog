@@ -45,7 +45,8 @@
   "devDependencies": {
     "eslint": "^6.2.2",
     "eslint-plugin-react": "^7.11.1",
-    "prettier": "^1.14.2"
+    "prettier": "^1.14.2",
+    "typography-theme-github": "^0.16.19"
   },
   "homepage": "https://blog.konnor.site",
   "keywords": [
