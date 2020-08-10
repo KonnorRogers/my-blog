@@ -17,7 +17,7 @@ an interesting problem.
 
 In Snowpacker, I allow users to define various attributes within a Rails app initializer like so:
 
-```ruby title=rails_app/config/initializers/snowpacker.rb
+```ruby title=config/initializers/snowpacker.rb
 Snowpacker.configure do |snowpacker|
   snowpacker.config_dir = Rails.root.join("config", "snowpacker")
   # ... more options
