@@ -4,6 +4,10 @@
   box-sizing: border-box;
 }
 
+html {
+  font-size: 17px;
+}
+
 code {
   display: inline-block;
   font-size: 85%;
@@ -15,6 +19,7 @@ code {
 }
 
 .prism-code {
+  margin-top: -2rem;
   margin-bottom: 3rem;
   overflow-x: auto;
   padding: 2rem 1.5rem 1.5rem;
@@ -56,7 +61,7 @@ code {
   padding: 0;
   margin: 0;
   right: 0;
-  top: 2rem;
+  top: 0;
   border-bottom: 1px solid;
   width: 100%;
   z-index: 100;

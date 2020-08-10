@@ -111,24 +111,24 @@ end
 
 So `attr_accessor` neatly provides the 2 above methods for us.
 
-The only issue is, you cant technically dynamically define an
-attr_accessor, instead, you have to manually define both methods listed
+The only issue is, you can't technically dynamically define an
+`attr_accessor`, instead, you have to manually define both methods listed
 above to achieve the same functionality.
 
 <h2 id="why-care">
   <a href="#why-care">
-    Why should I care
+    Why should I care?
   </a>
 </h2>
 
 But Konnor, why does that matter? Well the reason it matters is that in
 my `snowpack.config.js` I read the value of Environment variables to
 make certain things behave in certain ways. The way these values are
-set are via instance variables that a read from the `Configuration` object. Basically, `Snowpacker` will take all
+set are via instance variables that are read from the `Configuration` object. Basically, `Snowpacker` will take all
 the instance_variables of the `Configuration` object and prepend
 "SNOWPACKER\_" to them.
 
-For example youre given the following code:
+For example, if you're given the following code:
 
 ```ruby title=rails_app/config/initializers/snowpacker.rb
 Snowpacker.configure do |snowpacker|
@@ -140,9 +140,8 @@ end
 ```
 
 What Snowpacker will do at runtime is create a `SNOWPACKER_CONFIG_DIR`
-environment variable as well as a `SNOWPACKER_BABEL_CONFIG_FILE`.
-
-Both values can now be accessed via `ENV["SNOWPACKER_<VARNAME>"]`
+environment variable as well as a `SNOWPACKER_BABEL_CONFIG_FILE`. Both
+values can now be accessed via `ENV["SNOWPACKER_CONFIG_DIR"]` and `ENV["SNOWPACKER_BABEL_CONFIG_FILE"]` respectively.
 
 <h2 id="okay-cool">
   <a href="#okay-cool">
@@ -156,8 +155,9 @@ me to use the `method_missing` approach.
 In a nutshell, the `method_missing` is a method defined on every
 `Object` that checks to see if a method exists. If it does not exist, it
 prints a stacktrace and raises a `NoMethodError`. So what we're doing is
-overriding the existing method to be able to dynamically define methods.
-Rails makes heavy use of this.
+overriding the existing `method_missing` on the `Configuration` Object
+to be able to dynamically define methods. Rails makes heavy use of this
+pattern.
 
 Here's how I setup dynamic attribute getting and setting in Snowpacker.
 
@@ -167,11 +167,11 @@ module Snowpacker
     attr_accessor :config_dir
     # ... Other base accessors
 `
-    def method_missing(symbol, *args, &block)
-      # Check if the method missing an "attr=" method
-      raise unless symbol.to_s.end_with("=")
+    def method_missing(method_name, *args, &block)
+      # Check if the method missing is an "attr=" method
+      raise unless method_name.to_s.end_with("=")
 
-      setter = symbol
+      setter = method_name
       getter = symbol.to_s.slice(0...-1).to_sym
       instance_var = "@#{getter}".to_sym
 
@@ -181,10 +181,14 @@ module Snowpacker
 
       define_singleton_method(getter) { instance_variable_get(instance_var) }
 
+      # Ignores all arguments but the first one
       value = args[0]
+
+      # Actually sets the value on the instance variable
       send(setter, value)
     rescue
-      super(symbol, *args)
+      # Raise error as normal, nothing to see here
+      super(symbol, *args, &block)
     end
   end
 end
@@ -207,19 +211,27 @@ This may seem like a lot but lets break it down line by line.
 All this means is that we're overriding `method_missing` for all
 Configuration Objects.
 
+<br />
+
 `raise unless symbol.to_s.end_with("=")`
 
 If the method name does not end with an equal sign, raise an error.
 In other words, we want to raise an error if the method we're trying to
-call is not a `setter`. That's it, pretty cool right!
+call is not a `setter` (`attr=`). That's it, pretty cool right!
 
 Heres an example of what we want:
-`Snowpacker.config.test` will raise an error
-`Snowpacker.config.test = "value"` will not raise an error.
-`Snowpacker.config.test` now returns "value"
+
+```ruby
+Snowpacker.config.test # will raise an error
+
+Snowpacker.config.test = "value" # will not raise an error.
+Snowpacker.config.test # now returns "value"
+```
 
 So now that we know we're only dealing with methods that look like
 `random_attribute=` we can start making more assumptions.
+
+<br />
 
 `setter = symbol` we're just renaming the argument to make our intent more clear.
 
@@ -273,7 +285,7 @@ Alright so thats all the logic. But what does that last little bit do?
 
 ```
 rescue
-  super(symbol, *args, &block)
+  super(method_name, *args, &block)
 end
 ```
 
