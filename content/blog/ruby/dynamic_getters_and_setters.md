@@ -50,7 +50,7 @@ following:
 
 ```ruby
 Snowpacker.configure do |snowpacker|
-  snowpacker.config.attr = "value"
+  snowpacker.attr = "value"
 end
 ```
 
@@ -93,7 +93,7 @@ Well first, `attr_accessor` combines `attr_writer` and `attr_reader`.
 
 Totally not helpful right? Well lets break it down further.
 
-`attr_writer :name` is the equivalent of:
+`attr_reader :name` is the equivalent of:
 
 ```ruby
 def name
@@ -101,7 +101,7 @@ def name
 end
 ```
 
-And `attr_reader :name` is the equivalent of:
+And `attr_writer :name` is the equivalent of:
 
 ```ruby
 def name=(value)
@@ -168,7 +168,7 @@ module Snowpacker
 `
     def method_missing(method_name, *args, &block)
       # Check if the method missing is an "attr=" method
-      raise unless method_name.to_s.end_with("=")
+      raise unless method_name.to_s.end_with?("=")
 
       setter = method_name
       getter = method_name.to_s.slice(0...-1).to_sym
@@ -212,7 +212,7 @@ Configuration Objects.
 
 <br />
 
-`raise unless method_name.to_s.end_with("=")`
+`raise unless method_name.to_s.end_with?("=")`
 
 If the method name does not end with an equal sign, raise an error.
 In other words, we want to raise an error if the method we're trying to
@@ -302,7 +302,7 @@ That's it. Wield this new found power wisely!
 [Snowpacker](https://github.com/ParamagicDev/snowpacker)
 
 [Snowpacker Configuration
-File](https://github.com/ParamagicDev/snowpacker/blob/master/lib/snowpacker/configuration.rb)
+File](https://github.com/ParamagicDev/snowpacker/blob/d2d534642de9626d3beb5579a9bd6f42eb46d06f/lib/snowpacker/configuration.rb)
 
 [Method Missing
 Documentation](https://ruby-doc.org/core-2.7.0/BasicObject.html#method-i-method_missing)
