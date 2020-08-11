@@ -171,7 +171,7 @@ module Snowpacker
       raise unless method_name.to_s.end_with("=")
 
       setter = method_name
-      getter = symbol.to_s.slice(0...-1).to_sym
+      getter = method_name.to_s.slice(0...-1).to_sym
       instance_var = "@#{getter}".to_sym
 
       define_singleton_method(setter) do |new_val|
@@ -187,7 +187,7 @@ module Snowpacker
       send(setter, value)
     rescue
       # Raise error as normal, nothing to see here
-      super(symbol, *args, &block)
+      super(method_name, *args, &block)
     end
   end
 end
@@ -205,14 +205,14 @@ object without worry about adding an `attr_accessor`.
 If you're sitting there scratching your head, I don't blame you.
 This may seem like a lot but lets break it down line by line.
 
-`def method_missing(symbol, *args, &block)`
+`def method_missing(method_name, *args, &block)`
 
 All this means is that we're overriding `method_missing` for all
 Configuration Objects.
 
 <br />
 
-`raise unless symbol.to_s.end_with("=")`
+`raise unless method_name.to_s.end_with("=")`
 
 If the method name does not end with an equal sign, raise an error.
 In other words, we want to raise an error if the method we're trying to
@@ -232,9 +232,9 @@ So now that we know we're only dealing with methods that look like
 
 <br />
 
-`setter = symbol` we're just renaming the argument to make our intent more clear.
+`setter = method_name` we're just renaming the argument to make our intent more clear.
 
-`getter = symbol.to_s.slice(0...-1).to_sym` Because the setter method
+`getter = method_name.to_s.slice(0...-1).to_sym` Because the setter method
 contains an equal sign, the getter cannot contain the equal sign. So to
 fix this we turn it to a string, `slice` off the equal sign at the end,
 then convert it back to a symbol so we can use it as a method.
