@@ -133,8 +133,7 @@ For example, if you're given the following code:
 ```ruby title=rails_app/config/initializers/snowpacker.rb
 Snowpacker.configure do |snowpacker|
   snowpacker.config_dir = Rails.root.join("config", "snowpacker")
-  snowpacker.babel_config_file = File.join(snowpacker.config_dir,
-  "babel.config.js")
+  snowpacker.babel_config_file = File.join(snowpacker.config_dir, "babel.config.js")
   # ... more options
 end
 ```
