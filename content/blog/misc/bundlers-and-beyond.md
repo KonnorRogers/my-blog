@@ -1,5 +1,5 @@
 ---
-title: Webpack, Rollup, Parcel, Snowpack, what is right for me?
+title: Webpack, Rollup, Parcel, Snowpack, and beyond
 date: "2020-09-29T15:32:30"
 description:
   A brief comparison between popular frontend bundlers. I
@@ -8,8 +8,12 @@ description:
 
 ## What this post is not
 
-This post will not get into loaders and bundle sizes and the nitty
-gritty of each bundler. Rather, this post is a brief high-level overview of
+This post will not get into bundle sizes, compilation times, and the
+nitty gritty of each bundler. But why? I wanna see the numbers!! The
+issue is each bundler uses different loaders based on the file type. Not
+all loaders are created equally and frankly, it would require a lot of
+effort to go through each individual loader for each bundler and create
+benchmarks. Instead, this post is a brief high-level overview of
 different frontend bundlers and the general problems they try to solve.
 
 ## History
