@@ -160,9 +160,11 @@ import / export syntax. And with the advent of HTTP/2 protocols, the
 issue of multiple waterfall network requests may soon be a thing of the
 past for assets.
 
-Right now adoption is slow due to ESM-based compilers are fairly new,
-but they have gained a significant amount of traction in the web
-development community. In fact, I'm currently working on
+Right now adoption is quite fast even though ESM-based compilers are fairly new.
+They have gained a significant amount of traction in the web
+development community.
+
+In fact, I'm currently working on
 [Snowpacker](https://github.com/paramagicdev/snowpacker), a Ruby on
 Rails integration with Snowpack to bring unbundled development
 environments to the Rails world. The project is not quite ready for
