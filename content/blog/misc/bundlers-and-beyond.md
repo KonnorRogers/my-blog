@@ -123,7 +123,7 @@ Webpack.
   <a href="#ok">
     OK...So what is right for me?
   </a>
-</h>
+</h3>
 
 Try all 3, see which one you like best. They honestly all accomplish the
 same task and can do roughly the same thing. As of Webpack 4, ESM is
