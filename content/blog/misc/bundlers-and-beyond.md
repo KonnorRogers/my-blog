@@ -113,11 +113,10 @@ Parcel is the newest of the 3 appearing at the beginning of 2018. Parcel
 states it is a "Blazing fast, zero configuration web application
 bundler". Now I have the least experience with Parcel, however, my
 experience with Parcel has been nothing short of awesome. It holds true
-to its promise. It even supports both HTML and JS entrypoints so it can
-be used for libraries or for websites. A lot of the issue people had
-with Parcel initially when it was first released was the size of its
-bundles. They have made great strides to be on par with Rollup and
-Webpack.
+to its promise. It even supports both HTML and JS entrypoints. A lot of
+the issues people had with Parcel initially when it was first released
+was the size of its bundles. They have made great strides to be on par
+with Rollup and Webpack.
 
 <h3 id="ok">
   <a href="#ok">
