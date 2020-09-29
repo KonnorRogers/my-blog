@@ -171,7 +171,11 @@ environments to the Rails world. The project is not quite ready for
 release yet, but significant strides have been made and a release should
 be on the horizon.
 
-## Summary
+<h2 id="summary">
+  <a href="#summary">
+    Summary
+  </a>
+</h2>
 
 Parcel, Webpack, and Rollup are all great. Use whichever one you want.
 Historically Webpack was for websites due to its full feature set,
@@ -183,18 +187,20 @@ libraries, use whatever you are most comfortable with.
 ESM-based build tools like Vite and Snowpack are showing great promise
 and appear to be the future of the frontend.
 
-## Links
+<h2 id="links">
+  <a href="#links">
+    Links
+  </a>
+</h2>
 
-### [Webpack](https://webpack.js.org/)
+- [Webpack](https://webpack.js.org/)
 
-### [Rollup](https://rollupjs.org/guide/en/)
+- [Rollup](https://rollupjs.org/guide/en/)
 
-### [Parcel](https://parceljs.org/)
+- [Parcel](https://parceljs.org/)
 
-### [Snowpack](https://www.snowpack.dev/)
+- [Vite](https://github.com/vitejs/vite)
 
-### [Vite](https://github.com/vitejs/vite)
+- [Snowpack](https://www.snowpack.dev/)
 
-### [Snowpacker](https://githubm.com/paramagicdev/snowpacker)
-
-
+- [Snowpacker](https://githubm.com/paramagicdev/snowpacker)
