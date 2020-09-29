@@ -129,7 +129,8 @@ Try all 3, see which one you like best. They honestly all accomplish the
 same task and can do roughly the same thing. As of Webpack 4, ESM is
 natively supported. Assets are fully supported by Rollup. Parcel bundle
 sizes are significantly smaller than they used to be. Seriously, just
-try them.
+try them. The only caveat is that as far as I can tell Parcel is only
+for web apps and does not support bundling for NPM.
 
 <h2 id="new-stuff">
   <a href="#new-stuff">
