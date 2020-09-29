@@ -83,7 +83,7 @@ people talk about. [Webpack](https://webpack.js.org),
   </a>
 </h4>
 
-"Webpack is for website", Webpack is the oldest of the 3 bundlers.
+"Webpack is for websites", Webpack is the oldest of the 3 bundlers.
 Webpack, in my opinion, is also the most complicated to setup of the 3
 bundlers. This isn't a knock against Webpack, it's a super powerful tool,
 but it is also quite complex. The reason people say this is that historically
