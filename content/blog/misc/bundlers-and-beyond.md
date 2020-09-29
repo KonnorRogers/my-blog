@@ -137,16 +137,31 @@ try them.
   </a>
 </h2>
 
-ESM-based frontend "bundlers...compilers?", I don't know what to call them...
-are the cool new thing in the web dev world. They independently build each file in
-parallel getting rid of the traditional compilation step that people
-complain about with traditional bundlers. The new ESM-based
-build tools like Snowpack and Vite leverage the ES6 `import / export`
-syntax to be able to provide blazing fast unbundled development
-environments to increase productivity.
+ESM-based frontend "bundlers...compilers?", I don't know what to call
+them...  are the cool new thing in the web dev world. They independently
+build each file in parallel getting rid of the traditional compilation
+step that people complain about with traditional bundlers.
 
-These ESM-based compilers are fairly new, but have gained a significant
-amount of traction. In fact, I'm currently working on
+The current issue with compilation is it can be quite slow, especially
+when you stop to consider changing 1 file can trigger a rebuild of your
+entire bundle including babel transforms, postcss builds, and everything
+in between.
+
+The new ESM-based build tools like Snowpack and Vite leverage the ES6
+`import / export` syntax to be able to provide blazing fast unbundled
+development environments to increase productivity. This means the
+compilation step is gone! No more waiting for bundles to regenerate.
+
+Everything is independent and only gets updated when that specific file
+changes. It also more closely mimics a browser environment which all
+evergreen browsers (Chrome, Edge, Firefox) all fully support ESM-based
+import / export syntax. And with the advent of HTTP/2 protocols, the
+issue of multiple waterfall network requests may soon be a thing of the
+past for assets.
+
+Right now adoption is slow due to ESM-based compilers are fairly new,
+but they have gained a significant amount of traction in the web
+development community. In fact, I'm currently working on
 [Snowpacker](https://github.com/paramagicdev/snowpacker), a Ruby on
 Rails integration with Snowpack to bring unbundled development
 environments to the Rails world. The project is not quite ready for
@@ -160,9 +175,10 @@ Historically Webpack was for websites due to its full feature set,
 Rollup was for libraries due to lack of asset handling and minimalism,
 and Parcel was for prototypes due to large bundle sizes, but I feel all
 3 statements above are no longer true due to vast improvements by all 3
-libraries, use whatever you are most comfortable with. ESM-based
-build tools like Vite and Snowpack are showing great promise and
-definitely be on the look out for them in the future.
+libraries, use whatever you are most comfortable with.
+
+ESM-based build tools like Vite and Snowpack are showing great promise
+and appear to be the future of the frontend.
 
 ## Links
 
