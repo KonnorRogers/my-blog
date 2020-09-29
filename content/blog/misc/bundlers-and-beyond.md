@@ -155,7 +155,7 @@ compilation step is gone! No more waiting for bundles to regenerate.
 
 Everything is independent and only gets updated when that specific file
 changes. It also more closely mimics a browser environment which all
-evergreen browsers (Chrome, Edge, Firefox) all fully support ESM-based
+evergreen browsers (Chrome, Edge, Firefox) fully support ESM-based
 import / export syntax. And with the advent of HTTP/2 protocols, the
 issue of multiple waterfall network requests may soon be a thing of the
 past for assets.
