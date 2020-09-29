@@ -6,7 +6,11 @@ description:
   will walk through my thoughts and feelings related to each bundler
 ---
 
-## What this post is not
+<h2 id="is-not">
+  <a href="#is-not">
+    What this post is not
+  </a>
+</h2>
 
 This post will not get into bundle sizes, compilation times, and the
 nitty gritty of each bundler. But why? I wanna see the numbers!! The
@@ -16,7 +20,11 @@ effort to go through each individual loader for each bundler and create
 benchmarks. Instead, this post is a brief high-level overview of
 different frontend bundlers and the general problems they try to solve.
 
-## History
+<h2 id="history">
+  <a href="#history">
+    History
+  </a>
+</h2>
 
 Why do we need bundlers? Browser-based Javascript prior to ES6
 (introduced in 2015) had no way of
@@ -30,12 +38,16 @@ For example you may have the following in your HTML.
 ```
 
 Now we get into the issue of, if `my-awesome-script.js` depends on
-jQuery to load, what happens if loading the `jQuery` scripts fails? Is
+jQuery to load, what happens if loading the `jQuery` script fails? Is
 my site now broken? You can quickly see why this is an issue. It gets
 worse when you also realize that you cant break up your Javascript files
 into smaller more manageable files.
 
-## The solution
+<h2 id="solution">
+  <a href="#solution">
+    The solution
+  </a>
+</h2>
 
 As far as I can tell [Webpack](https://webpack.js.org/) was the first
 frontend bundler on the scene. It appeared in 2015, around the same time as
@@ -49,15 +61,27 @@ the right term) released such as
 [Snowpack](https://www.snowpack.dev/) and
 [Vite](https://github.com/vitejs/vite).
 
-## Bundlers
+<h2 id="bundlers">
+  <a href="#bundlers">
+    Bundlers
+  </a>
+</h2>
 
 There are currently 3 major traditional frontend bundlers that most
 people talk about. [Webpack](https://webpack.js.org),
-[Rollup](https://rollupks.org), and [Parcel](https://parceljs.org)
+[Rollup](https://rollupks.org), and [Parcel](https://parceljs.org).
 
-### Choosing the right one for you
+<h3 id="choosing">
+  <a href="#choosing">
+    Choosing the right one for you
+  </a>
+</h3>
 
-#### Webpack
+<h4 id="webpack">
+  <a href="#webpack">
+    Webpack
+  </a>
+</h4>
 
 "Webpack is for website", Webpack is the oldest of the 3 bundlers.
 Webpack, in my opinion, is also the most complicated to setup of the 3
@@ -66,7 +90,11 @@ but it is also quite complex. The reason people say this is that historically
 Webpack was used for websites, but theres no reason you can't use it for
 an NPM package.
 
-#### Rollup
+<h4 id="rollup">
+  <a href="#rollup">
+    Rollup
+  </a>
+</h4>
 
 "Rollup is for libraries", Rollup is significantly more minimal than
 Webpack, Rollup doesnt even include a dev server! Rollup was released
@@ -75,7 +103,11 @@ released it had minimal support for assets such as CSS, images, etc.
 However, nowadays Rollup is just as full featured as Webpack. There's no
 reason you can't use it for websites.
 
-#### Parcel
+<h4 id="parcel">
+  <a href="#parcel">
+    Parcel
+  </a>
+</h4>
 
 Parcel is the newest of the 3 appearing at the beginning of 2018. Parcel
 states it is a "Blazing fast, zero configuration web application
@@ -87,7 +119,11 @@ with Parcel initially when it was first released was the size of its
 bundles. They have made great strides to be on par with Rollup and
 Webpack.
 
-#### OK...So what is right for me?
+<h3 id="ok">
+  <a href="#ok">
+    OK...So what is right for me?
+  </a>
+</h>
 
 Try all 3, see which one you like best. They honestly all accomplish the
 same task and can do roughly the same thing. As of Webpack 4, ESM is
@@ -95,13 +131,17 @@ natively supported. Assets are fully supported by Rollup. Parcel bundle
 sizes are significantly smaller than they used to be. Seriously, just
 try them.
 
-## A new challenger approaches
+<h2 id="new-stuff">
+  <a href="#new-stuff">
+    A new challenger approaches
+  </a>
+</h2>
 
-ESM-based frontend "bundlers...compilers?", I don't know what to call them!
-Are the cool new thing out there. They independently build each file in
+ESM-based frontend "bundlers...compilers?", I don't know what to call them...
+are the cool new thing in the web dev world. They independently build each file in
 parallel getting rid of the traditional compilation step that people
-complain about with traditional frontend bundlers. The new ESM-based
-compilers like Snowpack and Vite leverage the ES6 `import / export`
+complain about with traditional bundlers. The new ESM-based
+build tools like Snowpack and Vite leverage the ES6 `import / export`
 syntax to be able to provide blazing fast unbundled development
 environments to increase productivity.
 
@@ -120,8 +160,9 @@ Historically Webpack was for websites due to its full feature set,
 Rollup was for libraries due to lack of asset handling and minimalism,
 and Parcel was for prototypes due to large bundle sizes, but I feel all
 3 statements above are no longer true due to vast improvements by all 3
-libraries. ESM-based compilers like Vite and Snowpack are showing great
-promise and definitely be on the look out for them!
+libraries, use whatever you are most comfortable with. ESM-based
+build tools like Vite and Snowpack are showing great promise and
+definitely be on the look out for them in the future.
 
 ## Links
 
