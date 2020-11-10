@@ -14,3 +14,9 @@ yarn start
 Navigate to `localhost:8080` and you're up and running.
 
 Blog stuff goes into `src/content`
+
+# Deployment 
+
+Deploy via GH-pages.
+
+`yarn deploy`
