@@ -2,6 +2,10 @@
 
 Personal blog written with MDX and Gatsby.
 
+This blog uses the MDX starter.
+
+https://github.com/ChristopherBiscardi/gatsby-starter-mdx-basic
+
 ## Getting started
 
 ```bash
