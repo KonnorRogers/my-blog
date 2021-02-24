@@ -28,9 +28,8 @@ function Bio() {
               }}
             />
             <p>
-              Written by <strong>{author}</strong> who currently works as a
-              paramedic looking to transition into becoming a full time software
-              developer.
+              Written by <strong>{author}</strong> who currently works at VeueLive as
+              a full time developer.
               {` `}
               <a href={`https://twitter.com/${social.twitter}`}>
                 You should follow him on Twitter
