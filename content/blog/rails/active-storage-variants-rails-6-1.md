@@ -43,7 +43,7 @@ Alright now that we've located the source how do we fix it?
 
 When you run `rails app:update` or `rails active_storage:update` it will
 create 2 migrations for you. In particular we want to look at the one
-generating the the `active_storage_variant_records`. The file should look
+generating the `active_storage_variant_records` table. The file should look
 something like this:
 
 ```rb title=db/migrate/xxxx_create_active_storage_variant_records.active_storage.rb
