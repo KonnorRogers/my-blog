@@ -4,7 +4,11 @@ date: "2021-02-24T14:12:29"
 description: "receiving the following error with ActiveStorage Variants with Rails 6.1? ActiveRecord::NotNullViolation (PG::NotNullViolation: ERROR:  null value in column 'record_id' of relation 'active_storage_attachments' violates not-null constraint) Let me help!"
 ---
 
-## The Error!
+<h2 id="error">
+  <a href="#error">
+    The Error!
+  </a>
+</h2>
 
 Upgrading to Rails 6.1 and encountering the following error?
 
@@ -29,7 +33,11 @@ If you're not sure, you can check your `db/schema.rb`
 
 If yes, keep reading. If not, sorry, this wont be much help.
 
-## Using UUID for record_id, cool I was too
+<h2 id="using-uuid-me-too">
+  <a href="#using-uuid-me-too">
+    Using UUID for record_id, cool I was too
+  </a>
+</h2>
 
 Alright now that we've located the source how do we fix it?
 
@@ -68,13 +76,25 @@ end
 Now rollback your migrations, rerun your migrations, and onward to
 victory!!
 
-## Links
+<h2 id="links">
+  <a href="#links">
+    Links
+  </a>
+</h2>
 
-### Active Storage docs
+<h3 id="active-storage-docs">
+  <a href="#active-storage-docs">
+    Active Storage docs
+  </a>
+</h3>
 
 - https://edgeguides.rubyonrails.org/active_storage_overview.html#setup
 
-### Rails 6.1 migration docs
+<h3 id="rails-6-1-migration">
+  <a href="#rails-6-1-migration">
+    Rails 6.1 migration docs
+  </a>
+</h3>
 
 - Release notes:
 https://edgeguides.rubyonrails.org/6_1_release_notes.html
