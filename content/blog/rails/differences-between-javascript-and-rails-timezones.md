@@ -9,12 +9,11 @@ description:
 
 ## What I'm working on
 
-I work for VeueLive (https://veue.tv) and recently was tasked with
+I currently work for Veue (https://veue.tv) and recently was tasked with
 creating a scheduling form for streamers.
 
-## What I was tasked with:
-
-When working on this I had a design that looks as follows:
+When working on this I had a design that looks roughly like the
+following:
 
 <form>
   <div style="margin-bottom: 1rem;">
@@ -49,24 +48,30 @@ name="video[scheduled_at]>` field and then use a Stimulus controller to
 wire everything together to send off a coherent `datetime` to the
 server.
 
-Im not going to get into how I actually built this because it will be
-quite verbose, instead, Im going to document the inconsistencies I found
+I'm not going to get into how I actually built this because it will be
+quite verbose, instead, I'm going to document the inconsistencies I found
 between Javascript and Rails and some of the pitfalls.
 
 ## Dates arent what they seem.
 
+### Local time
+
 In JavaScript, `new Date()` is the same as Ruby's `Time.now`. They both
 use the TimeZone for your system.
 
-In Ruby, if you use `Time.current` it will use the value of `Time.zone` or the values set by
+### Setting a timezone
+
+In Ruby, if you use `Time.current` it will use the value of `Time.zone` or the value set by
 `ENV["TZ"]`. If neither are specified by your app, `Time.zone` will default to UTC.
+
+### Linting complaints
 
 Rubocop will always recommend against `Time.now` and instead recommend `Time.current` or `Time.zone.now`,
 or a number of other recommendations here:
 
 https://www.rubydoc.info/gems/rubocop/0.41.2/RuboCop/Cop/Rails/TimeZone
 
-Basically, it always wants a timezone.
+Basically, it always wants a timezone to be specified.
 
 ### Month of year
 
@@ -74,7 +79,7 @@ The month of the year is 0 indexed in JS and 1-indexed in Ruby.
 
 #### Javascript
 
-```js
+```js title=javascript
 // month of year
 new Date().getMonth()
 // => 0 (January), 1 (February), 2 (March), ... 11 (December)
@@ -83,7 +88,7 @@ new Date().getMonth()
 
 #### Ruby / Rails
 
-```rb
+```rb title=ruby
 # month of year
 Time.current.month
 # => 1 (January), 2 (February), 3 (March), ... 12 (December)
@@ -102,7 +107,7 @@ And in Rails its:
 
 #### Javascript
 
-```js
+```js title=javascript
 // Day of the week
 new Date().getDay()
 // => 0 (Sunday) ... (6 Saturday)
@@ -111,7 +116,7 @@ new Date().getDay()
 
 #### Ruby / Rails
 
-```rb
+```rb title=ruby
 # Day of the week
 time.wday
 # => 0 (Sunday) ... 6 (Saturday)
@@ -122,7 +127,7 @@ time.wday
 
 #### Javascript
 
-```js
+```js title=javascript
 // Day of the month
 date.getDate()
 // => 1 (day 1 of month), ..., 11 (day 11 of month), 28 ... 31 (end of month)
@@ -131,7 +136,7 @@ date.getDate()
 
 #### Ruby / Rails
 
-```rb
+```rb title=ruby
 # Day of month
 time.day
 # => 1 (first day), 11 (11th day), ... 28 ... 31 (end of month)
@@ -143,18 +148,21 @@ time.day
 ### Finding the UTC time
 
 In JavaScript, the UTC number returned is 13 digits for March 5th, 2021
-In Ruby, the UTC integer will be 10 digits when running `to_i` since its
-an integer value. Why the inconsistency?
+In Ruby, the UTC integer will be 10 digits when converting to an
+integer. Why the inconsistency?
 
 In Javascript, `Date.now()` returns a millisecond based representation,
 while in Ruby, `Time.current.to_i` returns a second based representation.
+
+By millisecond vs second based representation I mean the number of
+seconds or milliseconds since January 1, 1970 00:00:00 UTC.
+
 Below, I have examples on how to make JS behave like Ruby and
 vice-versa.
 
-
 #### Javascript
 
-```js
+```js title=javascript
 Date.now()
 // => 1614968619533
 // Returns the numeric value corresponding to the current time—the number of milliseconds elapsed since January 1, 1970 00:00:00 UTC, with leap seconds ignored.
@@ -167,7 +175,7 @@ parseInt(Date.now() / 1000, 10)
 
 #### Ruby
 
-```rb
+```rb title=ruby
 Integer(Time.current.utc)
 # => 1614971384
 # Returns an integer value, seconds based approach
@@ -206,7 +214,7 @@ milliseconds.
 
 ##### Javascript
 
-```js
+```js title=javascript
 new Date().toISOString()
 // => "2021-03-05T18:45:18.661Z"
 // Javascript automatically converts to UTC when we request an ISO string
@@ -224,7 +232,7 @@ https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects
 
 ##### Ruby
 
-```rb
+```rb title=ruby
 Time.current.iso8601
 # => "2021-03-05T13:45:46-05:00"
 # Notice this has an offset, this is not using UTC time. To get Zulu time we
@@ -243,7 +251,7 @@ Time.current.utc.iso8601(3)
 
 #### Javascript
 
-```js
+```js title=javascript
 // Month, day, date
 
 const date = new Date()
@@ -282,7 +290,7 @@ new Date().toISOString()
 
 #### Ruby / Rails
 
-```rb
+```rb title=ruby
 # Month, day, date
 time = Time.current
 
@@ -348,7 +356,7 @@ https://api.rubyonrails.org/classes/ActiveSupport/TimeZone.html
 
 ### Rspec
 
-```rb
+```rb rspec
 # spec/spec_helper.rb
 
 RSpec.configure do |config|
@@ -368,7 +376,7 @@ end
 
 ### Minitest
 
-```rb
+```rb minitest
 # test/test_helper.rb
 
 # ...
