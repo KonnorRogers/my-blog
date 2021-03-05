@@ -55,6 +55,19 @@ between Javascript and Rails and some of the pitfalls.
 
 ## Dates arent what they seem.
 
+In JavaScript, `new Date()` is the same as Ruby's `Time.now`. They both
+use the TimeZone for your system.
+
+In Ruby, if you use `Time.current` it will use the value of `Time.zone` or the values set by
+`ENV["TZ"]`. If neither are specified by your app, `Time.zone` will default to UTC.
+
+Rubocop will always recommend against `Time.now` and instead recommend `Time.current` or `Time.zone.now`,
+or a number of other recommendations here:
+
+https://www.rubydoc.info/gems/rubocop/0.41.2/RuboCop/Cop/Rails/TimeZone
+
+Basically, it always wants a timezone.
+
 ### Month of year
 
 The month of the year is 0 indexed in JS and 1-indexed in Ruby.
@@ -312,3 +325,66 @@ Time.current.utc.iso8601(3)
 # => "2021-03-05T18:59:26.577Z"
 # With milliseconds!
 ```
+
+## Bonus! Testing!
+
+Thanks for sticking with me this far. When writing system tests in
+Capybara, the browser will use the timezone indicated by your current
+system and will be different for everyone.
+
+`Time.zone` is not respected by Capybara. Instead, to tell Capybara what
+TimeZone to use, you have to explicitly set the `ENV["TZ"]`.
+
+So, here at Veue, we randomize the timezone on every test run. This
+catches possible failures due to timezones and provides the same experience locally and in
+CI. There are gems for this but heres an easy snippet
+you can use to set your TimeZone to be a random timezone for tests.
+
+To find a random TimeZone we can access
+`ActiveSupport::TimeZone::MAPPING` which as it states, provides a hash
+mapping of timezones. From here, its just wiring it all up.
+
+https://api.rubyonrails.org/classes/ActiveSupport/TimeZone.html
+
+### Rspec
+
+```rb
+# spec/spec_helper.rb
+
+RSpec.configure do |config|
+  # ...
+  config.before(:suite) do
+    ENV["_ORIGINAL_TZ"] = ENV["TZ"]
+    ENV["TZ"] = ActiveSupport::TimeZone::MAPPING.values.sample
+  end
+
+  config.after(:suite) do
+    ENV["TZ"] = ENV["_ORIGINAL_TZ"]
+    ENV["_ORIGINAL_TZ"] = nil
+  end
+  # ...
+end
+```
+
+### Minitest
+
+```rb
+# test/test_helper.rb
+
+# ...
+ENV["_ORIGINAL_TZ"] = ENV["TZ"]
+ENV["TZ"] = ActiveSupport::TimeZone::MAPPING.values.sample
+
+module ActiveSupport
+  class TestCase
+    # ...
+  end
+end
+
+Minitest.after_run do
+  ENV["TZ"] = ENV["_ORIGINAL_TZ"]
+  ENV["_ORIGINAL_TZ"] = nil
+end
+```
+
+Thanks for sticking with me, whatever timezone you may be in!
