@@ -1,5 +1,5 @@
 ---
-title: Working with Rails timezones
+title: Differences between JavaScript and Rails timezones
 date: "2021-03-05T12:33:46"
 description:
   Common pitfalls and issues with Rails timezones.
@@ -312,4 +312,3 @@ Time.current.utc.iso8601(3)
 # => "2021-03-05T18:59:26.577Z"
 # With milliseconds!
 ```
-
