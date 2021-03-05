@@ -7,7 +7,11 @@ description:
   tidbits.
 ---
 
-## What I'm working on
+<h2 id="work">
+  <a href="#work">
+    What I'm working on
+  </a>
+</h2>
 
 I currently work for Veue (https://veue.tv) and recently was tasked with
 creating a scheduling form for streamers.
@@ -52,19 +56,35 @@ I'm not going to get into how I actually built this because it will be
 quite verbose, instead, I'm going to document the inconsistencies I found
 between Javascript and Rails and some of the pitfalls.
 
-## Dates arent what they seem.
+<h2 id="dates">
+  <a href="#dates">
+    Dates arent what they seem.
+  </a>
+</h2>
 
-### Local time
+<h3 id="local-time">
+  <a href="#local-time">
+    Local time
+  </a>
+</h3>
 
 In JavaScript, `new Date()` is the same as Ruby's `Time.now`. They both
 use the TimeZone for your system.
 
-### Setting a timezone
+<h3 id="setting-timezone">
+  <a href="#setting-timezone">
+    Setting a timezone
+  </a>
+</h3>
 
 In Ruby, if you use `Time.current` it will use the value of `Time.zone` or the value set by
 `ENV["TZ"]`. If neither are specified by your app, `Time.zone` will default to UTC.
 
-### Linting complaints
+<h3 id="linting">
+  <a href="#linting">
+    Linting complaints
+  </a>
+</h3>
 
 Rubocop will always recommend against `Time.now` and instead recommend `Time.current` or `Time.zone.now`,
 or a number of other recommendations here:
@@ -73,11 +93,19 @@ https://www.rubydoc.info/gems/rubocop/0.41.2/RuboCop/Cop/Rails/TimeZone
 
 Basically, it always wants a timezone to be specified.
 
-### Month of year
+<h3 id="month-of-year">
+  <a href="#month-of-year">
+    Month of year
+  </a>
+</h3>
 
 The month of the year is 0 indexed in JS and 1-indexed in Ruby.
 
-#### Javascript
+<h4 id="js-month-of-year">
+  <a href="#js-month-of-year">
+    Javascript
+  </a>
+</h4>
 
 ```js title=javascript
 // month of year
@@ -86,7 +114,11 @@ new Date().getMonth()
 // 0-indexed month of the year
 ```
 
-#### Ruby / Rails
+<h4 id="rb-month-of-year">
+  <a href="#rb-month-of-year">
+    Ruby / Rails
+  </a>
+</h4>
 
 ```rb title=ruby
 # month of year
@@ -95,7 +127,11 @@ Time.current.month
 # 1-indexed month of the year
 ```
 
-### Day of Week
+<h3 id="day-of-week">
+  <a href="#day-of-week">
+    Day of Week
+  </a>
+</h3>
 
 The day of the week in JavaScript is called via:
 
@@ -105,7 +141,11 @@ And in Rails its:
 
 `Time.current.wday`
 
-#### Javascript
+<h4 id="js-day-of-week">
+  <a href="#js-day-of-week">
+    Javascript
+  </a>
+</h4>
 
 ```js title=javascript
 // Day of the week
@@ -114,7 +154,11 @@ new Date().getDay()
 // 0-indexed day of week
 ```
 
-#### Ruby / Rails
+<h4 id="rb-day-of-week">
+  <a href="#rb-day-of-week">
+    Ruby / Rails
+  </a>
+</h4>
 
 ```rb title=ruby
 # Day of the week
@@ -123,9 +167,17 @@ time.wday
 # 0-indexed day of week
 ```
 
-### Day of Month
+<h3 id="day-of-month">
+  <a href="#day-of-month">
+    Day of Month
+  </a>
+</h3>
 
-#### Javascript
+<h4 id="js-day-of-month">
+  <a href="#js-day-of-month">
+    Javascript
+  </a>
+</h4>
 
 ```js title=javascript
 // Day of the month
@@ -134,7 +186,11 @@ date.getDate()
 // 1-indexed day of the month
 ```
 
-#### Ruby / Rails
+<h4 id="rb-day-of-month">
+  <a href="#rb-day-of-month">
+    Ruby / Rails
+  </a>
+</h4>
 
 ```rb title=ruby
 # Day of month
@@ -143,9 +199,17 @@ time.day
 # 1-indexed day of the month
 ```
 
-## ISO Strings, UTC, what?!
+<h2 id="iso-utc-what">
+  <a href="#iso-utc-what">
+    ISO Strings, UTC, what?!
+  </a>
+</h2>
 
-### Finding the UTC time
+<h3 id="find-utc-time">
+  <a href="#find-utc-time">
+    Finding the UTC time
+  </a>
+</h3>
 
 In JavaScript, the UTC number returned is 13 digits for March 5th, 2021
 In Ruby, the UTC integer will be 10 digits when converting to an
@@ -160,7 +224,11 @@ seconds or milliseconds since January 1, 1970 00:00:00 UTC.
 Below, I have examples on how to make JS behave like Ruby and
 vice-versa.
 
-#### Javascript
+<h4 id="js-find-utc-time">
+  <a href="#js-find-utc-time">
+    Javascript
+  </a>
+</h4>
 
 ```js title=javascript
 Date.now()
@@ -173,7 +241,11 @@ parseInt(Date.now() / 1000, 10)
 // Without milliseconds
 ```
 
-#### Ruby
+<h4 id="rb-find-utc-time">
+  <a href="#rb-find-utc-time">
+    Ruby / Rails
+  </a>
+</h4>
 
 ```rb title=ruby
 Integer(Time.current.utc)
@@ -186,9 +258,17 @@ Integer(Float(Time.current.utc) * 1000)
 Returns an integer value, milliseconds based approach
 ```
 
-### ISO Strings?!
+<h3 id="iso-string">
+  <a href="#iso-string">
+    ISO Strings?!
+  </a>
+</h3>
 
-#### Use them in your database.
+<h4 id="use-them">
+  <a href="#use-them">
+    Use them in your database.
+  </a>
+</h4>
 
 ISO strings are king. Use them. Even postgres recommends them for `date` / `time` / `datetime` columns.
 
@@ -199,20 +279,32 @@ Example 	Description
 1999-01-08 	ISO 8601; January 8 in any mode (recommended format)
 ```
 
-#### Look for the Z!
+<h4 id="look-for-z">
+  <a href="#look-for-z">
+    Look for the Z!
+  </a>
+</h4>
 
 Look for a `Z` at the end of an ISO String since
 it will indicate `Zulu` time otherwise known as UTC time. This how you
 want to save times on your server. The browser is for local time, the
 server is for UTC time.
 
-#### How to find the ISO string
+<h4 id="how-to-find-iso-string">
+  <a href="#how-to-find-iso-string">
+    How to find the ISO string
+  </a>
+</h4>
 
 Here we'll look at how to find an ISO string in JS and in Ruby. Again,
 JS records millisecond ISO strings. Ill cover how to make both use
 milliseconds.
 
-##### Javascript
+<h5 id="js-find-iso">
+  <a href="#js-find-iso">
+    Javascript
+  </a>
+</h5>
 
 ```js title=javascript
 new Date().toISOString()
@@ -230,7 +322,11 @@ polyfilling it yourself.
 https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Date/toISOString
 
 
-##### Ruby
+<h5 id="rb-find-iso">
+  <a href="#rb-find-iso">
+    Ruby
+  </a>
+</h5>
 
 ```rb title=ruby
 Time.current.iso8601
@@ -247,9 +343,17 @@ Time.current.utc.iso8601(3)
 # With milliseconds!
 ```
 
-### Full reference of above
+<h3 id="reference">
+  <a href="#reference">
+    Full reference of above
+  </a>
+</h3>
 
-#### Javascript
+<h4 id="js-ref">
+  <a href="#js-ref">
+    Javascript
+  </a>
+</h4>
 
 ```js title=javascript
 // Month, day, date
@@ -288,7 +392,11 @@ new Date().toISOString()
 // Javascript automatically converts to UTC when we request an ISO string
 ```
 
-#### Ruby / Rails
+<h4 id="rb-ref">
+  <a href="#rb-ref">
+    Ruby / Rails
+  </a>
+</h4>
 
 ```rb title=ruby
 # Month, day, date
@@ -334,7 +442,11 @@ Time.current.utc.iso8601(3)
 # With milliseconds!
 ```
 
-## Bonus! Testing!
+<h2 id="bonus">
+  <a href="#bonus">
+    Bonus! Testing!
+  </a>
+</h2>
 
 Thanks for sticking with me this far. When writing system tests in
 Capybara, the browser will use the timezone indicated by your current
@@ -354,7 +466,11 @@ mapping of timezones. From here, its just wiring it all up.
 
 https://api.rubyonrails.org/classes/ActiveSupport/TimeZone.html
 
-### Rspec
+<h3 id="rspec">
+  <a href="#rspec">
+    Rspec
+  </a>
+</h3>
 
 ```rb rspec
 # spec/spec_helper.rb
@@ -374,7 +490,11 @@ RSpec.configure do |config|
 end
 ```
 
-### Minitest
+<h3 id="minitest">
+  <a href="#minitest">
+    Minitest
+  </a>
+</h3>
 
 ```rb minitest
 # test/test_helper.rb
@@ -395,4 +515,4 @@ Minitest.after_run do
 end
 ```
 
-Thanks for sticking with me, whatever timezone you may be in!
+Thanks for reading, and enjoy your day from whatever timezone you may be in!
