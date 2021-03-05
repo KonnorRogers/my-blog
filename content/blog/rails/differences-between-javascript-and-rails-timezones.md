@@ -209,7 +209,7 @@ server is for UTC time.
 #### How to find the ISO string
 
 Here we'll look at how to find an ISO string in JS and in Ruby. Again,
-JS records millisecond ISO strings. Ill cover how to make both cover
+JS records millisecond ISO strings. Ill cover how to make both use
 milliseconds.
 
 ##### Javascript
