@@ -16,7 +16,7 @@ description:
 I currently work for Veue (https://veue.tv) and recently was tasked with
 creating a scheduling form for streamers.
 
-When working on this I had a design that looks roughly like the
+When working on this I was given a design that looked roughly like the
 following:
 
 <form>
@@ -41,7 +41,7 @@ following:
 And then on the Rails backend I had a schema that looked roughly like
 this:
 
-```rb
+```rb title=db/schema.rb
 create_table "videos" do |t|
   t.datetime :scheduled_at
 end
