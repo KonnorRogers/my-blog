@@ -1,8 +1,9 @@
 ---
 title: How do default_url_options work in Rails?
 date: "2021-04-03T20:07:42"
-description: A quick down and dirty guide to the totally bizarre default_url_options
-API in Rails.
+description:
+  A quick down and dirty guide to the totally bizarre default_url_options
+  API in Rails.
 ---
 
 <h2 id="default-url-options">
@@ -21,7 +22,9 @@ threw everything and the wall and saw what stuck.
   </a>
 </h2>
 
-Currently, there are 4 different ways to call `default_url_options`.
+Currently, there are 4 different config options for `default_url_options` as far as I can tell.
+This doesnt include defining `default_url_options` as a method inside a
+your routes, controller, or mailer.
 
 ```rb
 Rails.application.default_url_options
@@ -101,7 +104,7 @@ The reason is that `ActiveSupport::OrderedOptions` is essentially a Hash
 with a few other conveniences. This means if the value isnt set, itll
 return nil.
 
-This means when settng your config, you want to give
+This means when setting your config, you want to give
 `action_(mailer|controller).default_url_options` a full hash if it hasnt
 been set. If it has been set already, you can modify it in place like a
 normal Hash.
@@ -123,7 +126,7 @@ Rails.application.config.action_mailer.default_url_options[:host] =
 
 <h2 id="bring-it-around-town">
   <a href="#bring-it-around-town">
-    Gotchas
+    Bringing it all together
   </a>
 </h2>
 
@@ -131,7 +134,7 @@ Alright, now for the meat and potatoes now that we've gotten definitions
 out of the way.
 
 Setting `Rails.application.default_url_options` will only affect calls
-made from the console.
+made from the Rails router.
 
 Example:
 
@@ -154,19 +157,18 @@ Rails.application.config.action_mailer = {host: "0.0.0.0"}
 ```
 
 Now, your `action_controller` and `action_mailer` will both have the
-name hostname.
+new hostname.
 
-To put it simpler terms heres roughly what were doing:
+To put it in simpler terms, heres roughly what were doing:
 
 `Rails.application.default_url_options` affects the Rails router.
-It will propagate to the console is when you will see it most used.
+You will use this when interacting directly with the router.
 IE: `url_for()`
 
 `Rails.application.config.action_(mailer|controller)` affects the actual
-browser route generations. So when you use either a Controller or
+browser route generations when you use either a Controller or
 Mailer.
-
-IE: `users_path(Path.first)`
+IE: `users_url(Path.first)`
 
 <h2 id="links">
   <a href="#links">
@@ -180,3 +182,8 @@ a few open / closed issues like this one:
 https://github.com/rspec/rspec-rails/issues/1275
 
 But for the most part this was all done in the Rails console.
+
+I'm sure I may have gotten something wrong or missed something. But,
+this is my understand of the `default_url_options` configuration. Good
+luck, and hopefully you dont have to waste as much time as I did hunting
+down bugs with this.
