@@ -23,8 +23,7 @@ threw everything and the wall and saw what stuck.
 </h2>
 
 Currently, there are 4 different config options for `default_url_options` as far as I can tell.
-This doesnt include defining `default_url_options` as a method inside a
-your routes, controller, or mailer.
+This doesnt include defining `default_url_options` as a method inside of your routes file, controller, or mailer.
 
 ```rb
 Rails.application.default_url_options
@@ -47,8 +46,11 @@ Example:
 ```bash
 bundle exec rails console
 
-Rails.application.default_url_options # => {}
-Rails.application.routes.default_url_options # => {}
+Rails.application.default_url_options
+# => {}
+
+Rails.application.routes.default_url_options
+# => {}
 ```
 
 When one is updated, the other is updated.
@@ -59,12 +61,14 @@ bundle exec rails console
 Rails.application.default_url_options[:host] = "0.0.0.0"
 # => {host: "0.0.0.0"}
 
-Rails.application.routes.default_url_options # => {:host => "0.0.0.0"}
+Rails.application.routes.default_url_options
+# => {:host => "0.0.0.0"}
 
 Rails.application.routes.default_url_options[:host] = "1.2.3.4"
 # => {:host => "1.2.3.4"}
 
-Rails.application.default_url_options # => {:host => "1.2.3.4"}
+Rails.application.default_url_options
+# => {:host => "1.2.3.4"}
 ```
 
 
@@ -92,19 +96,22 @@ Rails.application.config.action_mailer
 Rails.application.config.action_controller
 # => ActiveSupport::OrderedOptions
 
-Rails.application.config.action_mailer.default_url_options # => nil
-Rails.application.config.action_controller.default_url_options # => nil
+Rails.application.config.action_mailer.default_url_options
+# => nil
+
+Rails.application.config.action_controller.default_url_options
+# => nil
 ```
 
 So by default `Rails.application.config.action_mailer` and
 `Rails.application.config.action_controller` return nil if the
 environments havent been set for them. Okay...cool.
 
-The reason is that `ActiveSupport::OrderedOptions` is essentially a Hash
-with a few other conveniences. This means if the value isnt set, itll
+The reason is that `ActiveSupport::OrderedOptions` is essentially a
+mixed hash / instance variable configuration object. This means if the value isnt set, itll
 return nil.
 
-This means when setting your config, you want to give
+When setting your config, you want to give
 `action_(mailer|controller).default_url_options` a full hash if it hasnt
 been set. If it has been set already, you can modify it in place like a
 normal Hash.
