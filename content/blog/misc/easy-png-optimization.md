@@ -40,7 +40,19 @@ cd app/assets/images
 pngquant ./**/*.png -quality 65-80 -speed 1
 ```
 
-This will generate a bunch of files with the `-fs8.png` suffix.
+This will generate a bunch of files with the `-fs8.png` suffix like so:
+
+```bash
+.
+├── file-1.png
+├── file-1-fs8.png
+├── file-2.png
+├── file-2-fs8.png
+├── file-3.png
+├── file-3-fs8.png
+├── file-4.png
+└── file-4-fs8.png
+```
 
 Im sure theres a way to have `pngquant` overwrite your files, but this
 lets me do an easy comparison of before / after sizes. Then I'll rename
